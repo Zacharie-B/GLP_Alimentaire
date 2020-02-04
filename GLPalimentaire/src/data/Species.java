@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface Species {
 	
-	public abstract int getOrganicMass();
+	public abstract int getOrganicalMass();
 	
 	public abstract int getRateMineral();
 

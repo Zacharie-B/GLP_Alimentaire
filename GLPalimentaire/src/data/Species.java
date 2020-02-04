@@ -9,6 +9,15 @@ package data;
  * @author zacharie
  *
  */
-public abstract class Species {
+public interface Species {
+	
+	public abstract boolean isAlive();
+	
+	public abstract int getOrganicMass();
+	
+	public abstract int getRateMineral();
 
+	public abstract int getHP();
+	
+	
 }

@@ -1,5 +1,5 @@
 package data;
 
-public abstract class PrimaryConsumer {
+public abstract class PrimaryConsumer extends Consumer {
 	
 }

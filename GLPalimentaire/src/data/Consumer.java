@@ -2,7 +2,7 @@ package data;
 
 import java.util.ArrayList;
 
-public abstract class Consumer {
+public abstract class Consumer implements Species{
 	
 	/**
 	 * 

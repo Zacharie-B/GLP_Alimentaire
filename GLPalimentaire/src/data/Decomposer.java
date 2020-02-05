@@ -1,6 +1,6 @@
 package data;
 
-public abstract class Decomposer {
+public abstract class Decomposer implements Species{
 	
 	/**
 	 * 

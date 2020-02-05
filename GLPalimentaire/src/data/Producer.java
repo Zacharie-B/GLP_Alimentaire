@@ -68,35 +68,35 @@ public abstract class Producer implements Species{
 		this.ratemineral=ratemineral;
 	}
 	
-	public boolean getIsIsalive() {
+	public boolean getIsAlive() {
 		return isalive;
 	}
 	
-	public void setIsalive(boolean isalive) {
+	public void setIsAlive(boolean isalive) {
 		this.isalive = isalive;
 	}
 	
-	public int getPopulationdensity() {
+	public int getPopulationDensity() {
 		return populationdensity;
 	}
 	
-	public void setPopulationdensity(int populationdensity) {
+	public void setPopulationDensity(int populationdensity) {
 		this.populationdensity = populationdensity;
 	}
 	
-	public int getNumberbirths() {
+	public int getNumberBirths() {
 		return numberbirths;
 	}
 	
-	public void setNumberbirths(int numberbirths) {
+	public void setNumberBirths(int numberbirths) {
 		this.numberbirths = numberbirths;
 	}
 	
-	public int getTimebreeding() {
+	public int getTimeBreeding() {
 		return timebreeding;
 	}
 	
-	public void setTimebreeding(int timebreeding) {
+	public void setTimeBreeding(int timebreeding) {
 		this.timebreeding = timebreeding;
 	}
 	

@@ -8,7 +8,7 @@ public class Bush extends Producer{
 	
 	public Bush(boolean isalive, int populationdensity, int numberbirths, int timebreeding, int hp, int organicmass, int organicprocessingspeed, int ratemineral) {
 		super();
-		setIsalive(isalive);
+		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
 		setNumberBirths(numberbirths);
 		setTimeBreeding(timebreeding);

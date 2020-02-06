@@ -23,23 +23,7 @@ public interface Species {
 	 */
 	
 	public abstract int getPopulationDensity();
-	public abstract void setPopulationDensity(int populationdensity);
-	
-	/**
-	 * @return number of Births for a litter
-	 * always single birth for Decomposers
-	 */
-	
-	public abstract int getNumberBirths();
-	public abstract void setNumberBirths(int numberbirths);	
-	
-	/**
-	 * @return time of breeding
-	 * very short time per breeding for Decomposers
-	 */
-	
-	public abstract int getTimeBreeding();
-	public abstract void setTimeBreeding(int timebreeding);	
+	public abstract void setPopulationDensity(int populationdensity);	
 	
 }	
 

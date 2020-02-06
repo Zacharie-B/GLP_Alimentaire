@@ -1,16 +1,33 @@
 package data;
 
+import java.util.ArrayList;
+
 public abstract class Decomposer implements Species{
+	ArrayList<String> diet;
+	int organicMass;
+	int populationDensity;
 	
-	/** 
-	 * @return the rate of transformation of organic matter into mineral matter
-	 */
-	public abstract int getMineralProcessingSpeed();
-	public abstract void setMineralProcessingSpeed(int mineralprocessingspeed);	
+	public ArrayList<String> getDiet() {
+		return diet;
+	}
+	public void setDiet(ArrayList<String> diet) {
+		this.diet = diet;
+	}
+	public int getOrganicMass() {
+		return organicMass;
+	}
+	public void setOrganicMass(int organicMass) {
+		this.organicMass = organicMass;
+	}
+	public int getPopulationDensity() {
+		return populationDensity;
+	}
+	public void setPopulationDensity(int populationDensity) {
+		this.populationDensity = populationDensity;
+	}
 	
-	/**
-	 * @return the time life of a decomposer
-	 */
-	public abstract int getTimeLife();
-	public abstract void setTimeLife(int timelife);	
+	public abstract void initializeDiet();
+	
+	
+	
 }

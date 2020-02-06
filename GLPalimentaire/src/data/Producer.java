@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Producer implements Species{
 	int hp;
-	ArrayList<String> eatenby;
-	int organicmass;
-	int organicprocessingspeed;
-	int ratemineral;
-	boolean isalive;
-	int populationdensity;
-	int numberbirths;
-	int timebreeding;
+	ArrayList<String> eatenBy;
+	int organicMass;
+	int organicProcessingSpeed;
+	int rateMineral;
+	boolean isAlive;
+	int populationDensity;
+	int numberBirths;
+	int timeBreeding;
 	
 	/**
 	 * 
@@ -29,10 +29,10 @@ public abstract class Producer implements Species{
 	 * @return who can eat him
 	 */
 	public ArrayList <String> getEatenby(){
-		return eatenby;
+		return eatenBy;
 	}
 	public void setEatenBy(ArrayList <String> eatenby) {
-		this.eatenby=eatenby;
+		this.eatenBy=eatenby;
 	}
 	
 	/**
@@ -40,10 +40,10 @@ public abstract class Producer implements Species{
 	 * @return the organic mass of this producer
 	 */
 	public int getOrganicMass() {
-		return organicmass;
+		return organicMass;
 	}
 	public void setOrganicMass(int organicmass) {
-		this.organicmass=organicmass;
+		this.organicMass=organicmass;
 	}
 	
 	/**
@@ -51,53 +51,53 @@ public abstract class Producer implements Species{
 	 */
 	
 	public int getOrganicprocessingspeed() {
-		return organicprocessingspeed;
+		return organicProcessingSpeed;
 	}
 	public void setOrganicprocessingspeed(int organicprocessingspeed) {
-		this.organicprocessingspeed = organicprocessingspeed;
+		this.organicProcessingSpeed = organicprocessingspeed;
 	}
 	
 	/**
 	 * @return the rate mineral necessary per day or per shift for not to lose health points
 	 */
 	public int getRateMineral() {
-		return ratemineral;
+		return rateMineral;
 	}
 	
 	public void setRateMineral(int ratemineral) {
-		this.ratemineral=ratemineral;
+		this.rateMineral=ratemineral;
 	}
 	
 	public boolean getIsAlive() {
-		return isalive;
+		return isAlive;
 	}
 	
 	public void setIsAlive(boolean isalive) {
-		this.isalive = isalive;
+		this.isAlive = isalive;
 	}
 	
 	public int getPopulationDensity() {
-		return populationdensity;
+		return populationDensity;
 	}
 	
 	public void setPopulationDensity(int populationdensity) {
-		this.populationdensity = populationdensity;
+		this.populationDensity = populationdensity;
 	}
 	
 	public int getNumberBirths() {
-		return numberbirths;
+		return numberBirths;
 	}
 	
 	public void setNumberBirths(int numberbirths) {
-		this.numberbirths = numberbirths;
+		this.numberBirths = numberbirths;
 	}
 	
 	public int getTimeBreeding() {
-		return timebreeding;
+		return timeBreeding;
 	}
 	
 	public void setTimeBreeding(int timebreeding) {
-		this.timebreeding = timebreeding;
+		this.timeBreeding = timebreeding;
 	}
 	
 	/**

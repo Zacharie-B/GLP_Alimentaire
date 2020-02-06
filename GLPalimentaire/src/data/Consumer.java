@@ -10,6 +10,8 @@ public abstract class Consumer implements Species{
 	int populationDensity;
 	int numberBirths;
 	int timeBreeding;
+	int coucou;
+	
 	
 	
 }

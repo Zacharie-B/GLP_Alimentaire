@@ -3,9 +3,9 @@ package data;
 import java.util.ArrayList;
 
 public abstract class Decomposer implements Species{
-	ArrayList<String> diet;
-	int organicMass;
-	int populationDensity;
+	private ArrayList<String> diet;
+	private int organicMass;
+	private int populationDensity;
 	
 	public ArrayList<String> getDiet() {
 		return diet;

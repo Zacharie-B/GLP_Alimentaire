@@ -3,17 +3,17 @@ package data;
 import java.util.ArrayList;
 
 public abstract class Consumer implements Species{
-	int hp;
-	ArrayList<String> eatenBy;
-	ArrayList<String> diet;
-	int organicMass;
-	boolean isAlive;
-	int populationDensity;
-	int numberBirths;
-	int timeBreeding;
-	int calories;
-	int timeExcreta;
-	boolean sickness;
+	private int hp;
+	private ArrayList<String> eatenBy;
+	private ArrayList<String> diet;
+	private int organicMass;
+	private boolean isAlive;
+	private int populationDensity;
+	private int numberBirths;
+	private int timeBreeding;
+	private int calories;
+	private int timeExcreta;
+	private boolean sickness;
 	
 	public int getHp() {
 		return hp;

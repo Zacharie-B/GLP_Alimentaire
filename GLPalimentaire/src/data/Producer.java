@@ -3,15 +3,15 @@ package data;
 import java.util.ArrayList;
 
 public abstract class Producer implements Species{
-	int hp;
-	ArrayList<String> eatenBy;
-	int organicMass;
-	int organicProcessingSpeed;
-	int rateMineral;
-	boolean isAlive;
-	int populationDensity;
-	int numberBirths;
-	int timeBreeding;
+	private int hp;
+	private ArrayList<String> eatenBy;
+	private int organicMass;
+	private int organicProcessingSpeed;
+	private int rateMineral;
+	private boolean isAlive;
+	private int populationDensity;
+	private int numberBirths;
+	private int timeBreeding;
 	
 	/**
 	 * 

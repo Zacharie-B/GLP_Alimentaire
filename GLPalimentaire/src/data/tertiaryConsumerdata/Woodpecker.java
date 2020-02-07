@@ -11,10 +11,12 @@ import data.TertiaryConsumer;
  * @author yassin
  *
  */
-public class BlackCaiman extends TertiaryConsumer{
-	
-	
-	public BlackCaiman(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+public class Woodpecker extends TertiaryConsumer {
+
+	/**
+	 * 
+	 */
+	public Woodpecker(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
 		super();
 		setHp(hp);
 		setEatenBy(eatenBy);
@@ -40,6 +42,5 @@ public class BlackCaiman extends TertiaryConsumer{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
+
 }

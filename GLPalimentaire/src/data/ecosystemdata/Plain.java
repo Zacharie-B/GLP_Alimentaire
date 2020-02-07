@@ -15,4 +15,6 @@ public class Plain extends Ecosystem {
 		setSpeciesMaxDensity(speciesMaxDensity);
 	}
 
+	
+	//
 }

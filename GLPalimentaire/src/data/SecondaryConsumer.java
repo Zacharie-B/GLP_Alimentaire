@@ -1,5 +1,5 @@
-package data;
+package data.secondaryConsumerdata;
 
-public abstract class SecondaryConsumer {
+public abstract class SecondaryConsumer extends Consumer{
 
 }

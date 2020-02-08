@@ -12,4 +12,11 @@ public class Savanna extends Ecosystem{
 		setSpeciesMaxDensity(speciesMaxDensity);
 	}
 
+	@Override
+	public String toString() {
+		return "Savanna [getTemperature()=" + getTemperature() + ", getSizeX()=" + getSizeX() + ", getSizeY()="
+				+ getSizeY() + ", isCanBurn()=" + isCanBurn() + ", getSpeciesMaxDensity()=" + getSpeciesMaxDensity()
+				+ "]";
+	}
+
 }

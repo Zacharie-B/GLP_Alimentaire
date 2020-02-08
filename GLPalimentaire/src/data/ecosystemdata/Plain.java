@@ -3,9 +3,6 @@ package data.ecosystemdata;
 import data.Ecosystem;
 
 public class Plain extends Ecosystem {
-
-	private static final String POSITION = "Nort East";
-	
 	
 	public Plain(int temperature, float sizeX, float sizeY, boolean canBurn, int speciesMaxDensity) {
 		setTemperature(temperature);
@@ -13,6 +10,14 @@ public class Plain extends Ecosystem {
 		setSizeY(sizeY);
 		setCanBurn(canBurn);
 		setSpeciesMaxDensity(speciesMaxDensity);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Plain [getTemperature()=" + getTemperature() + ", getSizeX()=" + getSizeX() + ", getSizeY()="
+				+ getSizeY() + ", isCanBurn()=" + isCanBurn() + ", getSpeciesMaxDensity()=" + getSpeciesMaxDensity()
+				+ "]";
 	}
 
 	

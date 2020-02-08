@@ -12,4 +12,11 @@ public class Lake extends Ecosystem{
 		setSpeciesMaxDensity(speciesMaxDensity);
 	}
 
+	@Override
+	public String toString() {
+		return "Lake [getTemperature()=" + getTemperature() + ", getSizeX()=" + getSizeX() + ", getSizeY()="
+				+ getSizeY() + ", isCanBurn()=" + isCanBurn() + ", getSpeciesMaxDensity()=" + getSpeciesMaxDensity()
+				+ "]";
+	}
+	
 }

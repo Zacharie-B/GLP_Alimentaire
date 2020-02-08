@@ -3,6 +3,8 @@ package data.ecosystemdata;
 import data.Ecosystem;
 
 public class Desert extends Ecosystem{
+	
+	public static final String POSITION = "South West";
 
 	public Desert(int temperature, float sizeX, float sizeY, boolean canBurn, int speciesMaxDensity) {
 		setTemperature(temperature);

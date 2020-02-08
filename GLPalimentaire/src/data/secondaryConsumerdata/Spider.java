@@ -19,6 +19,8 @@ public class Spider extends SecondaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		initializeEatenBy();
+		initializeDiet();
 	}
 	
 	@Override

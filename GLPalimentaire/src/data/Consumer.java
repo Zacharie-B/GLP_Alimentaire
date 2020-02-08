@@ -83,6 +83,7 @@ public abstract class Consumer implements Species{
 	}
 	
 	public abstract void initializeEatenBy();
+	
 	public abstract void initializeDiet();
 	
 }

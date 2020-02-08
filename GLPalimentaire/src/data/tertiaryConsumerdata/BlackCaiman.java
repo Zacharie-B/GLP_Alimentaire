@@ -27,6 +27,8 @@ public class BlackCaiman extends TertiaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		initializeEatenBy();
+		initializeDiet();
 	}
 
 	@Override

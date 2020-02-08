@@ -16,5 +16,4 @@ public class Plain extends Ecosystem {
 	}
 
 	
-	//
 }

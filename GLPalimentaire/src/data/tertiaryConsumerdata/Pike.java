@@ -19,6 +19,8 @@ public class Pike extends TertiaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		initializeEatenBy();
+		initializeDiet();
 	}
 
 	@Override

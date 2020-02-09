@@ -8,9 +8,9 @@ public class Bacterium extends Decomposer{
 
 	public Bacterium(ArrayList<String> diet, int organicmass, int populationDensity) {
 		super();
-		setPopulationDensity(populationdensity);
 		setDiet(diet);
-		setOrganicMass(organicMass);
+		setOrganicMass(organicmass);
+		setPopulationDensity(populationdensity);
 		initializeDiet();
 	}
 	

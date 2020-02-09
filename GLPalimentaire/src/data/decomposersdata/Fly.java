@@ -8,9 +8,9 @@ public class Fly extends Decomposer{
 
 	public Fly(ArrayList<String> diet, int organicmass, int populationDensity) {
 		super();
-		setPopulationDensity(populationdensity);
 		setDiet(diet);
-		setOrganicMass(organicMass);
+		setOrganicMass(organicmass);
+		setPopulationDensity(populationdensity);
 		initializeDiet();
 	}
 	

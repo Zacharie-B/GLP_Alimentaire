@@ -4,6 +4,8 @@ import data.Ecosystem;
 
 public class Lake extends Ecosystem{
 
+	public static final String POSITION = "Middle";
+		
 	public Lake(int temperature, float sizeX, float sizeY, boolean canBurn, int speciesMaxDensity) {
 		setTemperature(temperature);
 		setSizeX(sizeX);

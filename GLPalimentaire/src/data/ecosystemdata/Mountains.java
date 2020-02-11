@@ -4,7 +4,7 @@ import data.Ecosystem;
 
 public class Mountains extends Ecosystem{
 	
-	public static final String POSITION = "South East"
+	public static final String POSITION = "South East";
 
 	@Override
 	public String toString() {

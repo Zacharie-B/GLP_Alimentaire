@@ -8,13 +8,6 @@ package data;
  *
  */
 public interface Species {
-
-	/**
-	 * @return if the individual is alive
-	 * Decomposers are all alive, but die after some time
-	 */
-	public abstract boolean getIsAlive();
-	public abstract void setIsAlive(boolean isalive);
 	
 	/**
 	 * 

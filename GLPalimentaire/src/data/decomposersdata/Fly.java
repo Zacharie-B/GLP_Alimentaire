@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import data.Decomposer;
 
+@SuppressWarnings("unused")
 public class Fly extends Decomposer{
 
-	public Fly(ArrayList<String> diet, int organicmass, int populationDensity) {
+	public Fly( int organicmass, int populationDensity) {
 		super();
-		setDiet(diet);
 		setOrganicMass(organicmass);
-		setPopulationDensity(populationdensity);
+		setPopulationDensity(populationDensity);
 		initializeDiet();
 	}
 	

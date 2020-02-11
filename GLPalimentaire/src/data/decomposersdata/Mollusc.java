@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import data.Decomposer;
 
+@SuppressWarnings("unused")
+
 public class Mollusc extends Decomposer{
 
-	public Mollusc(ArrayList<String> diet, int organicmass, int populationDensity) {
+	public Mollusc(int organicmass, int populationDensity) {
 		super();
-		setDiet(diet);
 		setOrganicMass(organicmass);
-		setPopulationDensity(populationdensity);
+		setPopulationDensity(populationDensity);
 		initializeDiet();
 	}
 	

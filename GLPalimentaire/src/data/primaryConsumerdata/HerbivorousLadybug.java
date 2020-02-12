@@ -22,16 +22,19 @@ public class HerbivorousLadybug extends PrimaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("TreeLeaves");
+		al.add("Ferns");
+		setDiet(al);
+	}
+	
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Spider");
+		setEatenBy(al);
 	}
 
 }

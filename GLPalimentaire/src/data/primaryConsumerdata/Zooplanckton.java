@@ -23,15 +23,15 @@ public class Zooplanckton extends PrimaryConsumer{
 		initializeDiet();
 	}
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Phytoplanckton");
+		setDiet(al);
 	}
 
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Zooplancton");
+		setEatenBy(al);
+	}
 }

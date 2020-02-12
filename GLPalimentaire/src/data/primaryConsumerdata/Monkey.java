@@ -23,15 +23,16 @@ public class Monkey extends PrimaryConsumer{
 		initializeDiet();
 	}
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("FruitTree");
+		setDiet(al);
 	}
 
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Chimpanzee");
+		al.add("Anaconda");
+		setEatenBy(al);
+	}
 }

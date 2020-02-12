@@ -14,11 +14,9 @@ import data.TertiaryConsumer;
 public class BlackCaiman extends TertiaryConsumer{
 	
 	
-	public BlackCaiman(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public BlackCaiman(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
 		super();
 		setHp(hp);
-		setEatenBy(eatenBy);
-		setDiet(diet);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
@@ -30,17 +28,13 @@ public class BlackCaiman extends TertiaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Anaconda");
+		al.add("Python");
+		setDiet(al);
 	}
 	
 	

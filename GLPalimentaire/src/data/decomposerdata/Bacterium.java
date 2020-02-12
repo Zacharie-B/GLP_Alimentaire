@@ -1,4 +1,4 @@
-package data.decomposersdata;
+package data.decomposerdata;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import data.Decomposer;
 
 public class Bacterium extends Decomposer{
 
-	public Bacterium(ArrayList<String> diet, int organicmass, int populationDensity) {
+	public Bacterium(ArrayList<String> diet, int organicmass, int populationdensity) {
 		super();
 		setDiet(diet);
 		setOrganicMass(organicmass);

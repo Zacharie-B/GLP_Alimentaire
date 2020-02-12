@@ -17,11 +17,4 @@ public class Ferns extends Producer{
 		setRateMineral(ratemineral);
 		initializeEatenBy();
 	}
-
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

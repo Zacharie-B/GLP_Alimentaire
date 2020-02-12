@@ -17,4 +17,13 @@ public class Acacia extends Producer{
 		setRateMineral(ratemineral);
 		initializeEatenBy();
 	}
+
+	@Override
+	public String toString() {
+		return "Acacia [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getOrganicprocessingspeed()=" + getOrganicprocessingspeed()
+				+ ", getRateMineral()=" + getRateMineral() + ", getIsAlive()=" + getIsAlive()
+				+ ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths()
+				+ ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	}
 }

@@ -19,11 +19,4 @@ public class TreeLeaves extends Producer{
 		setRateMineral(ratemineral);
 		initializeEatenBy();
 	}
-
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

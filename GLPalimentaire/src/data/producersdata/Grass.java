@@ -20,11 +20,4 @@ public class Grass extends Producer{
 		setRateMineral(ratemineral);
 		initializeEatenBy();
 	}
-
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

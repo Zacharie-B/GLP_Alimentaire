@@ -6,7 +6,7 @@ import data.Decomposer;
 
 public class Fly extends Decomposer{
 
-	public Fly(ArrayList<String> diet, int organicmass, int populationDensity) {
+	public Fly(ArrayList<String> diet, int organicmass, int populationdensity) {
 		super();
 		setDiet(diet);
 		setOrganicMass(organicmass);

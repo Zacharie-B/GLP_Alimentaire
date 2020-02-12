@@ -23,15 +23,16 @@ public class Zebra extends PrimaryConsumer{
 		initializeDiet();
 	}
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Bush");
+		al.add("Grass");
+		setDiet(al);
 	}
 
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Hyena");
+		setEatenBy(al);
+	}
 }

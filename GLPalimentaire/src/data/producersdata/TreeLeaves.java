@@ -11,7 +11,6 @@ public class TreeLeaves extends Producer{
 		super();
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
-		setEatenBy(eatenBy);
 		setNumberBirths(numberbirths);
 		setTimeBreeding(timebreeding);
 		setHP(hp);

@@ -104,6 +104,10 @@ public abstract class Producer implements Species{
 	 * these 2 abstract methods are used in inherited methods' constructors
 	 */
 	
-	public abstract void initializeEatenBy();
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Bacterium");
+		setEatenBy(al);
+	}
 	
 }

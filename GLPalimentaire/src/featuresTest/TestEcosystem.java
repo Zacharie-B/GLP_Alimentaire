@@ -1,4 +1,4 @@
-package ecosystemCharacteristics;
+package featuresTest;
 
 import data.ecosystemdata.Desert;
 import data.ecosystemdata.Lake;

@@ -23,15 +23,16 @@ public class Crustacean extends PrimaryConsumer{
 		initializeDiet();
 	}
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Phytoplanckton");
+		setDiet(al);
+	}
+	
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Ciprinid");
+		setEatenBy(al);
 	}
 
 }

@@ -6,25 +6,22 @@ import data.Producer;
 
 public class Phytoplanckton extends Producer{
 	
-	public Phytoplanckton(boolean isalive, int populationdensity, ArrayList<String> eatenBy, int numberbirths, int timebreeding,
+	public Phytoplanckton(boolean isalive, int populationdensity, int numberbirths, int timebreeding,
 			int hp, int organicmass, int organicprocessingspeed, int ratemineral) {
 		super();
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
-		setEatenBy(eatenBy);
 		setNumberBirths(numberbirths);
 		setTimeBreeding(timebreeding);
 		setHP(hp);
 		setOrganicMass(organicmass);
 		setOrganicprocessingspeed(organicprocessingspeed);
 		setRateMineral(ratemineral);
-		initializeEatenBy();
 	}
 
-	@Override
 	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Mollusc");
+		setEatenBy(al);
 	}
-
 }

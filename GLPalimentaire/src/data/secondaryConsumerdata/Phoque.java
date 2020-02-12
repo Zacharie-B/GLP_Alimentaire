@@ -25,13 +25,16 @@ public class Phoque extends SecondaryConsumer{
 	
 	@Override
 	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> eatenBy = new ArrayList <String> ();
+		eatenBy.add("Inuit");
+		eatenBy.add("PolarBear");
+		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> diet = new ArrayList <String> ();
+		diet.add("Clam");
+		setDiet(diet);
 	}
 }

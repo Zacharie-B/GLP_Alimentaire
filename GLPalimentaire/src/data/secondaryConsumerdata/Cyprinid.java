@@ -25,13 +25,17 @@ public class Cyprinid extends SecondaryConsumer{
 	
 	@Override
 	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> eatenBy = new ArrayList <String> ();
+		eatenBy.add("Pike");
+		eatenBy.add("Sheatfish");
+		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> diet = new ArrayList <String> ();
+		diet.add("Crustacean");
+		diet.add("Zooplanckton");
+		setDiet(diet);
 	}
 }

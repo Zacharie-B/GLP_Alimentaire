@@ -25,13 +25,15 @@ public class ArcticWolf extends SecondaryConsumer{
 	
 	@Override
 	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> eatenBy = new ArrayList <String> ();
+		eatenBy.add("Inuit");
+		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> diet = new ArrayList <String> ();
+		diet.add("MuskOx");
+		setDiet(diet);
 	}
 }

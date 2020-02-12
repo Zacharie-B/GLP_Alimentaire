@@ -33,7 +33,7 @@ public class Lion extends TertiaryConsumer{
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("CHeetah");
+		al.add("Cheetah");
 		al.add("Hyena");
 		al.add("Giraffe");
 		setDiet(al);

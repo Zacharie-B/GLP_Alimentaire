@@ -25,13 +25,16 @@ public class Cheetah extends SecondaryConsumer{
 	
 	@Override
 	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> eatenBy = new ArrayList <String> ();
+		eatenBy.add("Lion");
+		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> diet = new ArrayList <String> ();
+		diet.add("Gazelle");
+		diet.add("Warthog");
+		setDiet(diet);
 	}
 }

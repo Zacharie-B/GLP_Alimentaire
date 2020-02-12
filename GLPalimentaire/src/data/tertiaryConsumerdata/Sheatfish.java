@@ -6,11 +6,9 @@ import data.TertiaryConsumer;
 
 public class Sheatfish extends TertiaryConsumer{
 
-	public Sheatfish(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public Sheatfish(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
 		super();
 		setHp(hp);
-		setEatenBy(eatenBy);
-		setDiet(diet);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
@@ -24,14 +22,10 @@ public class Sheatfish extends TertiaryConsumer{
 	}
 
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Cyprinid");
+		setDiet(al);
 		
 	}
 

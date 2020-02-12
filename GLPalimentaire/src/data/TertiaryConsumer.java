@@ -1,4 +1,7 @@
 package data;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author Yassin
@@ -6,5 +9,10 @@ package data;
  */
 
 public abstract class TertiaryConsumer extends Consumer {
+	public void initializeEatenBy() {
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Bacterium");
+		setEatenBy(al);
+	}
 
 }

@@ -1,4 +1,4 @@
-package data.decomposersdata;
+package data.decomposerdata;
 
 import java.util.ArrayList;
 

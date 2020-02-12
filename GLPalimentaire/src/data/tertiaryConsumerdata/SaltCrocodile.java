@@ -6,11 +6,9 @@ import data.TertiaryConsumer;
 
 public class SaltCrocodile extends TertiaryConsumer{
 
-	public SaltCrocodile(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public SaltCrocodile(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
 		super();
 		setHp(hp);
-		setEatenBy(eatenBy);
-		setDiet(diet);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
@@ -24,15 +22,10 @@ public class SaltCrocodile extends TertiaryConsumer{
 	}
 
 	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("Python");
+		setDiet(al);
 	}
 
 }

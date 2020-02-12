@@ -6,11 +6,9 @@ import data.TertiaryConsumer;
 
 public class Lion extends TertiaryConsumer{
 
-	public Lion(int hp, ArrayList<String> eatenBy, ArrayList<String> diet, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public Lion(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
 		super();
 		setHp(hp);
-		setEatenBy(eatenBy);
-		setDiet(diet);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
@@ -22,17 +20,14 @@ public class Lion extends TertiaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-
-	@Override
-	public void initializeEatenBy() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("CHeetah");
+		al.add("Hyena");
+		al.add("Giraffe");
+		setDiet(al);
 	}
 
 }

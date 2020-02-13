@@ -26,9 +26,9 @@ public class AsianLadybug extends SecondaryConsumer{
 	
 	@Override
 	public String toString() {
-		return "AsianLadybug [cordinates=" + cordinates + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+		return "AsianLadybug [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";

@@ -26,7 +26,7 @@ public class ConsumerMovement  {
 			Iterator<String> iterator1 = aphidEatenBy.iterator();
 			while (iterator1.hasNext()) {
 				String aphidEatenBy = iterator1.next();
-				if(aphidEatenBy.equals("asianladybug")) {
+				if(aphidEatenBy.equals("asianladybug")&&aphid.getCordinates().equals(asianladybug.getCordinates())) {
 					aphid.setHp(0);
 					aphid.setIsAlive(false);
 					break;
@@ -35,7 +35,7 @@ public class ConsumerMovement  {
 			Iterator<String> iterator2 = asianLadybugEatenBy.iterator();
 			while (iterator2.hasNext()) {
 				String asianLadybugEatenBy = iterator2.next();
-				if(asianLadybugEatenBy.equals("woodpecker")) {
+				if(asianLadybugEatenBy.equals("woodpecker")&&asianladybug.getCordinates().equals(woodpecker.getCordinates())) {
 					asianladybug.setHp(0);
 					asianladybug.setIsAlive(false);
 					break;
@@ -44,9 +44,9 @@ public class ConsumerMovement  {
 		}
 		
 		public String toString() {
-			String result = "First species : (" + aphid.toString() + ") ";
-			result += "\nSecond species : (" + asianladybug.toString() + ")";
-			result += "\nThirsty species : ("+ woodpecker.toString() + ")";
+			String result = "First species : (" + aphid.toString() + ") \n";
+			result += "\nSecond species : (" + asianladybug.toString() + ")\n";
+			result += "\nThirsty species : ("+ woodpecker.toString() + ")\n";
 			return result;
 		}
 		

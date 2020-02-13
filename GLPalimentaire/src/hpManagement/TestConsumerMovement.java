@@ -7,7 +7,7 @@ public class TestConsumerMovement {
 		ConsumerMovement consumermv = new ConsumerMovement();
 		System.out.println(consumermv.toString());
 		
-		System.out.println("Affichage des caractéristiques de l'animal après s'être faite mangé");
+		System.out.println("\nDisplay of characteristics after being eaten");
 		consumermv.EatIfPossible();
 		System.out.println(consumermv.toString());
 		

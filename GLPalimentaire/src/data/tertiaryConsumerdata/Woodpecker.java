@@ -18,7 +18,7 @@ public class Woodpecker extends TertiaryConsumer {
 	 * 
 	 */
 	public Woodpecker(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point point) {
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -29,6 +29,7 @@ public class Woodpecker extends TertiaryConsumer {
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
 	}
@@ -37,7 +38,7 @@ public class Woodpecker extends TertiaryConsumer {
 	public String toString() {
 		return "Woodpecker [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";

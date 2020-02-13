@@ -11,9 +11,9 @@ public class Aphid extends PrimaryConsumer{
 
 	@Override
 	public String toString() {
-		return "Aphid [cordinates=" + cordinates + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+		return "Aphid [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";

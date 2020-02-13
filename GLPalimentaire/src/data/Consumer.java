@@ -2,8 +2,6 @@ package data;
 
 import java.util.ArrayList;
 
-import hpManagement.Point;
-
 public abstract class Consumer implements Species{
 
 	private int hp;

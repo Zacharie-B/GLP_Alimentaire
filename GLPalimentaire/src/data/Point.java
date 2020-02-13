@@ -1,4 +1,4 @@
-package hpManagement;
+package data;
 
 public class Point {
 	private int x;

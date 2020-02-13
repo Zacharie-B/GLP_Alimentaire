@@ -2,8 +2,8 @@ package data.primaryConsumerdata;
 
 import java.util.ArrayList;
 
+import data.Point;
 import data.PrimaryConsumer;
-import hpManagement.Point;
 
 public class Aphid extends PrimaryConsumer{
 
@@ -38,13 +38,13 @@ public class Aphid extends PrimaryConsumer{
 
 	public void initializeDiet() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("TreeLeaves");
+		al.add("treeleaves");
 		setDiet(al);
 	}
 	
 	public void initializeEatenBy() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("AsianLadybug");
+		al.add("asianladybug");
 		setEatenBy(al);
 	}
 

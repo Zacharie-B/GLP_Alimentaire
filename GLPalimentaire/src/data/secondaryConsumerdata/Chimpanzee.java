@@ -3,10 +3,11 @@ package data.secondaryConsumerdata;
 import java.util.ArrayList;
 
 import data.SecondaryConsumer;
+import data.Point;
 
 public class Chimpanzee extends SecondaryConsumer{
 
-	public Chimpanzee(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public Chimpanzee(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -17,6 +18,7 @@ public class Chimpanzee extends SecondaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
 	}

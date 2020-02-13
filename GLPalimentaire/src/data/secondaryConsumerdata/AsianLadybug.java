@@ -2,13 +2,13 @@ package data.secondaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
 import data.SecondaryConsumer;
+import data.Point;
 
 public class AsianLadybug extends SecondaryConsumer{
 
 	public AsianLadybug(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point point) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -25,27 +25,17 @@ public class AsianLadybug extends SecondaryConsumer{
 	}
 	
 	@Override
-	public String toString() {
-		return "AsianLadybug [cordinates=" + cordinates + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
-	}
-
-	@Override
 	public void initializeEatenBy() {
 		ArrayList <String> eatenBy = new ArrayList <String> ();
-		eatenBy.add("bramble");
-		eatenBy.add("woodpecker");
+		eatenBy.add("Bramble");
+		eatenBy.add("Woodpecker");
 		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> diet = new ArrayList <String> ();
-		diet.add("aphid");
+		diet.add("Aphid");
 		setDiet(diet);
 	}
 }

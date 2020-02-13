@@ -2,10 +2,14 @@ package data;
 
 import java.util.ArrayList;
 
+import hpManagement.Point;
+
 public abstract class Consumer implements Species{
+
 	private int hp;
 	private ArrayList<String> eatenBy;
 	private ArrayList<String> diet;
+	public Point cordinates;
 	private int organicMass;
 	private boolean isAlive;
 	private int populationDensity;
@@ -14,6 +18,8 @@ public abstract class Consumer implements Species{
 	private int calories;
 	private int timeExcreta;
 	private boolean sickness;
+	
+	
 	
 	public int getHp() {
 		return hp;
@@ -32,6 +38,12 @@ public abstract class Consumer implements Species{
 	}
 	public void setDiet(ArrayList<String> diet) {
 		this.diet = diet;
+	}
+	public Point getCordinates() {
+		return cordinates;
+	}
+	public void setCordinates(Point cordinate) {
+		this.cordinates = cordinate;
 	}
 	public int getOrganicMass() {
 		return organicMass;
@@ -85,6 +97,5 @@ public abstract class Consumer implements Species{
 	public abstract void initializeEatenBy();
 	
 	public abstract void initializeDiet();
-	
 }
 

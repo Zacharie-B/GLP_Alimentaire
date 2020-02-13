@@ -3,10 +3,12 @@ package data.secondaryConsumerdata;
 import java.util.ArrayList;
 
 import data.SecondaryConsumer;
+import hpManagement.Point;
 
 public class AsianLadybug extends SecondaryConsumer{
 
-	public AsianLadybug(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public AsianLadybug(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point point) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -17,6 +19,7 @@ public class AsianLadybug extends SecondaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
 	}

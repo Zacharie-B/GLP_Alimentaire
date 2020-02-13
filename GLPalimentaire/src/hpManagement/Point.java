@@ -16,20 +16,32 @@ public class Point {
 	public int getX() {
 		return x;
 	}
-
+	
 	public void setX(int x) {
-		this.x = x;
+		this.x=x;
 	}
 
 	public int getY() {
 		return y;
 	}
-
+	
 	public void setY(int y) {
-		this.y = y;
+		this.y=y;
 	}
-	public void move(int dx, int dy) {
-		x+=dx;
-		y+=dy;
+	
+	public void incrementX() {
+		x++;
+	}
+	
+	public void incrementY() {
+		y++;
+	}
+	
+	public void decrementX() {
+		x--;
+	}
+	
+	public void decrementY() {
+		y--;
 	}
 }

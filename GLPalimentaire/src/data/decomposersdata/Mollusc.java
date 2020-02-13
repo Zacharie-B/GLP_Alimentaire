@@ -1,10 +1,6 @@
 package data.decomposersdata;
 
-import java.util.ArrayList;
-
 import data.Decomposer;
-
-@SuppressWarnings("unused")
 
 public class Mollusc extends Decomposer{
 
@@ -12,12 +8,5 @@ public class Mollusc extends Decomposer{
 		super();
 		setOrganicMass(organicmass);
 		setPopulationDensity(populationDensity);
-		initializeDiet();
-	}
-	
-	@Override
-	public void initializeDiet() {
-		// TODO Auto-generated method stub
-		
 	}
 }

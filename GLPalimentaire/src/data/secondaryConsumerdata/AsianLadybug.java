@@ -18,6 +18,7 @@ public class AsianLadybug extends SecondaryConsumer{
 		setTimeBreeding(timeBreeding);
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
+		//test commit
 		setSickness(sickness);
 		setCordinates(cordinates);
 		initializeEatenBy();

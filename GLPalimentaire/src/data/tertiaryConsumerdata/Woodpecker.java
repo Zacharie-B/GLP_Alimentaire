@@ -9,7 +9,7 @@ import data.Point;
 import data.TertiaryConsumer;
 
 /**
- * @author yassin
+ * @author yassin 
  *
  */
 public class Woodpecker extends TertiaryConsumer {
@@ -47,7 +47,7 @@ public class Woodpecker extends TertiaryConsumer {
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("AsianLadyBug");
+		al.add("asianladyBug");
 		setDiet(al);
 		
 	}

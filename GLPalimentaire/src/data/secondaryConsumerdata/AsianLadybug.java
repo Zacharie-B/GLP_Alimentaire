@@ -2,8 +2,8 @@ package data.secondaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
 import data.SecondaryConsumer;
+import data.Point;
 
 public class AsianLadybug extends SecondaryConsumer{
 

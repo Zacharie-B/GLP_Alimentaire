@@ -9,12 +9,12 @@ import data.secondaryConsumerdata.AsianLadybug;
 import data.tertiaryConsumerdata.Woodpecker;
 
 public class ConsumerMovement  {
-		private Point point = new Point(10,10);
-		private Aphid aphid = new Aphid(3, 100, true, 10, 100, 10, 10, 3, false, point);
+		private Point position = new Point(10,10);
+		private Aphid aphid = new Aphid(3, 100, true, 10, 100, 10, 10, 3, false, position);
 		private ArrayList <String> aphidEatenBy = new ArrayList <String> ();
-		private AsianLadybug asianladybug = new AsianLadybug (4, 150, true, 5, 15, 4, 30, 6, false, point);
+		private AsianLadybug asianladybug = new AsianLadybug (4, 150, true, 5, 15, 4, 30, 6, false, position);
 		private ArrayList <String> asianLadybugEatenBy = new ArrayList <String> ();
-		private Woodpecker woodpecker = new Woodpecker (10, 1000, true, 1, 1, 50, 150, 6, false, point);
+		private Woodpecker woodpecker = new Woodpecker (10, 1000, true, 1, 1, 50, 150, 6, false, position);
 		
 		public ConsumerMovement() {
 		}
@@ -44,7 +44,7 @@ public class ConsumerMovement  {
 		}
 		
 		public String toString() {
-			String result = "First species : (" + aphid.toString() + ") \n";
+			String result = "First species : (" + aphid.toString() + ")\n";
 			result += "\nSecond species : (" + asianladybug.toString() + ")\n";
 			result += "\nThirsty species : ("+ woodpecker.toString() + ")\n";
 			return result;

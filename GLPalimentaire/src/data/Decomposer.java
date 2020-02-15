@@ -1,10 +1,17 @@
 package data;
 
 public abstract class Decomposer implements Species{
+	private String name;
 	private int organicMass;
 	private int populationDensity;
 	private Point cordinates;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public Point getCordinates() {
 		return cordinates;
 	}

@@ -7,9 +7,10 @@ import data.Producer;
 
 public class FruitTree extends Producer{
 	
-	public FruitTree(boolean isalive, int populationdensity, int numberbirths, int timebreeding,
+	public FruitTree(String name,boolean isalive, int populationdensity, int numberbirths, int timebreeding,
 			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Point cordinates) {
 		super();
+		setName(name);
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
 		setNumberBirths(numberbirths);
@@ -24,9 +25,9 @@ public class FruitTree extends Producer{
 
 	@Override
 	public String toString() {
-		return "FruitTree [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getCordinates()=" + getCordinates()
+		return "FruitTree [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
 				+ ", getOrganicMass()=" + getOrganicMass() + ", getOrganicprocessingspeed()="
-				+ getOrganicprocessingspeed() + ", getRateMineral()=" + getRateMineral() + ", getIsAlive()="
+				+ getOrganicprocessingspeed() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
 				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
 				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
 	}

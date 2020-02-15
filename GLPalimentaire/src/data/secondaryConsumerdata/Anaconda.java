@@ -7,9 +7,10 @@ import data.Point;
 
 public class Anaconda extends SecondaryConsumer{
 	
-	public Anaconda(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+	public Anaconda(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -23,14 +24,14 @@ public class Anaconda extends SecondaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	
 	@Override
 	public String toString() {
-		return "Anaconda [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
-				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
-				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
+		return "Anaconda [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
+				+ ", isSickness()=" + isSickness() + "]";
 	}
 	
 	@Override

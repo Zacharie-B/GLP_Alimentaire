@@ -7,9 +7,10 @@ import data.Producer;
 
 public class Grass extends Producer{
 	
-	public Grass(boolean isalive, int populationdensity, int numberbirths, int timebreeding,
+	public Grass(String name,boolean isalive, int populationdensity, int numberbirths, int timebreeding,
 			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Point cordinates) {
 		super();
+		setName(name);
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
 		setNumberBirths(numberbirths);
@@ -24,9 +25,9 @@ public class Grass extends Producer{
 
 	@Override
 	public String toString() {
-		return "Grass [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getCordinates()=" + getCordinates()
+		return "Grass [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
 				+ ", getOrganicMass()=" + getOrganicMass() + ", getOrganicprocessingspeed()="
-				+ getOrganicprocessingspeed() + ", getRateMineral()=" + getRateMineral() + ", getIsAlive()="
+				+ getOrganicprocessingspeed() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
 				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
 				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
 	}

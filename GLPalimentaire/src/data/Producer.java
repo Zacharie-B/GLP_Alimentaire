@@ -3,6 +3,7 @@ package data;
 import java.util.ArrayList;
 
 public abstract class Producer implements Species{
+	private String name;
 	private int hp;
 	private ArrayList<String> eatenBy;
 	private int organicMass;
@@ -14,6 +15,13 @@ public abstract class Producer implements Species{
 	private int timeBreeding;
 	private Point cordinates;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	/**
 	 * 
 	 * @return number of hit points
@@ -29,7 +37,7 @@ public abstract class Producer implements Species{
 	 * 
 	 * @return who can eat him
 	 */
-	public ArrayList <String> getEatenby(){
+	public ArrayList <String> getEatenBy(){
 		return eatenBy;
 	}
 	public void setEatenBy(ArrayList <String> eatenby) {
@@ -110,11 +118,5 @@ public abstract class Producer implements Species{
 	/**
 	 * these 2 abstract methods are used in inherited methods' constructors
 	 */
-	
-	public void initializeEatenBy() {
-		ArrayList <String> al = new ArrayList <String> ();
-		al.add("Bacterium");
-		setEatenBy(al);
-	}
-	
+	public abstract void initializeEatenBy();
 }

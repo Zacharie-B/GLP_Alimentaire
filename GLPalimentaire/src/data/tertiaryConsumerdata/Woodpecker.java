@@ -14,9 +14,10 @@ import data.TertiaryConsumer;
  */
 public class Woodpecker extends TertiaryConsumer {
 	
-	public Woodpecker(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
+	public Woodpecker(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
 			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -30,10 +31,10 @@ public class Woodpecker extends TertiaryConsumer {
 		initializeEatenBy();
 		initializeDiet();
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Woodpecker [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+		return "Woodpecker [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
 				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="

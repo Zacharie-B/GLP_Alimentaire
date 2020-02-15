@@ -7,17 +7,11 @@ import data.PrimaryConsumer;
 
 public class Zebra extends PrimaryConsumer{
 
-	@Override
-	public String toString() {
-		return "Zebra [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
-				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
-				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
-	}
-	public Zebra(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
+
+	public Zebra(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
 			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -30,6 +24,16 @@ public class Zebra extends PrimaryConsumer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
+	}
+	
+	@Override
+	public String toString() {
+		return "Zebra [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
+				+ ", isSickness()=" + isSickness() + "]";
 	}
 	@Override
 	public void initializeDiet() {

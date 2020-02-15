@@ -7,9 +7,10 @@ import data.Point;
 
 public class Hyena extends SecondaryConsumer{
 
-	public Hyena(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+	public Hyena(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -23,14 +24,14 @@ public class Hyena extends SecondaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	
 	@Override
 	public String toString() {
-		return "Hyena [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
-				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
-				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
+		return "Hyena [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
+				+ ", isSickness()=" + isSickness() + "]";
 	}
 	
 	@Override
@@ -47,6 +48,7 @@ public class Hyena extends SecondaryConsumer{
 		diet.add("warthog");
 		diet.add("buffalo");
 		diet.add("zebra");
+		diet.add("giraffe");
 		setDiet(diet);
 	}
 }

@@ -7,9 +7,10 @@ import data.Point;
 
 public class AsianLadybug extends SecondaryConsumer{
 
-	public AsianLadybug(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths,
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+	public AsianLadybug(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -23,10 +24,9 @@ public class AsianLadybug extends SecondaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	
 	@Override
 	public String toString() {
-		return "AsianLadybug [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+		return "AsianLaybug [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
 				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="

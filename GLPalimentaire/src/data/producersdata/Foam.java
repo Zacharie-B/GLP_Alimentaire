@@ -7,9 +7,10 @@ import data.Producer;
 
 public class Foam extends Producer{
 	
-	public Foam(boolean isalive, int populationdensity, int numberbirths, int timebreeding,
+	public Foam(String name,boolean isalive, int populationdensity, int numberbirths, int timebreeding,
 			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Point cordinates) {
 		super();
+		setName(name);
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
 		setNumberBirths(numberbirths);
@@ -24,9 +25,9 @@ public class Foam extends Producer{
 
 	@Override
 	public String toString() {
-		return "Foam [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getCordinates()=" + getCordinates()
+		return "Foam [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
 				+ ", getOrganicMass()=" + getOrganicMass() + ", getOrganicprocessingspeed()="
-				+ getOrganicprocessingspeed() + ", getRateMineral()=" + getRateMineral() + ", getIsAlive()="
+				+ getOrganicprocessingspeed() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
 				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
 				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
 	}

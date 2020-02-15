@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Consumer implements Species{
 
+	private String name;
 	private int hp;
 	private ArrayList<String> eatenBy;
 	private ArrayList<String> diet;
@@ -18,7 +19,12 @@ public abstract class Consumer implements Species{
 	private boolean sickness;
 	
 	
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getHp() {
 		return hp;
 	}

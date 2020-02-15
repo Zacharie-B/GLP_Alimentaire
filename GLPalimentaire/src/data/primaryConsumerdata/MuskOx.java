@@ -7,17 +7,10 @@ import data.PrimaryConsumer;
 
 public class MuskOx extends PrimaryConsumer{
 
-	@Override
-	public String toString() {
-		return "MuskOx [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
-				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
-				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
-	}
-	public MuskOx(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
+	public MuskOx(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
 			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -30,6 +23,16 @@ public class MuskOx extends PrimaryConsumer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
+	}
+	
+	@Override
+	public String toString() {
+		return "MuskOx [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
+				+ ", isSickness()=" + isSickness() + "]";
 	}
 	@Override
 	public void initializeDiet() {

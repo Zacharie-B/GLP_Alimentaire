@@ -15,7 +15,8 @@ public interface Species {
 	 */
 	
 	public abstract int getPopulationDensity();
-	public abstract void setPopulationDensity(int populationdensity);	
-	
+	public abstract void setPopulationDensity(int populationDensity);	
+	public abstract String getName();
+	public abstract void setName(String name);
 }	
 

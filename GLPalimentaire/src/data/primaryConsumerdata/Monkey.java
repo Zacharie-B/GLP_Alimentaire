@@ -7,17 +7,10 @@ import data.PrimaryConsumer;
 
 public class Monkey extends PrimaryConsumer{
 
-	@Override
-	public String toString() {
-		return "Monkey [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
-				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
-				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
-	}
-	public Monkey(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
+	public Monkey(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
 			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
+		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
@@ -30,6 +23,16 @@ public class Monkey extends PrimaryConsumer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
+	}
+	
+	@Override
+	public String toString() {
+		return "Monkey [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
+				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
+				+ ", isSickness()=" + isSickness() + "]";
 	}
 	@Override
 	public void initializeDiet() {

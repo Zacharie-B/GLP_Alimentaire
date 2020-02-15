@@ -1,6 +1,5 @@
 package data;
 
-import java.util.ArrayList;
 
 /**
  * 
@@ -9,10 +8,9 @@ import java.util.ArrayList;
  */
 
 public abstract class TertiaryConsumer extends Consumer {
+	@Override
 	public void initializeEatenBy() {
-		ArrayList <String> al = new ArrayList <String> ();
-		al.add("Bacterium");
-		setEatenBy(al);
+		// TODO Auto-generated method stub
+		
 	}
-
 }

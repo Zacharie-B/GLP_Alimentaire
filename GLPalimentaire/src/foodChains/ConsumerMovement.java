@@ -1,4 +1,4 @@
-package hpManagement;
+package foodChains;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,6 +17,7 @@ public class ConsumerMovement  {
 		private Woodpecker woodpecker = new Woodpecker (10, 1000, true, 1, 1, 50, 150, 6, false, position);
 		
 		public ConsumerMovement() {
+			
 		}
 		
 		public void EatIfPossible() {

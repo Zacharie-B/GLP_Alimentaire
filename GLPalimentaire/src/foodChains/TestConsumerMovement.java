@@ -1,4 +1,4 @@
-package hpManagement;
+package foodChains;
 
 public class TestConsumerMovement {
 

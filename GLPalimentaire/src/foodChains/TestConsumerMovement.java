@@ -9,6 +9,7 @@ public class TestConsumerMovement {
 		
 		System.out.println("\nDisplay of characteristics after being eaten");
 		consumermv.FirstChain();
+		consumermv.SecondChain();
 		System.out.println(consumermv.toString());
 		
 	}

@@ -2,11 +2,13 @@ package data.tertiaryConsumerdata;
 
 import java.util.ArrayList;
 
+import data.Point;
 import data.TertiaryConsumer;
 
 public class Pike extends TertiaryConsumer{
 
-	public Pike(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness) {
+	public Pike(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -17,14 +19,24 @@ public class Pike extends TertiaryConsumer{
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
 		setSickness(sickness);
+		setCordinates(cordinates);
 		initializeEatenBy();
 		initializeDiet();
+	}
+	
+	@Override
+	public String toString() {
+		return "Pike [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
+				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
+				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
+				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
+				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
 	}
 
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("Cyprinid");
+		al.add("cyprinid");
 		setDiet(al);
 	}
 

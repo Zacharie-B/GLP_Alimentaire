@@ -7,7 +7,8 @@ import data.Point;
 
 public class Cheetah extends SecondaryConsumer{
 
-	public Cheetah(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+	public Cheetah(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -24,17 +25,26 @@ public class Cheetah extends SecondaryConsumer{
 	}
 	
 	@Override
+	public String toString() {
+		return "Cheetah [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
+				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
+				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
+				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
+				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
+	}
+	
+	@Override
 	public void initializeEatenBy() {
 		ArrayList <String> eatenBy = new ArrayList <String> ();
-		eatenBy.add("Lion");
+		eatenBy.add("lion");
 		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> diet = new ArrayList <String> ();
-		diet.add("Gazelle");
-		diet.add("Warthog");
+		diet.add("gazelle");
+		diet.add("warthog");
 		setDiet(diet);
 	}
 }

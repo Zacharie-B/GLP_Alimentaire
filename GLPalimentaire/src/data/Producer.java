@@ -12,6 +12,7 @@ public abstract class Producer implements Species{
 	private int populationDensity;
 	private int numberBirths;
 	private int timeBreeding;
+	private Point cordinates;
 	
 	/**
 	 * 
@@ -35,6 +36,12 @@ public abstract class Producer implements Species{
 		this.eatenBy=eatenby;
 	}
 	
+	public Point getCordinates() {
+		return cordinates;
+	}
+	public void setCordinates(Point cordinates) {
+		this.cordinates=cordinates;
+	}
 	/**
 	 * 
 	 * @return the organic mass of this producer

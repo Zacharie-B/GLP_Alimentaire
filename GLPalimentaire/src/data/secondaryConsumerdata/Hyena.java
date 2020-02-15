@@ -7,7 +7,8 @@ import data.Point;
 
 public class Hyena extends SecondaryConsumer{
 
-	public Hyena(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+	public Hyena(int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
 		super();
 		setHp(hp);
 		setOrganicMass(organicMass);
@@ -24,19 +25,28 @@ public class Hyena extends SecondaryConsumer{
 	}
 	
 	@Override
+	public String toString() {
+		return "Hyena [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy() + ", getDiet()=" + getDiet()
+				+ ", getCordinates()=" + getCordinates() + ", getOrganicMass()=" + getOrganicMass() + ", getIsAlive()="
+				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
+				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + ", getCalories()=" + getCalories()
+				+ ", getTimeExcreta()=" + getTimeExcreta() + ", isSickness()=" + isSickness() + "]";
+	}
+	
+	@Override
 	public void initializeEatenBy() {
 		ArrayList <String> eatenBy = new ArrayList <String> ();
-		eatenBy.add("Lion");
+		eatenBy.add("lion");
 		setEatenBy(eatenBy);
 	}
 
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> diet = new ArrayList <String> ();
-		diet.add("Gazelle");
-		diet.add("Warthog");
-		diet.add("Buffalo");
-		diet.add("Zebra");
+		diet.add("gazelle");
+		diet.add("warthog");
+		diet.add("buffalo");
+		diet.add("zebra");
 		setDiet(diet);
 	}
 }

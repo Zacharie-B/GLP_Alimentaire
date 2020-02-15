@@ -1,11 +1,14 @@
 package data.producersdata;
 
+import java.util.ArrayList;
+
+import data.Point;
 import data.Producer;
 
 public class Acacia extends Producer{
 	
 	public Acacia(boolean isalive, int populationdensity, int numberbirths, int timebreeding,
-			int hp, int organicmass, int organicprocessingspeed, int ratemineral) {
+			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Point cordinates) {
 		super();
 		setIsAlive(isalive);
 		setPopulationDensity(populationdensity);
@@ -15,15 +18,22 @@ public class Acacia extends Producer{
 		setOrganicMass(organicmass);
 		setOrganicprocessingspeed(organicprocessingspeed);
 		setRateMineral(ratemineral);
+		setCordinates(cordinates);
 		initializeEatenBy();
 	}
 
 	@Override
 	public String toString() {
-		return "Acacia [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getOrganicprocessingspeed()=" + getOrganicprocessingspeed()
-				+ ", getRateMineral()=" + getRateMineral() + ", getIsAlive()=" + getIsAlive()
-				+ ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths()
-				+ ", getTimeBreeding()=" + getTimeBreeding() + "]";
+		return "Acacia [getHP()=" + getHP() + ", getEatenby()=" + getEatenby() + ", getCordinates()=" + getCordinates()
+				+ ", getOrganicMass()=" + getOrganicMass() + ", getOrganicprocessingspeed()="
+				+ getOrganicprocessingspeed() + ", getRateMineral()=" + getRateMineral() + ", getIsAlive()="
+				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
+				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	}
+	
+	public void initializeEatenBy(){
+		ArrayList <String> al = new ArrayList <String> ();
+		al.add("giraffe");
+		setEatenBy(al);
 	}
 }

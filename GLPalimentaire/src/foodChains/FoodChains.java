@@ -27,10 +27,10 @@ public class FoodChains {
 	
 	public void SecondTrophicLevel(PrimaryConsumer primaryConsumer, SecondaryConsumer secondaryConsumer, ArrayList<String> pceatenby) {
 		pceatenby= primaryConsumer.getEatenBy();
-		Iterator<String> iterator1 = pceatenby.iterator();
-		while (iterator1.hasNext()) {
-			String producerit = iterator1.next();
-			if(producerit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())) {
+		Iterator<String> iterator = pceatenby.iterator();
+		while (iterator.hasNext()) {
+			String pcit = iterator.next();
+			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())) {
 					primaryConsumer.setHp(0);
 					primaryConsumer.setIsAlive(false);
 					break;
@@ -40,10 +40,10 @@ public class FoodChains {
 	
 	public void ThirdTrophicLevel (SecondaryConsumer secondaryConsumer, TertiaryConsumer tertiaryConsumer, ArrayList<String> sceatenby) {
 		sceatenby= secondaryConsumer.getEatenBy();
-		Iterator<String> iterator1 = sceatenby.iterator();
-		while (iterator1.hasNext()) {
-			String producerit = iterator1.next();
-			if(producerit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())) {
+		Iterator<String> iterator = sceatenby.iterator();
+		while (iterator.hasNext()) {
+			String scit = iterator.next();
+			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())) {
 					secondaryConsumer.setHp(0);
 					secondaryConsumer.setIsAlive(false);
 					break;

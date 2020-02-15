@@ -2,13 +2,13 @@ package data.primaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.PrimaryConsumer;
 
 public class Aphid extends PrimaryConsumer{
 
 	public Aphid(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
-			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);

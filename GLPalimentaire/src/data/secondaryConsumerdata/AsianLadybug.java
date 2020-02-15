@@ -3,12 +3,12 @@ package data.secondaryConsumerdata;
 import java.util.ArrayList;
 
 import data.SecondaryConsumer;
-import data.Point;
+import data.Position;
 
 public class AsianLadybug extends SecondaryConsumer{
 
 	public AsianLadybug(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
-			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);

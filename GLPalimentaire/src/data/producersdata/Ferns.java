@@ -2,13 +2,13 @@ package data.producersdata;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.Producer;
 
 public class Ferns extends Producer{
 	
 	public Ferns(String name,boolean isalive, int populationdensity, int numberbirths, int timebreeding,
-			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Point cordinates) {
+			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Position cordinates) {
 		super();
 		setName(name);
 		setIsAlive(isalive);

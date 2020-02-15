@@ -2,7 +2,7 @@ package foodChains;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.primaryConsumerdata.Aphid;
 import data.primaryConsumerdata.HerbivorousLadybug;
 import data.producersdata.Ferns;
@@ -13,22 +13,23 @@ import data.tertiaryConsumerdata.Bramble;
 import data.tertiaryConsumerdata.Woodpecker;
 
 public class SavannaEcosystem extends FoodChains{
-		private Point position = new Point(10,10);
+		private Position position = new Position(10,10);
 		private TreeLeaves treeLeaves = new TreeLeaves("treeleaves",true,100,10,2,3,5,1,4,position);
-		private ArrayList <String> treeleavesEatenBy;
 		private Aphid aphid = new Aphid("aphid", 3, 100, true, 10, 100, 10, 10, 3, false, position);
-		private ArrayList <String> aphidEatenBy;
 		private AsianLadybug asianLadybug = new AsianLadybug ("asianladybug",4, 150, true, 5, 15, 4, 30, 6, false, position);
-		private ArrayList <String> asianLadybugEatenBy;
 		private Woodpecker woodpecker = new Woodpecker ("woodpecker",10, 1000, true, 1, 1, 50, 150, 6, false, position);
 		private Ferns ferns = new Ferns("ferns",true,100,10,2,3,5,1,4,position);
-		private ArrayList <String> fernsEatenBy;
 		private HerbivorousLadybug herbivorousLadybug = new HerbivorousLadybug("herbivorousLadybug", 3, 100, true, 10, 100, 10, 10, 3, false, position);
-		private ArrayList <String> herbivorousLadybugEatenBy;
 		private Spider spider = new Spider ("spider",4, 150, true, 5, 15, 4, 30, 6, false, position);
-		private ArrayList <String> spiderEatenBy;
 		private Bramble bramble = new Bramble ("blamble",10, 1000, true, 1, 1, 50, 150, 6, false, position);
-		
+		private ArrayList <String> treeleavesEatenBy;
+		private ArrayList <String> aphidEatenBy;
+		private ArrayList <String> asianLadybugEatenBy;
+		private ArrayList <String> fernsEatenBy;
+		private ArrayList <String> herbivorousLadybugEatenBy;
+		private ArrayList <String> spiderEatenBy;
+
+			
 		public SavannaEcosystem() {
 			treeleavesEatenBy = new ArrayList <String> ();
 			aphidEatenBy = new ArrayList <String> ();

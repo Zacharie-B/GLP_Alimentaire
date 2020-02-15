@@ -2,13 +2,13 @@ package data.tertiaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.TertiaryConsumer;
 
 public class Sheatfish extends TertiaryConsumer{
 
 	public Sheatfish(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);

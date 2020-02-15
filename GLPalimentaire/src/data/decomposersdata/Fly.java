@@ -1,12 +1,12 @@
 package data.decomposersdata;
 
 import data.Decomposer;
-import data.Point;
+import data.Position;
 
 
 public class Fly extends Decomposer{
 
-	public Fly(String name, int organicmass, int populationDensity, Point cordinates) {
+	public Fly(String name, int organicmass, int populationDensity, Position cordinates) {
 		super();
 		setName(name);
 		setOrganicMass(organicmass);

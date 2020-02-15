@@ -1,13 +1,13 @@
 package data.decomposersdata;
 
 import data.Decomposer;
-import data.Point;
+import data.Position;
 
 
 
 public class Bacterium extends Decomposer{
 
-	public Bacterium(String name, int organicmass, int populationDensity, Point cordinates) {
+	public Bacterium(String name, int organicmass, int populationDensity, Position cordinates) {
 		super();
 		setName(name);
 		setOrganicMass(organicmass);

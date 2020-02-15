@@ -1,11 +1,11 @@
 package data.decomposersdata;
 
 import data.Decomposer;
-import data.Point;
+import data.Position;
 
 public class Mollusc extends Decomposer{
 
-	public Mollusc(String name, int organicmass, int populationDensity, Point cordinates) {
+	public Mollusc(String name, int organicmass, int populationDensity, Position cordinates) {
 		super();
 		setName(name);
 		setOrganicMass(organicmass);

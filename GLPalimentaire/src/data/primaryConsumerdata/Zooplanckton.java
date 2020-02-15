@@ -2,13 +2,13 @@ package data.primaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.PrimaryConsumer;
 
 public class Zooplanckton extends PrimaryConsumer{
 
 	public Zooplanckton(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);
@@ -29,7 +29,7 @@ public class Zooplanckton extends PrimaryConsumer{
 	public String toString() {
 		return "Zooplanckton [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
+				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
 				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";
@@ -43,7 +43,7 @@ public class Zooplanckton extends PrimaryConsumer{
 
 	public void initializeEatenBy() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("zooplancton");
+		al.add("cyprinid");
 		setEatenBy(al);
 	}
 }

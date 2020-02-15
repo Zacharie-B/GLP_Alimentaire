@@ -8,7 +8,7 @@ public abstract class Consumer implements Species{
 	private int hp;
 	private ArrayList<String> eatenBy;
 	private ArrayList<String> diet;
-	public Point cordinates;
+	public Position cordinates;
 	private int organicMass;
 	private boolean isAlive;
 	private int populationDensity;
@@ -43,10 +43,10 @@ public abstract class Consumer implements Species{
 	public void setDiet(ArrayList<String> diet) {
 		this.diet = diet;
 	}
-	public Point getCordinates() {
+	public Position getCordinates() {
 		return cordinates;
 	}
-	public void setCordinates(Point cordinate) {
+	public void setCordinates(Position cordinate) {
 		this.cordinates = cordinate;
 	}
 	public int getOrganicMass() {

@@ -13,7 +13,7 @@ public abstract class Producer implements Species{
 	private int populationDensity;
 	private int numberBirths;
 	private int timeBreeding;
-	private Point cordinates;
+	private Position cordinates;
 	
 	
 	public String getName() {
@@ -44,10 +44,10 @@ public abstract class Producer implements Species{
 		this.eatenBy=eatenby;
 	}
 	
-	public Point getCordinates() {
+	public Position getCordinates() {
 		return cordinates;
 	}
-	public void setCordinates(Point cordinates) {
+	public void setCordinates(Position cordinates) {
 		this.cordinates=cordinates;
 	}
 	/**

@@ -4,7 +4,7 @@ public abstract class Decomposer implements Species{
 	private String name;
 	private int organicMass;
 	private int populationDensity;
-	private Point cordinates;
+	private Position cordinates;
 	
 	public String getName() {
 		return name;
@@ -12,10 +12,10 @@ public abstract class Decomposer implements Species{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Point getCordinates() {
+	public Position getCordinates() {
 		return cordinates;
 	}
-	public void setCordinates(Point cordinates) {
+	public void setCordinates(Position cordinates) {
 		this.cordinates = cordinates;
 	}
 	public int getOrganicMass() {

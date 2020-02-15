@@ -1,10 +1,10 @@
 package data;
 
-public class Point {
+public class Position {
 	private int x;
 	private int y;
 
-	public Point(int x, int y) {
+	public Position(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -27,21 +27,5 @@ public class Point {
 	
 	public void setY(int y) {
 		this.y=y;
-	}
-	
-	public void incrementX() {
-		x++;
-	}
-	
-	public void incrementY() {
-		y++;
-	}
-	
-	public void decrementX() {
-		x--;
-	}
-	
-	public void decrementY() {
-		y--;
 	}
 }

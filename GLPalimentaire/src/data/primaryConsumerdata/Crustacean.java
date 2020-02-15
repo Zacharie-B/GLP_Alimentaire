@@ -2,13 +2,13 @@ package data.primaryConsumerdata;
 
 import java.util.ArrayList;
 
-import data.Point;
+import data.Position;
 import data.PrimaryConsumer;
 
 public class Crustacean extends PrimaryConsumer{
 
 	public Crustacean(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
-			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Point cordinates) {
+			int numberBirths, int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);
@@ -42,7 +42,7 @@ public class Crustacean extends PrimaryConsumer{
 	
 	public void initializeEatenBy() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("ciprinid");
+		al.add("cyprinid");
 		setEatenBy(al);
 	}
 

@@ -12,7 +12,7 @@ import data.secondaryConsumerdata.Spider;
 import data.tertiaryConsumerdata.Bramble;
 import data.tertiaryConsumerdata.Woodpecker;
 
-public class SavannaEcosystem extends FoodChains{
+public class PlainEcosytem extends FoodChains{
 		private Position position = new Position(10,10);
 		private TreeLeaves treeLeaves = new TreeLeaves("treeleaves",true,100,10,2,3,5,1,4,position);
 		private Aphid aphid = new Aphid("aphid", 3, 100, true, 10, 100, 10, 10, 3, false, position);
@@ -30,7 +30,7 @@ public class SavannaEcosystem extends FoodChains{
 		private ArrayList <String> spiderEatenBy;
 
 			
-		public SavannaEcosystem() {
+		public PlainEcosytem() {
 			treeleavesEatenBy = new ArrayList <String> ();
 			aphidEatenBy = new ArrayList <String> ();
 			asianLadybugEatenBy = new ArrayList <String> ();

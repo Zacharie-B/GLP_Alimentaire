@@ -43,7 +43,7 @@ public class MuskOx extends PrimaryConsumer{
 
 	public void initializeEatenBy() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("articWolf");
+		al.add("arcticWolf");
 		setEatenBy(al);
 	}
 }

@@ -8,8 +8,7 @@ import data.Producer;
 import data.SecondaryConsumer;
 import data.TertiaryConsumer;
 
-public class FoodChains {
-	
+public class FoodChains extends IsDie{
 
 
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, ArrayList<String> proeatenby) {
@@ -19,7 +18,7 @@ public class FoodChains {
 			String producerit = iterator1.next();
 			if(producerit.equals(primaryConsumer.getName())&&producer.getCordinates().equals(primaryConsumer.getCordinates())) {
 					producer.setHP(0);
-					producer.setIsAlive(false);
+					ProducerDie(producer);
 					break;
 			}	
 		}
@@ -32,7 +31,7 @@ public class FoodChains {
 			String pcit = iterator.next();
 			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())) {
 					primaryConsumer.setHp(0);
-					primaryConsumer.setIsAlive(false);
+					ConsumerDie(primaryConsumer);
 					break;
 			}
 		}
@@ -45,7 +44,7 @@ public class FoodChains {
 			String scit = iterator.next();
 			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())) {
 					secondaryConsumer.setHp(0);
-					secondaryConsumer.setIsAlive(false);
+					ConsumerDie(secondaryConsumer);
 					break;
 			}
 		}

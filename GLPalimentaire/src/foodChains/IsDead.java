@@ -3,7 +3,7 @@ package foodChains;
 import data.Consumer;
 import data.Producer;
 
-public class IsDie {
+public class IsDead {
 	
 	public Producer ProducerDie(Producer producer) {
 		if(producer.getHP()==0) {

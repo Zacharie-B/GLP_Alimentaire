@@ -2,8 +2,8 @@ package foodChains;
 
 import java.util.ArrayList;
 
-import data.Position;
 import data.primaryConsumerdata.Giraffe;
+import data.Position;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
 import data.producersdata.Acacia;

@@ -15,6 +15,11 @@ import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
 
+/**
+ * 
+ * @author HP
+ * represents the different food chains in the SavannaEcosystem
+ */
 public class SavannaEcosystem extends FoodChains{
 	private Position position = new Position(8,8);
 	private Grass grass = new Grass("grass",true,100,10,2,3,5,1,4,position);

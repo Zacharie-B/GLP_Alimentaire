@@ -10,6 +10,11 @@ import data.secondaryConsumerdata.Cyprinid;
 import data.tertiaryConsumerdata.Pike;
 import data.tertiaryConsumerdata.Sheatfish;
 
+/**
+ * 
+ * @author HP
+ * represents the different food chains in the LakeEcosystem
+ */
 public class LakeEcosystem extends FoodChains{
 	private Position position = new Position(2,5);
 	private Phytoplanckton phytoplanckton = new Phytoplanckton("phytoplanckton",true,1000,100,1,3,2,1,1,position);

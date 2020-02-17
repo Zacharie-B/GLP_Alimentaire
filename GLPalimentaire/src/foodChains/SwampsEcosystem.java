@@ -16,6 +16,11 @@ import data.tertiaryConsumerdata.BlackCaiman;
 import data.tertiaryConsumerdata.Jaguar;
 import data.tertiaryConsumerdata.SaltCrocodile;
 
+/**
+ * 
+ * @author Zacharie
+ * represents the different food chains in the SwampsEcosystem
+ */
 public class SwampsEcosystem extends FoodChains{
 	private Position position = new Position(8,8);
 	private Reeds reeds = new Reeds("reeds",true,100,10,2,3,5,1,4,position);

@@ -12,6 +12,11 @@ import data.secondaryConsumerdata.Phoque;
 import data.tertiaryConsumerdata.Inuit;
 import data.tertiaryConsumerdata.PolarBear;
 
+/**
+ *
+ * @author HP
+ * represents the different food chains in the FrostyEcosystem
+ */
 public class FrostyEcosystem extends FoodChains{
 	private Position position = new Position(8,8);
 	private Grass grass = new Grass("grass",true,100,10,2,3,5,1,4,position);
@@ -45,6 +50,8 @@ public class FrostyEcosystem extends FoodChains{
 		ThirdTrophicLevel(phoque, polarBear, phoqueEatenBy);
 		return null;
 	}
+	
+	
 	@Override
 	public String toString() {
 		String result = "species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+")";

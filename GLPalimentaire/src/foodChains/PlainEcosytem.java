@@ -12,6 +12,11 @@ import data.secondaryConsumerdata.Spider;
 import data.tertiaryConsumerdata.Bramble;
 import data.tertiaryConsumerdata.Woodpecker;
 
+/**
+ * 
+ * @author HP
+ * represents the different food chains in the PlainEcosystem
+ */
 public class PlainEcosytem extends FoodChains{
 		private Position position = new Position(10,10);
 		private TreeLeaves treeLeaves = new TreeLeaves("treeleaves",true,100,10,2,3,5,1,4,position);

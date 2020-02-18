@@ -3,6 +3,8 @@ package foodChains;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import data.Mineral;
+import data.Position;
 import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
@@ -17,6 +19,9 @@ public class FoodChains extends IsDead{
 	 * @param proeatenby
 	 * treats the first trophic level of the food chain
 	 */
+	private Position position = new Position(8,8);
+	private Mineral mineral = new Mineral(0,position);
+	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, ArrayList<String> proeatenby) {
 		proeatenby= producer.getEatenBy();
 		Iterator<String> iterator1 = proeatenby.iterator();
@@ -25,10 +30,15 @@ public class FoodChains extends IsDead{
 			if(producerit.equals(primaryConsumer.getName())&&producer.getCordinates().equals(primaryConsumer.getCordinates())) {
 					producer.setHP(0);
 					ProducerDead(producer);
+						if (producer.getIsAlive()==false) {
+							int mineralM=IfSpeciesDead(producer.getOrganicMass());
+							mineral.setMineralMass(mineralM);
+						}
 					break;
 			}	
 		}
 	}
+	
 	/**
 	 * 
 	 * @param primaryConsumer
@@ -44,6 +54,10 @@ public class FoodChains extends IsDead{
 			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())) {
 					primaryConsumer.setHp(0);
 					ConsumerDead(primaryConsumer);
+					if (primaryConsumer.getIsAlive()==false) {
+						int mineralM=IfSpeciesDead(primaryConsumer.getOrganicMass());
+						mineral.setMineralMass(mineralM);
+					}
 					break;
 			}
 		}
@@ -64,6 +78,10 @@ public class FoodChains extends IsDead{
 			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())) {
 					secondaryConsumer.setHp(0);
 					ConsumerDead(secondaryConsumer);
+					if (secondaryConsumer.getIsAlive()==false) {
+						int mineralM=IfSpeciesDead(secondaryConsumer.getOrganicMass());
+						mineral.setMineralMass(mineralM);
+					}
 					break;
 			}
 		}

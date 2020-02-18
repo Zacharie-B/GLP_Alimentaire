@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import data.primaryConsumerdata.Giraffe;
 import data.Position;
+import data.decomposersdata.Bacterium;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
 import data.producersdata.Acacia;
@@ -23,7 +24,7 @@ import data.tertiaryConsumerdata.Lion;
 public class SavannaEcosystem extends FoodChains{
 	private Position position = new Position(8,8);
 	private Grass grass = new Grass("grass",true,100,10,2,3,5,1,4,position);
-	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 100, 10, 10, 3, false, position);
+	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
 	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private Cheetah cheetah = new Cheetah ("cheetah",10, 1000, true, 1, 1, 50, 150, 6, false, position);
 	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,position);
@@ -45,6 +46,8 @@ public class SavannaEcosystem extends FoodChains{
 	private ArrayList <String> giraffeEatenBy;
 	
 	
+	
+	
 	public FoodChains FirstChain() {
 		FirstTrophicLevel(grass, gazelle, grassEatenBy);
 		FirstTrophicLevel(grass, warthog, grassEatenBy);
@@ -53,7 +56,6 @@ public class SavannaEcosystem extends FoodChains{
 		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy);
 		SecondTrophicLevel(warthog, cheetah, warthogEatenBy);
 		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy);
-		
 		return null;	
 	}
 	
@@ -76,6 +78,7 @@ public class SavannaEcosystem extends FoodChains{
 		ThirdTrophicLevel(hyena,lion,hyenaEatenBy);
 		return null;
 	}
+	
 	
 	@Override
 	public String toString() {

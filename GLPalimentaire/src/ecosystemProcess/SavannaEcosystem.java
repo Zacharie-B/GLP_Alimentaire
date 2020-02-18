@@ -1,10 +1,9 @@
-package foodChains;
+package ecosystemProcess;
 
 import java.util.ArrayList;
 
 import data.primaryConsumerdata.Giraffe;
 import data.Position;
-import data.decomposersdata.Bacterium;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
 import data.producersdata.Acacia;
@@ -15,6 +14,7 @@ import data.primaryConsumerdata.Zebra;
 import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
+import foodChains.FoodChains;
 
 /**
  * 

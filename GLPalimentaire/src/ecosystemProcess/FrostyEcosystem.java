@@ -1,4 +1,4 @@
-package foodChains;
+package ecosystemProcess;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ import data.secondaryConsumerdata.ArcticWolf;
 import data.secondaryConsumerdata.Phoque;
 import data.tertiaryConsumerdata.Inuit;
 import data.tertiaryConsumerdata.PolarBear;
+import foodChains.FoodChains;
 
 /**
  *

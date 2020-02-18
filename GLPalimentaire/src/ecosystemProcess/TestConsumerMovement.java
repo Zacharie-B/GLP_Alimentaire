@@ -1,4 +1,4 @@
-package foodChains;
+package ecosystemProcess;
 
 public class TestConsumerMovement {
 

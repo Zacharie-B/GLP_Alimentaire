@@ -32,6 +32,7 @@ public class FoodChains extends IsDead{
 					ProducerDead(producer);
 						if (producer.getIsAlive()==false) {
 							int mineralM=IfSpeciesDead(producer.getOrganicMass());
+							mineral.setCordinates(producer.getCordinates());
 							mineral.setMineralMass(mineralM);
 						}
 					break;
@@ -56,6 +57,7 @@ public class FoodChains extends IsDead{
 					ConsumerDead(primaryConsumer);
 					if (primaryConsumer.getIsAlive()==false) {
 						int mineralM=IfSpeciesDead(primaryConsumer.getOrganicMass());
+						mineral.setCordinates(primaryConsumer.getCordinates());
 						mineral.setMineralMass(mineralM);
 					}
 					break;
@@ -80,11 +82,16 @@ public class FoodChains extends IsDead{
 					ConsumerDead(secondaryConsumer);
 					if (secondaryConsumer.getIsAlive()==false) {
 						int mineralM=IfSpeciesDead(secondaryConsumer.getOrganicMass());
+						mineral.setCordinates(secondaryConsumer.getCordinates());
 						mineral.setMineralMass(mineralM);
 					}
 					break;
 			}
 		}
+	}
+	
+	public Mineral GetMineral(Mineral mineral) {
+		return mineral;
 	}
 	
 	

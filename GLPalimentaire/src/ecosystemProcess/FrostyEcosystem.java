@@ -19,6 +19,10 @@ import foodChains.FoodChains;
  * represents the different food chains in the FrostyEcosystem
  */
 public class FrostyEcosystem extends FoodChains{
+	
+	/**
+	 * initialization of all species present in FrostyEcosystem
+	 */
 	private Position position = new Position(8,8);
 	private Grass grass = new Grass("grass",true,100,10,2,3,5,1,4,position);
 	private MuskOx muskOx = new MuskOx("muskOx", 3, 100, true, 10, 100, 10, 10, 3, false, position);
@@ -28,6 +32,10 @@ public class FrostyEcosystem extends FoodChains{
 	private Clam clam = new Clam("clam", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Phoque phoque = new Phoque("phoque",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private PolarBear polarBear = new PolarBear ("polarBear",10, 1000, true, 1, 1, 50, 150, 6, false, position);
+	
+	/**
+	 * Lists that allow us to know the predator of each species except the Third Consumer
+	 */
 	private ArrayList <String> grassEatenBy;
 	private ArrayList <String> muskOxEatenBy;
 	private ArrayList <String> arcticWolfEatenBy;
@@ -35,7 +43,21 @@ public class FrostyEcosystem extends FoodChains{
 	private ArrayList <String> clamEatenBy;
 	private ArrayList <String> phoqueEatenBy;
 	
+	/**
+	 * allows us to position the different species and minerals on the map
+	 */
+	@SuppressWarnings("unused")
+	private Position[] positionsSpecies;
+	@SuppressWarnings("unused")
+	private Position[] positionsMineral;
+	@SuppressWarnings("unused")
+	private Position[] positionsDecomposer;
+	@SuppressWarnings("unused")
+	private int nbMaxSpecies;
 	
+	public FrostyEcosystem(int nbMaxSpecies){
+		positionsSpecies = new Position[nbMaxSpecies];
+	}
 	
 	public FoodChains FirstChain() {
 		FirstTrophicLevel(grass, muskOx, grassEatenBy);

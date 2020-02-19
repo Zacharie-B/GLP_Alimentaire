@@ -10,6 +10,12 @@ public class Mineral {
 		setCordinates(cordinates);
 		setMineralMass(mineralMass);
 	}
+	public Mineral() {
+		
+		super();
+		
+		setMineralMass(mineralMass);
+	}
 
 	public int getMineralMass() {
 		return mineralMass;

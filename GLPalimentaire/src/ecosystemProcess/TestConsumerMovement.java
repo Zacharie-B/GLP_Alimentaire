@@ -12,10 +12,9 @@ public class TestConsumerMovement {
 		//consumermv.SecondChain();
 		//System.out.println(consumermv.toString());
 		
-		SwampsEcosystem lakechain= new SwampsEcosystem();
+		SavannaEcosystem lakechain= new SavannaEcosystem();
 		System.out.println(lakechain.toString());
-		lakechain.FirstChain();
-		lakechain.SecondChain();
+		lakechain.HungryConsumer();
 		System.out.println("\nDisplay of characteristics after being eaten");
 		System.out.println(lakechain.toString());
 	}

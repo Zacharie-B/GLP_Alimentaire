@@ -3,6 +3,7 @@ package ecosystemProcess;
 import java.util.ArrayList;
 
 import data.primaryConsumerdata.Giraffe;
+import data.Mineral;
 import data.Position;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
@@ -22,6 +23,10 @@ import foodChains.FoodChains;
  * represents the different food chains in the SavannaEcosystem
  */
 public class SavannaEcosystem extends FoodChains{
+	
+	/**
+	 * initialization of all species present in FrostyEcosystem
+	 */
 	private Position position = new Position(8,8);
 	private Grass grass = new Grass("grass",true,100,10,2,3,5,1,4,position);
 	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
@@ -31,9 +36,13 @@ public class SavannaEcosystem extends FoodChains{
 	private Buffalo buffalo = new Buffalo("buffalo", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private Hyena hyena = new Hyena ("hyena",10, 1000, true, 1, 1, 50, 150, 6, false, position);
-	private Acacia acacia = new Acacia("grass",true,100,10,2,3,5,1,4,position);
+	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,position);
 	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Lion lion = new Lion ("lion",10, 1000, true, 1, 1, 50, 150, 6, false, position);
+	
+	/**
+	 * Lists that allow us to know the predator of each species except the Third Consumer
+	 */
 	private ArrayList <String> grassEatenBy;
 	private ArrayList <String> gazelleEatenBy;
 	private ArrayList <String> warthogEatenBy;
@@ -45,8 +54,28 @@ public class SavannaEcosystem extends FoodChains{
 	private ArrayList <String> acaciaEatenBy;
 	private ArrayList <String> giraffeEatenBy;
 	
+	/**
+	 * allows us to position the different species and minerals on the map
+	 */
+	@SuppressWarnings("unused")
+	private Position[] positionsSpecies;
+	@SuppressWarnings("unused")
+	private Position[] positionsMineral;
+	@SuppressWarnings("unused")
+	private Position[] positionsDecomposer;
+	@SuppressWarnings("unused")
+	private int nbMaxSpecies;
 	
+	private Mineral mineral = new Mineral(0,position);
 	
+	public SavannaEcosystem(int nbMaxSpecies) {
+		positionsSpecies = new Position[nbMaxSpecies];
+	}
+	public SavannaEcosystem() {
+		FirstChain();
+		SecondChain();
+		ThirdChain();
+	}
 	
 	public FoodChains FirstChain() {
 		FirstTrophicLevel(grass, gazelle, grassEatenBy);
@@ -79,6 +108,11 @@ public class SavannaEcosystem extends FoodChains{
 		return null;
 	}
 	
+	public void HungryConsumer() {
+		
+	}
+	
+	
 	
 	@Override
 	public String toString() {
@@ -90,10 +124,10 @@ public class SavannaEcosystem extends FoodChains{
 		result += "\nspecies : (" +buffalo.getName()+", "+ buffalo.getHp() + "," +buffalo.getIsAlive()+")";
 		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+")";
 		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+")";
-		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+")";
-		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+")";
-		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+")";
 		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+")";
+		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+")";
+		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+")";
+		result += "\nmineralrate : ("+mineral.getMineralMass()+")";
 		return result;
 	}
 

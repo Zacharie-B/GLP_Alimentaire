@@ -1,5 +1,6 @@
 package ecosystemProcess;
 
+
 public class TestConsumerMovement {
 
 	public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class TestConsumerMovement {
 		//System.out.println(consumermv.toString());
 		
 		SavannaEcosystem lakechain= new SavannaEcosystem();
+		System.out.println("\nDisplay of characteristics after being eaten");
 		System.out.println(lakechain.toString());
-		lakechain.HungryConsumer();
 		System.out.println("\nDisplay of characteristics after being eaten");
 		System.out.println(lakechain.toString());
 	}

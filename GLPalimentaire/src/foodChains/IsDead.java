@@ -3,7 +3,11 @@ package foodChains;
 import data.Consumer;
 import data.Producer;
 
-public class IsDead extends BacteriumAction{
+public class IsDead{
+	
+	public IsDead () {
+	}
+	
 	/**
 	 * 
 	 * @param producer

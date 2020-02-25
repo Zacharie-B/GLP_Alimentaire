@@ -1,6 +1,10 @@
 package ecosystemProcess;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import data.Position;
 import data.primaryConsumerdata.Hippopotamus;
@@ -46,29 +50,61 @@ public class SwampsEcosystem extends FoodChainsProcess{
 	private ArrayList <String> hippopotamusEatenBy;
 	private ArrayList <String> pythonEatenBy;
 	
+	@SuppressWarnings("unused")
+	private Position[] positionsSpecies;
+	private Position[] positionsMineral;
+	@SuppressWarnings("unused")
+	private Position[] positionsDecomposer;	
+	private HashMap <Position,Integer> rateMineralPerCase;
+	
+	private static final int allPoints= 200;
+	private static final int nbMaxSpecies=500;
+	
 	
 	public FoodChainsProcess FirstChain() {
-		FirstTrophicLevel(reeds, turtle, reedsEatenBy);
-		SecondTrophicLevel(turtle, anaconda, turtleEatenBy);
-		ThirdTrophicLevel(anaconda, blackCaiman, anacondaEatenBy);
+		FirstTrophicLevel(reeds, turtle, reedsEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(turtle, anaconda, turtleEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(anaconda, blackCaiman, anacondaEatenBy,rateMineralPerCase);
 		return null;	
 	}
 	
 	public FoodChainsProcess SecondChain() {
-		FirstTrophicLevel(fruitTree, monkey, fruitTreeEatenBy);
-		SecondTrophicLevel(monkey, chimpanzee, monkeyEatenBy);
-		SecondTrophicLevel(monkey, anaconda, monkeyEatenBy);
-		ThirdTrophicLevel(chimpanzee, jaguar, chimpanzeeEatenBy);
+		FirstTrophicLevel(fruitTree, monkey, fruitTreeEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(monkey, chimpanzee, monkeyEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(monkey, anaconda, monkeyEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(chimpanzee, jaguar, chimpanzeeEatenBy,rateMineralPerCase);
 		return null;
 	}
 	
 	public FoodChainsProcess ThirdChain() {
-		FirstTrophicLevel(bush, hippopotamus, bushEatenBy);
-		FirstTrophicLevel(bush, turtle, bushEatenBy);
-		SecondTrophicLevel(hippopotamus, python, hippopotamusEatenBy);
-		ThirdTrophicLevel(python,saltCrocodile,pythonEatenBy);
-		ThirdTrophicLevel(python, blackCaiman, pythonEatenBy);
+		FirstTrophicLevel(bush, hippopotamus, bushEatenBy,rateMineralPerCase);
+		FirstTrophicLevel(bush, turtle, bushEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(hippopotamus, python, hippopotamusEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(python,saltCrocodile,pythonEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(python, blackCaiman, pythonEatenBy,rateMineralPerCase);
 		return null;
+	}
+	
+	public void AllPointsMap() {
+		for(int i=0; i<20;i++) {
+			for(int j=0; j<10;j++) {
+				int x=0;
+				positionsMineral = new Position[allPoints];
+				Position cordinates = new Position(i,j);
+				positionsMineral[x]=cordinates;
+				rateMineralPerCase.put(positionsMineral[x],100);
+				x++;
+			}
+		}
+	}
+	
+	public void DisplayAndScrollHashMap() {
+		  Set<Entry<Position, Integer>> setHm = rateMineralPerCase.entrySet();
+	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
+	      while(it.hasNext()){
+	         Entry<Position, Integer> e = it.next();
+	         System.out.println(e.getKey() + " : " + e.getValue());
+	      }
 	}
 	
 	

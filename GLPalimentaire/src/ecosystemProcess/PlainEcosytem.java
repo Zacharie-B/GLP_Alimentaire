@@ -1,6 +1,10 @@
 package ecosystemProcess;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import data.Position;
 import data.primaryConsumerdata.Aphid;
@@ -34,6 +38,16 @@ public class PlainEcosytem extends FoodChainsProcess{
 		private ArrayList <String> fernsEatenBy;
 		private ArrayList <String> herbivorousLadybugEatenBy;
 		private ArrayList <String> spiderEatenBy;
+		
+		@SuppressWarnings("unused")
+		private Position[] positionsSpecies;
+		private Position[] positionsMineral;
+		@SuppressWarnings("unused")
+		private Position[] positionsDecomposer;	
+		private HashMap <Position,Integer> rateMineralPerCase;
+		
+		private static final int allPoints= 200;
+		private static final int nbMaxSpecies=500;
 
 			
 		public PlainEcosytem() {
@@ -46,19 +60,41 @@ public class PlainEcosytem extends FoodChainsProcess{
 		}
 		
 		public FoodChainsProcess FirstChain() {
-			FirstTrophicLevel(treeLeaves, aphid, treeleavesEatenBy);
-			FirstTrophicLevel(treeLeaves, herbivorousLadybug, treeleavesEatenBy);
-			SecondTrophicLevel(aphid, asianLadybug, aphidEatenBy);
-			ThirdTrophicLevel(asianLadybug, woodpecker, asianLadybugEatenBy);
+			FirstTrophicLevel(treeLeaves, aphid, treeleavesEatenBy,rateMineralPerCase);
+			FirstTrophicLevel(treeLeaves, herbivorousLadybug, treeleavesEatenBy,rateMineralPerCase);
+			SecondTrophicLevel(aphid, asianLadybug, aphidEatenBy,rateMineralPerCase);
+			ThirdTrophicLevel(asianLadybug, woodpecker, asianLadybugEatenBy,rateMineralPerCase);
 			return null;	
 		}
 		
 		public FoodChainsProcess SecondChain() {
-			FirstTrophicLevel(ferns, herbivorousLadybug, fernsEatenBy);
-			SecondTrophicLevel(herbivorousLadybug, spider, herbivorousLadybugEatenBy);
-			ThirdTrophicLevel(asianLadybug,bramble,asianLadybugEatenBy);
-			ThirdTrophicLevel(spider, bramble, spiderEatenBy);
+			FirstTrophicLevel(ferns, herbivorousLadybug, fernsEatenBy,rateMineralPerCase);
+			SecondTrophicLevel(herbivorousLadybug, spider, herbivorousLadybugEatenBy,rateMineralPerCase);
+			ThirdTrophicLevel(asianLadybug,bramble,asianLadybugEatenBy,rateMineralPerCase);
+			ThirdTrophicLevel(spider, bramble, spiderEatenBy,rateMineralPerCase);
 			return null;
+		}
+		
+		public void AllPointsMap() {
+			for(int i=0; i<20;i++) {
+				for(int j=0; j<10;j++) {
+					int x=0;
+					positionsMineral = new Position[allPoints];
+					Position cordinates = new Position(i,j);
+					positionsMineral[x]=cordinates;
+					rateMineralPerCase.put(positionsMineral[x],100);
+					x++;
+				}
+			}
+		}
+		
+		public void DisplayAndScrollHashMap() {
+			  Set<Entry<Position, Integer>> setHm = rateMineralPerCase.entrySet();
+		      Iterator<Entry<Position, Integer>> it = setHm.iterator();
+		      while(it.hasNext()){
+		         Entry<Position, Integer> e = it.next();
+		         System.out.println(e.getKey() + " : " + e.getValue());
+		      }
 		}
 		
 		

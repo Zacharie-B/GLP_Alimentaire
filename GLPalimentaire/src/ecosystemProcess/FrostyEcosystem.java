@@ -1,6 +1,10 @@
 package ecosystemProcess;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import data.Position;
 import data.primaryConsumerdata.Clam;
@@ -48,32 +52,63 @@ public class FrostyEcosystem extends FoodChainsProcess{
 	 */
 	@SuppressWarnings("unused")
 	private Position[] positionsSpecies;
-	@SuppressWarnings("unused")
 	private Position[] positionsMineral;
 	@SuppressWarnings("unused")
-	private Position[] positionsDecomposer;
-	@SuppressWarnings("unused")
-	private int nbMaxSpecies;
+	private Position[] positionsDecomposer;	
+	private HashMap <Position,Integer> rateMineralPerCase;
 	
-	public FrostyEcosystem(int nbMaxSpecies){
+	private static final int allPoints= 200;
+	private static final int nbMaxSpecies=500;
+	
+	public FrostyEcosystem() {
 		positionsSpecies = new Position[nbMaxSpecies];
+		rateMineralPerCase = new HashMap <Position,Integer>(200);
+		AllPointsMap();
+		FirstChain();
+		SecondChain();
+		DisplayAndScrollHashMap();
 	}
 	
 	public FoodChainsProcess FirstChain() {
-		FirstTrophicLevel(grass, muskOx, grassEatenBy);
-		SecondTrophicLevel(muskOx, arcticWolf, muskOxEatenBy);
-		ThirdTrophicLevel(arcticWolf, inuit, arcticWolfEatenBy);
-		return null;	
-	}
-	
-	public FoodChainsProcess SecondChain() {
-		FirstTrophicLevel(foam, clam, foamEatenBy);
-		SecondTrophicLevel(clam, phoque, clamEatenBy);
-		ThirdTrophicLevel(arcticWolf,inuit,arcticWolfEatenBy);
-		ThirdTrophicLevel(phoque, polarBear, phoqueEatenBy);
+		FirstTrophicLevel(grass, muskOx, grassEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(muskOx, arcticWolf, muskOxEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(arcticWolf, inuit, arcticWolfEatenBy,rateMineralPerCase);
 		return null;
 	}
 	
+	public FoodChainsProcess SecondChain() {
+		FirstTrophicLevel(foam, clam, foamEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(clam, phoque, clamEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(arcticWolf,inuit,arcticWolfEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(phoque, polarBear, phoqueEatenBy,rateMineralPerCase);
+		return null;
+	}
+
+	public void HungryConsumer() {
+		//for(int time;)
+	}
+
+	public void AllPointsMap() {
+		for(int i=0; i<20;i++) {
+			for(int j=0; j<10;j++) {
+				int x=0;
+				positionsMineral = new Position[allPoints];
+				Position cordinates = new Position(i,j);
+				positionsMineral[x]=cordinates;
+				rateMineralPerCase.put(positionsMineral[x],100);
+				x++;
+			}
+		}
+	}
+
+	public void DisplayAndScrollHashMap() {
+		  Set<Entry<Position, Integer>> setHm = rateMineralPerCase.entrySet();
+	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
+	      while(it.hasNext()){
+	         Entry<Position, Integer> e = it.next();
+	         System.out.println(e.getKey() + " : " + e.getValue());
+	      }
+	}
 	
 	@Override
 	public String toString() {

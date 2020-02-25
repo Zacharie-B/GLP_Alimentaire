@@ -1,6 +1,10 @@
 package ecosystemProcess;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import data.producersdata.Phytoplanckton;
 import data.primaryConsumerdata.Zooplanckton;
@@ -37,13 +41,39 @@ public class LakeEcosystem extends FoodChainsProcess{
 	}
 	
 	public FoodChainsProcess FirstChain() {
-		FirstTrophicLevel(phytoplanckton, zooplanckton, phytoplancktonEatenBy);
-		FirstTrophicLevel(phytoplanckton, crustacean, phytoplancktonEatenBy);
-		SecondTrophicLevel(zooplanckton, cyprinid, zooplancktonEatenBy);
-		SecondTrophicLevel(crustacean, cyprinid, crustaceanEatenBy);
-		ThirdTrophicLevel(cyprinid, pike, cyprinidEatenBy);
-		ThirdTrophicLevel(cyprinid, sheatfish, cyprinidEatenBy);
+		FirstTrophicLevel(phytoplanckton, zooplanckton, phytoplancktonEatenBy,rateMineralPerCase);
+		FirstTrophicLevel(phytoplanckton, crustacean, phytoplancktonEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(zooplanckton, cyprinid, zooplancktonEatenBy,rateMineralPerCase);
+		SecondTrophicLevel(crustacean, cyprinid, crustaceanEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(cyprinid, pike, cyprinidEatenBy,rateMineralPerCase);
+		ThirdTrophicLevel(cyprinid, sheatfish, cyprinidEatenBy,rateMineralPerCase);
 		return null;	
+	}
+
+	public void HungryConsumer() {
+		//for(int time;)
+	}
+
+	public void AllPointsMap() {
+		for(int i=0; i<20;i++) {
+			for(int j=0; j<10;j++) {
+				int x=0;
+				positionsMineral = new Position[allPoints];
+				Position cordinates = new Position(i,j);
+				positionsMineral[x]=cordinates;
+				rateMineralPerCase.put(positionsMineral[x],100);
+				x++;
+			}
+		}
+	}
+
+	public void DisplayAndScrollHashMap() {
+		  Set<Entry<Position, Integer>> setHm = rateMineralPerCase.entrySet();
+	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
+	      while(it.hasNext()){
+	         Entry<Position, Integer> e = it.next();
+	         System.out.println(e.getKey() + " : " + e.getValue());
+	      }
 	}
 
 	@Override

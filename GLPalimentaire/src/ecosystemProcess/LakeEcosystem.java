@@ -9,14 +9,14 @@ import data.primaryConsumerdata.Crustacean;
 import data.secondaryConsumerdata.Cyprinid;
 import data.tertiaryConsumerdata.Pike;
 import data.tertiaryConsumerdata.Sheatfish;
-import foodChains.FoodChains;
+import foodChains.FoodChainsProcess;
 
 /**
  * 
  * @author HP
  * represents the different food chains in the LakeEcosystem
  */
-public class LakeEcosystem extends FoodChains{
+public class LakeEcosystem extends FoodChainsProcess{
 	private Position position = new Position(2,5);
 	private Phytoplanckton phytoplanckton = new Phytoplanckton("phytoplanckton",true,1000,100,1,3,2,1,1,position);
 	private Zooplanckton zooplanckton = new Zooplanckton("zooplanckton",4,5,true,500,100,1,5,1,false,position); 
@@ -36,7 +36,7 @@ public class LakeEcosystem extends FoodChains{
 		cyprinidEatenBy= new ArrayList <String> ();
 	}
 	
-	public FoodChains FirstChain() {
+	public FoodChainsProcess FirstChain() {
 		FirstTrophicLevel(phytoplanckton, zooplanckton, phytoplancktonEatenBy);
 		FirstTrophicLevel(phytoplanckton, crustacean, phytoplancktonEatenBy);
 		SecondTrophicLevel(zooplanckton, cyprinid, zooplancktonEatenBy);

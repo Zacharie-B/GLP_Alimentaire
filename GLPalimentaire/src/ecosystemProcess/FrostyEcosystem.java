@@ -11,14 +11,14 @@ import data.secondaryConsumerdata.ArcticWolf;
 import data.secondaryConsumerdata.Phoque;
 import data.tertiaryConsumerdata.Inuit;
 import data.tertiaryConsumerdata.PolarBear;
-import foodChains.FoodChains;
+import foodChains.FoodChainsProcess;
 
 /**
  *
  * @author HP
  * represents the different food chains in the FrostyEcosystem
  */
-public class FrostyEcosystem extends FoodChains{
+public class FrostyEcosystem extends FoodChainsProcess{
 	
 	/**
 	 * initialization of all species present in FrostyEcosystem
@@ -59,14 +59,14 @@ public class FrostyEcosystem extends FoodChains{
 		positionsSpecies = new Position[nbMaxSpecies];
 	}
 	
-	public FoodChains FirstChain() {
+	public FoodChainsProcess FirstChain() {
 		FirstTrophicLevel(grass, muskOx, grassEatenBy);
 		SecondTrophicLevel(muskOx, arcticWolf, muskOxEatenBy);
 		ThirdTrophicLevel(arcticWolf, inuit, arcticWolfEatenBy);
 		return null;	
 	}
 	
-	public FoodChains SecondChain() {
+	public FoodChainsProcess SecondChain() {
 		FirstTrophicLevel(foam, clam, foamEatenBy);
 		SecondTrophicLevel(clam, phoque, clamEatenBy);
 		ThirdTrophicLevel(arcticWolf,inuit,arcticWolfEatenBy);

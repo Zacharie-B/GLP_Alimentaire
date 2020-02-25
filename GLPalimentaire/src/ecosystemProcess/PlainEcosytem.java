@@ -11,14 +11,14 @@ import data.secondaryConsumerdata.AsianLadybug;
 import data.secondaryConsumerdata.Spider;
 import data.tertiaryConsumerdata.Bramble;
 import data.tertiaryConsumerdata.Woodpecker;
-import foodChains.FoodChains;
+import foodChains.FoodChainsProcess;
 
 /**
  * 
  * @author HP
  * represents the different food chains in the PlainEcosystem
  */
-public class PlainEcosytem extends FoodChains{
+public class PlainEcosytem extends FoodChainsProcess{
 		private Position position = new Position(10,10);
 		private TreeLeaves treeLeaves = new TreeLeaves("treeleaves",true,100,10,2,3,5,1,4,position);
 		private Aphid aphid = new Aphid("aphid", 3, 100, true, 10, 100, 10, 10, 3, false, position);
@@ -45,7 +45,7 @@ public class PlainEcosytem extends FoodChains{
 			spiderEatenBy = new ArrayList <String> ();
 		}
 		
-		public FoodChains FirstChain() {
+		public FoodChainsProcess FirstChain() {
 			FirstTrophicLevel(treeLeaves, aphid, treeleavesEatenBy);
 			FirstTrophicLevel(treeLeaves, herbivorousLadybug, treeleavesEatenBy);
 			SecondTrophicLevel(aphid, asianLadybug, aphidEatenBy);
@@ -53,7 +53,7 @@ public class PlainEcosytem extends FoodChains{
 			return null;	
 		}
 		
-		public FoodChains SecondChain() {
+		public FoodChainsProcess SecondChain() {
 			FirstTrophicLevel(ferns, herbivorousLadybug, fernsEatenBy);
 			SecondTrophicLevel(herbivorousLadybug, spider, herbivorousLadybugEatenBy);
 			ThirdTrophicLevel(asianLadybug,bramble,asianLadybugEatenBy);

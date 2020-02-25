@@ -12,7 +12,7 @@ import data.Producer;
 import data.SecondaryConsumer;
 import data.TertiaryConsumer;
 
-public class FoodChains{
+public class FoodChainsProcess{
 	
 	/**
 	 * 
@@ -28,7 +28,8 @@ public class FoodChains{
 		Iterator<String> iterator1 = proeatenby.iterator();
 		while (iterator1.hasNext()&&continueList!=false) {
 			String producerit = iterator1.next();
-			if(producerit.equals(primaryConsumer.getName())&&producer.getCordinates().equals(primaryConsumer.getCordinates())) {
+			if(producerit.equals(primaryConsumer.getName())&&producer.getCordinates().equals(primaryConsumer.getCordinates())
+					&&producer.getIsAlive()==true) {
 				producer.setHP(0);
 				IsDead isDead= new IsDead();
 				isDead.ProducerDead(producer);
@@ -53,7 +54,8 @@ public class FoodChains{
 		Iterator<String> iterator = pceatenby.iterator();
 		while (iterator.hasNext()&&continueList!=false) {
 			String pcit = iterator.next();
-			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())) {
+			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())
+					&&primaryConsumer.getIsAlive()==true) {
 					primaryConsumer.setHp(0);
 					IsDead isDead= new IsDead();
 					isDead.ConsumerDead(primaryConsumer);
@@ -77,9 +79,10 @@ public class FoodChains{
 		Iterator<String> iterator = sceatenby.iterator();
 		while (iterator.hasNext()&&continueList!=false) {
 			String scit = iterator.next();
-			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())) {
+			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())
+					&&secondaryConsumer.getIsAlive()==true) {
 					secondaryConsumer.setHp(0);
-					IsDead isDead= new IsDead();
+					IsDead isDead = new IsDead();
 					isDead.ConsumerDead(secondaryConsumer);
 					addMineralResources(secondaryConsumer.getCordinates(),mineral,secondaryConsumer.getOrganicMass());
 					continueList=false;
@@ -88,8 +91,18 @@ public class FoodChains{
 	}
 	
 	public void addMineralResources(Position cordinates, HashMap <Position,Integer> basicMineralRate, int rateMineral) {
+		boolean continueList=true;
+			Set<Entry<Position, Integer>> setHm = basicMineralRate.entrySet();
+				Iterator<Entry<Position, Integer>> it = setHm.iterator();
+				while(it.hasNext()&&continueList!=false){
+					Entry<Position, Integer> e = it.next();
+					if(basicMineralRate.containsKey(cordinates)) {
+						int organicmass =e.getValue();
+						rateMineral +=organicmass;
+						continueList=false;
+					}
+	      }
 	 		 basicMineralRate.put(cordinates,rateMineral);
 	}
-	
 }
 	

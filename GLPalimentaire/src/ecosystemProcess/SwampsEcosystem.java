@@ -15,14 +15,14 @@ import data.secondaryConsumerdata.Python;
 import data.tertiaryConsumerdata.BlackCaiman;
 import data.tertiaryConsumerdata.Jaguar;
 import data.tertiaryConsumerdata.SaltCrocodile;
-import foodChains.FoodChains;
+import foodChains.FoodChainsProcess;
 
 /**
  * 
  * @author Zacharie
  * represents the different food chains in the SwampsEcosystem
  */
-public class SwampsEcosystem extends FoodChains{
+public class SwampsEcosystem extends FoodChainsProcess{
 	private Position position = new Position(8,8);
 	private Reeds reeds = new Reeds("reeds",true,100,10,2,3,5,1,4,position);
 	private Turtle turtle = new Turtle("turtle", 3, 100, true, 10, 100, 10, 10, 3, false, position);
@@ -47,14 +47,14 @@ public class SwampsEcosystem extends FoodChains{
 	private ArrayList <String> pythonEatenBy;
 	
 	
-	public FoodChains FirstChain() {
+	public FoodChainsProcess FirstChain() {
 		FirstTrophicLevel(reeds, turtle, reedsEatenBy);
 		SecondTrophicLevel(turtle, anaconda, turtleEatenBy);
 		ThirdTrophicLevel(anaconda, blackCaiman, anacondaEatenBy);
 		return null;	
 	}
 	
-	public FoodChains SecondChain() {
+	public FoodChainsProcess SecondChain() {
 		FirstTrophicLevel(fruitTree, monkey, fruitTreeEatenBy);
 		SecondTrophicLevel(monkey, chimpanzee, monkeyEatenBy);
 		SecondTrophicLevel(monkey, anaconda, monkeyEatenBy);
@@ -62,7 +62,7 @@ public class SwampsEcosystem extends FoodChains{
 		return null;
 	}
 	
-	public FoodChains ThirdChain() {
+	public FoodChainsProcess ThirdChain() {
 		FirstTrophicLevel(bush, hippopotamus, bushEatenBy);
 		FirstTrophicLevel(bush, turtle, bushEatenBy);
 		SecondTrophicLevel(hippopotamus, python, hippopotamusEatenBy);

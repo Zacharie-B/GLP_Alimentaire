@@ -18,27 +18,27 @@ import data.primaryConsumerdata.Zebra;
 import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
-import foodChains.FoodChains;
+import foodChains.FoodChainsProcess;
 
 /**
  * 
  * @author HP
  * represents the different food chains in the SavannaEcosystem
  */
-public class SavannaEcosystem extends FoodChains{
+public class SavannaEcosystem extends FoodChainsProcess{
 	
 	/**
 	 * initialization of all species present in FrostyEcosystem
 	 */
 	private Position position = new Position(8,8);
-	private Grass grass = new Grass("grass",true,100,10,2,3,2500,1,4,position);
+	private Grass grass = new Grass("grass",true,100,10,2,3,25,1,4,position);
 	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
 	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, position);
 	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,position);
 	private Buffalo buffalo = new Buffalo("buffalo", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, position);
-	private Hyena hyena = new Hyena ("hyena",10, 3000, true, 1, 1, 50, 150, 6, false, position);
+	private Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, position);
 	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,position);
 	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, position);
@@ -72,7 +72,7 @@ public class SavannaEcosystem extends FoodChains{
 	
 	public SavannaEcosystem() {
 		positionsSpecies = new Position[nbMaxSpecies];
-		rateMineralPerCase = new HashMap <Position,Integer>(200);
+		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
 		AllPointsMap();
 		FirstChain();
 		SecondChain();
@@ -80,18 +80,17 @@ public class SavannaEcosystem extends FoodChains{
 		DisplayAndScrollHashMap();
 	}
 
-	public FoodChains FirstChain() {
+	public void  FirstChain() {
 		FirstTrophicLevel(grass, gazelle, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(grass, warthog, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(bush, gazelle, bushEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(bush, warthog, bushEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(warthog, cheetah, warthogEatenBy,rateMineralPerCase);
-		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy,rateMineralPerCase);
-		return null;	
+		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy,rateMineralPerCase);	
 	}
 	
-	public FoodChains SecondChain() {
+	public void SecondChain() {
 		FirstTrophicLevel(grass, buffalo, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(grass, zebra, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(bush, buffalo, bushEatenBy,rateMineralPerCase);
@@ -101,14 +100,12 @@ public class SavannaEcosystem extends FoodChains{
 		SecondTrophicLevel(warthog, cheetah, warthogEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(zebra, hyena, zebraEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(hyena,lion,hyenaEatenBy,rateMineralPerCase);
-		return null;
 	}
 	
-	public FoodChains ThirdChain() {
+	public void ThirdChain() {
 		FirstTrophicLevel(acacia, giraffe, acaciaEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(giraffe, hyena, giraffeEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(hyena,lion,hyenaEatenBy,rateMineralPerCase);
-		return null;
 	}
 	
 	public void HungryConsumer() {
@@ -122,7 +119,7 @@ public class SavannaEcosystem extends FoodChains{
 				positionsMineral = new Position[allPoints];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
-				rateMineralPerCase.put(positionsMineral[x],0);
+				rateMineralPerCase.put(positionsMineral[x],100);
 				x++;
 			}
 		}

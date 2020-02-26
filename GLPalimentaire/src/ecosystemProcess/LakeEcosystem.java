@@ -41,6 +41,7 @@ public class LakeEcosystem extends FoodChainsProcess{
 	private HashMap <Position,Integer> rateMineralPerCase;
 	
 	private static final int allPoints= 200;
+	@SuppressWarnings("unused")
 	private static final int nbMaxSpecies=500;
 	
 	

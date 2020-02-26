@@ -91,7 +91,7 @@ public class FoodChainsProcess{
 	}
 	
 	public void addMineralResources(Position cordinates, HashMap <Position,Integer> basicMineralRate, int rateMineral) {
-		boolean continueList=true;
+			boolean continueList=true;
 			Set<Entry<Position, Integer>> setHm = basicMineralRate.entrySet();
 				Iterator<Entry<Position, Integer>> it = setHm.iterator();
 				while(it.hasNext()&&continueList!=false){

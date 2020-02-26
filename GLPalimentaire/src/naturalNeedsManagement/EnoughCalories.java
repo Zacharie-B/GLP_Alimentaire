@@ -6,44 +6,51 @@ import data.Producer;
 public class EnoughCalories{
 	
 	
-	public void ProducerHungry(Producer producer, int mineralMass) {
+	public int ProducerHungry(Producer producer, int mineralMass, int currentMineralRate) {
 		int mineralsNeeds = producer.getRateMineral();
-		@SuppressWarnings("unused")
-		int currentMineralRate=0;
 		int i=0;
-		if (mineralsNeeds > mineralMass) {
+		while ((mineralsNeeds > mineralMass)) {
 			if(mineralMass!=0) {
 				currentMineralRate+=mineralMass;
+				return currentMineralRate;
 			}
 			else if(i==5) {
 				int currentHP=producer.getHP();
 				currentHP--;
 				producer.setHP(currentHP);
 				i=0;
+				currentMineralRate=0;
+				return currentMineralRate;
+			}
+			else {
+				i++;
+			}
+		}
+		return currentMineralRate;
+		
+	}
+	
+	public int ConsumerHungry(Consumer consumer, int calories, int currentCalories) {
+		int caloriesNeeds = consumer.getCalories();
+		int i=0;
+		while ((caloriesNeeds > calories)) {
+			if (calories!=0) {
+				currentCalories+=calories;
+				return currentCalories;
+			}
+			else if(i==5) {
+				i=0;
+				int currentHP=consumer.getHp();
+				currentHP--;
+				consumer.setHp(currentHP);
+				currentCalories=0;
+				return currentCalories;
 			}
 			else {
 				i++;
 			}
 		}
 		
-	}
-	
-	@SuppressWarnings("unused")
-	public void ConsumerHungry(Consumer consumer, int calories) {
-		int caloriesNeeds = consumer.getCalories();
-		int i=0, currentCalories=0;
-		if(caloriesNeeds > calories) {
-			if (calories!=0) {
-				currentCalories+=calories;
-			}
-			else if(i==5) {
-				int currentHP=consumer.getHp();
-				currentHP--;
-				consumer.setHp(currentHP);
-			}
-			else {
-				i++;
-			}
-		}
+		return currentCalories;
 	}
 }

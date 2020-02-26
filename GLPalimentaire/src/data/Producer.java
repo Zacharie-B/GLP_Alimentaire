@@ -7,7 +7,7 @@ public abstract class Producer implements Species{
 	private int hp;
 	private ArrayList<String> eatenBy;
 	private int organicMass;
-	private int organicProcessingSpeed;
+	private int mineralAssimilation;
 	private int rateMineral;
 	private boolean isAlive;
 	private int populationDensity;
@@ -65,11 +65,12 @@ public abstract class Producer implements Species{
 	 * @return the time transforming minerals to organic
 	 */
 	
-	public int getOrganicprocessingspeed() {
-		return organicProcessingSpeed;
+	public int getMineralAssimilation() {
+		return mineralAssimilation;
 	}
-	public void setOrganicprocessingspeed(int organicprocessingspeed) {
-		this.organicProcessingSpeed = organicprocessingspeed;
+	
+	public void setMineralAssimilation(int MineralAssimilation) {
+		this.mineralAssimilation = MineralAssimilation;
 	}
 	
 	/**

@@ -8,7 +8,7 @@ import data.Producer;
 public class FruitTree extends Producer{
 	
 	public FruitTree(String name,boolean isalive, int populationdensity, int numberbirths, int timebreeding,
-			int hp, int organicmass, int organicprocessingspeed, int ratemineral, Position cordinates) {
+			int hp, int organicmass, int mineralAssimilation, int ratemineral, Position cordinates) {
 		super();
 		setName(name);
 		setIsAlive(isalive);
@@ -17,7 +17,7 @@ public class FruitTree extends Producer{
 		setTimeBreeding(timebreeding);
 		setHP(hp);
 		setOrganicMass(organicmass);
-		setOrganicprocessingspeed(organicprocessingspeed);
+		setMineralAssimilation(mineralAssimilation);
 		setRateMineral(ratemineral);
 		setCordinates(cordinates);
 		initializeEatenBy();
@@ -26,8 +26,8 @@ public class FruitTree extends Producer{
 	@Override
 	public String toString() {
 		return "FruitTree [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getOrganicprocessingspeed()="
-				+ getOrganicprocessingspeed() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
+				+ ", getOrganicMass()=" + getOrganicMass() + ", getmineralAssimilation()="
+				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
 				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
 				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
 	}

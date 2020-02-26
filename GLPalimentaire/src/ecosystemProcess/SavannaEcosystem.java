@@ -31,7 +31,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * initialization of all species present in FrostyEcosystem
 	 */
 	private Position position = new Position(8,8);
-	private Grass grass = new Grass("grass",true,100,10,2,3,25,1,4,position);
+	private Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,position);
 	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
 	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, position);
@@ -73,6 +73,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	public SavannaEcosystem() {
 		positionsSpecies = new Position[nbMaxSpecies];
 		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
+		
 		AllPointsMap();
 		FirstChain();
 		SecondChain();

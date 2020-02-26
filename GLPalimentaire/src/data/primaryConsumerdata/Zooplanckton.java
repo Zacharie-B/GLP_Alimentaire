@@ -15,7 +15,7 @@ public class Zooplanckton extends PrimaryConsumer{
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
-		setNumberBirths(numberBirths);
+		setCaloriesAssimilation(numberBirths);
 		setTimeBreeding(timeBreeding);
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
@@ -30,7 +30,7 @@ public class Zooplanckton extends PrimaryConsumer{
 		return "Zooplanckton [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
 				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";
 	}

@@ -3,7 +3,6 @@ package foodChains;
 import java.util.HashMap;
 
 import data.Position;
-import data.decomposersdata.Bacterium;
 
 public class BacteriumAction{
 	

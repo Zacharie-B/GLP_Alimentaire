@@ -12,7 +12,7 @@ public abstract class Consumer implements Species{
 	private int organicMass;
 	private boolean isAlive;
 	private int populationDensity;
-	private int numberBirths;
+	private int caloriesAssimilation;
 	private int timeBreeding;
 	private int calories;
 	private int timeExcreta;
@@ -67,11 +67,11 @@ public abstract class Consumer implements Species{
 	public void setPopulationDensity(int populationDensity) {
 		this.populationDensity = populationDensity;
 	}
-	public int getNumberBirths() {
-		return numberBirths;
+	public int getCaloriesAssimilation() {
+		return caloriesAssimilation;
 	}
-	public void setNumberBirths(int numberBirths) {
-		this.numberBirths = numberBirths;
+	public void setCaloriesAssimilation(int numberBirths) {
+		this.caloriesAssimilation = numberBirths;
 	}
 	public int getTimeBreeding() {
 		return timeBreeding;

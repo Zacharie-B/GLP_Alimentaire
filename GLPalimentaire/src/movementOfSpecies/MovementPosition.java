@@ -3,34 +3,31 @@ package movementOfSpecies;
 import data.Position;
 
 public class MovementPosition {
-	public Position[] positions;
-	private int currentSize = 0;
 
 	public MovementPosition(int size) {
-		positions = new Position[size];
 	}
 
-	public void add(Position position) {
-		if (currentSize != positions.length) {
-			positions[currentSize] = position;
-			currentSize++;
-		}
+	public void moveleft(Position position) {
+		int x=position.getX();
+		x--;
+		position.setX(x);
 	}
-
-	/**public void move(int dx, int dy) {
-		*for (int index = 0; index < currentSize; index++) {
-		*	position osition = Positions[index];
-		*	position.move(dx, dy);
-		*}
-	*}
-	*/
 	
-	public String toString() {
-		String result = "Plan :";
-		for (int index = 0; index < currentSize; index++) {
-			Position position = positions[index];
-			result += "(" + position.toString() + ") ";
-		}
-		return result;
+	public void moveright(Position position) {
+		int x=position.getX();
+		x++;
+		position.setX(x);
+	}
+	
+	public void movetop(Position position) {
+		int y=position.getY();
+		y++;
+		position.setY(y);
+	}
+	
+	public void movebot(Position position) {
+		int y=position.getY();
+		y--;
+		position.setY(y);
 	}
 }

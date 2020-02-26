@@ -16,7 +16,7 @@ public class Zebra extends PrimaryConsumer{
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
-		setNumberBirths(numberBirths);
+		setCaloriesAssimilation(numberBirths);
 		setTimeBreeding(timeBreeding);
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);
@@ -31,7 +31,7 @@ public class Zebra extends PrimaryConsumer{
 		return "Zebra [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
 				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
 				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getNumberBirths() + ", getTimeBreeding()="
+				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
 				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
 				+ ", isSickness()=" + isSickness() + "]";
 	}

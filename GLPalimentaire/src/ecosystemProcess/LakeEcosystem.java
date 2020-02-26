@@ -33,6 +33,18 @@ public class LakeEcosystem extends FoodChainsProcess{
 	private ArrayList <String> crustaceanEatenBy;
 	private ArrayList <String> cyprinidEatenBy;
 	
+	@SuppressWarnings("unused")
+	private Position[] positionsSpecies;
+	private Position[] positionsMineral;
+	@SuppressWarnings("unused")
+	private Position[] positionsDecomposer;	
+	private HashMap <Position,Integer> rateMineralPerCase;
+	
+	private static final int allPoints= 200;
+	private static final int nbMaxSpecies=500;
+	
+	
+	
 	public LakeEcosystem(){
 		phytoplancktonEatenBy= new ArrayList <String> ();
 		zooplancktonEatenBy= new ArrayList <String> ();
@@ -40,14 +52,13 @@ public class LakeEcosystem extends FoodChainsProcess{
 		cyprinidEatenBy= new ArrayList <String> ();
 	}
 	
-	public FoodChainsProcess FirstChain() {
+	public void FirstChain() {
 		FirstTrophicLevel(phytoplanckton, zooplanckton, phytoplancktonEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(phytoplanckton, crustacean, phytoplancktonEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(zooplanckton, cyprinid, zooplancktonEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(crustacean, cyprinid, crustaceanEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(cyprinid, pike, cyprinidEatenBy,rateMineralPerCase);
-		ThirdTrophicLevel(cyprinid, sheatfish, cyprinidEatenBy,rateMineralPerCase);
-		return null;	
+		ThirdTrophicLevel(cyprinid, sheatfish, cyprinidEatenBy,rateMineralPerCase);	
 	}
 
 	public void HungryConsumer() {

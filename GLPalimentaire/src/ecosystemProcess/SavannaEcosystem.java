@@ -80,7 +80,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		DisplayAndScrollHashMap();
 	}
 
-	public void  FirstChain() {
+	public void FirstChain() {
 		FirstTrophicLevel(grass, gazelle, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(grass, warthog, grassEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(bush, gazelle, bushEatenBy,rateMineralPerCase);

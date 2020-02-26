@@ -60,29 +60,35 @@ public class SwampsEcosystem extends FoodChainsProcess{
 	private static final int allPoints= 200;
 	private static final int nbMaxSpecies=500;
 	
+	public SwampsEcosystem() {
+		positionsSpecies = new Position[nbMaxSpecies];
+		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
+		AllPointsMap();
+		FirstChain();
+		SecondChain();
+		ThirdChain();
+		DisplayAndScrollHashMap();
+	}
 	
-	public FoodChainsProcess FirstChain() {
+	public void FirstChain() {
 		FirstTrophicLevel(reeds, turtle, reedsEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(turtle, anaconda, turtleEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(anaconda, blackCaiman, anacondaEatenBy,rateMineralPerCase);
-		return null;	
 	}
 	
-	public FoodChainsProcess SecondChain() {
+	public void SecondChain() {
 		FirstTrophicLevel(fruitTree, monkey, fruitTreeEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(monkey, chimpanzee, monkeyEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(monkey, anaconda, monkeyEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(chimpanzee, jaguar, chimpanzeeEatenBy,rateMineralPerCase);
-		return null;
 	}
 	
-	public FoodChainsProcess ThirdChain() {
+	public void ThirdChain() {
 		FirstTrophicLevel(bush, hippopotamus, bushEatenBy,rateMineralPerCase);
 		FirstTrophicLevel(bush, turtle, bushEatenBy,rateMineralPerCase);
 		SecondTrophicLevel(hippopotamus, python, hippopotamusEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(python,saltCrocodile,pythonEatenBy,rateMineralPerCase);
 		ThirdTrophicLevel(python, blackCaiman, pythonEatenBy,rateMineralPerCase);
-		return null;
 	}
 	
 	public void AllPointsMap() {

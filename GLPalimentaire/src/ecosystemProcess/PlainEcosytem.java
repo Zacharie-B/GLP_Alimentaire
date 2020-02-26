@@ -48,9 +48,15 @@ public class PlainEcosytem extends FoodChainsProcess{
 		
 		private static final int allPoints= 200;
 		private static final int nbMaxSpecies=500;
-
 			
 		public PlainEcosytem() {
+			positionsSpecies = new Position[nbMaxSpecies];
+			rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
+			AllPointsMap();
+			FirstChain();
+			SecondChain();
+			DisplayAndScrollHashMap();
+			
 			treeleavesEatenBy = new ArrayList <String> ();
 			aphidEatenBy = new ArrayList <String> ();
 			asianLadybugEatenBy = new ArrayList <String> ();
@@ -59,20 +65,18 @@ public class PlainEcosytem extends FoodChainsProcess{
 			spiderEatenBy = new ArrayList <String> ();
 		}
 		
-		public FoodChainsProcess FirstChain() {
+		public void FirstChain() {
 			FirstTrophicLevel(treeLeaves, aphid, treeleavesEatenBy,rateMineralPerCase);
 			FirstTrophicLevel(treeLeaves, herbivorousLadybug, treeleavesEatenBy,rateMineralPerCase);
 			SecondTrophicLevel(aphid, asianLadybug, aphidEatenBy,rateMineralPerCase);
-			ThirdTrophicLevel(asianLadybug, woodpecker, asianLadybugEatenBy,rateMineralPerCase);
-			return null;	
+			ThirdTrophicLevel(asianLadybug, woodpecker, asianLadybugEatenBy,rateMineralPerCase);	
 		}
 		
-		public FoodChainsProcess SecondChain() {
+		public void SecondChain() {
 			FirstTrophicLevel(ferns, herbivorousLadybug, fernsEatenBy,rateMineralPerCase);
 			SecondTrophicLevel(herbivorousLadybug, spider, herbivorousLadybugEatenBy,rateMineralPerCase);
 			ThirdTrophicLevel(asianLadybug,bramble,asianLadybugEatenBy,rateMineralPerCase);
 			ThirdTrophicLevel(spider, bramble, spiderEatenBy,rateMineralPerCase);
-			return null;
 		}
 		
 		public void AllPointsMap() {

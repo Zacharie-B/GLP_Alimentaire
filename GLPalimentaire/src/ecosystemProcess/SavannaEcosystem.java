@@ -21,6 +21,7 @@ import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
 import foodChains.FoodChainsProcess;
+import movementOfSpecies.CreateMovement;
 
 /**
  * 
@@ -74,14 +75,20 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	
 	public SavannaEcosystem() {
+<<<<<<< HEAD
 		positionsSpecies = new Position[NBMAXSPECIES];
 		rateMineralPerCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		
+=======
+		positionsSpecies = new Position[nbMaxSpecies];
+		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
+>>>>>>> refs/remotes/origin/master
 		AllPointsMap();
+		MapMouvement();
 		FirstChain();
 		SecondChain();
 		ThirdChain();
-		DisplayAndScrollHashMap();
+		
 	}
 
 	public void FirstChain() {
@@ -138,6 +145,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	      }
 	}
 	
+<<<<<<< HEAD
 	public void seeking(Species speciesSeeking, Species [] speciesSearched, int indOfSeeker) {
 		//double fort de -size à size
 		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
@@ -158,21 +166,35 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			}
 		}
 		
+=======
+	public void MapMouvement() {
+		for (int i=0; i<100; i++) {
+			CreateMovement cm = new CreateMovement();
+			cm.SavannaMouvement(lion.getCordinates());
+			cm.SavannaMouvement(gazelle.getCordinates());
+			cm.SavannaMouvement(giraffe.getCordinates());
+			cm.SavannaMouvement(warthog.getCordinates());
+			cm.SavannaMouvement(cheetah.getCordinates());
+			cm.SavannaMouvement(hyena.getCordinates());
+			cm.SavannaMouvement(zebra.getCordinates());
+			cm.SavannaMouvement(buffalo.getCordinates());
+		}
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	@Override
 	public String toString() {
-		String result = "species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+")";
-		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+")";
-		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+")";
-		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+")";
-		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+")";
-		result += "\nspecies : (" +buffalo.getName()+", "+ buffalo.getHp() + "," +buffalo.getIsAlive()+")";
-		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+")";
-		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+")";
-		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+")";
-		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+")";
-		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+")";
+		String result = "species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
+		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
+		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+"," +warthog.getCordinates()+")";
+		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+"," +cheetah.getCordinates()+")";
+		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+"," +bush.getCordinates()+")";
+		result += "\nspecies : (" +buffalo.getName()+", "+ buffalo.getHp() + "," +buffalo.getIsAlive()+"," +buffalo.getCordinates()+")";
+		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+"," +zebra.getCordinates()+")";
+		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+"," +hyena.getCordinates()+")";
+		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+"," +acacia.getCordinates()+")";
+		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";
+		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+"," +lion.getCordinates()+")";
 		return result;
 	}
 }

@@ -94,6 +94,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 				cm.SavannaMouvement(cheetah.getCordinates());
 				cm.SavannaMouvement(buffalo.getCordinates());
 				cm.SavannaMouvement(zebra.getCordinates());
+				
+				
+				
+				
 		}
 
 

@@ -6,8 +6,10 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
 import data.Position;
+import data.Species;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
 import data.producersdata.Acacia;
@@ -36,6 +38,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
 	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, position);
 	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, position);
+	Species[] cheetahBeings = BeingCreator.initFamily();
 	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,position);
 	private Buffalo buffalo = new Buffalo("buffalo", 3, 100, true, 10, 100, 10, 10, 3, false, position);
 	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, position);
@@ -68,30 +71,29 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Position[] positionsDecomposer;	
 	private HashMap <Position,Integer> rateMineralPerCase;
 	
-	private static final int allPoints= 200;
-	private static final int nbMaxSpecies=500;
+	private static final int NBMAXSPECIES=500;
+	
 	
 	public SavannaEcosystem() {
-		positionsSpecies = new Position[nbMaxSpecies];
-		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
+		positionsSpecies = new Position[NBMAXSPECIES];
+		rateMineralPerCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
 		ConsumerMovement();
 		FirstChain();
 		SecondChain();
 		ThirdChain();
-		
 	}
 
 	private void ConsumerMovement() {
 				CreateMovement cm = new CreateMovement();
-				cm.MapOnMovement(lion);
-				cm.MapOnMovement(gazelle);
-				cm.MapOnMovement(warthog);
-				cm.MapOnMovement(cheetah);
-				cm.MapOnMovement(buffalo);
-				cm.MapOnMovement(zebra);
-				cm.MapOnMovement(hyena);
-				cm.MapOnMovement(giraffe);
+				cm.SavannaMouvement(lion.getCordinates());
+				cm.SavannaMouvement(giraffe.getCordinates());
+				cm.SavannaMouvement(hyena.getCordinates());
+				cm.SavannaMouvement(gazelle.getCordinates());
+				cm.SavannaMouvement(warthog.getCordinates());
+				cm.SavannaMouvement(cheetah.getCordinates());
+				cm.SavannaMouvement(buffalo.getCordinates());
+				cm.SavannaMouvement(zebra.getCordinates());
 		}
 
 
@@ -131,7 +133,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		for(int i=0; i<20;i++) {
 			for(int j=0; j<10;j++) {
 				int x=0;
-				positionsMineral = new Position[allPoints];
+				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
 				rateMineralPerCase.put(positionsMineral[x],100);
@@ -149,6 +151,29 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	      }
 	}
 	
+
+	public void seeking(Species speciesSeeking, Species [] speciesSearched, int indOfSeeker) {
+		//double fort de -size � size
+		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
+		int memberOne;
+		int memberTwo;
+		int distance;
+		int minDistance;
+		memberOne = (int) Math.pow(speciesSeeking.getCordinates().getX() - speciesSearched[0].getCordinates().getX(), 2);
+		memberTwo = (int) Math.pow(speciesSeeking.getCordinates().getY() - speciesSearched[0].getCordinates().getY(), 2);
+		distance = (int) Math.sqrt(memberOne+memberTwo);
+		minDistance = distance;
+		for(int i=1; i<BeingCreator.ALL_POINTS; i++) {
+			memberOne = (int) Math.pow(speciesSeeking.getCordinates().getX() - speciesSearched[i].getCordinates().getX(), 2);
+			memberTwo = (int) Math.pow(speciesSeeking.getCordinates().getY() - speciesSearched[i].getCordinates().getY(), 2);
+			distance = (int) Math.sqrt(memberOne+memberTwo);
+			if (distance<minDistance && i!=indOfSeeker) {
+				minDistance=distance;
+			}
+		}
+		
+	}
+
 	
 	@Override
 	public String toString() {

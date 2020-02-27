@@ -33,8 +33,4 @@ public class MovementPosition {
 		return being;
 	}
 	
-	public void seeking() {
-		//double fort de -size à size
-		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
-	}
 }

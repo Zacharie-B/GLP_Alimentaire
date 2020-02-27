@@ -1,9 +1,9 @@
 package movementOfSpecies;
 
+import data.Consumer;
 import data.Position;
 
 public class CreateMovement extends SavannaMovement{
-	private Position cordinates = new Position(2,15);
 	
 	public CreateMovement (){
 		
@@ -31,5 +31,11 @@ public class CreateMovement extends SavannaMovement{
         	SavannaMoveBot(cordinates);
         	break;
         }	
+	}
+	
+	public void MapOnMovement(Consumer consumer) {
+		for (int i=0; i<10; i++) {
+			SavannaMouvement(consumer.getCordinates());		
+		}
 	}
 }

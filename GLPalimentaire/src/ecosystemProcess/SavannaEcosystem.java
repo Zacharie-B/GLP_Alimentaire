@@ -75,12 +75,25 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		positionsSpecies = new Position[nbMaxSpecies];
 		rateMineralPerCase = new HashMap <Position,Integer>(allPoints);
 		AllPointsMap();
-		MapMouvement();
+		ConsumerMovement();
 		FirstChain();
 		SecondChain();
 		ThirdChain();
 		
 	}
+
+	private void ConsumerMovement() {
+				CreateMovement cm = new CreateMovement();
+				cm.MapOnMovement(lion);
+				cm.MapOnMovement(gazelle);
+				cm.MapOnMovement(warthog);
+				cm.MapOnMovement(cheetah);
+				cm.MapOnMovement(buffalo);
+				cm.MapOnMovement(zebra);
+				cm.MapOnMovement(hyena);
+				cm.MapOnMovement(giraffe);
+		}
+
 
 	public void FirstChain() {
 		FirstTrophicLevel(grass, gazelle, grassEatenBy,rateMineralPerCase);
@@ -136,19 +149,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	      }
 	}
 	
-	public void MapMouvement() {
-		for (int i=0; i<100; i++) {
-			CreateMovement cm = new CreateMovement();
-			cm.SavannaMouvement(lion.getCordinates());
-			cm.SavannaMouvement(gazelle.getCordinates());
-			cm.SavannaMouvement(giraffe.getCordinates());
-			cm.SavannaMouvement(warthog.getCordinates());
-			cm.SavannaMouvement(cheetah.getCordinates());
-			cm.SavannaMouvement(hyena.getCordinates());
-			cm.SavannaMouvement(zebra.getCordinates());
-			cm.SavannaMouvement(buffalo.getCordinates());
-		}
-	}
 	
 	@Override
 	public String toString() {

@@ -94,7 +94,6 @@ public class FoodChainsProcess{
 		/*
 		 * Pas accès à la première ou la dernière entrée
 		 */
-		
 			boolean continueList=true;
 			Set<Entry<Position, Integer>> setHm = basicMineralRate.entrySet();
 				Iterator<Entry<Position, Integer>> it = setHm.iterator();

@@ -1,9 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class OperationZone extends JPanel{
 
@@ -15,9 +18,12 @@ public class OperationZone extends JPanel{
 	private JButton info = new JButton("Information");
 	private JButton disaster = new JButton("Disaster");
 	
+	private Border lineborder = BorderFactory.createLineBorder(Color.black, 1);
+	
 	public OperationZone(){
 		add(leave);
 		add(info);
 		add(disaster);
+		setBorder(lineborder);
 	}
 }

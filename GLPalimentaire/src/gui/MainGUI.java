@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class MainGUI extends JFrame implements Runnable{
-
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(800, 400);
 	
 	private OperationZone operationZone = new OperationZone();

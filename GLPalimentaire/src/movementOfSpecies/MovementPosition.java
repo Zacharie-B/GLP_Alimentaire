@@ -1,6 +1,7 @@
 package movementOfSpecies;
 
 import data.Position;
+import data.Species;
 
 public class MovementPosition {
 
@@ -29,5 +30,14 @@ public class MovementPosition {
 		int y=position.getY();
 		y--;
 		position.setY(y);
+	}
+	
+	public Species getAssociatedBeing(Position position, Species being) {		
+		return being;
+	}
+	
+	public void seeking() {
+		//double fort de -size à size
+		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
 	}
 }

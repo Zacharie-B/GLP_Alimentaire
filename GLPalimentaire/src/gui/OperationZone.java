@@ -15,12 +15,9 @@ public class OperationZone extends JPanel{
 	private JButton info = new JButton("Information");
 	private JButton disaster = new JButton("Disaster");
 	
-	public JPanel OperationZone(){
-		JPanel pan = new JPanel();
-		pan.setSize(IDEAL_MAIN_DIMENSION);
-		pan.add(leave);
-		pan.add(info);
-		pan.add(disaster);
-		return pan;
+	public OperationZone(){
+		add(leave);
+		add(info);
+		add(disaster);
 	}
 }

@@ -91,6 +91,9 @@ public class FoodChainsProcess{
 	}
 	
 	public void addMineralResources(Position cordinates, HashMap <Position,Integer> basicMineralRate, int rateMineral) {
+		/*
+		 * Pas accès à la première ou la dernière entrée
+		 */
 			boolean continueList=true;
 			Set<Entry<Position, Integer>> setHm = basicMineralRate.entrySet();
 				Iterator<Entry<Position, Integer>> it = setHm.iterator();
@@ -98,7 +101,10 @@ public class FoodChainsProcess{
 					Entry<Position, Integer> e = it.next();
 					if(basicMineralRate.containsKey(cordinates)) {
 						int organicmass =e.getValue();
-						rateMineral +=organicmass;
+						rateMineral += organicmass;
+						
+					}
+					else {
 						continueList=false;
 					}
 	      }

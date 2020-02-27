@@ -9,7 +9,9 @@ import javax.swing.JFrame;
 
 public class MainGUI extends JFrame implements Runnable{
 
-	private static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(800, 400);
+	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(800, 400);
+	
+	private OperationZone operationZone = new OperationZone();
 	
 	public MainGUI(String title){
 		super(title);
@@ -21,8 +23,9 @@ public class MainGUI extends JFrame implements Runnable{
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		
-		contentPane.add(BorderLayout.NORTH, new OperationZone());
-		
+		operationZone.setPreferredSize(IDEAL_MAIN_DIMENSION);
+		contentPane.add(BorderLayout.NORTH, operationZone);
+		getContentPane().add(new JButton("bonjour..."));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);

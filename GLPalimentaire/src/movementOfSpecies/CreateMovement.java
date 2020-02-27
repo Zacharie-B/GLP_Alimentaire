@@ -1,6 +1,7 @@
 package movementOfSpecies;
 
 
+import data.Consumer;
 import data.Position;
 
 public class CreateMovement extends SavannaMovement{
@@ -9,8 +10,9 @@ public class CreateMovement extends SavannaMovement{
 		
 	}
 	
-	public void SavannaMouvement (Position cordinates) {
-		for (int i=0; i<10; i++) {
+	public static void SavannaMouvement (Consumer consumer) {
+		int c=0;
+		Position position = consumer.getCordinates();
         // Pour obtenir une valeur entière non nulle, il faut multiplier le
         // nombre aléatoire avec un nombre supérieur 0 avant la conversion.
         // Par exemple, la multiplication par 5 donnera au final un nombre
@@ -20,18 +22,25 @@ public class CreateMovement extends SavannaMovement{
         
         switch(n) {
         case 0 :
-        	SavannaMoveRight(cordinates);
+        	c=SavannaMoveRight(consumer.getCordinates());
+        	position.setX(c); 
+        	consumer.setCordinates(position);
         	break; 
         case 1 : 
-        	SavannaMoveLeft(cordinates);
+        	c=SavannaMoveLeft(consumer.getCordinates());
+        	position.setX(c); 
+        	consumer.setCordinates(position);
         	break;
         case 2 : 
-        	SavannaMoveTop(cordinates);
+        	c=SavannaMoveTop(consumer.getCordinates());
+        	position.setY(c); 
+        	consumer.setCordinates(position);
         	break;
         case 3 :
-        	SavannaMoveBot(cordinates);
+        	c=SavannaMoveBot(consumer.getCordinates());
+        	position.setY(c); 
+        	consumer.setCordinates(position);
         	break;
         }	
-		}
 	}
 }

@@ -1,36 +1,32 @@
 package movementOfSpecies;
 
 import data.Position;
-import data.Species;
 
 public class MovementPosition {
 
-	public void MoveLeft(Position position) {
+	public static int MoveLeft(Position position) {
 		int x=position.getX();
 		x--;
-		position.setX(x);
+		return x;
 	}
 	
-	public void MoveRight(Position position) {
+	public static int MoveRight(Position position) {
 		int x=position.getX();
 		x++;
-		position.setX(x);
+		return x;
 	}
 	
-	public void MoveTop(Position position) {
+	public static int MoveTop(Position position) {
 		int y=position.getY();
 		y++;
-		position.setY(y);
+		return y;
 	}
 	
-	public void MoveBot(Position position) {
+	public static int MoveBot(Position position) {
 		int y=position.getY();
 		y--;
-		position.setY(y);
+		return y;
 	}
 	
-	public Species getAssociatedBeing(Position position, Species being) {		
-		return being;
-	}
 	
 }

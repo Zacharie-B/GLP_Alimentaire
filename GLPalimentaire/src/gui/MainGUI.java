@@ -14,6 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class MainGUI extends JFrame implements Runnable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(800, 400);
 	
 	private OperationZone operationZone = new OperationZone();
@@ -57,7 +62,7 @@ public class MainGUI extends JFrame implements Runnable{
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//pack();
-		setSize(1000,500);
+		setSize(1200,700);
 		setVisible(true);
 		//setPreferredSize(IDEAL_MAIN_DIMENSION);
 		setResizable(false);

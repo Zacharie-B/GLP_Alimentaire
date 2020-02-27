@@ -4,39 +4,47 @@ import data.Position;
 
 public class SavannaMovement extends MovementPosition{
 
-	public void SavannaMoveLeft(Position position) {
+	public static int SavannaMoveLeft(Position position) {
+		int c;
 		if (position.getX()==0) {
-			MoveRight(position);
+			c=MoveRight(position);
 		}
 		else {
-			MoveLeft(position);
+			c=MoveLeft(position);
 		}
+		return c;
 	}
 	
-	public void SavannaMoveRight(Position position) {
+	public static int SavannaMoveRight(Position position) {
+		int c;
 		if (position.getX()==19) {
-			MoveLeft(position);
+			c=MoveLeft(position);
 		}
 		else {
-			MoveRight(position);
+			c=MoveRight(position);
 		}
+		return c;
 	}
 	
-	public void SavannaMoveTop(Position position) {
+	public static int SavannaMoveTop(Position position) {
+		int c;
 		if (position.getY()==19) {
-			MoveBot(position);
+			c=MoveBot(position);
 		}
 		else {
-			MoveTop(position);
+			c=MoveTop(position);
 		}
+		return c;
 	}
 	
-	public void SavannaMoveBot(Position position) {
+	public static int SavannaMoveBot(Position position) {
+		int c;
 		if (position.getY()==0) {
-			MoveTop(position);
+			c=MoveTop(position);
 		}
 		else {
-			MoveBot(position);
+			c=MoveBot(position);
 		}
+		return c;
 	}
 }

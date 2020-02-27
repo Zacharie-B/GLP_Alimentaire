@@ -6,6 +6,7 @@ import data.tertiaryConsumerdata.Inuit;
 
 public class BeingCreator<T> {
 	
+	@SuppressWarnings("unused")
 	private T [] beingFamily;
 
 	public BeingCreator(String species, int number) {

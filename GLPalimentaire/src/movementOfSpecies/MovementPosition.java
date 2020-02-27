@@ -4,28 +4,25 @@ import data.Position;
 
 public class MovementPosition {
 
-	public MovementPosition(int size) {
-	}
-
-	public void moveleft(Position position) {
+	public void MoveLeft(Position position) {
 		int x=position.getX();
 		x--;
 		position.setX(x);
 	}
 	
-	public void moveright(Position position) {
+	public void MoveRight(Position position) {
 		int x=position.getX();
 		x++;
 		position.setX(x);
 	}
 	
-	public void movetop(Position position) {
+	public void MoveTop(Position position) {
 		int y=position.getY();
 		y++;
 		position.setY(y);
 	}
 	
-	public void movebot(Position position) {
+	public void MoveBot(Position position) {
 		int y=position.getY();
 		y--;
 		position.setY(y);

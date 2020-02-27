@@ -16,7 +16,6 @@ public class CreateMovement extends SavannaMovement{
         // entier égal à 0, 1, 2, 3.
         // génération d'un entier >= 0 et < 4
         int n = (int)(Math.random() * 4);
-        System.out.println(n);
         
         switch(n) {
         case 0 :

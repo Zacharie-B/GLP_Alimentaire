@@ -1,16 +1,14 @@
 package foodChains;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import data.Position;
 import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
 import data.TertiaryConsumer;
+import naturalNeedsManagement.MineralChange;
 
 public class FoodChainsProcess{
 	
@@ -21,8 +19,11 @@ public class FoodChainsProcess{
 	 * @param proeatenby
 	 * treats the first trophic level of the food chain
 	 */
+	
+	private MineralChange mineralChange = MineralChange.getInstance();
+	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, 
-			ArrayList<String> proeatenby, HashMap<Position,Integer> mineral) {
+			ArrayList<String> proeatenby) {
 		proeatenby= producer.getEatenBy();
 		boolean continueList=true;
 		Iterator<String> iterator1 = proeatenby.iterator();
@@ -33,7 +34,7 @@ public class FoodChainsProcess{
 				producer.setHP(0);
 				IsDead isDead= new IsDead();
 				isDead.ProducerDead(producer);
-				addMineralResources(producer.getCordinates(),mineral,producer.getOrganicMass());
+				addMineralResources(producer.getCordinates(),producer.getOrganicMass());
 				continueList =false;
 				
 			}	
@@ -48,7 +49,7 @@ public class FoodChainsProcess{
 	 * treats the second trophic level of the food chain
 	 */
 	public void SecondTrophicLevel(PrimaryConsumer primaryConsumer, SecondaryConsumer secondaryConsumer, 
-			ArrayList<String> pceatenby, HashMap<Position,Integer> mineral) {
+			ArrayList<String> pceatenby) {
 		pceatenby= primaryConsumer.getEatenBy();
 		boolean continueList=true;
 		Iterator<String> iterator = pceatenby.iterator();
@@ -59,7 +60,7 @@ public class FoodChainsProcess{
 					primaryConsumer.setHp(0);
 					IsDead isDead= new IsDead();
 					isDead.ConsumerDead(primaryConsumer);
-					addMineralResources(primaryConsumer.getCordinates(),mineral,primaryConsumer.getOrganicMass());
+					addMineralResources(primaryConsumer.getCordinates(),primaryConsumer.getOrganicMass());
 					continueList=false;
 			}
 		}
@@ -73,7 +74,7 @@ public class FoodChainsProcess{
 	 * treats the third trophic level of the food chain
 	 */
 	public void ThirdTrophicLevel (SecondaryConsumer secondaryConsumer, TertiaryConsumer tertiaryConsumer, 
-			ArrayList<String> sceatenby, HashMap<Position,Integer> mineral) {
+			ArrayList<String> sceatenby) {
 		sceatenby= secondaryConsumer.getEatenBy();
 		boolean continueList=true;
 		Iterator<String> iterator = sceatenby.iterator();
@@ -84,31 +85,16 @@ public class FoodChainsProcess{
 					secondaryConsumer.setHp(0);
 					IsDead isDead = new IsDead();
 					isDead.ConsumerDead(secondaryConsumer);
-					addMineralResources(secondaryConsumer.getCordinates(),mineral,secondaryConsumer.getOrganicMass());
+					addMineralResources(secondaryConsumer.getCordinates(),secondaryConsumer.getOrganicMass());
 					continueList=false;
 			}
 		}
 	}
 	
-	public void addMineralResources(Position cordinates, HashMap <Position,Integer> basicMineralRate, int rateMineral) {
-		/*
-		 * Pas accès à la première ou la dernière entrée
-		 */
-			boolean continueList=true;
-			Set<Entry<Position, Integer>> setHm = basicMineralRate.entrySet();
-				Iterator<Entry<Position, Integer>> it = setHm.iterator();
-				while(it.hasNext()&&continueList!=false){
-					Entry<Position, Integer> e = it.next();
-					if(basicMineralRate.containsKey(cordinates)) {
-						int organicmass =e.getValue();
-						rateMineral += organicmass;
-						
-					}
-					else {
-						continueList=false;
-					}
-	      }
-	 		 basicMineralRate.put(cordinates,rateMineral);
+	public void addMineralResources(Position cordinates, int rateMineral) {					 
+				int organicmass =mineralChange.getValue(cordinates);
+				rateMineral += organicmass;
+				mineralChange.addMineral(cordinates, rateMineral);
 	}
 }
 	

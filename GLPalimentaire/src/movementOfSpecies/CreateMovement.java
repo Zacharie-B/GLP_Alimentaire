@@ -10,8 +10,9 @@ public class CreateMovement extends SavannaMovement{
 		
 	}
 	
-	public static void SavannaMouvement (Consumer consumer) {
+	public static Position SavannaMouvement (Consumer consumer) {
 		int c=0;
+		Position initPosition = consumer.getCordinates();
 		Position position = consumer.getCordinates();
         // Pour obtenir une valeur entière non nulle, il faut multiplier le
         // nombre aléatoire avec un nombre supérieur 0 avant la conversion.
@@ -22,25 +23,22 @@ public class CreateMovement extends SavannaMovement{
         
         switch(n) {
         case 0 :
-        	c=SavannaMoveRight(consumer.getCordinates());
+        	c=SavannaMoveRight(consumer);
         	position.setX(c); 
-        	consumer.setCordinates(position);
-        	break; 
+        	return consumer.getCordinates();
         case 1 : 
-        	c=SavannaMoveLeft(consumer.getCordinates());
+        	c=SavannaMoveLeft(consumer);
         	position.setX(c); 
-        	consumer.setCordinates(position);
-        	break;
+        	return consumer.getCordinates();
         case 2 : 
-        	c=SavannaMoveTop(consumer.getCordinates());
+        	c=SavannaMoveTop(consumer);
         	position.setY(c); 
-        	consumer.setCordinates(position);
-        	break;
+        	return consumer.getCordinates();
         case 3 :
-        	c=SavannaMoveBot(consumer.getCordinates());
+        	c=SavannaMoveBot(consumer);
         	position.setY(c); 
-        	consumer.setCordinates(position);
-        	break;
+        	return consumer.getCordinates();
         }	
+        return initPosition;
 	}
 }

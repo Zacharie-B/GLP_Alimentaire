@@ -12,6 +12,7 @@ public class EnoughCalories{
 		while ((mineralsNeeds > mineralMass)) {
 			if(mineralMass!=0) {
 				currentMineralRate+=mineralMass;
+				i++;
 				return currentMineralRate;
 			}
 			else if(i==5) {

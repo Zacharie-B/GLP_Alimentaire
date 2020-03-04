@@ -1,29 +1,29 @@
 package movementOfSpecies;
 
-import data.Position;
+import data.Consumer;
 
 public class MovementPosition {
 
-	public static int MoveLeft(Position position) {
-		int x=position.getX();
+	public static int MoveLeft(Consumer consumer) {
+		int x=consumer.getCordinates().getX();
 		x--;
 		return x;
 	}
 	
-	public static int MoveRight(Position position) {
-		int x=position.getX();
+	public static int MoveRight(Consumer consumer) {
+		int x=consumer.getCordinates().getX();
 		x++;
 		return x;
 	}
 	
-	public static int MoveTop(Position position) {
-		int y=position.getY();
+	public static int MoveTop(Consumer consumer) {
+		int y=consumer.getCordinates().getY();
 		y++;
 		return y;
 	}
 	
-	public static int MoveBot(Position position) {
-		int y=position.getY();
+	public static int MoveBot(Consumer consumer) {
+		int y=consumer.getCordinates().getY();
 		y--;
 		return y;
 	}

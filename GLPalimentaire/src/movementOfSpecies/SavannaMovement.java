@@ -1,49 +1,49 @@
 package movementOfSpecies;
 
-import data.Position;
+import data.Consumer;
 
 public class SavannaMovement extends MovementPosition{
 
-	public static int SavannaMoveLeft(Position position) {
+	public static int SavannaMoveLeft(Consumer consumer) {
 		int c;
-		if (position.getX()==0) {
-			c=MoveRight(position);
+		if (consumer.getCordinates().getX()==0) {
+			c=MoveRight(consumer);
 		}
 		else {
-			c=MoveLeft(position);
+			c=MoveLeft(consumer);
 		}
 		return c;
 	}
 	
-	public static int SavannaMoveRight(Position position) {
+	public static int SavannaMoveRight(Consumer consumer) {
 		int c;
-		if (position.getX()==19) {
-			c=MoveLeft(position);
+		if (consumer.getCordinates().getX()==19) {
+			c=MoveLeft(consumer);
 		}
 		else {
-			c=MoveRight(position);
+			c=MoveRight(consumer);
 		}
 		return c;
 	}
 	
-	public static int SavannaMoveTop(Position position) {
+	public static int SavannaMoveTop(Consumer consumer) {
 		int c;
-		if (position.getY()==19) {
-			c=MoveBot(position);
+		if (consumer.getCordinates().getY()==19) {
+			c=MoveBot(consumer);
 		}
 		else {
-			c=MoveTop(position);
+			c=MoveTop(consumer);
 		}
 		return c;
 	}
 	
-	public static int SavannaMoveBot(Position position) {
+	public static int SavannaMoveBot(Consumer consumer) {
 		int c;
-		if (position.getY()==0) {
-			c=MoveTop(position);
+		if (consumer.getCordinates().getY()==0) {
+			c=MoveTop(consumer);
 		}
 		else {
-			c=MoveBot(position);
+			c=MoveBot(consumer);
 		}
 		return c;
 	}

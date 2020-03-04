@@ -22,6 +22,8 @@ import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
 import foodChains.FoodChainsProcess;
 import movementOfSpecies.CreateMovement;
+import movementOfSpecies.InitialPosition;
+import naturalNeedsManagement.MineralChange;
 
 /**
  * 
@@ -33,19 +35,20 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	/**
 	 * initialization of all species present in FrostyEcosystem
 	 */
-	private Position position = new Position(8,8);
-	private Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,position);
-	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, position);
-	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, position);
-	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, position);
-	Species[] cheetahBeings = BeingCreator.initFamily();
-	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,position);
-	private Buffalo buffalo = new Buffalo("buffalo", 3, 100, true, 10, 100, 10, 10, 3, false, position);
-	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, position);
-	private Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, position);
-	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,position);
-	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, position);
-	private Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, position);
+	private InitialPosition pos = new InitialPosition();
+	private Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[0]);
+	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
+	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
+	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
+	@SuppressWarnings("unused")
+	private Species[] cheetahBeings = BeingCreator.initFamily();
+	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[4]);
+	private Buffalo buffalo = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
+	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
+	private Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
+	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[8]);
+	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
+	private Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
 	/**
 	 * Lists that allow us to know the predator of each species except the Third Consumer
@@ -64,66 +67,64 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	/**
 	 * allows us to position the different species and minerals on the map
 	 */
-	@SuppressWarnings("unused")
-	private Position[] positionsSpecies;
 	private Position[] positionsMineral;
 	@SuppressWarnings("unused")
 	private Position[] positionsDecomposer;	
-	private HashMap <Position,Integer> rateMineralPerCase;
+	@SuppressWarnings("unused")
+	private Species[] species;
 	
 	private static final int NBMAXSPECIES=500;
-	
+	private MineralChange mineral = MineralChange.getInstance();
 	
 	public SavannaEcosystem() {
-		positionsSpecies = new Position[NBMAXSPECIES];
-		rateMineralPerCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
+		species = new Species[NBMAXSPECIES];
+		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
 		ConsumerMovement();
 		FirstChain();
 		SecondChain();
 		ThirdChain();
+		DisplayAndScrollHashMap();
 	}
 
 	private void ConsumerMovement() {
-		for(int i=0; i<1;i++) {
-				CreateMovement.SavannaMouvement(lion);
-				CreateMovement.SavannaMouvement(giraffe);
-				CreateMovement.SavannaMouvement(hyena);
-				CreateMovement.SavannaMouvement(gazelle);
-				CreateMovement.SavannaMouvement(warthog);
-				CreateMovement.SavannaMouvement(cheetah);
-				CreateMovement.SavannaMouvement(buffalo);
-				CreateMovement.SavannaMouvement(zebra);	
-			}
+			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
+			giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
+			hyena.setCordinates(CreateMovement.SavannaMouvement(hyena));
+			gazelle.setCordinates(CreateMovement.SavannaMouvement(gazelle));
+			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
+			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
+			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));	
 		}
 
 
 	public void FirstChain() {
-		FirstTrophicLevel(grass, gazelle, grassEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(grass, warthog, grassEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(bush, gazelle, bushEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(bush, warthog, bushEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(warthog, cheetah, warthogEatenBy,rateMineralPerCase);
-		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy,rateMineralPerCase);	
+		FirstTrophicLevel(grass, gazelle, grassEatenBy);
+		FirstTrophicLevel(grass, warthog, grassEatenBy);
+		FirstTrophicLevel(bush, gazelle, bushEatenBy);
+		FirstTrophicLevel(bush, warthog, bushEatenBy);
+		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy);
+		SecondTrophicLevel(warthog, cheetah, warthogEatenBy);
+		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy);	
 	}
 	
 	public void SecondChain() {
-		FirstTrophicLevel(grass, buffalo, grassEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(grass, zebra, grassEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(bush, buffalo, bushEatenBy,rateMineralPerCase);
-		FirstTrophicLevel(bush, zebra, bushEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(buffalo, hyena, buffaloEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(warthog, cheetah, warthogEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(zebra, hyena, zebraEatenBy,rateMineralPerCase);
-		ThirdTrophicLevel(hyena,lion,hyenaEatenBy,rateMineralPerCase);
+		FirstTrophicLevel(grass, buffalo, grassEatenBy);
+		FirstTrophicLevel(grass, zebra, grassEatenBy);
+		FirstTrophicLevel(bush, buffalo, bushEatenBy);
+		FirstTrophicLevel(bush, zebra, bushEatenBy);
+		SecondTrophicLevel(buffalo, hyena, buffaloEatenBy);
+		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy);
+		SecondTrophicLevel(warthog, cheetah, warthogEatenBy);
+		SecondTrophicLevel(zebra, hyena, zebraEatenBy);
+		ThirdTrophicLevel(hyena,lion,hyenaEatenBy);
 	}
 	
 	public void ThirdChain() {
-		FirstTrophicLevel(acacia, giraffe, acaciaEatenBy,rateMineralPerCase);
-		SecondTrophicLevel(giraffe, hyena, giraffeEatenBy,rateMineralPerCase);
-		ThirdTrophicLevel(hyena,lion,hyenaEatenBy,rateMineralPerCase);
+		FirstTrophicLevel(acacia, giraffe, acaciaEatenBy);
+		SecondTrophicLevel(giraffe, hyena, giraffeEatenBy);
+		ThirdTrophicLevel(hyena,lion,hyenaEatenBy);
 	}
 	
 	public void HungryConsumer() {
@@ -134,17 +135,18 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		for(int i=0; i<20;i++) {
 			for(int j=0; j<10;j++) {
 				int x=0;
+				
 				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
-				rateMineralPerCase.put(positionsMineral[x],100);
+				mineral.valuesInCase.put(positionsMineral[x],0);
 				x++;
 			}
 		}
 	}
 	
 	public void DisplayAndScrollHashMap() {
-		  Set<Entry<Position, Integer>> setHm = rateMineralPerCase.entrySet();
+		  Set<Entry<Position, Integer>> setHm = mineral.valuesInCase.entrySet();
 	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
 	      while(it.hasNext()){
 	         Entry<Position, Integer> e = it.next();
@@ -153,7 +155,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 
-	public void seeking(Species speciesSeeking, Species [] speciesSearched, int indOfSeeker) {
+	/**
+	 * public void seeking(Species speciesSeeking, Species [] speciesSearched, int indOfSeeker) {
+	 
 		//double fort de -size � size
 		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
 		int memberOne;
@@ -172,8 +176,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 				minDistance=distance;
 			}
 		}
-		
-	}
+		}
+	*/
+	
+	
 
 	
 	@Override

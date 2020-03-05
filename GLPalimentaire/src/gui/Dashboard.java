@@ -11,15 +11,33 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import data.tertiaryConsumerdata.Lion;
 import ecosystemProcess.SavannaEcosystem;
 
 public class Dashboard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
+	public Dashboard instance;
 	
 	private Image image;
+	private Image lion;
 	
+	
+	public Image getLion() {
+		return lion;
+	}
+
+	public void setLion(String path) throws IOException {
+		try {
+            this.lion = ImageIO.read(new File(path));
+            repaint();
+        } 
+        catch (IOException e) {
+            throw new IOException(path+" introuvable", e);
+        }
+	}
+
 	public Dashboard(){
 		super();
 	}
@@ -49,6 +67,10 @@ public class Dashboard extends JPanel{
         }
     }
 	
+	public Dashboard getInstance() {
+		return this;
+	}
+	
 	public Image getImage() {
         return image;
     }
@@ -60,7 +82,7 @@ public class Dashboard extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-    	if(image!=null){
+    	if(image!=null && lion!=null){
         	int heightPanel = getHeight();
         	int widthPanel = getWidth();
         	int squareSide = heightPanel/3;
@@ -75,6 +97,25 @@ public class Dashboard extends JPanel{
             g2d.drawImage(image, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.setColor(Color.blue);
             g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);
+        	g2d.drawImage(lion, heightPanel/8, widthPanel/5, widthPanel/10, heightPanel/10, this);
         }	
+    }
+    
+    public void paintLion(Graphics g) {
+    	super.paintComponent(g);
+    	if(image!=null) {
+    		int heightPanel = getHeight();
+        	int widthPanel = getWidth();
+        	Graphics2D g2d = (Graphics2D)g;
+        	try {
+				setImage("src/misc/lion.jpg");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	g2d.drawImage(getImage(), heightPanel/8, widthPanel/5, widthPanel/10, heightPanel/10, this);
+    	}
+    	
+    	
     }
 }

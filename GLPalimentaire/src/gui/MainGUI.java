@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import data.Position;
 
 import ecosystemProcess.SavannaEcosystem;
 
@@ -34,6 +37,7 @@ public class MainGUI extends JFrame implements Runnable{
 		//début teste image de fond
 		try {
 			dashboard.setImage("src/misc/Orange.jpg");
+			dashboard.setLion("src/misc/lion.jpg");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,13 +95,14 @@ public class MainGUI extends JFrame implements Runnable{
 	private void init() {
 		
 	}
-	
+	@Override
 	public void run() {
 		SavannaEcosystem savannaTest = new SavannaEcosystem();
 		boolean finish = false;
 		while (finish==false) {
-			savannaTest.ConsumerMovement();
-			
+			@SuppressWarnings("unused")
+			Position animalPos = savannaTest.ConsumerMovement();
+			dashboard.repaint();
 			try {
 				Thread.sleep(1000);
 			}
@@ -108,7 +113,8 @@ public class MainGUI extends JFrame implements Runnable{
 		
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		new MainGUI("Map");
-	}
+	}*/
+
 }

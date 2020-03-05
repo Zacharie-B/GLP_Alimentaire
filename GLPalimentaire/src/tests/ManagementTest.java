@@ -1,11 +1,10 @@
 package tests;
-import data.Position;
-import data.primaryConsumerdata.Zebra;
+
 import ecosystemProcess.*;
-import movementOfSpecies.MovementPosition;
 
 
-public class ManagementTest {
+
+public class ManagementTest{
 	public static void main(String[] args) {
 				//SavannaEcosystem consumermv = new SavannaEcosystem();
 				//System.out.println(consumermv.toString());
@@ -18,12 +17,13 @@ public class ManagementTest {
 				SavannaEcosystem lakechain= new SavannaEcosystem();
 				System.out.println("\nDisplay of characteristics after movement");
 				System.out.println(lakechain.toString());
+				
 				boolean finish = false;
 				while (finish==false) {
 					lakechain.ConsumerMovement();
 					System.out.println(lakechain.toString());
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(500);
 					}
 					catch (InterruptedException e){
 						System.out.println(e.getMessage());

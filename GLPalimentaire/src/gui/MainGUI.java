@@ -42,7 +42,7 @@ public class MainGUI extends JFrame implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//fin teste image de fond
+		//fin test image de fond
 		
 		//début : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 		GridBagConstraints c1 = new GridBagConstraints();

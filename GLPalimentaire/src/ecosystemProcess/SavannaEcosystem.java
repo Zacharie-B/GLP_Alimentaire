@@ -80,13 +80,14 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		species = new Species[NBMAXSPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
-		FirstChain();
-		SecondChain();
-		ThirdChain();
 		//DisplayAndScrollHashMap();
 	}
 
+<<<<<<< HEAD
 	public Position ConsumerMovement() {
+=======
+	public void ConsumerMovement() {
+>>>>>>> branch 'master' of https://github.com/Yassin2Luxe/GLP_Alimentaire.git
 			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
 			return lion.getCordinates();
 			/*giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
@@ -95,7 +96,14 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
 			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
 			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
+<<<<<<< HEAD
 			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));*/	
+=======
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
+			FirstChain();
+			SecondChain();
+			ThirdChain();
+>>>>>>> branch 'master' of https://github.com/Yassin2Luxe/GLP_Alimentaire.git
 		}
 
 

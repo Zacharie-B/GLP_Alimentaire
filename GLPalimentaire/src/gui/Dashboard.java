@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -14,7 +15,6 @@ public class Dashboard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JPanel panneau = new JPanel();
 	
 	private Image image;
 	
@@ -53,10 +53,23 @@ public class Dashboard extends JPanel{
     
     @Override
     public void paintComponent(Graphics g){
-        if(image!=null){
+        super.paintComponent(g);
+    	if(image!=null){
+        	int heightPanel = getHeight();
+        	int widthPanel = getWidth();
+        	int squareSide = heightPanel/3;
+        	System.out.println(widthPanel + "and" + heightPanel);
             Graphics2D g2d = (Graphics2D)g;
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g2d.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-        }
+            g2d.setColor(Color.green);
+            g2d.fillRect(0, 0, widthPanel/2, heightPanel/2);
+            g2d.setColor(Color.MAGENTA);
+            g2d.fillRect(widthPanel/2, 0, widthPanel/2, heightPanel/2);
+            g2d.setColor(Color.cyan);
+            g2d.fillRect(0, heightPanel/2, widthPanel/2, heightPanel/2);
+            g2d.setColor(Color.orange);
+            g2d.drawImage(image, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
+            g2d.setColor(Color.blue);
+            g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);
+        }	
     }
 }

@@ -45,41 +45,41 @@ public class MainGUI extends JFrame implements Runnable{
 		//fin test image de fond
 		
 		//début : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
-		GridBagConstraints c1 = new GridBagConstraints();
+		GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 		
-		c1.fill = GridBagConstraints.BOTH;
-		c1.weightx = 1;
+		asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
+		asidePanelGridBagConstraints.weightx = 1;
 		
-		c1.weighty = 0.2;
-		c1.gridx = 0;
-		c1.gridy = 0;
+		asidePanelGridBagConstraints.weighty = 0.2;
+		asidePanelGridBagConstraints.gridx = 0;
+		asidePanelGridBagConstraints.gridy = 0;
 		operationZone.setBorder(lineborder);
-		operationZoneANDinformationZone.add(operationZone, c1);
+		operationZoneANDinformationZone.add(operationZone, asidePanelGridBagConstraints);
 		
-		c1.weighty = 0.8;
-		c1.gridx = 0;
-		c1.gridy = 1;
+		asidePanelGridBagConstraints.weighty = 0.8;
+		asidePanelGridBagConstraints.gridx = 0;
+		asidePanelGridBagConstraints.gridy = 1;
 		informationZone.setBorder(lineborder);
-		operationZoneANDinformationZone.add(informationZone, c1);
+		operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);
 		//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 		
 		
 		//début : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
-		GridBagConstraints c2 = new GridBagConstraints();
+		GridBagConstraints MapPanelGridBagConstraints = new GridBagConstraints();
 		
-		c2.fill = GridBagConstraints.BOTH;
-		c2.weighty = 1;
+		MapPanelGridBagConstraints.fill = GridBagConstraints.BOTH;
+		MapPanelGridBagConstraints.weighty = 1;
 
-		c2.weightx = 0.95;
-		c2.gridx = 0;
-		c2.gridy = 0;
+		MapPanelGridBagConstraints.weightx = 0.95;
+		MapPanelGridBagConstraints.gridx = 0;
+		MapPanelGridBagConstraints.gridy = 0;
 		dashboard.setBorder(lineborder);
-		fenetre.add(dashboard, c2);
+		fenetre.add(dashboard, MapPanelGridBagConstraints);
 
-		c2.weightx = 0.05;
-		c2.gridx = 1;
-		c2.gridy = 0;
-		fenetre.add(operationZoneANDinformationZone, c2);
+		MapPanelGridBagConstraints.weightx = 0.05;
+		MapPanelGridBagConstraints.gridx = 1;
+		MapPanelGridBagConstraints.gridy = 0;
+		fenetre.add(operationZoneANDinformationZone, MapPanelGridBagConstraints);
 		//fin : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
 		
 		add(fenetre);
@@ -100,9 +100,7 @@ public class MainGUI extends JFrame implements Runnable{
 		SavannaEcosystem savannaTest = new SavannaEcosystem();
 		boolean finish = false;
 		while (finish==false) {
-			@SuppressWarnings("unused")
-			Position animalPos = savannaTest.ConsumerMovement();
-			dashboard.repaint();
+			
 			try {
 				Thread.sleep(1000);
 			}

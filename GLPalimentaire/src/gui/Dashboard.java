@@ -11,6 +11,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import ecosystemProcess.SavannaEcosystem;
+
 public class Dashboard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -51,6 +53,10 @@ public class Dashboard extends JPanel{
         return image;
     }
     
+	public void add() {
+		SavannaEcosystem savannaTest = new SavannaEcosystem();
+	}
+	
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -58,7 +64,6 @@ public class Dashboard extends JPanel{
         	int heightPanel = getHeight();
         	int widthPanel = getWidth();
         	int squareSide = heightPanel/3;
-        	System.out.println(widthPanel + "and" + heightPanel);
             Graphics2D g2d = (Graphics2D)g;
             g2d.setColor(Color.green);
             g2d.fillRect(0, 0, widthPanel/2, heightPanel/2);

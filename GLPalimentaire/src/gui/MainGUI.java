@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import ecosystemProcess.SavannaEcosystem;
+
 public class MainGUI extends JFrame implements Runnable{
 
 	private Dimension dimensionFenetre = new Dimension(1850,900);
@@ -91,7 +93,18 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 	
 	public void run() {
-		// TODO Auto-generated method stub
+		SavannaEcosystem savannaTest = new SavannaEcosystem();
+		boolean finish = false;
+		while (finish==false) {
+			savannaTest.ConsumerMovement();
+			
+			try {
+				Thread.sleep(1000);
+			}
+			catch (InterruptedException e){
+				System.out.println(e.getMessage());
+			}
+		}
 		
 	}
 

@@ -18,7 +18,17 @@ public class ManagementTest {
 				SavannaEcosystem lakechain= new SavannaEcosystem();
 				System.out.println("\nDisplay of characteristics after movement");
 				System.out.println(lakechain.toString());
-				
+				boolean finish = false;
+				while (finish==false) {
+					lakechain.ConsumerMovement();
+					System.out.println(lakechain.toString());
+					try {
+						Thread.sleep(1000);
+					}
+					catch (InterruptedException e){
+						System.out.println(e.getMessage());
+					}
+				}
 	}
 
 }

@@ -29,7 +29,7 @@ public class FoodChainsProcess{
 		Iterator<String> iterator1 = proeatenby.iterator();
 		while (iterator1.hasNext()&&continueList!=false) {
 			String producerit = iterator1.next();
-			if(producerit.equals(primaryConsumer.getName())&&producer.getCordinates().equals(primaryConsumer.getCordinates())
+			if(producerit.equals(primaryConsumer.getName())&&equals(producer.getCordinates(),primaryConsumer.getCordinates())
 					&&producer.getIsAlive()==true) {
 				producer.setHP(0);
 				IsDead isDead= new IsDead();
@@ -55,7 +55,7 @@ public class FoodChainsProcess{
 		Iterator<String> iterator = pceatenby.iterator();
 		while (iterator.hasNext()&&continueList!=false) {
 			String pcit = iterator.next();
-			if(pcit.equals(secondaryConsumer.getName())&&primaryConsumer.getCordinates().equals(secondaryConsumer.getCordinates())
+			if(pcit.equals(secondaryConsumer.getName())&&equals(primaryConsumer.getCordinates(),secondaryConsumer.getCordinates())
 					&&primaryConsumer.getIsAlive()==true) {
 					primaryConsumer.setHp(0);
 					IsDead isDead= new IsDead();
@@ -80,7 +80,7 @@ public class FoodChainsProcess{
 		Iterator<String> iterator = sceatenby.iterator();
 		while (iterator.hasNext()&&continueList!=false) {
 			String scit = iterator.next();
-			if(scit.equals(tertiaryConsumer.getName())&&secondaryConsumer.getCordinates().equals(tertiaryConsumer.getCordinates())
+			if(scit.equals(tertiaryConsumer.getName())&&equals(secondaryConsumer.getCordinates(),tertiaryConsumer.getCordinates())
 					&&secondaryConsumer.getIsAlive()==true) {
 					secondaryConsumer.setHp(0);
 					IsDead isDead = new IsDead();
@@ -90,6 +90,12 @@ public class FoodChainsProcess{
 			}
 		}
 	}
+	
+	public boolean equals(Object obj, Position pos) {
+	      return (obj instanceof Position) && 
+		  ((Position)obj).getX()==pos.getX() && 
+		  ((Position)obj).getY()==pos.getY();
+	    }
 	
 	public void addMineralResources(Position cordinates, int rateMineral) {					 
 				int organicmass =mineralChange.getValue(cordinates);

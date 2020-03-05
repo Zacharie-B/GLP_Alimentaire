@@ -80,13 +80,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		species = new Species[NBMAXSPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
-		FirstChain();
-		SecondChain();
-		ThirdChain();
 		//DisplayAndScrollHashMap();
 	}
 
-	@SuppressWarnings("unused")
 	public void ConsumerMovement() {
 			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
 			giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
@@ -95,7 +91,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
 			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
 			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));	
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
+			FirstChain();
+			SecondChain();
+			ThirdChain();
 		}
 
 

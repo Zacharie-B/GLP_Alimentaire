@@ -34,7 +34,7 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	public MainGUI(String title){
 		
-		//début teste image de fond
+		//dï¿½but teste image de fond
 		try {
 			dashboard.setImage("src/misc/Orange.jpg");
 			dashboard.setLion("src/misc/lion.jpg");
@@ -44,7 +44,7 @@ public class MainGUI extends JFrame implements Runnable{
 		}
 		//fin test image de fond
 		
-		//début : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
+		//dï¿½but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 		GridBagConstraints c1 = new GridBagConstraints();
 		
 		c1.fill = GridBagConstraints.BOTH;
@@ -64,7 +64,7 @@ public class MainGUI extends JFrame implements Runnable{
 		//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 		
 		
-		//début : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
+		//dï¿½but : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
 		GridBagConstraints c2 = new GridBagConstraints();
 		
 		c2.fill = GridBagConstraints.BOTH;
@@ -92,6 +92,7 @@ public class MainGUI extends JFrame implements Runnable{
 		setResizable(false);
 	}
 	
+	@SuppressWarnings("unused")
 	private void init() {
 		
 	}
@@ -100,8 +101,7 @@ public class MainGUI extends JFrame implements Runnable{
 		SavannaEcosystem savannaTest = new SavannaEcosystem();
 		boolean finish = false;
 		while (finish==false) {
-			@SuppressWarnings("unused")
-			Position animalPos = savannaTest.ConsumerMovement();
+			savannaTest.ConsumerMovement();
 			dashboard.repaint();
 			try {
 				Thread.sleep(1000);

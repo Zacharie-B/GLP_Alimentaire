@@ -45,10 +45,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[4]);
 	private Buffalo buffalo = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
 	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
-	private Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
+	public Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
 	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[8]);
 	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
-	private Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
+	public Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
 	/**
 	 * Lists that allow us to know the predator of each species except the Third Consumer
@@ -83,28 +83,21 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		//DisplayAndScrollHashMap();
 	}
 
-<<<<<<< HEAD
-	public Position ConsumerMovement() {
-=======
+
 	public void ConsumerMovement() {
->>>>>>> branch 'master' of https://github.com/Yassin2Luxe/GLP_Alimentaire.git
+
 			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
-			return lion.getCordinates();
 			/*giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
 			hyena.setCordinates(CreateMovement.SavannaMouvement(hyena));
 			gazelle.setCordinates(CreateMovement.SavannaMouvement(gazelle));
 			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
 			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
 			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
-<<<<<<< HEAD
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));*/	
-=======
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));*/
 			FirstChain();
 			SecondChain();
-			ThirdChain();
->>>>>>> branch 'master' of https://github.com/Yassin2Luxe/GLP_Alimentaire.git
-		}
+			ThirdChain();		
+			}
 
 
 	public void FirstChain() {

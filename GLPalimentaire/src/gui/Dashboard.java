@@ -11,6 +11,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import data.Consumer;
+import data.Position;
 import data.tertiaryConsumerdata.Lion;
 import ecosystemProcess.SavannaEcosystem;
 
@@ -22,7 +24,9 @@ public class Dashboard extends JPanel{
 	
 	private Image image;
 	private Image lion;
-	
+	private int heightPanel;
+	private int widthPanel;
+	private int squareSide;
 	
 	public Image getLion() {
 		return lion;
@@ -75,17 +79,14 @@ public class Dashboard extends JPanel{
         return image;
     }
     
-	public void add() {
-		SavannaEcosystem savannaTest = new SavannaEcosystem();
-	}
 	
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
     	if(image!=null && lion!=null){
-        	int heightPanel = getHeight();
-        	int widthPanel = getWidth();
-        	int squareSide = heightPanel/3;
+        	heightPanel = getHeight();
+        	widthPanel = getWidth();
+        	squareSide = heightPanel/3;
             Graphics2D g2d = (Graphics2D)g;
             g2d.setColor(Color.green);
             g2d.fillRect(0, 0, widthPanel/2, heightPanel/2);
@@ -97,25 +98,12 @@ public class Dashboard extends JPanel{
             g2d.drawImage(image, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.setColor(Color.blue);
             g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);
-        	g2d.drawImage(lion, heightPanel/8, widthPanel/5, widthPanel/10, heightPanel/10, this);
+            
+            
+            SavannaEcosystem savannaTest = new SavannaEcosystem();
+        	g2d.drawImage(lion,(savannaTest.lion.getCordinates().getX()*widthPanel)/30, 
+        			(savannaTest.lion.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+        	
         }	
-    }
-    
-    public void paintLion(Graphics g) {
-    	super.paintComponent(g);
-    	if(image!=null) {
-    		int heightPanel = getHeight();
-        	int widthPanel = getWidth();
-        	Graphics2D g2d = (Graphics2D)g;
-        	try {
-				setImage("src/misc/lion.jpg");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	g2d.drawImage(getImage(), heightPanel/8, widthPanel/5, widthPanel/10, heightPanel/10, this);
-    	}
-    	
-    	
     }
 }

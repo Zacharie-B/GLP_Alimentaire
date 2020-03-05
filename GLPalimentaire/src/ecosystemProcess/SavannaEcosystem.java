@@ -185,8 +185,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	@Override
 	public String toString() {
-		String result = "species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
-		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
+		String result = "la";
+		//"species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
+		/*result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
 		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+"," +warthog.getCordinates()+")";
 		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+"," +cheetah.getCordinates()+")";
 		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+"," +bush.getCordinates()+")";
@@ -194,7 +195,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+"," +zebra.getCordinates()+")";
 		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+"," +hyena.getCordinates()+")";
 		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+"," +acacia.getCordinates()+")";
-		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";
+		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";*/
 		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+"," +lion.getCordinates()+")";
 		return result;
 	}

@@ -32,7 +32,8 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
 	
-	public MainGUI(String title){
+	public MainGUI(){
+		init();
 		
 		//d�but teste image de fond
 		try {
@@ -97,7 +98,62 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	@SuppressWarnings("unused")
 	private void init() {
-		
+		//d�but teste image de fond
+				try {
+					dashboard.setImage("src/misc/Orange.jpg");
+					dashboard.setLion("src/misc/lion.jpg");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//fin test image de fond
+				
+				//d�but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
+				GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
+				
+				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
+				asidePanelGridBagConstraints.weightx = 1;
+				
+				asidePanelGridBagConstraints.weighty = 0.2;
+				asidePanelGridBagConstraints.gridx = 0;
+				asidePanelGridBagConstraints.gridy = 0;
+				operationZone.setBorder(lineborder);
+				operationZoneANDinformationZone.add(operationZone, asidePanelGridBagConstraints);
+				
+				asidePanelGridBagConstraints.weighty = 0.8;
+				asidePanelGridBagConstraints.gridx = 0;
+				asidePanelGridBagConstraints.gridy = 1;
+				informationZone.setBorder(lineborder);
+				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);
+				//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
+				
+				
+				//d�but : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
+				GridBagConstraints MapPanelGridBagConstraints = new GridBagConstraints();
+				
+				MapPanelGridBagConstraints.fill = GridBagConstraints.BOTH;
+				MapPanelGridBagConstraints.weighty = 1;
+
+				MapPanelGridBagConstraints.weightx = 0.95;
+				MapPanelGridBagConstraints.gridx = 0;
+				MapPanelGridBagConstraints.gridy = 0;
+				dashboard.setBorder(lineborder);
+				fenetre.add(dashboard, MapPanelGridBagConstraints);
+
+				MapPanelGridBagConstraints.weightx = 0.05;
+				MapPanelGridBagConstraints.gridx = 1;
+				MapPanelGridBagConstraints.gridy = 0;
+				fenetre.add(operationZoneANDinformationZone, MapPanelGridBagConstraints);
+				//fin : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
+				
+				add(fenetre);
+				
+				setTitle("Simulation");
+				setDefaultCloseOperation(EXIT_ON_CLOSE);
+				pack();
+				setSize(dimensionFenetre);
+				setVisible(true);
+				setResizable(false);
 	}
 	@Override
 	public void run() {

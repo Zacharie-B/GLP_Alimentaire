@@ -84,8 +84,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 
 
-	public void ConsumerMovement() {
 
+
+
+	public void ConsumerMovement() {
 			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
 			/*giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
 			hyena.setCordinates(CreateMovement.SavannaMouvement(hyena));
@@ -93,11 +95,17 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
 			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
 			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
+
 			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));*/
+
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));	
+			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
 			FirstChain();
 			SecondChain();
+
 			ThirdChain();		
 			}
+
 
 
 	public void FirstChain() {

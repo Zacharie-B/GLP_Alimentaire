@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -19,7 +20,7 @@ import data.Position;
 
 import ecosystemProcess.SavannaEcosystem;
 
-public class MainGUI extends JFrame implements Runnable{
+public class MainGUI extends JDialog implements Runnable{
 
 	private Dimension dimensionFenetre = new Dimension(1850,900);
 	private Border lineborder = BorderFactory.createLineBorder(Color.black, 1);
@@ -31,6 +32,8 @@ public class MainGUI extends JFrame implements Runnable{
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
+	
+	private MainGUI instance = this;
 	
 	public MainGUI(){
 		init();
@@ -90,12 +93,22 @@ public class MainGUI extends JFrame implements Runnable{
 				add(fenetre);
 				
 				setTitle("Simulation");
-				setDefaultCloseOperation(EXIT_ON_CLOSE);
+				//setDefaultCloseOperation(EXIT_ON_CLOSE);
 				pack();
 				setSize(dimensionFenetre);
 				setVisible(true);
 				setResizable(false);
 	}
+	
+	
+	public MainGUI getInstance() {
+		return instance;
+	}
+
+	public void setInstance(MainGUI instance) {
+		this.instance = instance;
+	}
+
 	@Override
 	public void run() {
 		SavannaEcosystem savannaTest = new SavannaEcosystem();

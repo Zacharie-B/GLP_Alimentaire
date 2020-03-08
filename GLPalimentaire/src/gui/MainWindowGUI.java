@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -72,10 +73,10 @@ public class MainWindowGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			MainGUI simulationWindow = new MainGUI();
 			setVisible(false);	
 			dispose();
-			simulationWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			MainGUI simulationWindow = new MainGUI();
+			simulationWindow.run();
 		}
 		
 	}
@@ -87,6 +88,10 @@ public class MainWindowGUI extends JFrame{
 			
 		}
 		
+	}
+	
+	public void run() {
+
 	}
 	
 	public class Leave implements ActionListener{

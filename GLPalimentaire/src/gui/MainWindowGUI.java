@@ -5,8 +5,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +30,7 @@ public class MainWindowGUI extends JFrame{
 	
 	private JPanel panel = new JPanel(new GridBagLayout());
 	
-	public MainWindowGUI(String title){
+	public MainWindowGUI(){
 		launchedDefault.addActionListener(new LaunchedDefault());
 		
 		launchedCustom.addActionListener(new LaunchedCustom());
@@ -55,7 +57,7 @@ public class MainWindowGUI extends JFrame{
 		
 		add(panel);
 		
-		setTitle(title);
+		setTitle("Simulation d'�cosyst�me");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setSize(dimensionFenetre);
@@ -63,9 +65,9 @@ public class MainWindowGUI extends JFrame{
 		setResizable(false);
 	}
 	
-	public static void main(String[] args) {
-		new MainWindowGUI("Ecosystem Simulation");
-	}
+	/*public static void main(String[] args) {
+		new MainWindowGUI();
+	}*/
 
 	public class LaunchedDefault implements ActionListener{
 
@@ -75,6 +77,8 @@ public class MainWindowGUI extends JFrame{
 			simulationMovement.run();
 			setVisible(false);	
 			dispose();
+			MainGUI simulationWindow = new MainGUI();
+			simulationWindow.run();
 		}
 		
 	}
@@ -86,6 +90,10 @@ public class MainWindowGUI extends JFrame{
 			
 		}
 		
+	}
+	
+	public void run() {
+
 	}
 	
 	public class Leave implements ActionListener{

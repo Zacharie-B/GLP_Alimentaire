@@ -71,7 +71,8 @@ public class MainWindowGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new MainGUI();
+			MainGUI simulationMovement = new MainGUI();
+			simulationMovement.run();
 			setVisible(false);	
 			dispose();
 		}

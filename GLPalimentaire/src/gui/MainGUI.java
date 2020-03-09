@@ -88,7 +88,7 @@ public class MainGUI extends JFrame implements Runnable{
 		
 		add(fenetre);
 		
-		setTitle(title);
+		setTitle("map");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setSize(dimensionFenetre);

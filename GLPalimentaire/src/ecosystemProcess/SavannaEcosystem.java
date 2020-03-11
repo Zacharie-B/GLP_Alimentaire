@@ -38,19 +38,19 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * initialization of all species present in FrostyEcosystem
 	 */
 	private static InitialPosition pos = new InitialPosition();
-	public static Grass grass = new Grass("grass",true,100,10,2,15,25,0,4,pos.initPosition[0]);
-	public static Gazelle gazelle = new Gazelle("gazelle", 15, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
-	public static Warthog warthog = new Warthog ("warthog",20, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
-	public static Cheetah cheetah = new Cheetah ("cheetah",20, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
+	public static Grass grass = new Grass("grass",true,100,10,2,150,25,0,4,pos.initPosition[0]);
+	public static Gazelle gazelle = new Gazelle("gazelle", 150, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
+	public static Warthog warthog = new Warthog ("warthog",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
+	public static Cheetah cheetah = new Cheetah ("cheetah",200, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
 	@SuppressWarnings("unused")
 	private Species[] cheetahBeings = BeingCreator.initFamily();
-	public static Bush bush = new Bush("bush",true,100,10,2,15,5,1,4,pos.initPosition[4]);
-	public static Buffalo buffalo = new Buffalo("buffalo", 15, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
-	public static Zebra zebra = new Zebra("zebra",20, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
-	public static Hyena hyena = new Hyena ("hyena",30, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
-	public static Acacia acacia = new Acacia("acacia",true,100,10,2,30,5,1,4,pos.initPosition[8]);
-	public static Giraffe giraffe = new Giraffe("giraffe", 15, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
-	public static  Lion lion = new Lion ("lion",30, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
+	public static Bush bush = new Bush("bush",true,100,10,2,150,5,1,4,pos.initPosition[4]);
+	public static Buffalo buffalo = new Buffalo("buffalo", 150, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
+	public static Zebra zebra = new Zebra("zebra",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
+	public static Hyena hyena = new Hyena ("hyena",300, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
+	public static Acacia acacia = new Acacia("acacia",true,100,10,2,300,5,1,4,pos.initPosition[8]);
+	public static Giraffe giraffe = new Giraffe("giraffe", 150, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
+	public static  Lion lion = new Lion ("lion",300, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
 	/**
 	 * Lists that allow us to know the predator of each species except the Third Consumer

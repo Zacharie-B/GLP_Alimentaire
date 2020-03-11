@@ -35,20 +35,20 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	/**
 	 * initialization of all species present in FrostyEcosystem
 	 */
-	private InitialPosition pos = new InitialPosition();
-	private Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[0]);
-	private Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
-	private Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
-	private Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
+	private static InitialPosition pos = new InitialPosition();
+	public static Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[0]);
+	public static Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
+	public static Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
+	public static Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
 	@SuppressWarnings("unused")
 	private Species[] cheetahBeings = BeingCreator.initFamily();
-	private Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[4]);
-	private Buffalo buffalo = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
-	private Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
-	public Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
-	private Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[8]);
-	private Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
-	public Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
+	public static Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[4]);
+	public static Buffalo buffalo = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
+	public static Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
+	public static Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
+	public static Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[8]);
+	public static Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
+	public static  Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
 	/**
 	 * Lists that allow us to know the predator of each species except the Third Consumer
@@ -79,7 +79,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	public SavannaEcosystem() {
 		species = new Species[NBMAXSPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
-		AllPointsMap();
 		//DisplayAndScrollHashMap();
 	}
 
@@ -89,20 +88,15 @@ public class SavannaEcosystem extends FoodChainsProcess{
 
 	public void ConsumerMovement() {
 			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
-			/*giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
+			giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
 			hyena.setCordinates(CreateMovement.SavannaMouvement(hyena));
 			gazelle.setCordinates(CreateMovement.SavannaMouvement(gazelle));
 			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
 			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
 			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
-
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));*/
-
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));	
 			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
 			FirstChain();
 			SecondChain();
-
 			ThirdChain();		
 			}
 
@@ -193,9 +187,8 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	@Override
 	public String toString() {
-		String result = "la";
-		//"species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
-		/*result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
+		String result ="\nspecies :" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
+		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
 		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+"," +warthog.getCordinates()+")";
 		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+"," +cheetah.getCordinates()+")";
 		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+"," +bush.getCordinates()+")";
@@ -203,7 +196,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+"," +zebra.getCordinates()+")";
 		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+"," +hyena.getCordinates()+")";
 		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+"," +acacia.getCordinates()+")";
-		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";*/
+		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";
 		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+"," +lion.getCordinates()+")";
 		return result;
 	}

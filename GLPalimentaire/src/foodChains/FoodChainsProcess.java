@@ -20,7 +20,7 @@ public class FoodChainsProcess{
 	 * treats the first trophic level of the food chain
 	 */
 	
-	private MineralChange mineralChange = MineralChange.getInstance();
+	private  MineralChange mineralChange = MineralChange.getInstance();
 	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, 
 			ArrayList<String> proeatenby) {

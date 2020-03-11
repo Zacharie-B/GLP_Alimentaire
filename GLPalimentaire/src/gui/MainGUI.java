@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import data.Position;
 
 import ecosystemProcess.SavannaEcosystem;
+import movementOfSpecies.CreateMovement;
 
 public class MainGUI extends JFrame implements Runnable{
 
@@ -32,6 +33,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private OperationZone operationZone = new OperationZone();
 	private InformationZone informationZone = new InformationZone();
 	private Dashboard dashboard = new Dashboard();
+	private SavannaEcosystem se= new SavannaEcosystem();
 	
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
@@ -41,14 +43,13 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	public MainGUI(){
 		init();
-
+		run();
 	}
 	
 	private void init() {
-		//d�but teste image de fond
+				//d�but teste image de fond
 				try {
-					dashboard.setImage("src/misc/Orange.jpg");
-					dashboard.setLion("src/misc/lion.jpg");
+					dashboard.setPicture();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -127,6 +128,20 @@ public class MainGUI extends JFrame implements Runnable{
 		}
 		
 	}
+	
+	public void ConsumerMovement() {
+		SavannaEcosystem.lion.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.lion));
+		SavannaEcosystem.giraffe.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.giraffe));
+		SavannaEcosystem.hyena.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.hyena));
+		SavannaEcosystem.gazelle.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.gazelle));
+		SavannaEcosystem.warthog.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.warthog));
+		SavannaEcosystem.cheetah.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.cheetah));
+		SavannaEcosystem.buffalo.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.buffalo));
+		SavannaEcosystem.zebra.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.zebra));
+		se.FirstChain();
+		se.SecondChain();
+		se.ThirdChain();	
+		}
 
 	/*public static void main(String[] args) {
 		new MainGUI("Map");

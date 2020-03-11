@@ -11,8 +11,9 @@ public class CreateMovement extends SavannaMovement{
 	}
 	
 	public static Position SavannaMouvement (Consumer consumer) {
-		int c=0;
 		Position initPosition = consumer.getCordinates();
+		if(consumer.getIsAlive()==true) {
+		int c=0;
 		Position position = consumer.getCordinates();
         // Pour obtenir une valeur entière non nulle, il faut multiplier le
         // nombre aléatoire avec un nombre supérieur 0 avant la conversion.
@@ -38,7 +39,9 @@ public class CreateMovement extends SavannaMovement{
         	c=SavannaMoveBot(consumer);
         	position.setY(c); 
         	return consumer.getCordinates();
-        }	
+        }
+		}
         return initPosition;
 	}
+	
 }

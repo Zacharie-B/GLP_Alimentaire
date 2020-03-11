@@ -8,7 +8,9 @@ import java.util.Set;
 
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
+import data.Consumer;
 import data.Position;
+import data.Producer;
 import data.Species;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
@@ -21,7 +23,7 @@ import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
 import foodChains.FoodChainsProcess;
-import movementOfSpecies.CreateMovement;
+import foodChains.IsDead;
 import movementOfSpecies.InitialPosition;
 import naturalNeedsManagement.MineralChange;
 
@@ -36,19 +38,19 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * initialization of all species present in FrostyEcosystem
 	 */
 	private static InitialPosition pos = new InitialPosition();
-	public static Grass grass = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[0]);
-	public static Gazelle gazelle = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
-	public static Warthog warthog = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
-	public static Cheetah cheetah = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
+	public static Grass grass = new Grass("grass",true,100,10,2,15,25,0,4,pos.initPosition[0]);
+	public static Gazelle gazelle = new Gazelle("gazelle", 15, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
+	public static Warthog warthog = new Warthog ("warthog",20, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
+	public static Cheetah cheetah = new Cheetah ("cheetah",20, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
 	@SuppressWarnings("unused")
 	private Species[] cheetahBeings = BeingCreator.initFamily();
-	public static Bush bush = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[4]);
-	public static Buffalo buffalo = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
-	public static Zebra zebra = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
-	public static Hyena hyena = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
-	public static Acacia acacia = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[8]);
-	public static Giraffe giraffe = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
-	public static  Lion lion = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
+	public static Bush bush = new Bush("bush",true,100,10,2,15,5,1,4,pos.initPosition[4]);
+	public static Buffalo buffalo = new Buffalo("buffalo", 15, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
+	public static Zebra zebra = new Zebra("zebra",20, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
+	public static Hyena hyena = new Hyena ("hyena",30, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
+	public static Acacia acacia = new Acacia("acacia",true,100,10,2,30,5,1,4,pos.initPosition[8]);
+	public static Giraffe giraffe = new Giraffe("giraffe", 15, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
+	public static  Lion lion = new Lion ("lion",30, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
 	/**
 	 * Lists that allow us to know the predator of each species except the Third Consumer
@@ -85,20 +87,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 
 
 
-
-	public void ConsumerMovement() {
-			lion.setCordinates(CreateMovement.SavannaMouvement(lion));
-			giraffe.setCordinates(CreateMovement.SavannaMouvement(giraffe));
-			hyena.setCordinates(CreateMovement.SavannaMouvement(hyena));
-			gazelle.setCordinates(CreateMovement.SavannaMouvement(gazelle));
-			warthog.setCordinates(CreateMovement.SavannaMouvement(warthog));
-			cheetah.setCordinates(CreateMovement.SavannaMouvement(cheetah));
-			buffalo.setCordinates(CreateMovement.SavannaMouvement(buffalo));
-			zebra.setCordinates(CreateMovement.SavannaMouvement(zebra));
-			FirstChain();
-			SecondChain();
-			ThirdChain();		
-			}
 
 
 
@@ -155,6 +143,43 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	         Entry<Position, Integer> e = it.next();
 	         System.out.println(e.getKey() + " : " + e.getValue());
 	      }
+	}
+	public void AllAnimalsHpManagement() {
+		DieOrHungryProducer(grass);
+		DieOrHungryProducer(bush);
+		DieOrHungryProducer(acacia);
+		DieOrHungryConsumer(gazelle);
+		DieOrHungryConsumer(giraffe);
+		DieOrHungryConsumer(lion);
+		DieOrHungryConsumer(hyena);
+		DieOrHungryConsumer(zebra);
+		DieOrHungryConsumer(cheetah);
+		DieOrHungryConsumer(warthog);
+		DieOrHungryConsumer(buffalo);
+	}
+	 
+	private void DieOrHungryProducer(Producer producer) {
+		if(producer.getHP()==0) {
+			IsDead isDead= new IsDead();
+			isDead.ProducerDead(producer);
+		}
+		else{
+			int hp= producer.getHP();
+			hp--;
+			producer.setHP(hp);
+		}
+	}
+	
+	private void DieOrHungryConsumer(Consumer consumer) {
+		if(consumer.getHp()==0) {
+			IsDead isDead= new IsDead();
+			isDead.ConsumerDead(consumer);
+		}
+		else{
+			int hp= consumer.getHp();
+			hp--;
+			consumer.setHp(hp);
+		}
 	}
 	
 

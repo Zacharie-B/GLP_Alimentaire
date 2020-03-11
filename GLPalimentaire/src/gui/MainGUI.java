@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -39,7 +41,9 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
 	
+	private JButton startButton = new JButton(" Start ");
 	private MainGUI instance = this;
+	
 	
 	public MainGUI(){
 		init();
@@ -62,6 +66,7 @@ public class MainGUI extends JFrame implements Runnable{
 				setSize(WINDOWS_DIMENSION);
 				setVisible(true);
 				setResizable(false);
+				
 				//d�but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 				GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 				
@@ -114,19 +119,19 @@ public class MainGUI extends JFrame implements Runnable{
 
 	@Override
 	public void run() {
-		SavannaEcosystem savannaTest = new SavannaEcosystem();
 		boolean finish = false;
 		while (finish==false) {
-			savannaTest.ConsumerMovement();
-			System.out.println(savannaTest.toString());
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			}
 			catch (InterruptedException e){
 				System.out.println(e.getMessage());
 			}
+			if(OperationZone.stop!=false) {
+				ConsumerMovement();
+				se.AllAnimalsHpManagement();
+			}
 		}
-		
 	}
 	
 	public void ConsumerMovement() {
@@ -142,9 +147,10 @@ public class MainGUI extends JFrame implements Runnable{
 		se.SecondChain();
 		se.ThirdChain();	
 		}
+	
 
-	/*public static void main(String[] args) {
-		new MainGUI("Map");
-	}*/
+	public static void main(String[] args) {
+		new MainGUI();
+	}
 
 }

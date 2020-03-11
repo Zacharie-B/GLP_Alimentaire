@@ -8,6 +8,7 @@ import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
 import data.TertiaryConsumer;
+import naturalNeedsManagement.HungryProcess;
 import naturalNeedsManagement.MineralChange;
 
 public class FoodChainsProcess{
@@ -21,6 +22,7 @@ public class FoodChainsProcess{
 	 */
 	
 	private  MineralChange mineralChange = MineralChange.getInstance();
+	private  HungryProcess hp= new HungryProcess();
 	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, 
 			ArrayList<String> proeatenby) {
@@ -35,9 +37,9 @@ public class FoodChainsProcess{
 				IsDead isDead= new IsDead();
 				isDead.ProducerDead(producer);
 				addMineralResources(producer.getCordinates(),producer.getOrganicMass());
-				continueList =false;
-				
-			}	
+				hp.HungryProcessConsumerWithProducer(primaryConsumer, producer);
+				continueList =false;			
+			}
 		}
 	}
 
@@ -61,6 +63,7 @@ public class FoodChainsProcess{
 					IsDead isDead= new IsDead();
 					isDead.ConsumerDead(primaryConsumer);
 					addMineralResources(primaryConsumer.getCordinates(),primaryConsumer.getOrganicMass());
+					hp.HungryProcessConsumerWithConsumer(secondaryConsumer, primaryConsumer);
 					continueList=false;
 			}
 		}
@@ -86,6 +89,7 @@ public class FoodChainsProcess{
 					IsDead isDead = new IsDead();
 					isDead.ConsumerDead(secondaryConsumer);
 					addMineralResources(secondaryConsumer.getCordinates(),secondaryConsumer.getOrganicMass());
+					hp.HungryProcessConsumerWithConsumer(tertiaryConsumer, secondaryConsumer);
 					continueList=false;
 			}
 		}

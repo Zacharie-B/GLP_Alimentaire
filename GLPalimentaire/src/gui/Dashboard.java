@@ -77,8 +77,8 @@ public class Dashboard extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-    	if(desert!=null && lionp!=null && lionp!=null && lionp!=null && lionp!=null && lionp!=null && lionp!=null
-    			&& lionp!=null && lionp!=null && lionp!=null && lionp!=null && lionp!=null ){
+    	if(desert!=null && savanna!=null && acaciap!=null && buffalop!=null && bushp!=null && cheetahp!=null && gazellep!=null
+    			&& giraffep!=null && grassp!=null && hyenap!=null && lionp!=null && warthogp!=null && zebrap!=null){
         	heightPanel = getHeight();
         	widthPanel = getWidth();
         	squareSide = heightPanel/3;
@@ -95,28 +95,50 @@ public class Dashboard extends JPanel{
             
             g2d.drawImage(desert, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.drawImage(savanna,0,0, widthPanel/2, heightPanel/2, this);
+            if (SavannaEcosystem.acacia.getIsAlive()==true) {
         	g2d.drawImage(acaciap,(SavannaEcosystem.acacia.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.acacia.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.buffalo.getIsAlive()==true) {
         	g2d.drawImage(buffalop,(SavannaEcosystem.buffalo.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.buffalo.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.bush.getIsAlive()==true) {
         	g2d.drawImage(bushp,(SavannaEcosystem.bush.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.bush.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.cheetah.getIsAlive()==true) {
         	g2d.drawImage(cheetahp,(SavannaEcosystem.cheetah.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.cheetah.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.gazelle.getIsAlive()==true) {
         	g2d.drawImage(gazellep,(SavannaEcosystem.gazelle.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.gazelle.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.giraffe.getIsAlive()==true) {
         	g2d.drawImage(giraffep,(SavannaEcosystem.giraffe.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.giraffe.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.grass.getIsAlive()==true) {
         	g2d.drawImage(grassp,(SavannaEcosystem.grass.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.grass.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.hyena.getIsAlive()==true) {
         	g2d.drawImage(hyenap,(SavannaEcosystem.hyena.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.hyena.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.lion.getIsAlive()==true) {
         	g2d.drawImage(lionp,(SavannaEcosystem.lion.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.lion.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.warthog.getIsAlive()==true) {
         	g2d.drawImage(warthogp,(SavannaEcosystem.warthog.getCordinates().getX()*widthPanel)/30, 
           			(SavannaEcosystem.warthog.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
+            if (SavannaEcosystem.zebra.getIsAlive()==true) {
         	g2d.drawImage(zebrap,(SavannaEcosystem.zebra.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.zebra.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+            }
         	repaint();		
         }	
     }

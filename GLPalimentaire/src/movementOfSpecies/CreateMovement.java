@@ -10,7 +10,7 @@ public class CreateMovement extends MovementOnMap{
 		
 	}
 	
-	public static Position SavannaMouvement (Consumer consumer) {
+	public Position SavannaMouvement (Consumer consumer) {
 		Position initPosition = consumer.getCordinates();
 		if(consumer.getIsAlive()==true) {
 		int c=0;

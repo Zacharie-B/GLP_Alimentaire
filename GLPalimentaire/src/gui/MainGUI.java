@@ -14,7 +14,6 @@ import javax.swing.border.Border;
 
 import beingManagement.BeingCreator;
 import ecosystemProcess.SavannaEcosystem;
-import movementOfSpecies.CreateMovement;
 
 public class MainGUI extends JFrame implements Runnable{
 
@@ -30,7 +29,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
 	@SuppressWarnings("unused")
-	private BeingCreator bc= new BeingCreator();
+	private BeingCreator instance=BeingCreator.getInstance();
 	
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
@@ -111,25 +110,18 @@ public class MainGUI extends JFrame implements Runnable{
 				System.out.println(e.getMessage());
 			}
 			if(OperationZone.stop!=false) {
-				ConsumerMovement();
+				MovementOnMap();
 				se.AllSpeciesHpManagement();
 				System.out.println(se.toString());
 			}
 		}
 	}
 	
-	public void ConsumerMovement() {
+	public void MovementOnMap() {
 		/*for(int i=62; i<67; i++) {
-			bc.allAnimals[i].setCordinates(CreateMovement.SavannaMouvement((Consumer) bc.allAnimals[i]));
+			instance.allAnimals[i].setCordinates(CreateMovement.SavannaMouvement((Consumer) instance.allAnimals[i]));
 		}*/
-		SavannaEcosystem.lion.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.lion));
-		SavannaEcosystem.giraffe.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.giraffe));
-		SavannaEcosystem.hyena.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.hyena));
-		SavannaEcosystem.gazelle.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.gazelle));
-		SavannaEcosystem.warthog.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.warthog));
-		SavannaEcosystem.cheetah.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.cheetah));
-		SavannaEcosystem.buffalo.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.buffalo));
-		SavannaEcosystem.zebra.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.zebra));
+		se.ConsumerMovement();
 		se.FirstChain();
 		se.SecondChain();
 		se.ThirdChain();

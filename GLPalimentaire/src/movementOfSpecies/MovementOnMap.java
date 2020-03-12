@@ -4,7 +4,7 @@ import data.Consumer;
 
 public class MovementOnMap extends MovementPosition{
 
-	public static int SavannaMoveLeft(Consumer consumer) {
+	public int SavannaMoveLeft(Consumer consumer) {
 		int c;
 		if (consumer.getCordinates().getX()==0) {
 			c=MoveRight(consumer);
@@ -15,7 +15,7 @@ public class MovementOnMap extends MovementPosition{
 		return c;
 	}
 	
-	public static int SavannaMoveRight(Consumer consumer) {
+	public int SavannaMoveRight(Consumer consumer) {
 		int c;
 		if (consumer.getCordinates().getX()==29) {
 			c=MoveLeft(consumer);
@@ -26,7 +26,7 @@ public class MovementOnMap extends MovementPosition{
 		return c;
 	}
 	
-	public static int SavannaMoveTop(Consumer consumer) {
+	public int SavannaMoveTop(Consumer consumer) {
 		int c;
 		if (consumer.getCordinates().getY()==19) {
 			c=MoveBot(consumer);
@@ -37,7 +37,7 @@ public class MovementOnMap extends MovementPosition{
 		return c;
 	}
 	
-	public static int SavannaMoveBot(Consumer consumer) {
+	public int SavannaMoveBot(Consumer consumer) {
 		int c;
 		if (consumer.getCordinates().getY()==0) {
 			c=MoveTop(consumer);

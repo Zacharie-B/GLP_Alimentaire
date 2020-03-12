@@ -6,12 +6,14 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import beingManagement.BeingCreator;
 import data.Consumer;
+import data.Position;
 import data.Producer;
 import ecosystemProcess.SavannaEcosystem;
 import gui.images.ImagesPreferences;
@@ -39,8 +41,8 @@ public class Dashboard extends JPanel{
 	private int heightPanel;
 	private int widthPanel;
 	private int squareSide;
-	private BeingCreator bc= new BeingCreator("Savanna");
-	
+	private SavannaEcosystem sav = new SavannaEcosystem();
+	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	
 
 	public void setPicture() throws IOException {
@@ -95,8 +97,23 @@ public class Dashboard extends JPanel{
             //g2d.drawImage(desert, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(0,0, widthPanel, heightPanel);
+                    	
+            		DisplayPictureProducer(grassp, g2d,"grass");
+            		DisplayPictureProducer(bushp, g2d,"bush");
+            		DisplayPictureProducer(acaciap, g2d,"acacia");
+            		DisplayPictureConsumer(gazellep, g2d,"gazelle");
+            		DisplayPictureConsumer(giraffep, g2d,"giraffe");
+            		DisplayPictureConsumer(hyenap, g2d,"hyena");
+            		DisplayPictureConsumer(warthogp, g2d,"warthog");
+            		DisplayPictureConsumer(lionp, g2d,"lion");
+            		DisplayPictureConsumer(cheetahp, g2d,"cheetah");
+            		DisplayPictureConsumer(buffalop, g2d,"buffalo");
+            		DisplayPictureConsumer(zebrap, g2d,"zebra");
+          
             
-            DisplayPictureProducer1(acaciap, g2d, SavannaEcosystem.acacia);
+            
+            
+            /**DisplayPictureProducer1(acaciap, g2d, SavannaEcosystem.acacia);
             DisplayPictureProducer1(bushp, g2d, SavannaEcosystem.bush);
             DisplayPictureProducer1(grassp, g2d, SavannaEcosystem.grass);
             DisplayPictureConsumer1(buffalop,g2d, SavannaEcosystem.buffalo);
@@ -106,7 +123,7 @@ public class Dashboard extends JPanel{
             DisplayPictureConsumer1(hyenap,g2d, SavannaEcosystem.hyena);
             DisplayPictureConsumer1(lionp,g2d, SavannaEcosystem.lion);
             DisplayPictureConsumer1(warthogp,g2d, SavannaEcosystem.warthog);
-            DisplayPictureConsumer1(zebrap,g2d, SavannaEcosystem.zebra);
+            DisplayPictureConsumer1(zebrap,g2d, SavannaEcosystem.zebra);*/
 
             /*for(i=62;i<67;i++) {
             if (((Consumer) bc.allAnimals[i]).getIsAlive()==true) {
@@ -119,7 +136,7 @@ public class Dashboard extends JPanel{
         }	
     
 
-private void DisplayPictureConsumer1(Image image, Graphics2D g2d, Consumer species) {
+/**private void DisplayPictureConsumer1(Image image, Graphics2D g2d, Consumer species) {
 	if (image!=null && species.getIsAlive()==true) {
 		g2d.drawImage(image,(species.getCordinates().getX()*widthPanel)/30, 
       			(species.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
@@ -131,22 +148,26 @@ private void DisplayPictureProducer1(Image image, Graphics2D g2d, Producer speci
 		g2d.drawImage(image,(species.getCordinates().getX()*widthPanel)/30, 
       			(species.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
         }
-	}
-
-
-    @SuppressWarnings("unused")
-	private void DisplayPictureConsumer(Image image, Graphics2D g2d, Consumer[] species, int i) {
-    	if (image!=null && species[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(species[i].getCordinates().getX()*widthPanel)/30, 
-          			(species[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+	}*/
+	private void DisplayPictureConsumer(Image image, Graphics2D g2d, String name) {
+		Consumer[] consumer = new Consumer[10];
+		consumer=(Consumer[]) animalsInSavana.getTable(name);
+		for(int i=0;i<10;i++) {
+    	if (image!=null && consumer[i].getIsAlive()==true) {
+    		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/30, 
+          			(consumer[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
             }
+		}
     	}
-    @SuppressWarnings("unused")
-	private void DisplayPictureProducer(Image image, Graphics2D g2d, Producer[] species, int i) {
-    	if (image!=null && species[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(species[i].getCordinates().getX()*widthPanel)/30, 
-          			(species[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+	private void DisplayPictureProducer(Image image, Graphics2D g2d, String name) {
+		Producer[] producer = new Producer[10];
+		producer=(Producer[]) animalsInSavana.getTable(name);
+		for(int i=0; i<10;i++) {
+    	if (image!=null && producer[i].getIsAlive()==true) {
+    		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/30, 
+          			(producer[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
             }
+		}
     	}
 }
     

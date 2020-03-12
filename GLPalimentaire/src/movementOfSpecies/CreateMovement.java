@@ -4,7 +4,7 @@ package movementOfSpecies;
 import data.Consumer;
 import data.Position;
 
-public class CreateMovement extends SavannaMovement{
+public class CreateMovement extends MovementOnMap{
 	
 	public CreateMovement (){
 		

@@ -93,7 +93,8 @@ public class Dashboard extends JPanel{
             g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);*/
             
             //g2d.drawImage(desert, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
-            g2d.drawImage(savanna,0,0, widthPanel, heightPanel, this);
+            g2d.setColor(Color.ORANGE);
+            g2d.fillRect(0,0, widthPanel, heightPanel);
             
             DisplayPictureProducer1(acaciap, g2d, SavannaEcosystem.acacia);
             DisplayPictureProducer1(bushp, g2d, SavannaEcosystem.bush);

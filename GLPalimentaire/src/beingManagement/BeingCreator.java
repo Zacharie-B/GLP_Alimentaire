@@ -69,7 +69,6 @@ public class BeingCreator {
 				else if (i>61 && i<= 66) {
 					allAnimals[i] = new Lion ("lion",30, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 				}
-			System.out.println(allAnimals[i].getName()+","+allAnimals[i].getCordinates());
 			}
 			break;
 		default :

@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import beingManagement.BeingCreator;
-import data.Consumer;
 import ecosystemProcess.SavannaEcosystem;
 import movementOfSpecies.CreateMovement;
 
@@ -30,6 +29,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private InformationZone informationZone = new InformationZone();
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
+	@SuppressWarnings("unused")
 	private BeingCreator bc= new BeingCreator();
 	
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());

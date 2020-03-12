@@ -2,7 +2,7 @@ package movementOfSpecies;
 
 import data.Consumer;
 
-public class SavannaMovement extends MovementPosition{
+public class MovementOnMap extends MovementPosition{
 
 	public static int SavannaMoveLeft(Consumer consumer) {
 		int c;
@@ -17,7 +17,7 @@ public class SavannaMovement extends MovementPosition{
 	
 	public static int SavannaMoveRight(Consumer consumer) {
 		int c;
-		if (consumer.getCordinates().getX()==9) {
+		if (consumer.getCordinates().getX()==29) {
 			c=MoveLeft(consumer);
 		}
 		else {
@@ -28,7 +28,7 @@ public class SavannaMovement extends MovementPosition{
 	
 	public static int SavannaMoveTop(Consumer consumer) {
 		int c;
-		if (consumer.getCordinates().getY()==5) {
+		if (consumer.getCordinates().getY()==19) {
 			c=MoveBot(consumer);
 		}
 		else {

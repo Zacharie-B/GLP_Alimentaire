@@ -9,6 +9,7 @@ import java.util.Set;
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
 import data.Consumer;
+import data.Ecosystem;
 import data.Position;
 import data.Producer;
 import data.Species;
@@ -74,6 +75,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Species[] species;
 	
 	private static final int NBMAXSPECIES=500;
+	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
 	public SavannaEcosystem() {
@@ -209,6 +211,105 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		}
 	*/
 	
+	public Species[] setAnimals(String name) {
+		int i;
+		switch (name) {
+		case "Grass" :
+			Grass [] grassTable = new Grass[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				grassTable[i] = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[i]);
+			}
+			animalsInSavana.register("Grass", grassTable);
+			return grassTable;
+		case "Gazelle" :
+			Gazelle [] gazelleTable = new Gazelle[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				gazelleTable[i] = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Gazelle", gazelleTable);
+			return gazelleTable;
+		case "Warthog" :
+			Warthog [] warthogTable = new Warthog[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				warthogTable[i] = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Warthog", warthogTable);
+			return warthogTable;
+		case "Cheetah" :
+			Cheetah [] cheetahTable = new Cheetah[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				cheetahTable[i] = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Cheetah", cheetahTable);
+			return cheetahTable;
+		case "Bush" :
+			Bush [] bushTable = new Bush[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				bushTable[i] = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[i]);
+			}
+			animalsInSavana.register("Bush", bushTable);
+			return bushTable;
+		case "Buffalo" :
+			Buffalo [] buffaloTable = new Buffalo[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				buffaloTable[i] = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Buffalo", buffaloTable);
+			return buffaloTable;
+		case "Zebra" :
+			Zebra [] zebraTable = new Zebra[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				zebraTable[i] = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Zebra", zebraTable);
+			return zebraTable;
+		case "Hyena" :
+			Hyena [] hyenaTable = new Hyena[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				hyenaTable[i] = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Hyena", hyenaTable);
+			return hyenaTable;
+		case "Acacia" :
+			Acacia [] acaciaTable = new Acacia[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				acaciaTable[i] = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[i]);
+			}
+			animalsInSavana.register("Acacia", acaciaTable);
+			return acaciaTable;
+		case "Giraffe" :
+			Giraffe [] giraffeTable = new Giraffe[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				giraffeTable[i] = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Giraffe", giraffeTable);
+			return giraffeTable;
+		case "Lion" :
+			Lion [] lionTable = new Lion[10];
+			for(i=0 ; i<Ecosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+				lionTable[i] = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			}
+			animalsInSavana.register("Lion", lionTable);
+			return lionTable;
+		}
+		return null;
+		
+		
+	}
+	
+	public void buildEcosys() {
+		setAnimals("Grass");
+		setAnimals("Hyena");
+		setAnimals("Giraffe");
+		setAnimals("Lion");
+		setAnimals("Gazelle");
+		setAnimals("Cheetah");
+		setAnimals("Warthog");
+		setAnimals("Buffalo");
+		setAnimals("Acacia");
+		setAnimals("Bush");
+		setAnimals("Zebra");
+	}
 	
 
 	

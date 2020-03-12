@@ -4,19 +4,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import data.Consumer;
-import data.Position;
-import data.tertiaryConsumerdata.Lion;
+import beingManagement.BeingCreator;
+
 import ecosystemProcess.SavannaEcosystem;
 import gui.images.ImagesPreferences;
 
+@SuppressWarnings("unused")
 public class Dashboard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -41,6 +40,7 @@ public class Dashboard extends JPanel{
 	private int widthPanel;
 	private int squareSide;
 	
+	
 
 	public void setPicture() throws IOException {
 		try {
@@ -60,7 +60,7 @@ public class Dashboard extends JPanel{
             repaint();
         } 
         catch (IOException e) {
-            throw new IOException(ImagesPreferences.DESERT_IMG_BACKGROUND_PATH +" introuvable", e);
+            throw new IOException(" one/some files are not found", e);
         }
 	}
 
@@ -79,6 +79,7 @@ public class Dashboard extends JPanel{
         super.paintComponent(g);
     	if(desert!=null && savanna!=null && acaciap!=null && buffalop!=null && bushp!=null && cheetahp!=null && gazellep!=null
     			&& giraffep!=null && grassp!=null && hyenap!=null && lionp!=null && warthogp!=null && zebrap!=null){
+    		//BeingCreator bc= new BeingCreator("Savanna");
         	heightPanel = getHeight();
         	widthPanel = getWidth();
         	squareSide = heightPanel/3;
@@ -126,7 +127,7 @@ public class Dashboard extends JPanel{
             if (SavannaEcosystem.hyena.getIsAlive()==true) {
         	g2d.drawImage(hyenap,(SavannaEcosystem.hyena.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.hyena.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
-            }
+            }	
             if (SavannaEcosystem.lion.getIsAlive()==true) {
         	g2d.drawImage(lionp,(SavannaEcosystem.lion.getCordinates().getX()*widthPanel)/30, 
         			(SavannaEcosystem.lion.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);

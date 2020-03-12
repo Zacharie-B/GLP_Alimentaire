@@ -106,5 +106,20 @@ public class FoodChainsProcess{
 				rateMineral += organicmass;
 				mineralChange.addMineral(cordinates, rateMineral);
 	}
+	
+	public void AbsorptionMineral(Producer producer) {
+			int mineralMass = mineralChange.getValue(producer.getCordinates());
+			if(mineralMass>producer.getRateMineral()&&producer.getIsAlive()==true) {
+				mineralMass-=producer.getRateMineral();
+				int hp= producer.getHP();
+				hp+=2;
+				producer.setHP(hp);
+			}
+			mineralChange.addMineral(producer.getCordinates(), mineralMass);
+	}
+	
+	
+	
+	
 }
 	

@@ -1,24 +1,16 @@
 package gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import data.Position;
 
 import ecosystemProcess.SavannaEcosystem;
 import movementOfSpecies.CreateMovement;
@@ -40,9 +32,6 @@ public class MainGUI extends JFrame implements Runnable{
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
-	
-	private JButton startButton = new JButton(" Start ");
-	private MainGUI instance = this;
 	
 	
 	public MainGUI(){
@@ -108,15 +97,6 @@ public class MainGUI extends JFrame implements Runnable{
 				add(fenetre);
 	}
 	
-	
-	public MainGUI getInstance() {
-		return instance;
-	}
-
-	public void setInstance(MainGUI instance) {
-		this.instance = instance;
-	}
-
 	@Override
 	public void run() {
 		boolean finish = false;
@@ -129,7 +109,8 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 			if(OperationZone.stop!=false) {
 				ConsumerMovement();
-				se.AllAnimalsHpManagement();
+				se.AllSpeciesHpManagement();
+				System.out.println(se.toString());
 			}
 		}
 	}

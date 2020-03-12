@@ -42,13 +42,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	public static Gazelle gazelle = new Gazelle("gazelle", 150, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
 	public static Warthog warthog = new Warthog ("warthog",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
 	public static Cheetah cheetah = new Cheetah ("cheetah",200, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
-	@SuppressWarnings("unused")
-	private Species[] cheetahBeings = BeingCreator.initFamily();
-	public static Bush bush = new Bush("bush",true,100,10,2,150,5,1,4,pos.initPosition[4]);
+	public static Bush bush = new Bush("bush",true,100,10,2,150,5,0,4,pos.initPosition[4]);
 	public static Buffalo buffalo = new Buffalo("buffalo", 150, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
 	public static Zebra zebra = new Zebra("zebra",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
 	public static Hyena hyena = new Hyena ("hyena",300, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
-	public static Acacia acacia = new Acacia("acacia",true,100,10,2,300,5,1,4,pos.initPosition[8]);
+	public static Acacia acacia = new Acacia("acacia",true,100,10,2,300,5,0,4,pos.initPosition[8]);
 	public static Giraffe giraffe = new Giraffe("giraffe", 150, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
 	public static  Lion lion = new Lion ("lion",300, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);
 	
@@ -81,7 +79,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	public SavannaEcosystem() {
 		species = new Species[NBMAXSPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
-		//DisplayAndScrollHashMap();
+		AllPointsMap();
 	}
 
 
@@ -123,20 +121,19 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 	public void AllPointsMap() {
-		for(int i=0; i<20;i++) {
+		for(int i=0; i<15;i++) {
 			for(int j=0; j<10;j++) {
 				int x=0;
-				
 				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
-				mineral.valuesInCase.put(positionsMineral[x],0);
+				mineral.valuesInCase.put(positionsMineral[x],100);
 				x++;
 			}
 		}
 	}
 	
-	public void DisplayAndScrollHashMap() {
+	public void DisplayAndScrollHashMap(Producer producer) {
 		  Set<Entry<Position, Integer>> setHm = mineral.valuesInCase.entrySet();
 	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
 	      while(it.hasNext()){
@@ -144,7 +141,12 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	         System.out.println(e.getKey() + " : " + e.getValue());
 	      }
 	}
-	public void AllAnimalsHpManagement() {
+
+
+	public void AllSpeciesHpManagement() {
+		AbsorptionMineral(grass);
+		AbsorptionMineral(bush);
+		AbsorptionMineral(acacia);
 		DieOrHungryProducer(grass);
 		DieOrHungryProducer(bush);
 		DieOrHungryProducer(acacia);
@@ -212,17 +214,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	@Override
 	public String toString() {
-		String result ="\nspecies :" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
-		result += "\nspecies : (" +gazelle.getName()+", "+ gazelle.getHp() + "," +gazelle.getIsAlive()+"," +gazelle.getCordinates()+")";
-		result += "\nspecies : (" +warthog.getName()+", "+ warthog.getHp() + "," +warthog.getIsAlive()+"," +warthog.getCordinates()+")";
-		result += "\nspecies : ("+cheetah.getName()+", "+ cheetah.getHp() +"," +cheetah.getIsAlive()+"," +cheetah.getCordinates()+")";
+		String result ="\nspecies : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
 		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+"," +bush.getCordinates()+")";
-		result += "\nspecies : (" +buffalo.getName()+", "+ buffalo.getHp() + "," +buffalo.getIsAlive()+"," +buffalo.getCordinates()+")";
-		result += "\nspecies : ("+zebra.getName()+", "+ zebra.getHp() + "," +zebra.getIsAlive()+"," +zebra.getCordinates()+")";
-		result += "\nspecies : ("+hyena.getName()+", "+ hyena.getHp() +"," +hyena.getIsAlive()+"," +hyena.getCordinates()+")";
 		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+"," +acacia.getCordinates()+")";
-		result += "\nspecies : (" +giraffe.getName()+", "+ giraffe.getHp() + "," +giraffe.getIsAlive()+"," +giraffe.getCordinates()+")";
-		result += "\nspecies : ("+lion.getName()+", "+ lion.getHp() +"," +lion.getIsAlive()+"," +lion.getCordinates()+")";
+		result += "\nspecies : (" +mineral.getValue(bush.getCordinates())+","+mineral.getValue(grass.getCordinates())+","
+				+mineral.getValue(acacia.getCordinates())+")";
 		return result;
 	}
 }

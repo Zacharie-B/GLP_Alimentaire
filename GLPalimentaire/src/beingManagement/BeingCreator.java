@@ -18,16 +18,21 @@ import movementOfSpecies.InitialPosition;
 
 public class BeingCreator {
 	public static final int ALL_POINTS= 200;
-	public static Species [] allAnimals;
+	public Species [] allAnimals;	
 	private HashMap <String, Species> animalsInEco;
 	private InitialPosition pos = new InitialPosition();
-	private static final int numberSpeciesInit = 66;
+	private static final int numberSpeciesInit = 67;
 	
 	public BeingCreator(String nameEco) {
 		buildEcosys(nameEco);
 	}
+	
+	public BeingCreator() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void buildEcosys(String nameEco) {
-		allAnimals= new Species[500];
+		allAnimals= new Species[numberSpeciesInit];
 		switch (nameEco) {
 		case "Savanna" :
 			for(int i = 11 ; i<numberSpeciesInit ; i++) {
@@ -64,13 +69,13 @@ public class BeingCreator {
 				else if (i>61 && i<= 66) {
 					allAnimals[i] = new Lion ("lion",30, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 				}
-				setAllAnimals(allAnimals);
+			System.out.println(allAnimals[i].getName()+","+allAnimals[i].getCordinates());
 			}
 			break;
 		default :
 			break;
 		}
-		animalsInEco = new HashMap <String , Species> (numberSpeciesInit);
+		animalsInEco = new HashMap <String , Species>(numberSpeciesInit);
 		
 		
 	}
@@ -88,7 +93,7 @@ public class BeingCreator {
 	}
 
 	public void setAllAnimals(Species[] allAnimals) {
-		BeingCreator.allAnimals = allAnimals;
+		this.allAnimals = allAnimals;
 	}
 	public HashMap<String, Species> getAnimalsInEco() {
 		return animalsInEco;

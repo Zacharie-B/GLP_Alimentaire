@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import beingManagement.BeingCreator;
+import data.Consumer;
 import ecosystemProcess.SavannaEcosystem;
 import movementOfSpecies.CreateMovement;
 
@@ -28,6 +30,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private InformationZone informationZone = new InformationZone();
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
+	private BeingCreator bc= new BeingCreator();
 	
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
@@ -116,6 +119,9 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 	
 	public void ConsumerMovement() {
+		/*for(int i=62; i<67; i++) {
+			bc.allAnimals[i].setCordinates(CreateMovement.SavannaMouvement((Consumer) bc.allAnimals[i]));
+		}*/
 		SavannaEcosystem.lion.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.lion));
 		SavannaEcosystem.giraffe.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.giraffe));
 		SavannaEcosystem.hyena.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.hyena));
@@ -126,7 +132,8 @@ public class MainGUI extends JFrame implements Runnable{
 		SavannaEcosystem.zebra.setCordinates(CreateMovement.SavannaMouvement(SavannaEcosystem.zebra));
 		se.FirstChain();
 		se.SecondChain();
-		se.ThirdChain();	
+		se.ThirdChain();
+		repaint();
 		}
 	
 

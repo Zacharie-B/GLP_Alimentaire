@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ public class OperationZone extends JPanel implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Dimension IDEAL_MAIN_DIMENSION = new Dimension(800, 400);
 	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
 	
 	private OperationZone instance = this;
@@ -51,4 +49,5 @@ public class OperationZone extends JPanel implements Runnable{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

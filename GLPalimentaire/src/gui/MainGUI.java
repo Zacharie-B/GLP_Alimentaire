@@ -118,9 +118,6 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 	
 	public void MovementOnMap() {
-		/*for(int i=62; i<67; i++) {
-			instance.allAnimals[i].setCordinates(CreateMovement.SavannaMouvement((Consumer) instance.allAnimals[i]));
-		}*/
 		se.ConsumerMovement();
 		se.FirstChain();
 		se.SecondChain();

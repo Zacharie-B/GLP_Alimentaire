@@ -102,6 +102,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		species = new Species[NBMAXSPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
+		buildEcosys();
 	}
 
 
@@ -156,8 +157,8 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 	public void AllPointsMap() {
-		for(int i=0; i<15;i++) {
-			for(int j=0; j<10;j++) {
+		for(int i=0; i<30;i++) {
+			for(int j=0; j<20;j++) {
 				int x=0;
 				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
@@ -225,7 +226,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		consumer2=(Consumer[]) animalsInSavana.getTable(name2);
 		SecondaryConsumer sc= (SecondaryConsumer) consumer2[0];
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			PrimaryConsumer pc= (PrimaryConsumer) consumer1[i];
+			PrimaryConsumer pc=  (PrimaryConsumer) consumer1[i];
 			ArrayList <String> EatenBy = null; 
 			SecondTrophicLevel(pc, sc, EatenBy);
 			
@@ -339,11 +340,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	public void setAnimals(String name) {
 		int i;
-		j=a+10;
 		switch (name) {
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
+			for(i=a ; i<a+10; i++) {
 				grassTable[i] = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[i]);
 			}
 			animalsInSavana.register("grass", grassTable);
@@ -392,7 +392,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			break;
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
+			for(i=a ; i<a+10; i++) {
 				hyenaTable[i] = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 			}
 			animalsInSavana.register("hyena", hyenaTable);

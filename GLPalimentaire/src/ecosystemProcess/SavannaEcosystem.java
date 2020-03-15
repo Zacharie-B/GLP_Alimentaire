@@ -60,15 +60,16 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	@SuppressWarnings("unused")
 	private Species[] species;
 	private int j=0;
+	int a=0;
 	
-	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 10;
-	private static final int NBMAXSPECIES=1000;
+	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 5;
+	private static final int NB_MAX_SPECIES=1000;
 	private CreateMovement cm = new CreateMovement ();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
 	public SavannaEcosystem() {
-		species = new Species[NBMAXSPECIES];
+		species = new Species[NB_MAX_SPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		AllPointsMap();
 		buildEcosys();
@@ -257,92 +258,104 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	public void setAnimals(String name) {
 		int i;
+		int x=a;
 		switch (name) {
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=0 ; i<10; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				grassTable[j] = new Grass("grass",true,100,10,2,30,25,0,4,pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("grass", grassTable);
 			break;
 		case "Gazelle" :
 			gazelleTable = new Gazelle[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=10 ; i<20; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				gazelleTable[j] = new Gazelle("gazelle", 30, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("gazelle", gazelleTable);
 			break;
 		case "Warthog" :
 			warthogTable = new Warthog[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=20 ; i<30; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				warthogTable[j] = new Warthog ("warthog",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("warthog", warthogTable);
 			break;
 		case "Cheetah" :
 			cheetahTable = new Cheetah[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=30 ; i<40; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				cheetahTable[j] = new Cheetah ("cheetah",100, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("cheetah", cheetahTable);
 			break;
 		case "Bush" :
 			bushTable = new Bush[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=40 ; i<50; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				bushTable[j] = new Bush("bush",true,100,10,2,30,5,1,4,pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("bush", bushTable);
 			break;
 		case "Buffalo" :
 			buffaloTable = new Buffalo[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=50 ; i<60; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				buffaloTable[j] = new Buffalo("buffalo", 30, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("buffalo", buffaloTable);
 			break;
 		case "Zebra" :
 			zebraTable = new Zebra[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=60 ; i<70; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				zebraTable[j] = new Zebra("zebra",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("zebra", zebraTable);
 			break;
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=70 ; i<80; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				hyenaTable[j] = new Hyena ("hyena",100, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("hyena", hyenaTable);
 			break;
 		case "Acacia" :
 			acaciaTable = new Acacia[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=80 ; i<90; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				acaciaTable[j] = new Acacia("acacia",true,100,10,2,30,5,1,4,pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("acacia", acaciaTable);
 			break;
 		case "Giraffe" :
 			giraffeTable = new Giraffe[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=90 ; i<100; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				giraffeTable[j] = new Giraffe("giraffe", 30, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("giraffe", giraffeTable);
 			break;
 		case "Lion" :
 			lionTable = new Lion[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=100 ; i<110; i++) {
+			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				lionTable[j] = new Lion ("lion",100, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
+				a++;
 			}
 			animalsInSavana.register("lion", lionTable);
 			break;

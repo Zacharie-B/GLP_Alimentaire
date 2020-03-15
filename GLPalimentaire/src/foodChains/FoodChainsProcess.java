@@ -25,7 +25,7 @@ public class FoodChainsProcess{
 	private  HungryProcess hp= new HungryProcess();
 	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, 
-			ArrayList<String> proeatenby) {
+		ArrayList<String> proeatenby) {
 		proeatenby= producer.getEatenBy();
 		boolean continueList=true;
 		Iterator<String> iterator1 = proeatenby.iterator();
@@ -34,6 +34,7 @@ public class FoodChainsProcess{
 			if(producerit.equals(primaryConsumer.getName())&&equals(producer.getCordinates(),primaryConsumer.getCordinates())
 					&&producer.getIsAlive()==true) {
 				producer.setHP(0);
+				System.out.println("abcdefg");
 				IsDead isDead= new IsDead();
 				isDead.ProducerDead(producer);
 				addMineralResources(producer.getCordinates(),producer.getOrganicMass());

@@ -112,7 +112,6 @@ public class MainGUI extends JFrame implements Runnable{
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
 				se.AllSpeciesHpManagement();
-				System.out.println(se.toString());
 			}
 		}
 	}

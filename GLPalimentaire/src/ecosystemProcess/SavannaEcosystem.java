@@ -2,14 +2,10 @@ package ecosystemProcess;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
 import data.Consumer;
-import data.Ecosystem;
 import data.Position;
 import data.PrimaryConsumer;
 import data.Producer;
@@ -43,17 +39,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * initialization of all species present in FrostyEcosystem
 	 */
 	private static InitialPosition pos = new InitialPosition();
-	/*public static Grass grass = new Grass("grass",true,100,10,2,150,25,0,4,pos.initPosition[0]);
-	public static Gazelle gazelle = new Gazelle("gazelle", 150, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[1]);
-	public static Warthog warthog = new Warthog ("warthog",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[2]);
-	public static Cheetah cheetah = new Cheetah ("cheetah",200, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[3]);
-	public static Bush bush = new Bush("bush",true,100,10,2,150,5,0,4,pos.initPosition[4]);
-	public static Buffalo buffalo = new Buffalo("buffalo", 150, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[5]);
-	public static Zebra zebra = new Zebra("zebra",200, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[6]);
-	public static Hyena hyena = new Hyena ("hyena",300, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[7]);
-	public static Acacia acacia = new Acacia("acacia",true,100,10,2,300,5,0,4,pos.initPosition[8]);
-	public static Giraffe giraffe = new Giraffe("giraffe", 150, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[9]);
-	public static  Lion lion = new Lion ("lion",300, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[10]);*/
 	public Grass [] grassTable;
 	public Acacia [] acaciaTable;
 	public Bush [] bushTable;
@@ -66,21 +51,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	public Giraffe [] giraffeTable;
 	public Lion [] lionTable;
 	
-	
-	/**
-	 * Lists that allow us to know the predator of each species except the Third Consumer
-	 */
-	private ArrayList <String> grassEatenBy;
-	private ArrayList <String> gazelleEatenBy;
-	private ArrayList <String> warthogEatenBy;
-	private ArrayList <String> cheetahEatenBy;
-	private ArrayList <String> bushEatenBy;
-	private ArrayList <String> buffaloEatenBy;
-	private ArrayList <String> zebraEatenBy;
-	private ArrayList <String> hyenaEatenBy;
-	private ArrayList <String> acaciaEatenBy;
-	private ArrayList <String> giraffeEatenBy;
-	
 	/**
 	 * allows us to position the different species and minerals on the map
 	 */
@@ -89,11 +59,10 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Position[] positionsDecomposer;	
 	@SuppressWarnings("unused")
 	private Species[] species;
-	private int a=0;
-	private int j;
+	private int j=0;
 	
 	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 10;
-	private static final int NBMAXSPECIES=500;
+	private static final int NBMAXSPECIES=1000;
 	private CreateMovement cm = new CreateMovement ();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
@@ -104,44 +73,13 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		AllPointsMap();
 		buildEcosys();
 	}
-
-
-
-	/*public void FirstChain() {
-		FirstTrophicLevel(grass, gazelle, grassEatenBy);
-		FirstTrophicLevel(grass, warthog, grassEatenBy);
-		FirstTrophicLevel(bush, gazelle, bushEatenBy);
-		FirstTrophicLevel(bush, warthog, bushEatenBy);
-		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy);
-		SecondTrophicLevel(warthog, cheetah, warthogEatenBy);
-		ThirdTrophicLevel(cheetah,lion,cheetahEatenBy);	
-	}
-	
-	public void SecondChain() {
-		FirstTrophicLevel(grass, buffalo, grassEatenBy);
-		FirstTrophicLevel(grass, zebra, grassEatenBy);
-		FirstTrophicLevel(bush, buffalo, bushEatenBy);
-		FirstTrophicLevel(bush, zebra, bushEatenBy);
-		SecondTrophicLevel(buffalo, hyena, buffaloEatenBy);
-		SecondTrophicLevel(gazelle, cheetah, gazelleEatenBy);
-		SecondTrophicLevel(warthog, cheetah, warthogEatenBy);
-		SecondTrophicLevel(zebra, hyena, zebraEatenBy);
-		ThirdTrophicLevel(hyena,lion,hyenaEatenBy);
-	}
-	
-	public void ThirdChain() {
-		FirstTrophicLevel(acacia, giraffe, acaciaEatenBy);
-		SecondTrophicLevel(giraffe, hyena, giraffeEatenBy);
-		ThirdTrophicLevel(hyena,lion,hyenaEatenBy);
-	}
-	*/
 	
 	public void ConsumerTeamMovement(Consumer[] consumer, String name) {
 		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
 			(consumer[i]).setCordinates(cm.SavannaMouvement(consumer[i]));
-			System.out.println((consumer[i]).getCordinates());
+
 		}
 	}
 	
@@ -168,15 +106,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			}
 		}
 	}
-	
-	/*public void DisplayAndScrollHashMap(Producer producer) {
-		  Set<Entry<Position, Integer>> setHm = mineral.valuesInCase.entrySet();
-	      Iterator<Entry<Position, Integer>> it = setHm.iterator();
-	      while(it.hasNext()){
-	         Entry<Position, Integer> e = it.next();
-	         System.out.println(e.getKey() + " : " + e.getValue());
-	      }
-	}*/
 	
 	public void FirstChain() {
 		FirstFoodChain(grassTable, gazelleTable,"grass","gazelle");
@@ -221,7 +150,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	public void SecondFoodChain(Consumer[] consumer1, Consumer[] consumer2, String name1, String name2) {
 		consumer1 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer1=(Consumer[]) animalsInSavana.getTable(name2);
+		consumer1=(Consumer[]) animalsInSavana.getTable(name1);
 		consumer2 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer2=(Consumer[]) animalsInSavana.getTable(name2);
 		SecondaryConsumer sc= (SecondaryConsumer) consumer2[0];
@@ -234,7 +163,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	public void ThirdFoodChain(Consumer[] consumer1, Consumer[] consumer2, String name1, String name2) {
 		consumer1 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer1=(Consumer[]) animalsInSavana.getTable(name2);
+		consumer1=(Consumer[]) animalsInSavana.getTable(name1);
 		consumer2 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer2=(Consumer[]) animalsInSavana.getTable(name2);
 		TertiaryConsumer tc= (TertiaryConsumer) consumer2[0];
@@ -275,18 +204,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		HpManagementConsumer(cheetahTable,"cheetah");
 		HpManagementConsumer(warthogTable,"warthog");
 		HpManagementConsumer(buffaloTable,"buffalo");
-		
-		/*DieOrHungryProducer(grass);
-		DieOrHungryProducer(bush);
-		DieOrHungryProducer(acacia);
-		DieOrHungryConsumer(gazelle);
-		DieOrHungryConsumer(giraffe);
-		DieOrHungryConsumer(lion);
-		DieOrHungryConsumer(hyena);
-		DieOrHungryConsumer(zebra);
-		DieOrHungryConsumer(cheetah);
-		DieOrHungryConsumer(warthog);
-		DieOrHungryConsumer(buffalo);*/
 	}
 	 
 	private void DieOrHungryProducer(Producer producer) {
@@ -343,82 +260,94 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		switch (name) {
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<a+10; i++) {
-				grassTable[i] = new Grass("grass",true,100,10,2,3,25,0,4,pos.initPosition[i]);
+			for(i=0 ; i<10; i++) {
+				grassTable[j] = new Grass("grass",true,100,10,2,30,25,0,4,pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("grass", grassTable);
 			break;
 		case "Gazelle" :
 			gazelleTable = new Gazelle[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				gazelleTable[i] = new Gazelle("gazelle", 3, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
+			for(i=10 ; i<20; i++) {
+				gazelleTable[j] = new Gazelle("gazelle", 30, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("gazelle", gazelleTable);
 			break;
 		case "Warthog" :
 			warthogTable = new Warthog[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				warthogTable[i] = new Warthog ("warthog",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+			for(i=20 ; i<30; i++) {
+				warthogTable[j] = new Warthog ("warthog",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("warthog", warthogTable);
 			break;
 		case "Cheetah" :
 			cheetahTable = new Cheetah[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				cheetahTable[i] = new Cheetah ("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			for(i=30 ; i<40; i++) {
+				cheetahTable[j] = new Cheetah ("cheetah",100, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("cheetah", cheetahTable);
 			break;
 		case "Bush" :
 			bushTable = new Bush[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				bushTable[i] = new Bush("bush",true,100,10,2,3,5,1,4,pos.initPosition[i]);
+			for(i=40 ; i<50; i++) {
+				bushTable[j] = new Bush("bush",true,100,10,2,30,5,1,4,pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("bush", bushTable);
 			break;
 		case "Buffalo" :
 			buffaloTable = new Buffalo[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				buffaloTable[i] = new Buffalo("buffalo", 3, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+			for(i=50 ; i<60; i++) {
+				buffaloTable[j] = new Buffalo("buffalo", 30, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("buffalo", buffaloTable);
 			break;
 		case "Zebra" :
 			zebraTable = new Zebra[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				zebraTable[i] = new Zebra("zebra",4, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+			for(i=60 ; i<70; i++) {
+				zebraTable[j] = new Zebra("zebra",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("zebra", zebraTable);
 			break;
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<a+10; i++) {
-				hyenaTable[i] = new Hyena ("hyena",10, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			for(i=70 ; i<80; i++) {
+				hyenaTable[j] = new Hyena ("hyena",100, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("hyena", hyenaTable);
 			break;
 		case "Acacia" :
 			acaciaTable = new Acacia[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				acaciaTable[i] = new Acacia("acacia",true,100,10,2,3,5,1,4,pos.initPosition[i]);
+			for(i=80 ; i<90; i++) {
+				acaciaTable[j] = new Acacia("acacia",true,100,10,2,30,5,1,4,pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("acacia", acaciaTable);
 			break;
 		case "Giraffe" :
 			giraffeTable = new Giraffe[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				giraffeTable[i] = new Giraffe("giraffe", 3, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+			for(i=90 ; i<100; i++) {
+				giraffeTable[j] = new Giraffe("giraffe", 30, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("giraffe", giraffeTable);
 			break;
 		case "Lion" :
 			lionTable = new Lion[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-			for(i=a ; i<j; i++) {
-				lionTable[i] = new Lion ("lion",10, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+			for(i=100 ; i<110; i++) {
+				lionTable[j] = new Lion ("lion",100, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				j++;
 			}
 			animalsInSavana.register("lion", lionTable);
 			break;
 		}
+		j=0;
 		
 	}
 	
@@ -435,14 +364,4 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		setAnimals("Bush");
 		setAnimals("Zebra");
 	}
-	
-
-	/*public String toString() {
-		String result ="\nspecies : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+"," +grass.getCordinates()+")";
-		result += "\nspecies : (" +bush.getName()+", "+ bush.getHP() + "," +bush.getIsAlive()+"," +bush.getCordinates()+")";
-		result += "\nspecies : (" +acacia.getName()+", "+ acacia.getHP() + "," +acacia.getIsAlive()+"," +acacia.getCordinates()+")";
-		result += "\nspecies : (" +mineral.getValue(bush.getCordinates())+","+mineral.getValue(grass.getCordinates())+","
-				+mineral.getValue(acacia.getCordinates())+")";
-		return result;
-	}*/
 }

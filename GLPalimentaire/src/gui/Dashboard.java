@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import beingManagement.BeingCreator;
 import data.Consumer;
 import data.Producer;
-import ecosystemProcess.SavannaEcosystem;
 import gui.images.ImagesPreferences;
 
 public class Dashboard extends JPanel{
@@ -22,8 +21,6 @@ public class Dashboard extends JPanel{
 	
 	public Dashboard instance;
 	
-	private Image desert;
-	private Image savanna;
 	private Image acaciap;
 	private Image buffalop;
 	private Image bushp;
@@ -38,17 +35,11 @@ public class Dashboard extends JPanel{
 	
 	private int heightPanel;
 	private int widthPanel;
-	private int squareSide;
-	private int j=0;
-	private int a=10;
-	private int i;
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	
 
 	public void setPicture() throws IOException {
 		try {
-            this.desert = ImageIO.read(new File(ImagesPreferences.DESERT_IMG_BACKGROUND_PATH));
-            this.savanna = ImageIO.read(new File(ImagesPreferences.SAVANNA_IMG_BACKGROUND_PATH));
             this.acaciap= ImageIO.read(new File(ImagesPreferences.ACACIA_IMG_BACKGROUND_PATH));
             this.buffalop = ImageIO.read(new File(ImagesPreferences.BUFFALO_IMG_BACKGROUND_PATH));
             this.bushp = ImageIO.read(new File(ImagesPreferences.BUSH_IMG_BACKGROUND_PATH));
@@ -80,10 +71,15 @@ public class Dashboard extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        try {
+			setPicture();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     		//BeingCreator bc= new BeingCreator("Savanna");
         	heightPanel = getHeight();
         	widthPanel = getWidth();
-        	squareSide = heightPanel/3;
             Graphics2D g2d = (Graphics2D)g;
             /*g2d.setColor(Color.green);
             g2d.fillRect(0, 0, widthPanel/2, heightPanel/2);
@@ -94,9 +90,11 @@ public class Dashboard extends JPanel{
             g2d.setColor(Color.blue);
             g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);*/
             
+            
             //g2d.drawImage(desert, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(0,0, widthPanel, heightPanel);
+            
                     	
             DisplayPictureProducer(grassp, g2d,"grass");
             DisplayPictureProducer(bushp, g2d,"bush");
@@ -109,63 +107,31 @@ public class Dashboard extends JPanel{
             DisplayPictureConsumer(cheetahp, g2d,"cheetah");
             DisplayPictureConsumer(buffalop, g2d,"buffalo");
             DisplayPictureConsumer(zebrap, g2d,"zebra");
-          
             
-            
-            
-            /**DisplayPictureProducer1(acaciap, g2d, SavannaEcosystem.acacia);
-            DisplayPictureProducer1(bushp, g2d, SavannaEcosystem.bush);
-            DisplayPictureProducer1(grassp, g2d, SavannaEcosystem.grass);
-            DisplayPictureConsumer1(buffalop,g2d, SavannaEcosystem.buffalo);
-            DisplayPictureConsumer1(cheetahp,g2d, SavannaEcosystem.cheetah);
-            DisplayPictureConsumer1(gazellep,g2d, SavannaEcosystem.gazelle);
-            DisplayPictureConsumer1(giraffep,g2d, SavannaEcosystem.giraffe);
-            DisplayPictureConsumer1(hyenap,g2d, SavannaEcosystem.hyena);
-            DisplayPictureConsumer1(lionp,g2d, SavannaEcosystem.lion);
-            DisplayPictureConsumer1(warthogp,g2d, SavannaEcosystem.warthog);
-            DisplayPictureConsumer1(zebrap,g2d, SavannaEcosystem.zebra);*/
-
-            /*for(i=62;i<67;i++) {
-            if (((Consumer) bc.allAnimals[i]).getIsAlive()==true) {
-        	g2d.drawImage(lionp,(((Consumer) bc.allAnimals[i]).getCordinates().getX()*widthPanel)/30, 
-        			(((Consumer) bc.allAnimals[i]).getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
-            }
-            }*/
-            
+            g.setColor(Color.BLACK);
+            g.drawLine(widthPanel/2, 0, widthPanel/2, heightPanel);
+            g.drawLine(0, heightPanel/2, widthPanel, heightPanel/2);   
         			
         }	
     
 
-/**private void DisplayPictureConsumer1(Image image, Graphics2D g2d, Consumer species) {
-	if (image!=null && species.getIsAlive()==true) {
-		g2d.drawImage(image,(species.getCordinates().getX()*widthPanel)/30, 
-      			(species.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
-        }
-	}
-
-private void DisplayPictureProducer1(Image image, Graphics2D g2d, Producer species) {
-	if (image!=null && species.getIsAlive()==true) {
-		g2d.drawImage(image,(species.getCordinates().getX()*widthPanel)/30, 
-      			(species.getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
-        }
-	}*/
 	private void DisplayPictureConsumer(Image image, Graphics2D g2d, String name) {
 		Consumer[] consumer = new Consumer[10];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
-		for(i=a;i<a+10;i++) {
+		for(int i=0;i<10;i++) {
     	if (image!=null && consumer[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/30, 
-          			(consumer[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+    		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
+          			(consumer[i].getCordinates().getY()*heightPanel)/12, widthPanel/27, heightPanel/18, this);
             }
 		}
     	}
 	private void DisplayPictureProducer(Image image, Graphics2D g2d, String name) {
 		Producer[] producer = new Producer[10];
 		producer=(Producer[]) animalsInSavana.getTable(name);
-		for(i=0; i<10;i++) {
+		for(int i=0; i<10;i++) {
     	if (image!=null && producer[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/30, 
-          			(producer[i].getCordinates().getY()*heightPanel)/20, widthPanel/30, heightPanel/20, this);
+    		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
+          			(producer[i].getCordinates().getY()*heightPanel)/12, widthPanel/27, heightPanel/18, this);
             }
 		};
     	}

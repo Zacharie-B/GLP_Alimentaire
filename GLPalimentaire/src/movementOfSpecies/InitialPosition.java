@@ -6,7 +6,7 @@ public class InitialPosition {
 	
 	
 	public Position[] initPosition;
-	private static final int NBMAXSPECIES=500;
+	private static final int NBMAXSPECIES=1000;
 	
 	
 	
@@ -19,8 +19,8 @@ public class InitialPosition {
 	public void InitPosition(){
 		initPosition = new Position[NBMAXSPECIES];
 		for(int i=0; i<NBMAXSPECIES; i++) {
-			int randomcordinatesx=(int)(Math.random() *30);
-			int randomcordinatesy=(int)(Math.random() *20);
+			int randomcordinatesx=(int)(Math.random() *18);
+			int randomcordinatesy=(int)(Math.random() *12);
 			Position cordinates = new Position(randomcordinatesx,randomcordinatesy);
 			initPosition[i]=cordinates;
 		}

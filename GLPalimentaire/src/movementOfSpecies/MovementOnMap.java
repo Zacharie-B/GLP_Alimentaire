@@ -17,7 +17,7 @@ public class MovementOnMap extends MovementPosition{
 	
 	public int SavannaMoveRight(Consumer consumer) {
 		int c;
-		if (consumer.getCordinates().getX()==29) {
+		if (consumer.getCordinates().getX()==17) {
 			c=MoveLeft(consumer);
 		}
 		else {
@@ -28,7 +28,7 @@ public class MovementOnMap extends MovementPosition{
 	
 	public int SavannaMoveTop(Consumer consumer) {
 		int c;
-		if (consumer.getCordinates().getY()==19) {
+		if (consumer.getCordinates().getY()==11) {
 			c=MoveBot(consumer);
 		}
 		else {

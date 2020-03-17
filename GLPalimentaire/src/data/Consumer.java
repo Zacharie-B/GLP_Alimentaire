@@ -70,8 +70,8 @@ public abstract class Consumer implements Species{
 	public int getCaloriesAssimilation() {
 		return caloriesAssimilation;
 	}
-	public void setCaloriesAssimilation(int numberBirths) {
-		this.caloriesAssimilation = numberBirths;
+	public void setCaloriesAssimilation(int caloriesAssimilation) {
+		this.caloriesAssimilation = caloriesAssimilation;
 	}
 	public int getTimeBreeding() {
 		return timeBreeding;

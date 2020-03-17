@@ -8,7 +8,9 @@ import java.awt.GridBagLayout;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
@@ -35,10 +37,30 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
 	private GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
+	private int i=0;
 	
 	public MainGUI(){
 		init();
 		run();
+	}
+	
+	private void CreateButtonOnIHM (JButton button){
+		asidePanelGridBagConstraints.weighty = 0.03;
+		asidePanelGridBagConstraints.gridx = 0;
+		asidePanelGridBagConstraints.gridy = i;
+		operationZone.setBorder(lineborder);
+		operationZoneANDinformationZone.add(button, asidePanelGridBagConstraints);
+		i++;
+	}
+	
+	private void CreateLabelIHM(JLabel labelInformation) {
+		// TODO Auto-generated method stub
+		asidePanelGridBagConstraints.weighty = 0.18;
+		asidePanelGridBagConstraints.gridx = 0;
+		asidePanelGridBagConstraints.gridy = i;
+		informationZone.setBorder(lineborder);
+		operationZoneANDinformationZone.add(labelInformation, asidePanelGridBagConstraints);
+		i++;
 	}
 	
 	private void init() {
@@ -61,32 +83,23 @@ public class MainGUI extends JFrame implements Runnable{
 				//d�but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 				
 				asidePanelGridBagConstraints.weightx = 1;
-				
 				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
-				asidePanelGridBagConstraints.weighty = 0.04;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 0;
-				operationZoneANDinformationZone.add(operationZone.getButtonLeave(), asidePanelGridBagConstraints);
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
-				asidePanelGridBagConstraints.weighty = 0.04;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 1;
-				operationZoneANDinformationZone.add(operationZone.getButtonDisaster(), asidePanelGridBagConstraints);
+				CreateButtonOnIHM (operationZone.getButtonLeave());
+				CreateButtonOnIHM (operationZone.getButtonDisaster());
+				CreateButtonOnIHM (operationZone.getStopButton());
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
-				asidePanelGridBagConstraints.weighty = 0.04;
+				CreateLabelIHM (informationZone.getLabelInformation());
+				CreateLabelIHM (informationZone.getLabeltopleft());
+				CreateLabelIHM (informationZone.getLabeltopright());
+				CreateLabelIHM (informationZone.getLabelbottomleft());
+				CreateLabelIHM (informationZone.getLabelbottomright());
+				/*asidePanelGridBagConstraints.weighty = 0.80;
 				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 2;
-				operationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(operationZone.getStopButton(), asidePanelGridBagConstraints);
-				
-				
-				asidePanelGridBagConstraints.weighty = 0.88;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 3;
+				asidePanelGridBagConstraints.gridy = i;
 				informationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);
+				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);*/
+				
 				//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 				
 				
@@ -112,7 +125,6 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 	
 
-	
 	@Override
 	public void run() {
 		boolean finish = false;
@@ -126,6 +138,7 @@ public class MainGUI extends JFrame implements Runnable{
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
 				se.AllSpeciesHpManagement();
+				informationZone.CounterSpecies();
 			}
 		}
 	}

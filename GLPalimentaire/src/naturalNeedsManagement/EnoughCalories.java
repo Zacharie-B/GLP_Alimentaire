@@ -5,15 +5,36 @@ import data.Consumer;
 public class EnoughCalories{
 	
 	
-	public int ConsumerHungry(Consumer consumer, int calories, int currentCalories) {
+	public int ConsumerHungry(Consumer consumer, int calories, int currentCalories, int population) {
 		int caloriesNeeds = consumer.getCalories();
-		if(caloriesNeeds > calories) {
-			int currentHP=consumer.getHp();
-			currentHP+=6;
-			consumer.setHp(currentHP);
-			currentCalories+=calories;
-			return currentCalories;
+		int alreadyEaten = consumer.getCaloriesAssimilation();
+		if(population>=consumer.getPopulationDensity()) {
+			if(caloriesNeeds <= (calories+alreadyEaten)) {
+				int currentHP=consumer.getHp();
+				currentHP+=10;
+				consumer.setHp(currentHP);
+				currentCalories=0;
+				return currentCalories;
+				}
+			else if (caloriesNeeds > (calories+alreadyEaten)) {
+				currentCalories+=calories;
+				return currentCalories;
 			}
+		}
+		else {
+			float shareFood= population/consumer.getPopulationDensity();
+			if(caloriesNeeds <= (calories+alreadyEaten)*shareFood) {
+				int currentHP=consumer.getHp();
+				currentHP+=10;
+				consumer.setHp(currentHP);
+				currentCalories=0;
+				return currentCalories;
+				}
+			else if (caloriesNeeds > (calories+alreadyEaten)*shareFood) {
+				currentCalories+=calories*shareFood;
+				return currentCalories;
+			}
+		}
 		return currentCalories;
 	}
 }

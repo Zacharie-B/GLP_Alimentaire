@@ -13,11 +13,13 @@ public class HungryProcess extends EnoughCalories{
 	
 	public void HungryProcessConsumerWithProducer(Consumer consumer, Producer producer) {
 		int eatCalories=producer.getOrganicMass();
-		consumer.setCaloriesAssimilation(ConsumerHungry(consumer, eatCalories , currentCalories));
+		int populationp= producer.getPopulationDensity();
+		consumer.setCaloriesAssimilation(ConsumerHungry(consumer, eatCalories , currentCalories, populationp));
 	}
 	
 	public void HungryProcessConsumerWithConsumer(Consumer consumer1, Consumer consumer2) {
 		int eatCalories=consumer2.getOrganicMass();
-		consumer1.setCaloriesAssimilation(ConsumerHungry(consumer1, eatCalories , currentCalories));
+		int population2=consumer2.getPopulationDensity();
+		consumer1.setCaloriesAssimilation(ConsumerHungry(consumer1, eatCalories , currentCalories, population2));
 	}
 }

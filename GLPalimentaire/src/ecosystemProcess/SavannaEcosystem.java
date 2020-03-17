@@ -60,7 +60,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	@SuppressWarnings("unused")
 	private Species[] species;
 	private int j=0;
-	int a=0;
+	private int a=0;
 	
 	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 5;
 	private static final int NB_MAX_SPECIES=1000;
@@ -198,7 +198,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		HpManagementProducer(bushTable,"bush");
 		HpManagementProducer(acaciaTable,"acacia");
 		HpManagementConsumer(gazelleTable,"gazelle");
-		HpManagementConsumer(giraffeTable,"giraffe");
+		//HpManagementConsumer(giraffeTable,"giraffe");
 		HpManagementConsumer(lionTable,"lion");
 		HpManagementConsumer(hyenaTable,"hyena");
 		HpManagementConsumer(zebraTable,"zebra");
@@ -353,7 +353,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Lion" :
 			lionTable = new Lion[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				lionTable[j] = new Lion ("lion",100, 10, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				lionTable[j] = new Lion ("lion",100, 10, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}

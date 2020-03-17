@@ -198,9 +198,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		HpManagementProducer(bushTable,"bush");
 		HpManagementProducer(acaciaTable,"acacia");
 		HpManagementConsumer(gazelleTable,"gazelle");
-		//HpManagementConsumer(giraffeTable,"giraffe");
+		HpManagementConsumer(giraffeTable,"giraffe");
 		HpManagementConsumer(lionTable,"lion");
-		HpManagementConsumer(hyenaTable,"hyena");
+		//HpManagementConsumer(hyenaTable,"hyena");
 		HpManagementConsumer(zebraTable,"zebra");
 		HpManagementConsumer(cheetahTable,"cheetah");
 		HpManagementConsumer(warthogTable,"warthog");
@@ -326,7 +326,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				hyenaTable[j] = new Hyena ("hyena",100, 300, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				hyenaTable[j] = new Hyena ("hyena",100, 300, true, 6, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}

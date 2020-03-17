@@ -73,7 +73,6 @@ public class FoodChainsProcess{
 			String pcit = iterator.next();
 			if(pcit.equals(secondaryConsumer.getName())&&equals(primaryConsumer.getCordinates(),secondaryConsumer.getCordinates())
 					&&primaryConsumer.getIsAlive()==true) {
-				System.out.println("abcdefg");
 				hp.HungryProcessConsumerWithConsumer(secondaryConsumer, primaryConsumer);
 				if(primaryConsumer.getPopulationDensity()<=secondaryConsumer.getPopulationDensity()) {
 					primaryConsumer.setHp(0);

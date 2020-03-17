@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import beingManagement.BeingCreator;
@@ -62,6 +63,15 @@ public class MainGUI extends JFrame implements Runnable{
 		operationZoneANDinformationZone.add(labelInformation, asidePanelGridBagConstraints);
 		i++;
 	}
+	private void CreateAreaIHM(JTextArea area) {
+		// TODO Auto-generated method stub
+		asidePanelGridBagConstraints.weighty = 0.18;
+		asidePanelGridBagConstraints.gridx = 0;
+		asidePanelGridBagConstraints.gridy = i;
+		informationZone.setBorder(lineborder);
+		operationZoneANDinformationZone.add(area, asidePanelGridBagConstraints);
+		i++;
+	}
 	
 	private void init() {
 				//d�but teste image de fond
@@ -90,15 +100,11 @@ public class MainGUI extends JFrame implements Runnable{
 				CreateButtonOnIHM (operationZone.getStopButton());
 				
 				CreateLabelIHM (informationZone.getLabelInformation());
-				CreateLabelIHM (informationZone.getLabeltopleft());
-				CreateLabelIHM (informationZone.getLabeltopright());
-				CreateLabelIHM (informationZone.getLabelbottomleft());
-				CreateLabelIHM (informationZone.getLabelbottomright());
-				/*asidePanelGridBagConstraints.weighty = 0.80;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = i;
-				informationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);*/
+				
+				CreateAreaIHM(informationZone.getAreatopleft());
+				CreateAreaIHM(informationZone.getAreatopright());
+				CreateAreaIHM(informationZone.getAreabottomleft());
+				CreateAreaIHM(informationZone.getAreabottomright());
 				
 				//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 				
@@ -130,7 +136,7 @@ public class MainGUI extends JFrame implements Runnable{
 		boolean finish = false;
 		while (finish==false) {
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1000);
 			}
 			catch (InterruptedException e){
 				System.out.println(e.getMessage());
@@ -138,7 +144,6 @@ public class MainGUI extends JFrame implements Runnable{
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
 				se.AllSpeciesHpManagement();
-				informationZone.CounterSpecies();
 			}
 		}
 	}
@@ -148,6 +153,7 @@ public class MainGUI extends JFrame implements Runnable{
 		se.FirstChain();
 		se.SecondChain();
 		se.ThirdChain();
+		informationZone.CounterSpecies();
 		repaint();
 		}
 	

@@ -12,7 +12,7 @@ public class OperationZone extends JPanel implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
-	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
+	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 25);
 	
 	private OperationZone instance = this;
 	public static boolean stop = true;
@@ -21,12 +21,11 @@ public class OperationZone extends JPanel implements Runnable{
 	private JButton stopButton = new JButton("Stop");
 	private JButton buttonDisaster = new JButton("Disaster");
 	
-	public OperationZone(){
-		add(buttonDisaster);
+	public OperationZone() {
 		stopButton.setFont(font);
 		stopButton.addActionListener(new StartStopAction());
-		add(stopButton);
-		add(buttonLeave);
+		buttonLeave.setFont(font);
+		buttonDisaster.setFont(font);
 	}
 	
 	private class StartStopAction implements ActionListener {
@@ -42,6 +41,18 @@ public class OperationZone extends JPanel implements Runnable{
 				chronoThread.start();
 			}
 		}
+	}
+
+	public JButton getButtonLeave() {
+		return buttonLeave;
+	}
+
+	public JButton getStopButton() {
+		return stopButton;
+	}
+
+	public JButton getButtonDisaster() {
+		return buttonDisaster;
 	}
 
 	@Override

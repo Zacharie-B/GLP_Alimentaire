@@ -34,7 +34,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
 	
 	private JPanel fenetre = new JPanel(new GridBagLayout());
-	
+	private GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 	
 	public MainGUI(){
 		init();
@@ -59,20 +59,32 @@ public class MainGUI extends JFrame implements Runnable{
 				setResizable(false);
 				
 				//d�but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
-				GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				asidePanelGridBagConstraints.weightx = 1;
 				
-				asidePanelGridBagConstraints.weighty = 0.2;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.weighty = 0.04;
 				asidePanelGridBagConstraints.gridx = 0;
 				asidePanelGridBagConstraints.gridy = 0;
-				operationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(operationZone, asidePanelGridBagConstraints);
+				operationZoneANDinformationZone.add(operationZone.getButtonLeave(), asidePanelGridBagConstraints);
 				
-				asidePanelGridBagConstraints.weighty = 0.8;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.weighty = 0.04;
 				asidePanelGridBagConstraints.gridx = 0;
 				asidePanelGridBagConstraints.gridy = 1;
+				operationZoneANDinformationZone.add(operationZone.getButtonDisaster(), asidePanelGridBagConstraints);
+				
+				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.weighty = 0.04;
+				asidePanelGridBagConstraints.gridx = 0;
+				asidePanelGridBagConstraints.gridy = 2;
+				operationZone.setBorder(lineborder);
+				operationZoneANDinformationZone.add(operationZone.getStopButton(), asidePanelGridBagConstraints);
+				
+				
+				asidePanelGridBagConstraints.weighty = 0.88;
+				asidePanelGridBagConstraints.gridx = 0;
+				asidePanelGridBagConstraints.gridy = 3;
 				informationZone.setBorder(lineborder);
 				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);
 				//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
@@ -98,6 +110,8 @@ public class MainGUI extends JFrame implements Runnable{
 				
 				add(fenetre);
 	}
+	
+
 	
 	@Override
 	public void run() {

@@ -62,19 +62,19 @@ public class MainGUI extends JFrame implements Runnable{
 				
 				asidePanelGridBagConstraints.weightx = 1;
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				asidePanelGridBagConstraints.weighty = 0.04;
 				asidePanelGridBagConstraints.gridx = 0;
 				asidePanelGridBagConstraints.gridy = 0;
 				operationZoneANDinformationZone.add(operationZone.getButtonLeave(), asidePanelGridBagConstraints);
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				asidePanelGridBagConstraints.weighty = 0.04;
 				asidePanelGridBagConstraints.gridx = 0;
 				asidePanelGridBagConstraints.gridy = 1;
 				operationZoneANDinformationZone.add(operationZone.getButtonDisaster(), asidePanelGridBagConstraints);
 				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				asidePanelGridBagConstraints.weighty = 0.04;
 				asidePanelGridBagConstraints.gridx = 0;
 				asidePanelGridBagConstraints.gridy = 2;

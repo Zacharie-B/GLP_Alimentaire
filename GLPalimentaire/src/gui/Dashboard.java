@@ -122,7 +122,8 @@ public class Dashboard extends JPanel{
 		for(int i=0;i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
     	if (image!=null && consumer[i].getIsAlive()==true) {
     		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
-          			(consumer[i].getCordinates().getY()*heightPanel)/12, widthPanel/27, heightPanel/18, this);
+          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*consumer[i].getPopulationDensity())/180,
+          			(heightPanel*consumer[i].getPopulationDensity())/120, this);
             }
 		}
     	}
@@ -132,7 +133,8 @@ public class Dashboard extends JPanel{
 		for(int i=0; i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
     	if (image!=null && producer[i].getIsAlive()==true) {
     		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
-          			(producer[i].getCordinates().getY()*heightPanel)/12, widthPanel/27, heightPanel/18, this);
+          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*producer[i].getPopulationDensity())/180,
+          			(heightPanel*producer[i].getPopulationDensity())/120, this);
             }
 		}
     	}

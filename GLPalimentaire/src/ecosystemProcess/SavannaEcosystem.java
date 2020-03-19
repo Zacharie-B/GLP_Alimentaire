@@ -200,7 +200,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		HpManagementConsumer(gazelleTable,"gazelle");
 		HpManagementConsumer(giraffeTable,"giraffe");
 		HpManagementConsumer(lionTable,"lion");
-		//HpManagementConsumer(hyenaTable,"hyena");
+		HpManagementConsumer(hyenaTable,"hyena");
 		HpManagementConsumer(zebraTable,"zebra");
 		HpManagementConsumer(cheetahTable,"cheetah");
 		HpManagementConsumer(warthogTable,"warthog");
@@ -263,7 +263,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				grassTable[j] = new Grass("grass",true,100,10,2,30,25,0,4,pos.initPosition[i]);
+				grassTable[j] = new Grass("grass",true,10,10,2,30,25,0,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -290,7 +290,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Cheetah" :
 			cheetahTable = new Cheetah[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				cheetahTable[j] = new Cheetah ("cheetah",100, 100, true, 1, 1, 50, 150, 6, false, pos.initPosition[i]);
+				cheetahTable[j] = new Cheetah ("cheetah",100, 100, true, 8, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -299,7 +299,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Bush" :
 			bushTable = new Bush[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				bushTable[j] = new Bush("bush",true,100,10,2,30,5,1,4,pos.initPosition[i]);
+				bushTable[j] = new Bush("bush",true,10,10,2,30,5,1,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -335,7 +335,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Acacia" :
 			acaciaTable = new Acacia[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				acaciaTable[j] = new Acacia("acacia",true,100,10,2,30,5,1,4,pos.initPosition[i]);
+				acaciaTable[j] = new Acacia("acacia",true,10,10,2,30,5,1,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}

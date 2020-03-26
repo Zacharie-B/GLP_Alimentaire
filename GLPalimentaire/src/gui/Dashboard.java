@@ -82,17 +82,6 @@ public class Dashboard extends JPanel{
         	heightPanel = getHeight();
         	widthPanel = getWidth();
             Graphics2D g2d = (Graphics2D)g;
-            /*g2d.setColor(Color.green);
-            g2d.fillRect(0, 0, widthPanel/2, heightPanel/2);
-            g2d.setColor(Color.MAGENTA);
-            g2d.fillRect(widthPanel/2, 0, widthPanel/2, heightPanel/2);
-            g2d.setColor(Color.cyan);
-            g2d.fillRect(0, heightPanel/2, widthPanel/2, heightPanel/2);
-            g2d.setColor(Color.blue);
-            g2d.fillRect(widthPanel/2 - squareSide/2,heightPanel/2 - squareSide/2, squareSide, squareSide);*/
-            
-            
-            //g2d.drawImage(desert, widthPanel/2, heightPanel/2, widthPanel/2, heightPanel/2, this);
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(0,0, widthPanel, heightPanel);
             
@@ -112,7 +101,7 @@ public class Dashboard extends JPanel{
             g.setColor(Color.BLACK);
             g.drawLine(widthPanel/2, 0, widthPanel/2, heightPanel);
             g.drawLine(0, heightPanel/2, widthPanel, heightPanel/2);   
-        			
+            
         }	
     
 
@@ -122,8 +111,8 @@ public class Dashboard extends JPanel{
 		for(int i=0;i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
     	if (image!=null && consumer[i].getIsAlive()==true) {
     		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
-          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*consumer[i].getPopulationDensity())/180,
-          			(heightPanel*consumer[i].getPopulationDensity())/120, this);
+          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((consumer[i].getPopulationDensity()/2)+5))/180,
+          			(heightPanel*((consumer[i].getPopulationDensity()/2)+5))/120, this);
             }
 		}
     	}
@@ -133,8 +122,8 @@ public class Dashboard extends JPanel{
 		for(int i=0; i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
     	if (image!=null && producer[i].getIsAlive()==true) {
     		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
-          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*producer[i].getPopulationDensity())/180,
-          			(heightPanel*producer[i].getPopulationDensity())/120, this);
+          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((producer[i].getPopulationDensity()/2)+5))/180,
+          			(heightPanel*((producer[i].getPopulationDensity()/2)+5))/120, this);
             }
 		}
     	}

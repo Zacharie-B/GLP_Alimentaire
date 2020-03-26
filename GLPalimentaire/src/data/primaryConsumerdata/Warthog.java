@@ -27,12 +27,7 @@ public class Warthog extends PrimaryConsumer{
 	
 	@Override
 	public String toString() {
-		return "Warthog [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Phacochère mangé par :\n" + getEatenBy() + "\n" + "Phacochère mange :\n" + getDiet()+"\n";
 	}
 	@Override
 	public void initializeDiet() {

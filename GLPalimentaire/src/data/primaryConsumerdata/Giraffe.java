@@ -24,15 +24,9 @@ public class Giraffe extends PrimaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	
 	@Override
 	public String toString() {
-		return "Giraffe [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Girafe mangé par :\n" + getEatenBy() + "\n" + "Girafe mange :\n" + getDiet()+"\n";
 	}
 	@Override
 	public void initializeDiet() {

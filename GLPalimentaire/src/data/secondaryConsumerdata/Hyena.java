@@ -26,12 +26,7 @@ public class Hyena extends SecondaryConsumer{
 	}
 	@Override
 	public String toString() {
-		return "Hyena [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Hyène mangé par :\n" + getEatenBy() + "\n" + "Hyène mange :\n" + getDiet()+"\n";
 	}
 	
 	@Override

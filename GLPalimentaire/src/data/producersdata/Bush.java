@@ -25,12 +25,9 @@ public class Bush extends Producer{
 
 	@Override
 	public String toString() {
-		return "Bush [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getMineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+		return "Buisson mangé par :\n" + getEatenBy()+ "\n" + "Buisson mange des minéraux\n";
 	}
+
 	
 	public void initializeEatenBy(){
 		ArrayList <String> al = new ArrayList <String> ();

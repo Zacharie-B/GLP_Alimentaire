@@ -27,12 +27,7 @@ public class Lion extends TertiaryConsumer{
 	
 	@Override
 	public String toString() {
-		return "Lion [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Lion mangé par :\n" + getEatenBy() + "\n" + "Lion meurt de vieillesse \n";
 	}
 	
 	@Override

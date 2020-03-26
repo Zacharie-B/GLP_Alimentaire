@@ -25,12 +25,9 @@ public class Grass extends Producer{
 
 	@Override
 	public String toString() {
-		return "Grass [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getMineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+		return "Herbe mangé par :\n" + getEatenBy()+ "\n" + "Herbe mange des minéraux\n";
 	}
+
 	
 	public void initializeEatenBy(){
 		ArrayList <String> al = new ArrayList <String> ();

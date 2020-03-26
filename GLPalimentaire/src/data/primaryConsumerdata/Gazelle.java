@@ -26,12 +26,7 @@ public class Gazelle extends PrimaryConsumer{
 	}
 	@Override
 	public String toString() {
-		return "Gazelle [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Gazelle mangé par :\n" + getEatenBy() + "\n" + "Gazelle mange :\n" + getDiet()+"\n";
 	}
 	@Override
 	public void initializeDiet() {

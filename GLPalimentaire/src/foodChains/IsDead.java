@@ -17,6 +17,7 @@ public class IsDead{
 	public void ProducerDead(Producer producer) {
 		if(producer.getHP()==0) {
 			producer.setIsAlive(false);
+			producer.setPopulationDensity(0);
 		}
 	}
 	
@@ -28,6 +29,7 @@ public class IsDead{
 	public void ConsumerDead(Consumer consumer) {
 		if(consumer.getHp()==0) {
 			consumer.setIsAlive(false);	
+			consumer.setPopulationDensity(0);
 		}
 	}
 }

@@ -28,12 +28,7 @@ public class Zebra extends PrimaryConsumer{
 	
 	@Override
 	public String toString() {
-		return "Zebra [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Zèbre mangé par :\n" + getEatenBy() + "\n" + "Zèbre mange :\n" + getDiet()+"\n";
 	}
 	@Override
 	public void initializeDiet() {

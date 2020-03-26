@@ -26,12 +26,7 @@ public class Buffalo extends PrimaryConsumer{
 	}
 	@Override
 	public String toString() {
-		return "Buffalo [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Buffle mangé par :\n" + getEatenBy() + "\n" + "Buffle mange :\n" + getDiet()+"\n";
 	}
 	@Override
 	public void initializeDiet() {

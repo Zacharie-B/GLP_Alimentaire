@@ -62,7 +62,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private int j=0;
 	private int a=0;
 	
-	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 5;
+	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 4;
 	private static final int NB_MAX_SPECIES=1000;
 	private CreateMovement cm = new CreateMovement ();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
@@ -256,6 +256,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		}
 	*/
 	
+	/**
+	 * Use of the Simple Factory pattern thanks to create the objects of our species, 
+	 * we use the Singleton for stock the array of each species.
+	 * @param name
+	 */
 	public void setAnimals(String name) {
 		int i;
 		int x=a;
@@ -361,9 +366,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			break;
 		}
 		j=0;
-		
 	}
 	
+	/**
+	 * We call the "setAnimals" method for each animal thanks to create the animals of all species.
+	 */
 	public void buildEcosys() {
 		setAnimals("Grass");
 		setAnimals("Hyena");
@@ -376,5 +383,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		setAnimals("Acacia");
 		setAnimals("Bush");
 		setAnimals("Zebra");
+	}
+	
+	public void reproduct(){
+		
 	}
 }

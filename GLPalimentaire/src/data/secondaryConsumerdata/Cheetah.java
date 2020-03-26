@@ -26,12 +26,7 @@ public class Cheetah extends SecondaryConsumer{
 	}
 	@Override
 	public String toString() {
-		return "Cheetah [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+		return "Guépard mangé par :\n" + getEatenBy() + "\n" + "Guépard mange :\n" + getDiet()+"\n";
 	}
 	
 	@Override

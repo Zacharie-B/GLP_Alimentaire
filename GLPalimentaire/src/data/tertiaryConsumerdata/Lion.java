@@ -27,7 +27,7 @@ public class Lion extends TertiaryConsumer{
 	
 	@Override
 	public String toString() {
-		return "Lion mangé par :\n" + getEatenBy() + "\n" + "Lion meurt de vieillesse \n";
+		return "Lion mange :\n" + getDiet() + "\n" + "Lion meurt de vieillesse \n";
 	}
 	
 	@Override
@@ -35,7 +35,6 @@ public class Lion extends TertiaryConsumer{
 		ArrayList <String> al = new ArrayList <String> ();
 		al.add("cheetah");
 		al.add("hyena");
-		al.add("giraffe");
 		setDiet(al);
 	}
 

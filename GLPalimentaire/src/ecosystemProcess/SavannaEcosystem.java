@@ -268,7 +268,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				grassTable[j] = new Grass("grass",true,10,10,2,30,25,0,4,pos.initPosition[i]);
+				grassTable[j] = new Grass("grass",true,10,10,2,50,25,0,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -277,7 +277,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Gazelle" :
 			gazelleTable = new Gazelle[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				gazelleTable[j] = new Gazelle("gazelle", 30, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
+				gazelleTable[j] = new Gazelle("gazelle", 50, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -286,7 +286,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Warthog" :
 			warthogTable = new Warthog[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				warthogTable[j] = new Warthog ("warthog",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+				warthogTable[j] = new Warthog ("warthog",50, 150, true, 10, 15, 4, 30, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -295,7 +295,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Cheetah" :
 			cheetahTable = new Cheetah[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				cheetahTable[j] = new Cheetah ("cheetah",100, 100, true, 8, 1, 50, 150, 6, false, pos.initPosition[i]);
+				cheetahTable[j] = new Cheetah ("cheetah",50, 100, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -304,7 +304,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Bush" :
 			bushTable = new Bush[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				bushTable[j] = new Bush("bush",true,10,10,2,30,5,1,4,pos.initPosition[i]);
+				bushTable[j] = new Bush("bush",true,10,10,2,50,5,1,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -313,7 +313,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Buffalo" :
 			buffaloTable = new Buffalo[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				buffaloTable[j] = new Buffalo("buffalo", 30, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				buffaloTable[j] = new Buffalo("buffalo", 50, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -322,7 +322,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Zebra" :
 			zebraTable = new Zebra[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				zebraTable[j] = new Zebra("zebra",40, 150, true, 5, 15, 4, 30, 6, false, pos.initPosition[i]);
+				zebraTable[j] = new Zebra("zebra",50, 150, true, 10, 15, 4, 30, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -331,7 +331,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				hyenaTable[j] = new Hyena ("hyena",100, 300, true, 6, 1, 50, 150, 6, false, pos.initPosition[i]);
+				hyenaTable[j] = new Hyena ("hyena",50, 300, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -340,7 +340,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Acacia" :
 			acaciaTable = new Acacia[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				acaciaTable[j] = new Acacia("acacia",true,10,10,2,30,5,1,4,pos.initPosition[i]);
+				acaciaTable[j] = new Acacia("acacia",true,10,10,2,50,5,1,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -349,7 +349,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Giraffe" :
 			giraffeTable = new Giraffe[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				giraffeTable[j] = new Giraffe("giraffe", 30, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				giraffeTable[j] = new Giraffe("giraffe", 50, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -358,7 +358,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Lion" :
 			lionTable = new Lion[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				lionTable[j] = new Lion ("lion",100, 10, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
+				lionTable[j] = new Lion ("lion",50, 10, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}

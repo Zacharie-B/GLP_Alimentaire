@@ -64,7 +64,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 4;
 	private static final int NB_MAX_SPECIES=1000;
-	private CreateMovement cm = new CreateMovement ();
+	private CreateMovement cm = new CreateMovement();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
@@ -80,7 +80,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
 			(consumer[i]).setCordinates(cm.SavannaMouvement(consumer[i]));
-
 		}
 	}
 	
@@ -96,13 +95,13 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 	public void AllPointsMap() {
-		for(int i=0; i<30;i++) {
-			for(int j=0; j<20;j++) {
+		for(int i=0; i<18;i++) {
+			for(int j=0; j<12;j++) {
 				int x=0;
 				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
-				mineral.valuesInCase.put(positionsMineral[x],100);
+				mineral.valuesInCase.put(positionsMineral[x],0);
 				x++;
 			}
 		}
@@ -141,14 +140,20 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		producer=(Producer[]) animalsInSavana.getTable(name1);
 		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name2);
-		PrimaryConsumer c= (PrimaryConsumer) consumer[0];
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			Producer p= producer[i];
-			ArrayList <String> EatenBy = null;
-			FirstTrophicLevel(p, c, EatenBy);
-			
+			for(int k=0; k<NUMBER_OF_ANIMALS_IN_A_SPECIES;k++) {
+				Producer p= producer[i];
+				PrimaryConsumer c= (PrimaryConsumer) consumer[k];
+				ArrayList <String> EatenBy = null;
+				FirstTrophicLevel(p, c, EatenBy);
+				producer[i].setPopulationDensity(p.getPopulationDensity());
+				consumer[i].setHp(c.getHp());
+			}
 		}
+		animalsInSavana.register(name1, producer);
+		animalsInSavana.register(name2, consumer);
 	}
+	
 	public void SecondFoodChain(Consumer[] consumer1, Consumer[] consumer2, String name1, String name2) {
 		consumer1 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer1=(Consumer[]) animalsInSavana.getTable(name1);
@@ -159,9 +164,13 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			PrimaryConsumer pc=  (PrimaryConsumer) consumer1[i];
 			ArrayList <String> EatenBy = null; 
 			SecondTrophicLevel(pc, sc, EatenBy);
-			
+			consumer1[i].setPopulationDensity(pc.getPopulationDensity());
+			consumer2[i].setPopulationDensity(sc.getPopulationDensity());
 		}
+		animalsInSavana.register(name1, consumer1);
+		animalsInSavana.register(name2, consumer2);
 	}
+	
 	public void ThirdFoodChain(Consumer[] consumer1, Consumer[] consumer2, String name1, String name2) {
 		consumer1 = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer1=(Consumer[]) animalsInSavana.getTable(name1);
@@ -172,8 +181,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			SecondaryConsumer sc= (SecondaryConsumer) consumer1[i];
 			ArrayList <String> EatenBy = null; 
 			ThirdTrophicLevel(sc, tc, EatenBy);
-			
+			consumer1[i].setPopulationDensity(sc.getPopulationDensity());
+			consumer2[i].setPopulationDensity(tc.getPopulationDensity());
 		}
+		animalsInSavana.register(name1, consumer1);
+		animalsInSavana.register(name2, consumer2);
 	}
 	
 	public void HpManagementProducer(Producer[] producer, String name) {
@@ -183,6 +195,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			AbsorptionMineral(producer[i]);
 			DieOrHungryProducer(producer[i]);
 		}
+		animalsInSavana.register(name, producer);
 	}
 	public void HpManagementConsumer(Consumer[] consumer, String name) {
 		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
@@ -190,6 +203,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
 			DieOrHungryConsumer(consumer[i]);
 		}
+		animalsInSavana.register(name, consumer);
 	}
 	
 	public void AllSpeciesHpManagement() {

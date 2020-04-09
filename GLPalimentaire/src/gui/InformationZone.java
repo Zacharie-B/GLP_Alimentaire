@@ -81,16 +81,6 @@ public class InformationZone extends JPanel{
 		return number;
 	}
 	
-	private int CounterHPConsumer(String name) {
-		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer=(Consumer[]) animals.getTable(name);
-		int number = 0;
-			for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
-				number+=consumer[index].getHp();
-			}
-		return number;
-	}
-	
 	public JFreeChart getPopulationBar1() {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		dataset.setValue(CounterInLifeProducer("bush"), "producer", "bush");
@@ -99,19 +89,15 @@ public class InformationZone extends JPanel{
 		dataset.setValue(CounterInLifeConsumer("giraffe"), "primaryConsumer", "giraffe");
 		dataset.setValue(CounterInLifeConsumer("zebra"), "primaryConsumer", "zebra");
 		dataset.setValue(CounterInLifeConsumer("gazelle"), "primaryConsumer", "gazelle");
-
-		return ChartFactory.createBarChart("", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
-	}
-	public JFreeChart getPopulationBar2() {
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		dataset.setValue(CounterInLifeConsumer("warthog"), "primaryConsumer", "warthog");
 		dataset.setValue(CounterInLifeConsumer("buffalo"), "primaryConsumer", "buffalo");
 		dataset.setValue(CounterInLifeConsumer("cheetah"), "secondaryConsumer", "cheetah");
 		dataset.setValue(CounterInLifeConsumer("hyena"), "secondaryConsumer", "hyena");
 		dataset.setValue(CounterInLifeConsumer("lion"), "tertiaryConsumer", "lion");
-	
-		return ChartFactory.createBarChart("", "Animals",  "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
+
+		return ChartFactory.createBarChart("", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
 	}
+	
 	   public void printFoodChains() {
 	        InitialPosition pos = new InitialPosition();
 	        Grass grass = new Grass("grass",true,10,10,2,30,25,0,4,pos.initPosition[0]);

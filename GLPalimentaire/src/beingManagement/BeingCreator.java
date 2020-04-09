@@ -4,7 +4,11 @@ import java.util.HashMap;
 
 import data.*;
 
-
+/**
+ * Use to Pattern Singleton
+ * @author HP
+ *
+ */
 public class BeingCreator {
 	public static final int ALL_POINTS= 200;
 	private static BeingCreator instance = new BeingCreator();

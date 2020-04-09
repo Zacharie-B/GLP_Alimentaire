@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import org.jfree.chart.ChartPanel;
 
 import beingManagement.BeingCreator;
+import data.Producer;
 import ecosystemProcess.SavannaEcosystem;
 
 public class MainGUI extends JFrame implements Runnable{
@@ -30,6 +31,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private static final Dimension WINDOWS_DIMENSION = new Dimension(1300,700);
 	private static final Dimension WINDOWS_INFORMATIONS_DIMENSION = new Dimension (500,700);
 	private Border lineborder = BorderFactory.createLineBorder(Color.black, 1);
+	
 	
 	private OperationZone operationZone = new OperationZone();
 	private InformationZone informationZone = new InformationZone();
@@ -132,11 +134,11 @@ public class MainGUI extends JFrame implements Runnable{
 		populationBar1 = new ChartPanel(informationZone.getPopulationBar1());
 		informationZonep.add(populationBar1, gbConstraints);
 		
-		gbConstraints.weighty = 0.40;
+		/*gbConstraints.weighty = 0.40;
 		gbConstraints.gridx = 0;
 		gbConstraints.gridy = 2;
 		populationBar2 = new ChartPanel(informationZone.getPopulationBar2());
-		informationZonep.add(populationBar2, gbConstraints);
+		informationZonep.add(populationBar2, gbConstraints);*/
 	}
 
 	@Override
@@ -144,15 +146,16 @@ public class MainGUI extends JFrame implements Runnable{
 		boolean finish = false;
 		while (finish==false) {
 			try {
-				Thread.sleep(400);
+				Thread.sleep(800);
 			}
 			catch (InterruptedException e){
 				System.out.println(e.getMessage());
 			}
-			
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
 				se.AllSpeciesHpManagement();
+				InformationWindows();
+				repaint();
 			}
 		}
 	}
@@ -162,8 +165,14 @@ public class MainGUI extends JFrame implements Runnable{
 		se.FirstChain();
 		se.SecondChain();
 		se.ThirdChain();
-		InformationWindows();
-		repaint();
+		Producer[] producer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		producer=(Producer[]) instance.getTable("bush");
+		for(int i=0; i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES; i++) {
+		if(producer[i].getIsAlive()==false) {
+			System.out.println(producer[i].getPopulationDensity());
+			}
+		}
+		System.out.println("\n");
 		}
 	
 

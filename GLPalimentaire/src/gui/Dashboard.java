@@ -100,7 +100,7 @@ public class Dashboard extends JPanel{
             
             g.setColor(Color.BLACK);
             g.drawLine(widthPanel/2, 0, widthPanel/2, heightPanel);
-            g.drawLine(0, heightPanel/2, widthPanel, heightPanel/2);   
+            g.drawLine(0, heightPanel/2, widthPanel, heightPanel/2);
             
         }	
     

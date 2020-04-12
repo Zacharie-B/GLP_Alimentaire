@@ -24,9 +24,17 @@ public class Buffalo extends PrimaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
+	public Buffalo() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
-	public String toString() {
-		return "Buffle mangé par :\n" + getEatenBy() + "\n" + "Buffle mange :\n" + getDiet()+"\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	@Override
 	public void initializeDiet() {

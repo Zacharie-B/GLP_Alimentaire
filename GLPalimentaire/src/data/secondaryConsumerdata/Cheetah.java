@@ -24,9 +24,17 @@ public class Cheetah extends SecondaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
+	public Cheetah() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
-	public String toString() {
-		return "Guépard mangé par :\n" + getEatenBy() + "\n" + "Guépard mange :\n" + getDiet()+"\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	
 	@Override
@@ -41,6 +49,7 @@ public class Cheetah extends SecondaryConsumer{
 		ArrayList <String> diet = new ArrayList <String> ();
 		diet.add("gazelle");
 		diet.add("warthog");
+		diet.add("giraffe");
 		setDiet(diet);
 	}
 }

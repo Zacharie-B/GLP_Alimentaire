@@ -1,15 +1,27 @@
 package gui;
 
+import java.awt.Component;
 import java.awt.Font;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 
@@ -43,11 +55,12 @@ public class InformationZone extends JPanel{
 	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 15);
 	
 	private BeingCreator animals = BeingCreator.getInstance();
-	private JTextArea infosjt;
+	private JTable jTable = new JTable();
 	
-	public JTextArea getInfosjt() {
-		return infosjt;
+	public JTable getjTable() {
+		return jTable;
 	}
+
 
 	public JLabel getLabelInformation() {
 		return labelInformation;
@@ -58,7 +71,21 @@ public class InformationZone extends JPanel{
 	}
 	public InformationZone(){
 		labelInformation.setFont(font);
-		printFoodChains();
+		FoodChainsTable();
+		BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(new File("src/data/populationdedebut.png")));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		File file = new File("src/data/populationdedebut.png");
+		    try { 
+		      ChartUtilities.saveChartAsPNG(file, getTypeCountPie(), 400, 250); 
+		    }
+		     catch (IOException e) { 
+		      e.printStackTrace(); 
+		    } 
 	}
 	
 	private int CounterInLifeProducer(String name) {
@@ -80,6 +107,21 @@ public class InformationZone extends JPanel{
 			}
 		return number;
 	}
+
+	/**
+	 * Generates the node type pie chart.
+	 * 
+	 * @return the pie chart
+	 */
+	public JFreeChart getTypeCountPie() {
+		DefaultPieDataset dataset = new DefaultPieDataset();
+		dataset.setValue("Producteur", 3);
+		dataset.setValue("Consommateur Primaire", 6);
+		dataset.setValue("Consommateur Seondaire", 2);
+		dataset.setValue("Consommateur Tertiaire", 8);
+
+		return ChartFactory.createPieChart("Nombres d'espèces en vie par niveau trophique dans la chaîne alimentaire", dataset, true, true, false);
+	}
 	
 	public JFreeChart getPopulationBar1() {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -94,12 +136,13 @@ public class InformationZone extends JPanel{
 		dataset.setValue(CounterInLifeConsumer("cheetah"), "secondaryConsumer", "cheetah");
 		dataset.setValue(CounterInLifeConsumer("hyena"), "secondaryConsumer", "hyena");
 		dataset.setValue(CounterInLifeConsumer("lion"), "tertiaryConsumer", "lion");
-
-		return ChartFactory.createBarChart("", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
+		
+		return ChartFactory.createBarChart("Evolution of animals in Life", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
 	}
-	
-	   public void printFoodChains() {
-	        InitialPosition pos = new InitialPosition();
+	   
+	   
+	  public void FoodChainsTable() {
+		  	InitialPosition pos = new InitialPosition();
 	        Grass grass = new Grass("grass",true,10,10,2,30,25,0,4,pos.initPosition[0]);
 	        Acacia acacia = new Acacia("acacia",true,10,10,2,30,5,1,4,pos.initPosition[0]);
 	        Bush bush = new Bush("bush",true,10,10,2,30,5,1,4,pos.initPosition[0]);
@@ -111,20 +154,37 @@ public class InformationZone extends JPanel{
 	        Hyena hyena = new Hyena ("hyena",100, 300, true, 6, 1, 50, 150, 6, false, pos.initPosition[0]);
 	        Giraffe giraffe = new Giraffe("giraffe", 30, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[0]);
 	        Lion lion = new Lion ("lion",100, 10, true, 10, 1, 50, 150, 6, false, pos.initPosition[0]);
-	        String infos="";
-	        infosjt = new JTextArea(2,1);
-	        infos += grass.toString();
-	        infos += "\n" + acacia.toString();
-	        infos += "\n" + bush.toString();
-	        infos += "\n" + gazelle.toString();
-	        infos += "\n" + warthog.toString();
-	        infos += "\n" + cheetah.toString();
-	        infos += "\n" + buffalo.toString();
-	        infos += "\n" + zebra.toString();
-	        infos += "\n" + hyena.toString();
-	        infos += "\n" + giraffe.toString();
-	        infos += "\n" + lion.toString();
-	        infosjt.setText(infos);        
-	    }
+		  	String neverPredator="minéraux";
+		  	String neverPrey="meure de viellesse";
+		  	
+	        //add data in JTable
+		  	String[] headers = new String[]{"Espèce", "Prédateur de l'espèce", "Proie de l'espèce", "niveau trophique"};
+	        Object rows[][] = {{"acacia",acacia.Prey(),neverPredator,"niveau 0"},
+	            {"grass",grass.Prey(),neverPredator,"niveau 0"},
+	            {"bush",bush.Prey(),neverPredator,"niveau 0"},
+	            {"gazelle",gazelle.Prey(), gazelle.Predator(),"niveau 1"},
+	            {"warthog",warthog.Prey(), warthog.Predator(),"niveau 1"},
+	            {"buffalo",buffalo.Prey(), buffalo.Predator(),"niveau 1"},
+	            {"giraffe",giraffe.Prey(), giraffe.Predator(),"niveau 1"},
+	            {"zebra",zebra.Prey(), zebra.Predator(),"niveau 1"},
+	            {"cheetah",cheetah.Prey(), cheetah.Predator(),"niveau 2"},
+	            {"hyena",hyena.Prey(), hyena.Predator(),"niveau 2"},
+	            {"lion",neverPrey,lion.Predator(),"niveau 3"},
+	            
+	        };
+	        DefaultTableModel tableModel = new DefaultTableModel(rows, headers);
+	        jTable.setModel(tableModel);
+	        
+	        //Bloquer le redimensionnement
+	        jTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	        TableColumn col = jTable.getColumnModel().getColumn(0);
+	        col.setPreferredWidth(50);
+	        col = jTable.getColumnModel().getColumn(1);
+	        col.setPreferredWidth(180);
+	        col = jTable.getColumnModel().getColumn(2);
+	        col.setPreferredWidth(190);
+	        col = jTable.getColumnModel().getColumn(3);
+	        col.setPreferredWidth(95);
+	  }
 	
 }

@@ -25,9 +25,18 @@ public class Lion extends TertiaryConsumer{
 		initializeDiet();
 	}
 	
+	public Lion() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public String toString() {
-		return "Lion mange :\n" + getDiet() + "\n" + "Lion meurt de vieillesse \n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	
 	@Override

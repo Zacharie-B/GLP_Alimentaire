@@ -24,12 +24,9 @@ public class Reeds extends Producer{
 	}
 
 	@Override
-	public String toString() {
-		return "Reeds [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getmineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
 	}
 	
 	public void initializeEatenBy(){

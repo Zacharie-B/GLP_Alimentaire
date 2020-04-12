@@ -26,9 +26,18 @@ public class Zebra extends PrimaryConsumer{
 		initializeDiet();
 	}
 	
+	public Zebra() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public String toString() {
-		return "Zèbre mangé par :\n" + getEatenBy() + "\n" + "Zèbre mange :\n" + getDiet()+"\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	@Override
 	public void initializeDiet() {

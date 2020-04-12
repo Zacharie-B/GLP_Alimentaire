@@ -25,13 +25,13 @@ public class HerbivorousLadybug extends PrimaryConsumer{
 		initializeDiet();
 	}
 	@Override
-	public String toString() {
-		return "HerbivorousLadybug [getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", \ngetPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	@Override
 	public void initializeDiet() {

@@ -22,10 +22,13 @@ public class Bush extends Producer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 	}
-
+	public Bush() {
+		
+	}
 	@Override
-	public String toString() {
-		return "Buisson mangé par :\n" + getEatenBy()+ "\n" + "Buisson mange des minéraux\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
 	}
 
 	
@@ -35,8 +38,6 @@ public class Bush extends Producer{
 		al.add("warthog");
 		al.add("buffalo");
 		al.add("zebra");
-		al.add("turtle");
-		al.add("hippopotamus");
 		setEatenBy(al);
 	}
 

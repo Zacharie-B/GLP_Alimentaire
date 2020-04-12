@@ -24,11 +24,18 @@ public class Hyena extends SecondaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	@Override
-	public String toString() {
-		return "Hyène mangé par :\n" + getEatenBy() + "\n" + "Hyène mange :\n" + getDiet()+"\n";
+	public Hyena() {
+		// TODO Auto-generated constructor stub
 	}
-	
+	@Override
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
+	}
 	@Override
 	public void initializeEatenBy() {
 		ArrayList <String> eatenBy = new ArrayList <String> ();
@@ -43,7 +50,6 @@ public class Hyena extends SecondaryConsumer{
 		diet.add("warthog");
 		diet.add("buffalo");
 		diet.add("zebra");
-		diet.add("giraffe");
 		setDiet(diet);
 	}
 }

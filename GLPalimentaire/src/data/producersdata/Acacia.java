@@ -22,10 +22,13 @@ public class Acacia extends Producer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 	}
-
+	public Acacia() {
+		
+	}
 	@Override
-	public String toString() {
-		return "Accacia mangé par :\n" + getEatenBy()+ "\n" + "Accacia mange des minéraux\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
 	}
 
 	

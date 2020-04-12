@@ -24,9 +24,17 @@ public class Gazelle extends PrimaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
+	public Gazelle() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
-	public String toString() {
-		return "Gazelle mangé par :\n" + getEatenBy() + "\n" + "Gazelle mange :\n" + getDiet()+"\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	@Override
 	public void initializeDiet() {

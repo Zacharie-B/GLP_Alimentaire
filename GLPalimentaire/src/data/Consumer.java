@@ -101,5 +101,7 @@ public abstract class Consumer implements Species{
 	public abstract void initializeEatenBy();
 	
 	public abstract void initializeDiet();
+	public abstract String Prey();
+	public abstract String Predator();
 }
 

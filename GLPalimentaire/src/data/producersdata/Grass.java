@@ -22,10 +22,13 @@ public class Grass extends Producer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 	}
-
+	public Grass() {
+		
+	}
 	@Override
-	public String toString() {
-		return "Herbe mangé par :\n" + getEatenBy()+ "\n" + "Herbe mange des minéraux\n";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
 	}
 
 	
@@ -35,7 +38,6 @@ public class Grass extends Producer{
 		al.add("warthog");
 		al.add("buffalo");
 		al.add("zebra");
-		al.add("muskOx");
 		setEatenBy(al);
 	}
 }

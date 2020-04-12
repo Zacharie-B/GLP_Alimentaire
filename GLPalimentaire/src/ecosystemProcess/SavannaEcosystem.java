@@ -1,7 +1,9 @@
 package ecosystemProcess;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
@@ -397,6 +399,60 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		setAnimals("Acacia");
 		setAnimals("Bush");
 		setAnimals("Zebra");
+	}
+	
+	/**
+	 * <p>All these methods are made to scroll :</p>
+	 * <ul>
+	 * 	<li>in a predator's diet,</li>
+	 * 	<li>in the HashMap of a predator,</li>
+	 * 	<li>in an array of a species</li>
+	 * </ul>
+	 * @param predator
+	 * @return Position
+	 * 
+	 * <p>perhaps create a comparison methods...</p>
+	 */
+	
+	private Position searchInArrayList(Consumer predator) {
+		int hugePosition = 500; 
+		ArrayList <String> dietList = predator.getDiet(); 
+		Iterator<String> iterator = dietList.iterator();
+		Position result = new Position(hugePosition,hugePosition);
+		Position tmp = null;
+		String name;
+		while (iterator.hasNext()) {
+			name = iterator.next();
+			tmp = searchInHM(name);
+			if(tmp.getX() < result.getX() && tmp.getY() > result.getY())
+				result = tmp;
+		}
+		return result;
+	}
+	
+	private Position searchInHM(String name) {
+		int hugePosition = 500; 
+		Collection<Species []> values = animalsInSavana.getAnimalsInEco().values();
+		Position result = new Position(hugePosition,hugePosition);
+		Position tmp = null;
+		for (Species[] spec : values) {
+			tmp = searchInArray(spec);
+			if(tmp.getX() < result.getX() && tmp.getY() > result.getY())
+				result = tmp;
+		}
+		return null;
+	}
+	
+	private Position searchInArray(Species [] spec) {
+		int hugePosition = 500;
+		Position result = new Position(hugePosition,hugePosition);
+		Position tmp = null;
+		for (int i=0 ; i<spec.length ; i++) {
+			tmp = spec[i].getCordinates();
+			if(tmp.getX() < result.getX() && tmp.getY() > result.getY())
+				result = tmp;
+		}
+		return result;
 	}
 	
 	public void reproduct(){

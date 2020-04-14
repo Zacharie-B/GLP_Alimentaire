@@ -2,6 +2,7 @@ package ecosystemProcess;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
@@ -68,10 +69,11 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
+	
+	
 	public SavannaEcosystem() {
 		species = new Species[NB_MAX_SPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
-		AllPointsMap();
 		buildEcosys();
 	}
 	
@@ -79,29 +81,29 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			(consumer[i]).setCordinates(cm.SavannaMouvement(consumer[i]));
+			if(name!="abc") {
+				searchInArrayList(consumer[i]);
+			}
+			else{
+				(consumer[i]).setCordinates(cm.SavannaMouvement(consumer[i]));
+			}
 		}
+		animalsInSavana.register(name, consumer);
 	}
 	
 	public void ConsumerMovement() {
-		ConsumerTeamMovement(gazelleTable, "gazelle");
-		ConsumerTeamMovement(warthogTable, "warthog");
-		ConsumerTeamMovement(cheetahTable, "cheetah");
-		ConsumerTeamMovement(buffaloTable, "buffalo");
-		ConsumerTeamMovement(zebraTable, "zebra");
-		ConsumerTeamMovement(hyenaTable, "hyena");
 		ConsumerTeamMovement(giraffeTable, "giraffe");
-		ConsumerTeamMovement(lionTable, "lion");
+		//ConsumerTeamMovement(lionTable, "lion");
 	}
 	
-	public void AllPointsMap() {
+	private void AllPointsMap() {
 		for(int i=0; i<18;i++) {
 			for(int j=0; j<12;j++) {
 				int x=0;
 				positionsMineral = new Position[BeingCreator.ALL_POINTS];
 				Position cordinates = new Position(i,j);
 				positionsMineral[x]=cordinates;
-				mineral.valuesInCase.put(positionsMineral[x],0);
+				mineral.addMineral(positionsMineral[x],0);
 				x++;
 			}
 		}
@@ -245,31 +247,6 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		}
 	}
 	
-
-	/**
-	 * public void seeking(Species speciesSeeking, Species [] speciesSearched, int indOfSeeker) {
-	 
-		//double fort de -size � size
-		// formule (x - center_x)^2 + (y - center_y)^2 < radius^2
-		int memberOne;
-		int memberTwo;
-		int distance;
-		int minDistance;
-		memberOne = (int) Math.pow(speciesSeeking.getCordinates().getX() - speciesSearched[0].getCordinates().getX(), 2);
-		memberTwo = (int) Math.pow(speciesSeeking.getCordinates().getY() - speciesSearched[0].getCordinates().getY(), 2);
-		distance = (int) Math.sqrt(memberOne+memberTwo);
-		minDistance = distance;
-		for(int i=1; i<BeingCreator.ALL_POINTS; i++) {
-			memberOne = (int) Math.pow(speciesSeeking.getCordinates().getX() - speciesSearched[i].getCordinates().getX(), 2);
-			memberTwo = (int) Math.pow(speciesSeeking.getCordinates().getY() - speciesSearched[i].getCordinates().getY(), 2);
-			distance = (int) Math.sqrt(memberOne+memberTwo);
-			if (distance<minDistance && i!=indOfSeeker) {
-				minDistance=distance;
-			}
-		}
-		}
-	*/
-	
 	/**
 	 * Use of the Simple Factory pattern thanks to create the objects of our species, 
 	 * we use the Singleton for stock the array of each species.
@@ -386,6 +363,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * We call the "setAnimals" method for each animal thanks to create the animals of all species.
 	 */
 	public void buildEcosys() {
+		AllPointsMap();
 		setAnimals("Grass");
 		setAnimals("Hyena");
 		setAnimals("Giraffe");
@@ -397,6 +375,79 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		setAnimals("Acacia");
 		setAnimals("Bush");
 		setAnimals("Zebra");
+	}
+	
+	/**
+	 * <p>All these methods are made to scroll :</p>
+	 * <ul>
+	 * 	<li>in a predator's diet,</li>
+	 * 	<li>in the HashMap of a predator,</li>
+	 * 	<li>in an array of a species</li>
+	 * </ul>
+	 * @param predator
+	 * @return Position
+	 * 
+	 * <p>perhaps create a comparison methods...</p>
+	 */
+	
+	/**
+	 * Search the nearest prey and move towards it
+	 * @param predator
+	 * @return
+	 */
+	private void searchInArrayList(Consumer predator){
+		boolean loin=true;
+		Position impossible = new Position(100,100);
+		ArrayList <String> dietList = predator.getDiet();
+		Iterator<String> iterator = dietList.iterator();
+		Position predatorPosition = predator.getCordinates();
+		String name;
+		while (iterator.hasNext()&&(loin!=false)){
+			name = iterator.next();
+			//use searchInIHM for each prey of this predator
+			impossible = searchInIHM(name, predatorPosition,impossible);
+		}
+		int x=impossible.getX()-predatorPosition.getX();
+		int y=impossible.getY()-predatorPosition.getY();
+		int distance= Math.abs(x)+Math.abs(y);
+		if(10>distance) {
+			if(Math.abs(x)>=Math.abs(y)) {
+				if(x<0) {
+					predator.setCordinates(cm.HuntingMovement(predator,"left"));
+				}
+				else {
+					predator.setCordinates(cm.HuntingMovement(predator,"right"));
+				}
+			}
+			else {
+				if(y<0) {
+					predator.setCordinates(cm.HuntingMovement(predator,"bot"));
+				}
+				else {
+					predator.setCordinates(cm.HuntingMovement(predator,"top"));
+				}
+			}
+		}
+		else {
+			cm.SavannaMouvement(predator);
+		}
+	}
+	
+	private Position searchInIHM(String name, Position predatorPosition, Position currentPrey) {
+		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		consumer=(Consumer[]) animalsInSavana.getTable(name);
+		Position newPrey;
+		for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
+			int x= Math.abs(consumer[index].getCordinates().getX()-predatorPosition.getX());
+			int y= Math.abs(consumer[index].getCordinates().getY()-predatorPosition.getY());
+			if((x+y)<10) {
+				newPrey= new Position(x,y);
+				if((x+y)<(Math.abs(currentPrey.getX()-predatorPosition.getX())+Math.abs(currentPrey.getY()-predatorPosition.getY()))) {
+					return newPrey;
+				}
+			}
+		}
+		return currentPrey;
 	}
 	
 	public void reproduct(){

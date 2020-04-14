@@ -10,9 +10,9 @@ public class InitialPosition {
 	
 	
 	
-	public InitialPosition() {
+	/*public InitialPosition() {
 		InitPosition();
-	}
+	}*/
 
 
 

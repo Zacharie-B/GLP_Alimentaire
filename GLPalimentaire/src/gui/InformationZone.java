@@ -117,7 +117,7 @@ public class InformationZone extends JPanel{
 		DefaultPieDataset dataset = new DefaultPieDataset();
 		dataset.setValue("Producteur", 3);
 		dataset.setValue("Consommateur Primaire", 6);
-		dataset.setValue("Consommateur Seondaire", 2);
+		dataset.setValue("Consommateur Secondaire", 2);
 		dataset.setValue("Consommateur Tertiaire", 8);
 
 		return ChartFactory.createPieChart("Nombres d'espèces en vie par niveau trophique dans la chaîne alimentaire", dataset, true, true, false);

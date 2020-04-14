@@ -6,7 +6,7 @@ import data.Position;
 
 public class CreateMovement extends MovementOnMap{
 	
-	public CreateMovement (){
+	/*public CreateMovement (){
 		
 	}
 	
@@ -43,5 +43,28 @@ public class CreateMovement extends MovementOnMap{
 		}
         return initPosition;
 	}
+	public Position HuntingMovement(Consumer predator,String management) {
+		Position initposition = predator.getCordinates();
+		int c=0;
+		switch(management) {
+        case "right" :
+        	c=SavannaMoveRight(predator);
+        	initposition.setX(c); 
+        	return predator.getCordinates();
+        case "left" : 
+        	c=SavannaMoveLeft(predator);
+        	initposition.setX(c); 
+        	return predator.getCordinates();
+        case "top" : 
+        	c=SavannaMoveTop(predator);
+        	initposition.setY(c); 
+        	return predator.getCordinates();
+        case "bot" :
+        	c=SavannaMoveBot(predator);
+        	initposition.setY(c); 
+        	return predator.getCordinates();
+        }
+        return initposition;
+	}*/
 	
 }

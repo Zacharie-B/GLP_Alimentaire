@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.Border;
 
 import org.jfree.chart.ChartPanel;
@@ -30,7 +29,6 @@ public class MainGUI extends JFrame implements Runnable{
 	private static final long serialVersionUID = 1L;
 	private static final Dimension WINDOWS_DIMENSION = new Dimension(1380,700);
 	private static final Dimension WINDOWS_INFORMATIONS_DIMENSION = new Dimension (700,700);
-	private static final Dimension DIMENSION_OF_INFORMATION_TABLE = new Dimension (300,300);
 	private Border lineborder = BorderFactory.createLineBorder(Color.black, 1);
 	
 	
@@ -45,7 +43,6 @@ public class MainGUI extends JFrame implements Runnable{
 	private GridBagConstraints gbConstraints = new GridBagConstraints();
 	private JPanel statsInformation = new JPanel();
 	
-	//private ChartPanel populationEvolutionChart;
 	private ChartPanel populationBar1;
 	private ChartPanel trophicLevel;
 	private int action=0;
@@ -91,10 +88,7 @@ public class MainGUI extends JFrame implements Runnable{
 				gbConstraints.gridy = 0;
 				informationZone.setBorder(lineborder);
 				informationZonep.add(informationZone.getLabelInformation(), gbConstraints);
-				
-				
-				//JScrollPane jscroll1= new JScrollPane(InformationWindows());
-				
+					
 				statsInformation.setLayout(new GridLayout(2,1));
 				
 				populationBar1 = new ChartPanel(informationZone.getPopulationBar1());
@@ -161,12 +155,12 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 	
 	public void MovementOnMap() {
-		se.ConsumerMovement();
-		se.FirstChain();
-		se.SecondChain();
-		se.ThirdChain();
-		se.AllSpeciesHpManagement();
-		dashboard.repaint();
+		//se.ConsumerMovement();
+		//se.FirstChain();
+		//se.SecondChain();
+		//se.ThirdChain();
+		//se.AllSpeciesHpManagement();
+		//dashboard.repaint();
 		}
 	
 

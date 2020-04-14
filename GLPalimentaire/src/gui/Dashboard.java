@@ -52,7 +52,6 @@ public class Dashboard extends JPanel{
             this.lionp = ImageIO.read(new File(ImagesPreferences.LION_IMG_BACKGROUND_PATH));
             this.warthogp = ImageIO.read(new File(ImagesPreferences.WARTHOG_IMG_BACKGROUND_PATH));
             this.zebrap = ImageIO.read(new File(ImagesPreferences.ZEBRA_IMG_BACKGROUND_PATH));
-            repaint();
         } 
         catch (IOException e) {
             throw new IOException(" one/some files are not found", e);
@@ -60,14 +59,7 @@ public class Dashboard extends JPanel{
 	}
 
 	public Dashboard(){
-		super();
-	}
-
-	
-	public Dashboard getInstance() {
-		return this;
-	}
-    
+	}    
 	
     @Override
     public void paintComponent(Graphics g){
@@ -78,7 +70,6 @@ public class Dashboard extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    		//BeingCreator bc= new BeingCreator("Savanna");
         	heightPanel = getHeight();
         	widthPanel = getWidth();
             Graphics2D g2d = (Graphics2D)g;

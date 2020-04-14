@@ -1,33 +1,35 @@
 package beingManagement;
-import java.rmi.activation.Activator;
+
+import java.util.HashMap;
 
 import data.*;
-import data.decomposersdata.Bacterium;
-import data.secondaryConsumerdata.Cheetah;
-import data.tertiaryConsumerdata.Inuit;
 
+/**
+ * Use to Pattern Singleton
+ * @author HP
+ *
+ */
 public class BeingCreator {
 	public static final int ALL_POINTS= 200;
-
-	public BeingCreator(String species, int number) {
-
+	private static BeingCreator instance = new BeingCreator();
+	private HashMap <String,Species[]> animalsInThisEcosystem = new HashMap <String,Species[]>();
+	
+	public static BeingCreator getInstance() {
+		return instance;
 	}
-
-	public static Species[] initFamily() {
-		
-		Cheetah [] beingFamily = new Cheetah [ALL_POINTS];
-		for(int i=0 ; i<ALL_POINTS ; i++) {
-			beingFamily [i] = new Cheetah("cheetah",10, 100, true, 1, 1, 50, 150, 6, false, new Position(5,5));
+	
+	public void register(String species, Species[] speciesTable) {
+		animalsInThisEcosystem.put(species, speciesTable);
+	}
+	private BeingCreator() {
+	
+	}
+	
+	public Species[] getTable(String name) {
+		if (animalsInThisEcosystem.containsKey(name)) {
+			return animalsInThisEcosystem.get(name);
+		} else {
+			return null;
 		}
-		return beingFamily;
 	}
-	
-	public static void add(/*T [] beingFamily, */int number) {
-		
-	}
-	
-	public static void suppr() {
-		
-	}
-
 }

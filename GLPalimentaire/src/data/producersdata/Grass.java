@@ -22,15 +22,15 @@ public class Grass extends Producer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 	}
-
-	@Override
-	public String toString() {
-		return "Grass [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getMineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	public Grass() {
+		
 	}
+	@Override
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+
 	
 	public void initializeEatenBy(){
 		ArrayList <String> al = new ArrayList <String> ();
@@ -38,7 +38,6 @@ public class Grass extends Producer{
 		al.add("warthog");
 		al.add("buffalo");
 		al.add("zebra");
-		al.add("muskOx");
 		setEatenBy(al);
 	}
 }

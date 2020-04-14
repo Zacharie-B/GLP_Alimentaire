@@ -14,11 +14,11 @@ public class IsDead{
 	 * @return the producer is dead if its "hp" are equal to 0
 	 */
 	
-	public Producer ProducerDead(Producer producer) {
+	public void ProducerDead(Producer producer) {
 		if(producer.getHP()==0) {
 			producer.setIsAlive(false);
+			producer.setPopulationDensity(0);
 		}
-		return producer;
 	}
 	
 	/**
@@ -26,11 +26,11 @@ public class IsDead{
 	 * @param consumer
 	 * @return the consumer is dead if its "hp" are equal to 0
 	 */
-	public Consumer ConsumerDead(Consumer consumer) {
+	public void ConsumerDead(Consumer consumer) {
 		if(consumer.getHp()==0) {
 			consumer.setIsAlive(false);	
+			consumer.setPopulationDensity(0);
 		}
-		return consumer;
 	}
 }
 

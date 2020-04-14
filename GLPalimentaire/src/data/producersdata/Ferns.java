@@ -24,12 +24,9 @@ public class Ferns extends Producer{
 	}
 
 	@Override
-	public String toString() {
-		return "Ferns [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getMineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
 	}
 	
 	public void initializeEatenBy(){

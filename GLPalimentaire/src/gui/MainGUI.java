@@ -1,133 +1,171 @@
 package gui;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
-import data.Position;
+
+import org.jfree.chart.ChartPanel;
 
 import ecosystemProcess.SavannaEcosystem;
 
-public class MainGUI extends JDialog implements Runnable{
+public class MainGUI extends JFrame implements Runnable{
 
-	private Dimension dimensionFenetre = new Dimension(1850,900);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final Dimension WINDOWS_DIMENSION = new Dimension(1380,700);
+	private static final Dimension WINDOWS_INFORMATIONS_DIMENSION = new Dimension (700,700);
 	private Border lineborder = BorderFactory.createLineBorder(Color.black, 1);
+	
 	
 	private OperationZone operationZone = new OperationZone();
 	private InformationZone informationZone = new InformationZone();
 	private Dashboard dashboard = new Dashboard();
+	private SavannaEcosystem se= new SavannaEcosystem();
 	
-	private JPanel operationZoneANDinformationZone = new JPanel(new GridBagLayout());
+	private JPanel operationZonep = new JPanel();
+	private JPanel informationZonep = new JPanel();
+	private GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
+	private GridBagConstraints gbConstraints = new GridBagConstraints();
+	private JPanel statsInformation = new JPanel();
 	
-	private JPanel fenetre = new JPanel(new GridBagLayout());
-	
-	private MainGUI instance = this;
+	private ChartPanel populationBar1;
+	private ChartPanel trophicLevel;
+	private int action=0;
 	
 	public MainGUI(){
 		init();
 		run();
 	}
 	
-	@SuppressWarnings("unused")
+	private void CreateButtonOnIHM (JButton button){
+		asidePanelGridBagConstraints.weighty = 0.10;
+		asidePanelGridBagConstraints.gridx = action;
+		asidePanelGridBagConstraints.gridy = 0;
+		operationZone.setBorder(lineborder);
+		operationZonep.add(button, asidePanelGridBagConstraints);
+		action++;
+	}
+	
 	private void init() {
-		//d�but teste image de fond
+				//d�but teste image de fond
 				try {
-					dashboard.setImage("src/misc/Orange.jpg");
-					dashboard.setLion("src/misc/lion.jpg");
+					dashboard.setPicture();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//fin test image de fond
+
+				operationZonep.setLayout(new GridBagLayout());
+				informationZonep.setLayout(new GridBagLayout());
 				
-				//d�but : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
-				GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
-				
-				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				asidePanelGridBagConstraints.weightx = 1;
+				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				
-				asidePanelGridBagConstraints.weighty = 0.2;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 0;
-				operationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(operationZone, asidePanelGridBagConstraints);
+				CreateButtonOnIHM (operationZone.getButtonLeave());
+				CreateButtonOnIHM (operationZone.getButtonDisaster());
+				CreateButtonOnIHM (operationZone.getStopButton());
 				
-				asidePanelGridBagConstraints.weighty = 0.8;
-				asidePanelGridBagConstraints.gridx = 0;
-				asidePanelGridBagConstraints.gridy = 1;
+				
+				gbConstraints.weightx = 1;
+				gbConstraints.fill = GridBagConstraints.BOTH;
+				gbConstraints.weighty = 0.06;
+				gbConstraints.gridx = 0;
+				gbConstraints.gridy = 0;
 				informationZone.setBorder(lineborder);
-				operationZoneANDinformationZone.add(informationZone, asidePanelGridBagConstraints);
+				informationZonep.add(informationZone.getLabelInformation(), gbConstraints);
+					
+				statsInformation.setLayout(new GridLayout(2,1));
+				
+				populationBar1 = new ChartPanel(informationZone.getPopulationBar1());
+				trophicLevel = new ChartPanel(informationZone.getTypeCountPie());
+						
+				statsInformation.add(populationBar1);
+				statsInformation.add(trophicLevel);
+				
+				JScrollPane jscroll1= new JScrollPane(statsInformation);
+				gbConstraints.fill = GridBagConstraints.BOTH;
+				gbConstraints.weighty = 0.80;
+				gbConstraints.gridx = 0;
+				gbConstraints.gridy = 1;
+				informationZone.setBorder(lineborder);
+				informationZonep.add(jscroll1, gbConstraints);
+				
+				
+				JScrollPane jscroll2= new JScrollPane(informationZone.getjTable());
+				gbConstraints.fill = GridBagConstraints.BOTH;
+				gbConstraints.weighty = 0.16;
+				gbConstraints.gridx = 0;
+				gbConstraints.gridy = 2;
+				informationZone.setBorder(lineborder);
+				informationZonep.add(jscroll2, gbConstraints);
+				
+				informationZonep.setPreferredSize(WINDOWS_INFORMATIONS_DIMENSION);
+				
+				
 				//fin : positionnement de operationZone et informationZone dans le JPanel operationZoneANDinformationZone 
 				
 				
 				//d�but : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
-				GridBagConstraints MapPanelGridBagConstraints = new GridBagConstraints();
+				Container contentPane = getContentPane();
+				contentPane.setLayout(new BorderLayout());
 				
-				MapPanelGridBagConstraints.fill = GridBagConstraints.BOTH;
-				MapPanelGridBagConstraints.weighty = 1;
-
-				MapPanelGridBagConstraints.weightx = 0.95;
-				MapPanelGridBagConstraints.gridx = 0;
-				MapPanelGridBagConstraints.gridy = 0;
-				dashboard.setBorder(lineborder);
-				fenetre.add(dashboard, MapPanelGridBagConstraints);
-
-				MapPanelGridBagConstraints.weightx = 0.05;
-				MapPanelGridBagConstraints.gridx = 1;
-				MapPanelGridBagConstraints.gridy = 0;
-				fenetre.add(operationZoneANDinformationZone, MapPanelGridBagConstraints);
+				contentPane.add(BorderLayout.CENTER, dashboard);
+				contentPane.add(BorderLayout.EAST,informationZonep);
+				contentPane.add(BorderLayout.SOUTH,operationZonep);
 				//fin : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
 				
-				add(fenetre);
-				
-				setTitle("Simulation");
-				//setDefaultCloseOperation(EXIT_ON_CLOSE);
+				setTitle("Map");
+				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				pack();
-				setSize(dimensionFenetre);
+				setSize(WINDOWS_DIMENSION);
 				setVisible(true);
 				setResizable(false);
-	}
-	
-	
-	public MainGUI getInstance() {
-		return instance;
-	}
-
-	public void setInstance(MainGUI instance) {
-		this.instance = instance;
 	}
 
 	@Override
 	public void run() {
-		SavannaEcosystem savannaTest = new SavannaEcosystem();
 		boolean finish = false;
 		while (finish==false) {
-			savannaTest.ConsumerMovement();
-			dashboard.repaint();
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(800);
 			}
 			catch (InterruptedException e){
 				System.out.println(e.getMessage());
 			}
+			if(OperationZone.stop!=false) {
+				MovementOnMap();
+			}
+			
 		}
-		
 	}
+	
+	public void MovementOnMap() {
+		//se.ConsumerMovement();
+		//se.FirstChain();
+		//se.SecondChain();
+		//se.ThirdChain();
+		//se.AllSpeciesHpManagement();
+		//dashboard.repaint();
+		}
+	
 
-	/*public static void main(String[] args) {
-		new MainGUI("Map");
-	}*/
+	public static void main(String[] args) {
+		new MainGUI();
+	}
 
 }

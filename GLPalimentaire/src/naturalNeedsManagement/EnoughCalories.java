@@ -1,57 +1,40 @@
 package naturalNeedsManagement;
 
 import data.Consumer;
-import data.Producer;
 
 public class EnoughCalories{
 	
 	
-	public int ProducerHungry(Producer producer, int mineralMass, int currentMineralRate) {
-		int mineralsNeeds = producer.getRateMineral();
-		int i=0;
-		while ((mineralsNeeds > mineralMass)) {
-			if(mineralMass!=0) {
-				currentMineralRate+=mineralMass;
-				i++;
-				return currentMineralRate;
-			}
-			else if(i==5) {
-				int currentHP=producer.getHP();
-				currentHP--;
-				producer.setHP(currentHP);
-				i=0;
-				currentMineralRate=0;
-				return currentMineralRate;
-			}
-			else {
-				i++;
-			}
-		}
-		return currentMineralRate;
-		
-	}
-	
-	public int ConsumerHungry(Consumer consumer, int calories, int currentCalories) {
+	public int ConsumerHungry(Consumer consumer, int calories, int currentCalories, int population) {
 		int caloriesNeeds = consumer.getCalories();
-		int i=0;
-		while ((caloriesNeeds > calories)) {
-			if (calories!=0) {
-				currentCalories+=calories;
-				return currentCalories;
-			}
-			else if(i==5) {
-				i=0;
+		int alreadyEaten = consumer.getCaloriesAssimilation();
+		if(population>=consumer.getPopulationDensity()) {
+			if(caloriesNeeds <= (calories+alreadyEaten)) {
 				int currentHP=consumer.getHp();
-				currentHP--;
+				currentHP+=10;
 				consumer.setHp(currentHP);
 				currentCalories=0;
 				return currentCalories;
-			}
-			else {
-				i++;
+				}
+			else if (caloriesNeeds > (calories+alreadyEaten)) {
+				currentCalories+=calories;
+				return currentCalories;
 			}
 		}
-		
+		else {
+			float shareFood= population/consumer.getPopulationDensity();
+			if(caloriesNeeds <= (calories+alreadyEaten)*shareFood) {
+				int currentHP=consumer.getHp();
+				currentHP+=10;
+				consumer.setHp(currentHP);
+				currentCalories=0;
+				return currentCalories;
+				}
+			else if (caloriesNeeds > (calories+alreadyEaten)*shareFood) {
+				currentCalories+=calories*shareFood;
+				return currentCalories;
+			}
+		}
 		return currentCalories;
 	}
 }

@@ -22,15 +22,15 @@ public class Acacia extends Producer{
 		setCordinates(cordinates);
 		initializeEatenBy();
 	}
-
-	@Override
-	public String toString() {
-		return "Acacia [getHP()=" + getHP() + ", getEatenby()=" + getEatenBy() + ", getCordinates()=" + getCordinates()
-				+ ", getOrganicMass()=" + getOrganicMass() + ", getmineralAssimilation()="
-				+ getMineralAssimilation() + ", \ngetRateMineral()=" + getRateMineral() + ", getIsAlive()="
-				+ getIsAlive() + ", getPopulationDensity()=" + getPopulationDensity() + ", getNumberBirths()="
-				+ getNumberBirths() + ", getTimeBreeding()=" + getTimeBreeding() + "]";
+	public Acacia() {
+		
 	}
+	@Override
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+
 	
 	public void initializeEatenBy(){
 		ArrayList <String> al = new ArrayList <String> ();

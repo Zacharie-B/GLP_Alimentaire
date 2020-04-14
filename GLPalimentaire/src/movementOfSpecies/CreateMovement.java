@@ -4,15 +4,16 @@ package movementOfSpecies;
 import data.Consumer;
 import data.Position;
 
-public class CreateMovement extends SavannaMovement{
+public class CreateMovement extends MovementOnMap{
 	
-	public CreateMovement (){
+	/*public CreateMovement (){
 		
 	}
 	
-	public static Position SavannaMouvement (Consumer consumer) {
-		int c=0;
+	public Position SavannaMouvement (Consumer consumer) {
 		Position initPosition = consumer.getCordinates();
+		if(consumer.getIsAlive()==true) {
+		int c=0;
 		Position position = consumer.getCordinates();
         // Pour obtenir une valeur entière non nulle, il faut multiplier le
         // nombre aléatoire avec un nombre supérieur 0 avant la conversion.
@@ -38,7 +39,32 @@ public class CreateMovement extends SavannaMovement{
         	c=SavannaMoveBot(consumer);
         	position.setY(c); 
         	return consumer.getCordinates();
-        }	
+        }
+		}
         return initPosition;
 	}
+	public Position HuntingMovement(Consumer predator,String management) {
+		Position initposition = predator.getCordinates();
+		int c=0;
+		switch(management) {
+        case "right" :
+        	c=SavannaMoveRight(predator);
+        	initposition.setX(c); 
+        	return predator.getCordinates();
+        case "left" : 
+        	c=SavannaMoveLeft(predator);
+        	initposition.setX(c); 
+        	return predator.getCordinates();
+        case "top" : 
+        	c=SavannaMoveTop(predator);
+        	initposition.setY(c); 
+        	return predator.getCordinates();
+        case "bot" :
+        	c=SavannaMoveBot(predator);
+        	initposition.setY(c); 
+        	return predator.getCordinates();
+        }
+        return initposition;
+	}*/
+	
 }

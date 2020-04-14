@@ -20,7 +20,6 @@ public class ManagementTest{
 				
 				boolean finish = false;
 				while (finish==false) {
-					lakechain.ConsumerMovement();
 					System.out.println(lakechain.toString());
 					try {
 						Thread.sleep(1000);

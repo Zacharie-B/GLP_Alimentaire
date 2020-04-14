@@ -24,15 +24,17 @@ public class Giraffe extends PrimaryConsumer{
 		initializeEatenBy();
 		initializeDiet();
 	}
-	
+	public Giraffe() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
-	public String toString() {
-		return "Giraffe [getName()=" + getName() + ", getHp()=" + getHp() + ", getEatenBy()=" + getEatenBy()
-				+ ", getDiet()=" + getDiet() + ", getCordinates()=" + getCordinates() + ", getOrganicMass()="
-				+ getOrganicMass() + ", getIsAlive()=" + getIsAlive() + ", getPopulationDensity()="
-				+ getPopulationDensity() + ", getNumberBirths()=" + getCaloriesAssimilation() + ", getTimeBreeding()="
-				+ getTimeBreeding() + ", getCalories()=" + getCalories() + ", getTimeExcreta()=" + getTimeExcreta()
-				+ ", isSickness()=" + isSickness() + "]";
+	public String Prey() {
+		ArrayList<String> animals=getEatenBy();
+		return ""+animals;
+	}
+	public String Predator() {
+		ArrayList<String> animals=getDiet();
+		return ""+animals;
 	}
 	@Override
 	public void initializeDiet() {
@@ -43,7 +45,7 @@ public class Giraffe extends PrimaryConsumer{
 	
 	public void initializeEatenBy() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("hyena");
+		al.add("cheetah");
 		setEatenBy(al);
 	}
 

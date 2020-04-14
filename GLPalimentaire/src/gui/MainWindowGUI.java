@@ -59,8 +59,12 @@ public class MainWindowGUI extends JFrame{
 		
 		add(panel);
 		
+<<<<<<< HEAD
 		setTitle("Simulation d'écosystème");
 		setLocationRelativeTo(null);
+=======
+		setTitle("Simulation d'ï¿½cosystï¿½me");
+>>>>>>> refs/remotes/origin/yassin_zac
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setSize(dimensionFenetre);
@@ -74,6 +78,8 @@ public class MainWindowGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			MainGUI simulationMovement = new MainGUI();
+			simulationMovement.run();
 			setVisible(false);	
 			dispose();
 		}

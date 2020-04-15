@@ -45,7 +45,6 @@ public class MainGUI extends JFrame implements Runnable{
 	private JPanel statsInformation = new JPanel();
 	
 	private ChartPanel populationBar1;
-	private ChartPanel trophicLevel;
 	private int action=0;
 	
 	public MainGUI(){
@@ -93,10 +92,10 @@ public class MainGUI extends JFrame implements Runnable{
 				statsInformation.setLayout(new GridLayout(2,1));
 				
 				populationBar1 = new ChartPanel(informationZone.getPopulationBar1());
-				trophicLevel = new ChartPanel(informationZone.getTypeCountPie());
+				//trophicLevel = new ChartPanel(informationZone.getTypeCountPie());
 						
 				statsInformation.add(populationBar1);
-				statsInformation.add(trophicLevel);
+				//statsInformation.add(trophicLevel);
 				
 				JScrollPane jscroll1= new JScrollPane(statsInformation);
 				gbConstraints.fill = GridBagConstraints.BOTH;

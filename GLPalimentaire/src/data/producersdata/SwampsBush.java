@@ -15,7 +15,7 @@ public class SwampsBush extends Producer{
 		setPopulationDensity(populationdensity);
 		setNumberBirths(numberbirths);
 		setTimeBreeding(timebreeding);
-		setHP(hp);
+		sethp(hp);
 		setOrganicMass(organicmass);
 		setMineralAssimilation(mineralAssimilation);
 		setRateMineral(ratemineral);

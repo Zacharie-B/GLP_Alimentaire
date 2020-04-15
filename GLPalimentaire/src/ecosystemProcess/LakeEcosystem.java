@@ -90,7 +90,7 @@ public class LakeEcosystem extends FoodChainsProcess{
 
 	@Override
 	public String toString() {
-		return "LakeEcosystem [position=" + position + ", \nphytoplanckton=" + phytoplanckton.getHP() + ", \nzooplanckton="
+		return "LakeEcosystem [position=" + position + ", \nphytoplanckton=" + phytoplanckton.gethp() + ", \nzooplanckton="
 				+ zooplanckton.getHp() + ", \ncrustacean=" + crustacean.getHp() + ", \ncyprinid=" + cyprinid.getHp() + ", \npike=" 
 				+ pike.getHp() + ", \nsheatfish=" + sheatfish.getHp() +"]";
 	}

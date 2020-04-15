@@ -19,7 +19,7 @@ public class BlackCaiman extends TertiaryConsumer{
 			int caloriesAssimilation, int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
-		setHp(hp);
+		sethp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);

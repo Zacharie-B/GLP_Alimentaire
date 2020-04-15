@@ -1,9 +1,7 @@
 package gui;
 
 import java.awt.Font;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JLabel;
@@ -23,6 +21,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import beingManagement.BeingCreator;
 import data.Consumer;
 import data.Producer;
+import data.Species;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
 import data.primaryConsumerdata.Giraffe;
@@ -78,20 +77,10 @@ public class InformationZone extends JPanel{
 	      e.printStackTrace(); 
 	    }
 	}
-	
-	private int CounterInLifeProducer(String name) {
-		Producer[] producer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		producer=(Producer[]) animals.getTable(name);
-		int number = 0;
-			for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
-				number+=producer[index].getPopulationDensity();
-			}
-		return number;
-	}
-	
-	private int CounterInLifeConsumer(String name) {
-		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer=(Consumer[]) animals.getTable(name);
+
+	private int CounterInLife(String name) {
+		Species[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		consumer=(Species[]) animals.getTable(name);
 		int number = 0;
 			for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
 				number+=consumer[index].getPopulationDensity();
@@ -100,34 +89,21 @@ public class InformationZone extends JPanel{
 	}
 
 	
-	/**
-	 * Generates the node type pie chart.
-	 * 
-	 * @return the pie chart
-	 */
-	public JFreeChart getTypeCountPie() {
-		DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("Producteur", 3);
-		dataset.setValue("Consommateur Primaire", 6);
-		dataset.setValue("Consommateur Secondaire", 2);
-		dataset.setValue("Consommateur Tertiaire", 8);
-
-		return ChartFactory.createPieChart("Nombres d'espèces en vie par niveau trophique dans la chaîne alimentaire", dataset, true, true, false);
-	}
+	
 	
 	public JFreeChart getPopulationBar1() {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.setValue(CounterInLifeProducer("bush"), "producer", "bush");
-		dataset.setValue(CounterInLifeProducer("acacia"), "producer", "acacia");
-		dataset.setValue(CounterInLifeProducer("grass"), "producer", "grass");
-		dataset.setValue(CounterInLifeConsumer("giraffe"), "primaryConsumer", "giraffe");
-		dataset.setValue(CounterInLifeConsumer("zebra"), "primaryConsumer", "zebra");
-		dataset.setValue(CounterInLifeConsumer("gazelle"), "primaryConsumer", "gazelle");
-		dataset.setValue(CounterInLifeConsumer("warthog"), "primaryConsumer", "warthog");
-		dataset.setValue(CounterInLifeConsumer("buffalo"), "primaryConsumer", "buffalo");
-		dataset.setValue(CounterInLifeConsumer("cheetah"), "secondaryConsumer", "cheetah");
-		dataset.setValue(CounterInLifeConsumer("hyena"), "secondaryConsumer", "hyena");
-		dataset.setValue(CounterInLifeConsumer("lion"), "tertiaryConsumer", "lion");
+		dataset.setValue(CounterInLife("bush"), "producer", "bush");
+		dataset.setValue(CounterInLife("acacia"), "producer", "acacia");
+		dataset.setValue(CounterInLife("grass"), "producer", "grass");
+		dataset.setValue(CounterInLife("giraffe"), "primaryConsumer", "giraffe");
+		dataset.setValue(CounterInLife("zebra"), "primaryConsumer", "zebra");
+		dataset.setValue(CounterInLife("gazelle"), "primaryConsumer", "gazelle");
+		dataset.setValue(CounterInLife("warthog"), "primaryConsumer", "warthog");
+		dataset.setValue(CounterInLife("buffalo"), "primaryConsumer", "buffalo");
+		dataset.setValue(CounterInLife("cheetah"), "secondaryConsumer", "cheetah");
+		dataset.setValue(CounterInLife("hyena"), "secondaryConsumer", "hyena");
+		dataset.setValue(CounterInLife("lion"), "tertiaryConsumer", "lion");
 		
 		return ChartFactory.createBarChart("Evolution of animals in Life", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
 	}

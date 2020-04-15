@@ -116,18 +116,18 @@ public class SwampsEcosystem extends FoodChainsProcess{
 	
 	@Override
 	public String toString() {
-		String result = "species : (" +reeds.getName()+", "+ reeds.getHP() +"," +reeds.getIsAlive()+")";
+		String result = "species : (" +reeds.getName()+", "+ reeds.gethp() +"," +reeds.getIsAlive()+")";
 		result += "\nspecies : (" +turtle.getName()+", "+ turtle.getHp() + "," +turtle.getIsAlive()+")";
 		result += "\nspecies : (" +anaconda.getName()+", "+ anaconda.getHp() + "," +anaconda.getIsAlive()+")";
 		result += "\nspecies : ("+blackCaiman.getName()+", "+ blackCaiman.getHp() +"," +blackCaiman.getIsAlive()+")";
-		result += "\nspecies : (" +fruitTree.getName()+", "+ fruitTree.getHP() + "," +fruitTree.getIsAlive()+")";
+		result += "\nspecies : (" +fruitTree.getName()+", "+ fruitTree.gethp() + "," +fruitTree.getIsAlive()+")";
 		result += "\nspecies : (" +monkey.getName()+", "+ monkey.getHp() + "," +monkey.getIsAlive()+")";
 		result += "\nspecies : ("+chimpanzee.getName()+", "+ chimpanzee.getHp() + "," +chimpanzee.getIsAlive()+")";
 		result += "\nspecies : ("+jaguar.getName()+", "+ jaguar.getHp() +"," +jaguar.getIsAlive()+")";
 		result += "\nspecies : (" +turtle.getName()+", "+ turtle.getHp() + "," +turtle.getIsAlive()+")";
 		result += "\nspecies : (" +anaconda.getName()+", "+ anaconda.getHp() + "," +anaconda.getIsAlive()+")";
 		result += "\nspecies : ("+blackCaiman.getName()+", "+ blackCaiman.getHp() +"," +blackCaiman.getIsAlive()+")";
-		result += "\nspecies : (" +fruitTree.getName()+", "+ fruitTree.getHP() + "," +fruitTree.getIsAlive()+")";
+		result += "\nspecies : (" +fruitTree.getName()+", "+ fruitTree.gethp() + "," +fruitTree.getIsAlive()+")";
 		return result;
 	}
 

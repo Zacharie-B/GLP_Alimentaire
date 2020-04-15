@@ -7,6 +7,7 @@ import data.Position;
 import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
+import data.Species;
 import data.TertiaryConsumer;
 import naturalNeedsManagement.HungryProcess;
 import naturalNeedsManagement.MineralChange;
@@ -35,16 +36,16 @@ public class FoodChainsProcess{
 					&&producer.getIsAlive()==true) {
 				hp.HungryProcessConsumerWithProducer(primaryConsumer, producer);
 				if(producer.getPopulationDensity()<primaryConsumer.getPopulationDensity()) {
-					producer.setHP(0);
+					producer.sethp(0);
 					IsDead isDead= new IsDead();
-					isDead.ProducerDead(producer);
+					isDead.SpeciesDead(producer);
 					addMineralRessources(producer.getCordinates(),producer.getOrganicMass()*producer.getPopulationDensity());
 					producer.setPopulationDensity(0);
 				}
 				else if (producer.getPopulationDensity()==primaryConsumer.getPopulationDensity()) {
-					producer.setHP(0);
+					producer.sethp(0);
 					IsDead isDead= new IsDead();
-					isDead.ProducerDead(producer);
+					isDead.SpeciesDead(producer);
 					addMineralRessources(producer.getCordinates(),producer.getOrganicMass()*producer.getPopulationDensity());
 					producer.setPopulationDensity(0);
 				}
@@ -75,9 +76,9 @@ public class FoodChainsProcess{
 					&&primaryConsumer.getIsAlive()==true) {
 				hp.HungryProcessConsumerWithConsumer(secondaryConsumer, primaryConsumer);
 				if(primaryConsumer.getPopulationDensity()<=secondaryConsumer.getPopulationDensity()) {
-					primaryConsumer.setHp(0);
+					primaryConsumer.sethp(0);
 					IsDead isDead= new IsDead();
-					isDead.ConsumerDead(primaryConsumer);
+					isDead.SpeciesDead(primaryConsumer);
 					addMineralRessources(primaryConsumer.getCordinates(),
 					primaryConsumer.getOrganicMass()*primaryConsumer.getPopulationDensity());
 					primaryConsumer.setPopulationDensity(0);
@@ -109,9 +110,9 @@ public class FoodChainsProcess{
 					&&secondaryConsumer.getIsAlive()==true) {
 				hp.HungryProcessConsumerWithConsumer(tertiaryConsumer, secondaryConsumer);
 				if(secondaryConsumer.getPopulationDensity()<=tertiaryConsumer.getPopulationDensity()) {
-					secondaryConsumer.setHp(0);
+					secondaryConsumer.sethp(0);
 					IsDead isDead= new IsDead();
-					isDead.ConsumerDead(secondaryConsumer);
+					isDead.SpeciesDead(secondaryConsumer);
 					addMineralRessources(secondaryConsumer.getCordinates(),
 					secondaryConsumer.getOrganicMass()*secondaryConsumer.getPopulationDensity());
 					secondaryConsumer.setPopulationDensity(0);
@@ -142,9 +143,9 @@ public class FoodChainsProcess{
 			int mineralMass = mineralChange.getValue(producer.getCordinates());
 			if(mineralMass>producer.getRateMineral()&&producer.getIsAlive()==true) {
 				mineralMass-=producer.getRateMineral();
-				int hp= producer.getHP();
+				int hp= producer.gethp();
 				hp+=2;
-				producer.setHP(hp);
+				producer.sethp(hp);
 			}
 			mineralChange.addMineral(producer.getCordinates(), mineralMass);
 	}

@@ -22,14 +22,16 @@ public abstract class Producer implements Species{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * 
 	 * @return number of hit points
 	 */
-	public int getHP() {
+	public int gethp() {
 		return hp;
 	}
-	public void setHP(int hp) {
+
+	public void sethp(int hp) {
 		this.hp=hp;
 	}
 	

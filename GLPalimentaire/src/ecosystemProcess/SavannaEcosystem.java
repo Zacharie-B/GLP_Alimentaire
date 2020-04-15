@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
+
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
 import data.Consumer;
@@ -28,6 +30,7 @@ import foodChains.IsDead;
 import movementOfSpecies.CreateMovement;
 import movementOfSpecies.InitialPosition;
 import naturalNeedsManagement.MineralChange;
+import tests.LoggerUtility;
 
 /**
  * 
@@ -56,32 +59,30 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * allows us to position the different species and minerals on the map
 	 */
 	private Position[] positionsMineral;
-	@SuppressWarnings("unused")
-	private Position[] positionsDecomposer;	
-	@SuppressWarnings("unused")
-	private Species[] species;
 	private int j=0;
 	private int a=0;
 	
-	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 1;
-	private static final int NB_MAX_SPECIES=1000;
+	private static Logger logger = LoggerUtility.getLogger(SavannaEcosystem.class, "text");
+	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 4;
 	private CreateMovement cm = new CreateMovement();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
 	
 	public SavannaEcosystem(String legacy) {
-		species = new Species[NB_MAX_SPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 	}
 	
 	public SavannaEcosystem() {
-		species = new Species[NB_MAX_SPECIES];
 		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
 		buildEcosys();
 	}
 	
-	public void ConsumerTeamMovement(String name) {
+	/**
+	 * 
+	 */
+
+	public void ConsumerHunting(String name) {
 		Consumer[] consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
@@ -91,7 +92,14 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 	public void ConsumerMovement() {
-		ConsumerTeamMovement("giraffe");
+		ConsumerHunting("giraffe");
+		ConsumerHunting("gazelle");
+		ConsumerHunting("warthog");
+		ConsumerHunting("buffalo");
+		ConsumerHunting("zebra");
+		ConsumerHunting("cheetah");
+		ConsumerHunting("hyena");
+		ConsumerHunting("lion");
 	}
 	
 	private void AllPointsMap() {
@@ -147,7 +155,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 				ArrayList <String> EatenBy = null;
 				FirstTrophicLevel(p, c, EatenBy);
 				producer[i].setPopulationDensity(p.getPopulationDensity());
-				consumer[i].setHp(c.getHp());
+				consumer[i].setPopulationDensity(c.getPopulationDensity());
 			}
 		}
 		animalsInSavana.register(name1, producer);
@@ -188,60 +196,45 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		animalsInSavana.register(name2, consumer2);
 	}
 	
-	public void HpManagementProducer(Producer[] producer, String name) {
+	public void HpManagement(Species[] producer, String name) {
 		producer = new Producer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		producer=(Producer[]) animalsInSavana.getTable(name);
+		producer=(Species[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			AbsorptionMineral(producer[i]);
-			DieOrHungryProducer(producer[i]);
+			if(producer[i] instanceof Producer) {
+				AbsorptionMineral((Producer) producer[i]);
+				DieOrHungry(producer[i]);
+			}
+			else {
+				DieOrHungry(producer[i]);
+			}
 		}
 		animalsInSavana.register(name, producer);
-	}
-	public void HpManagementConsumer(Consumer[] consumer, String name) {
-		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer=(Consumer[]) animalsInSavana.getTable(name);
-		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			DieOrHungryConsumer(consumer[i]);
-		}
-		animalsInSavana.register(name, consumer);
 	}
 	
 	public void AllSpeciesHpManagement() {
 		
-		HpManagementProducer(grassTable,"grass");
-		HpManagementProducer(bushTable,"bush");
-		HpManagementProducer(acaciaTable,"acacia");
-		HpManagementConsumer(gazelleTable,"gazelle");
-		HpManagementConsumer(giraffeTable,"giraffe");
-		HpManagementConsumer(lionTable,"lion");
-		HpManagementConsumer(hyenaTable,"hyena");
-		HpManagementConsumer(zebraTable,"zebra");
-		HpManagementConsumer(cheetahTable,"cheetah");
-		HpManagementConsumer(warthogTable,"warthog");
-		HpManagementConsumer(buffaloTable,"buffalo");
+		HpManagement(grassTable,"grass");
+		HpManagement(bushTable,"bush");
+		HpManagement(acaciaTable,"acacia");
+		HpManagement(gazelleTable,"gazelle");
+		HpManagement(giraffeTable,"giraffe");
+		HpManagement(lionTable,"lion");
+		HpManagement(hyenaTable,"hyena");
+		HpManagement(zebraTable,"zebra");
+		HpManagement(cheetahTable,"cheetah");
+		HpManagement(warthogTable,"warthog");
+		HpManagement(buffaloTable,"buffalo");
 	}
 	 
-	private void DieOrHungryProducer(Producer producer) {
-		if(producer.getHP()==0) {
+	private void DieOrHungry(Species producer) {
+		if(producer.gethp()==0) {
 			IsDead isDead= new IsDead();
-			isDead.ProducerDead(producer);
+			isDead.SpeciesDead(producer);
 		}
 		else{
-			int hp= producer.getHP();
+			int hp= producer.gethp();
 			hp--;
-			producer.setHP(hp);
-		}
-	}
-	
-	private void DieOrHungryConsumer(Consumer consumer) {
-		if(consumer.getHp()==0) {
-			IsDead isDead= new IsDead();
-			isDead.ConsumerDead(consumer);
-		}
-		else{
-			int hp= consumer.getHp();
-			hp--;
-			consumer.setHp(hp);
+			producer.sethp(hp);
 		}
 	}
 	
@@ -407,8 +400,9 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			impossible = searchInIHM(name, predatorPosition,impossible);
 			
 		}
-		int x=impossible.getX()-predatorPosition.getX();
-		int y=impossible.getY()-predatorPosition.getY();
+		logger.info("La position du prédateur des proies est : " + predatorPosition+"\n");
+		int x=impossible.getX();
+		int y=impossible.getY();
 		int distance= Math.abs(x)+Math.abs(y);
 		if(10>distance) {
 			if(Math.abs(x)>=Math.abs(y)) {
@@ -432,17 +426,18 @@ public class SavannaEcosystem extends FoodChainsProcess{
 			cm.SavannaMouvement(predator);
 		}
 	}
-	
+
 	private Position searchInIHM(String name, Position predatorPosition, Position currentPrey) {
-		Producer[] consumer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer=(Producer[]) animalsInSavana.getTable(name);
+		Species[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		consumer=(Species[]) animalsInSavana.getTable(name);
 		Position newPrey;
 		for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
-			int x= Math.abs(consumer[index].getCordinates().getX()-predatorPosition.getX());
-			int y= Math.abs(consumer[index].getCordinates().getY()-predatorPosition.getY());
-			if(((x+y)<10)&&consumer[index].getIsAlive()==true) {
+			int x= consumer[index].getCordinates().getX()-predatorPosition.getX();
+			int y= consumer[index].getCordinates().getY()-predatorPosition.getY();
+			logger.info("La position d'une proie est : " + consumer[index].getCordinates());
+			if(((Math.abs(x)+Math.abs(y))<10)&&consumer[index].getIsAlive()==true) {
 				newPrey= new Position(x,y);
-				if((x+y)<(Math.abs(currentPrey.getX()-predatorPosition.getX())+Math.abs(currentPrey.getY()-predatorPosition.getY()))) {
+				if((Math.abs(x)+Math.abs(y))<Math.abs((currentPrey.getX()-predatorPosition.getX())+(currentPrey.getY()-predatorPosition.getY()))) {
 					return newPrey;
 				}
 			}

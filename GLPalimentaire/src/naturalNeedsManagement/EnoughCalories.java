@@ -10,9 +10,9 @@ public class EnoughCalories{
 		int alreadyEaten = consumer.getCaloriesAssimilation();
 		if(population>=consumer.getPopulationDensity()) {
 			if(caloriesNeeds <= (calories+alreadyEaten)) {
-				int currentHP=consumer.getHp();
+				int currentHP=consumer.gethp();
 				currentHP+=10;
-				consumer.setHp(currentHP);
+				consumer.sethp(currentHP);
 				currentCalories=0;
 				return currentCalories;
 				}
@@ -24,9 +24,9 @@ public class EnoughCalories{
 		else {
 			float shareFood= population/consumer.getPopulationDensity();
 			if(caloriesNeeds <= (calories+alreadyEaten)*shareFood) {
-				int currentHP=consumer.getHp();
+				int currentHP=consumer.gethp();
 				currentHP+=10;
-				consumer.setHp(currentHP);
+				consumer.sethp(currentHP);
 				currentCalories=0;
 				return currentCalories;
 				}

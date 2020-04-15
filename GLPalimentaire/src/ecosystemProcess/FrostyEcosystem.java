@@ -112,11 +112,11 @@ public class FrostyEcosystem extends FoodChainsProcess{
 	
 	@Override
 	public String toString() {
-		String result = "species : (" +grass.getName()+", "+ grass.getHP() +"," +grass.getIsAlive()+")";
+		String result = "species : (" +grass.getName()+", "+ grass.gethp() +"," +grass.getIsAlive()+")";
 		result += "\nspecies : (" +muskOx.getName()+", "+ muskOx.getHp() + "," +muskOx.getIsAlive()+")";
 		result += "\nspecies : (" +arcticWolf.getName()+", "+ arcticWolf.getHp() + "," +arcticWolf.getIsAlive()+")";
 		result += "\nspecies : ("+inuit.getName()+", "+ inuit.getHp() +"," +inuit.getIsAlive()+")";
-		result += "\nspecies : (" +foam.getName()+", "+ foam.getHP() + "," +foam.getIsAlive()+")";
+		result += "\nspecies : (" +foam.getName()+", "+ foam.gethp() + "," +foam.getIsAlive()+")";
 		result += "\nspecies : (" +clam.getName()+", "+ clam.getHp() + "," +clam.getIsAlive()+")";
 		result += "\nspecies : ("+phoque.getName()+", "+ phoque.getHp() + "," +phoque.getIsAlive()+")";
 		result += "\nspecies : ("+polarBear.getName()+", "+ polarBear.getHp() +"," +polarBear.getIsAlive()+")";

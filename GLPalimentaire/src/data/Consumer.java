@@ -25,10 +25,10 @@ public abstract class Consumer implements Species{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getHp() {
+	public int gethp() {
 		return hp;
 	}
-	public void setHp(int hp) {
+	public void sethp(int hp) {
 		this.hp = hp;
 	}
 	public ArrayList<String> getEatenBy() {

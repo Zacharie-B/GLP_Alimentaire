@@ -7,7 +7,6 @@ import data.Position;
 import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
-import data.Species;
 import data.TertiaryConsumer;
 import naturalNeedsManagement.HungryProcess;
 import naturalNeedsManagement.MineralChange;

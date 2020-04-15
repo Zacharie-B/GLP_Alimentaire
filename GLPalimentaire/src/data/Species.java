@@ -24,5 +24,6 @@ public interface Species {
 	public abstract int gethp();
 	public abstract void sethp(int hp);
 	public abstract void setIsAlive(boolean b);
+	public abstract int getTimeBreeding();
 }	
 

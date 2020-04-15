@@ -166,18 +166,19 @@ public class MainGUI extends JFrame implements Runnable{
 		se.SecondChain();
 		se.ThirdChain();
 		se.AllSpeciesHpManagement();
+		
 		dashboard.repaint();
 		}
 	
 	private void reproductOnSavanna(int simulationdays) {
 		se.reproduct("giraffe", simulationdays);
-		se.reproduct("lion", simulationdays);
+		/*se.reproduct("lion", simulationdays);
 		se.reproduct("gazelle", simulationdays);
 		se.reproduct("zebra", simulationdays);
 		se.reproduct("warthog", simulationdays);
 		se.reproduct("cheetah", simulationdays);
 		se.reproduct("buffalo", simulationdays);
-		se.reproduct("hyena", simulationdays);
+		se.reproduct("hyena", simulationdays);*/
 	}
 
 	public static void main(String[] args) {

@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -20,7 +19,6 @@ import org.jfree.chart.plot.PlotOrientation;
 
 import beingManagement.BeingCreator;
 import data.Consumer;
-import data.Producer;
 import data.Species;
 import data.primaryConsumerdata.Buffalo;
 import data.primaryConsumerdata.Gazelle;
@@ -33,7 +31,6 @@ import data.producersdata.Grass;
 import data.secondaryConsumerdata.Cheetah;
 import data.secondaryConsumerdata.Hyena;
 import data.tertiaryConsumerdata.Lion;
-import ecosystemProcess.SavannaEcosystem;
 import movementOfSpecies.InitialPosition;
 
 
@@ -79,10 +76,11 @@ public class InformationZone extends JPanel{
 	}
 
 	private int CounterInLife(String name) {
-		Species[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		Species[] consumer = new Consumer[animals.getTable(name).length];
 		consumer=(Species[]) animals.getTable(name);
+		
 		int number = 0;
-			for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
+			for(int index=0; index<animals.getTable(name).length;index++) {
 				number+=consumer[index].getPopulationDensity();
 			}
 		return number;

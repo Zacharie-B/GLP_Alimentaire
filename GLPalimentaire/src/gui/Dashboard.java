@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import beingManagement.BeingCreator;
 import data.Consumer;
 import data.Producer;
-import ecosystemProcess.SavannaEcosystem;
 import gui.images.ImagesPreferences;
 
 public class Dashboard extends JPanel{
@@ -97,38 +96,24 @@ public class Dashboard extends JPanel{
     
 
 	private void DisplayPictureConsumer(Image image, Graphics2D g2d, String name) {
-		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		Consumer[] consumer = new Consumer[animalsInSavana.getTable(name).length];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
-		for(int i=0;i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
+		for(int i=0;i<animalsInSavana.getTable(name).length;i++) {
 			if (image!=null && consumer[i].getIsAlive()==true) {
-				if(consumer[i].getPopulationDensity()>10) {
-    			g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
-              			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*10)/180,
-              			(heightPanel*10)/120, this);
-				}
-    			else {
-    				g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
-    	          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((consumer[i].getPopulationDensity())))/180,
-    	          			(heightPanel*((consumer[i].getPopulationDensity())))/120, this);
-    			}
+				g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
+	          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((consumer[i].getPopulationDensity())))/180,
+	          			(heightPanel*((consumer[i].getPopulationDensity())))/120, this);
     		}
 		}
     }
 	private void DisplayPictureProducer(Image image, Graphics2D g2d, String name) {
-		Producer[] producer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		Producer[] producer = new Producer[animalsInSavana.getTable(name).length];
 		producer=(Producer[]) animalsInSavana.getTable(name);
-		for(int i=0; i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
+		for(int i=0; i<animalsInSavana.getTable(name).length;i++) {
 			if (image!=null && producer[i].getIsAlive()==true) {
-    			if(producer[i].getPopulationDensity()>10) {
-    			g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
-              			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*10)/180,
-              			(heightPanel*10)/120, this);
-				}
-    			else {
-    				g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
-    	          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((producer[i].getPopulationDensity())))/180,
-    	          			(heightPanel*((producer[i].getPopulationDensity())))/120, this);
-    			}
+				g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
+	          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((producer[i].getPopulationDensity())))/180,
+	          			(heightPanel*((producer[i].getPopulationDensity())))/120, this);
 			}
     	}
 	}

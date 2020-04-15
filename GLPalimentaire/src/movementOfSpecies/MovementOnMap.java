@@ -1,49 +1,49 @@
 package movementOfSpecies;
 
-import data.Consumer;
+import data.Species;
 
 public class MovementOnMap extends MovementPosition{
 
-	public int SavannaMoveLeft(Consumer consumer) {
+	public int SavannaMoveLeft(Species species) {
 		int c;
-		if (consumer.getCordinates().getX()==0) {
-			c=MoveRight(consumer);
+		if (species.getCordinates().getX()==0) {
+			c=MoveRight(species);
 		}
 		else {
-			c=MoveLeft(consumer);
+			c=MoveLeft(species);
 		}
 		return c;
 	}
 	
-	public int SavannaMoveRight(Consumer consumer) {
+	public int SavannaMoveRight(Species species) {
 		int c;
-		if (consumer.getCordinates().getX()==17) {
-			c=MoveLeft(consumer);
+		if (species.getCordinates().getX()==17) {
+			c=MoveLeft(species);
 		}
 		else {
-			c=MoveRight(consumer);
+			c=MoveRight(species);
 		}
 		return c;
 	}
 	
-	public int SavannaMoveTop(Consumer consumer) {
+	public int SavannaMoveTop(Species species) {
 		int c;
-		if (consumer.getCordinates().getY()==11) {
-			c=MoveBot(consumer);
+		if (species.getCordinates().getY()==11) {
+			c=MoveBot(species);
 		}
 		else {
-			c=MoveTop(consumer);
+			c=MoveTop(species);
 		}
 		return c;
 	}
 	
-	public int SavannaMoveBot(Consumer consumer) {
+	public int SavannaMoveBot(Species species) {
 		int c;
-		if (consumer.getCordinates().getY()==0) {
-			c=MoveTop(consumer);
+		if (species.getCordinates().getY()==0) {
+			c=MoveTop(species);
 		}
 		else {
-			c=MoveBot(consumer);
+			c=MoveBot(species);
 		}
 		return c;
 	}

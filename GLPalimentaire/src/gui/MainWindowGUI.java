@@ -22,10 +22,10 @@ public class MainWindowGUI extends JFrame{
 
 	private Dimension dimensionFenetre = new Dimension(600,300);
 	
-	private JLabel maintitre = new JLabel("Simulation Ecosystème");
+	private JLabel maintitre = new JLabel("Simulation Ecosystï¿½me");
 	
 	private JButton launchedDefault = new JButton("Simulation Rapide");
-	private JButton launchedCustom = new JButton("Simulation Personnalisée");
+	private JButton launchedCustom = new JButton("Simulation Personnalisï¿½e");
 	private JButton leave = new JButton("Quitter");
 	
 	private JPanel panel = new JPanel(new GridBagLayout());
@@ -59,12 +59,10 @@ public class MainWindowGUI extends JFrame{
 		
 		add(panel);
 		
-<<<<<<< HEAD
-		setTitle("Simulation d'écosystème");
-		setLocationRelativeTo(null);
-=======
 		setTitle("Simulation d'ï¿½cosystï¿½me");
->>>>>>> refs/remotes/origin/yassin_zac
+		setLocationRelativeTo(null);
+
+		setTitle("Simulation d'ï¿½cosystï¿½me");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setSize(dimensionFenetre);

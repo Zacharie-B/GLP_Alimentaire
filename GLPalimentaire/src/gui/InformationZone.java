@@ -1,25 +1,19 @@
 package gui;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -43,15 +37,13 @@ import data.tertiaryConsumerdata.Lion;
 import ecosystemProcess.SavannaEcosystem;
 import movementOfSpecies.InitialPosition;
 
-@SuppressWarnings("unused")
+
 public class InformationZone extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	private static final int MAX_GROUP_ANIMALS = 3;
 	
 	//debut:test
 	private JLabel labelInformation = new JLabel("     Informations sur les espèces de la Savane");
-	private SavannaEcosystem se= new SavannaEcosystem();
 	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 15);
 	
 	private BeingCreator animals = BeingCreator.getInstance();
@@ -66,26 +58,25 @@ public class InformationZone extends JPanel{
 		return labelInformation;
 	}
 
-	public void setLabelInformation(JLabel labelInformation) {
-		this.labelInformation = labelInformation;
-	}
 	public InformationZone(){
 		labelInformation.setFont(font);
 		FoodChainsTable();
-		BufferedWriter writer;
+		File file1 = new File("src/data/populationdedebut.png");
 		try {
-			writer = new BufferedWriter(new FileWriter(new File("src/data/populationdedebut.png")));
+			ChartUtilities.saveChartAsPNG(file1, getPopulationBar1(), 600, 350);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		File file = new File("src/data/populationdedebut.png");
-		    try { 
-		      ChartUtilities.saveChartAsPNG(file, getTypeCountPie(), 400, 250); 
-		    }
-		     catch (IOException e) { 
-		      e.printStackTrace(); 
-		    } 
+	}
+	public void currentPopulation() {
+		File file = new File("src/data/populationactuelle.png");
+	    try { 
+	      ChartUtilities.saveChartAsPNG(file, getPopulationBar1(), 600, 350); 
+	    }
+	     catch (IOException e) { 
+	      e.printStackTrace(); 
+	    }
 	}
 	
 	private int CounterInLifeProducer(String name) {
@@ -108,6 +99,7 @@ public class InformationZone extends JPanel{
 		return number;
 	}
 
+	
 	/**
 	 * Generates the node type pie chart.
 	 * 

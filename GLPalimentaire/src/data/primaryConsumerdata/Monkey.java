@@ -7,15 +7,15 @@ import data.PrimaryConsumer;
 
 public class Monkey extends PrimaryConsumer{
 
-	public Monkey(String name, int hp, int organicMass, boolean isAlive, int populationDensity, int numberBirths, 
-			int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
+	public Monkey(String name, int hp, int organicMass, boolean isAlive, int populationDensity,
+			int caloriesAssimilation, int timeBreeding, int calories, int timeExcreta, boolean sickness, Position cordinates) {
 		super();
 		setName(name);
 		setHp(hp);
 		setOrganicMass(organicMass);
 		setIsAlive(isAlive);
 		setPopulationDensity(populationDensity);
-		setCaloriesAssimilation(numberBirths);
+		setCaloriesAssimilation(caloriesAssimilation);
 		setTimeBreeding(timeBreeding);
 		setCalories(calories);
 		setTimeExcreta(timeExcreta);

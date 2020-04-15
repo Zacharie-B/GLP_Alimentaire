@@ -6,7 +6,7 @@ import data.Position;
 
 public class CreateMovement extends MovementOnMap{
 	
-	/*public CreateMovement (){
+	public CreateMovement (){
 		
 	}
 	
@@ -65,6 +65,6 @@ public class CreateMovement extends MovementOnMap{
         	return predator.getCordinates();
         }
         return initposition;
-	}*/
+	}
 	
 }

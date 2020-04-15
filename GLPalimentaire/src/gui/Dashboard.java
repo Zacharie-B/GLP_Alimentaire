@@ -100,23 +100,36 @@ public class Dashboard extends JPanel{
 		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0;i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-    	if (image!=null && consumer[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
-          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((consumer[i].getPopulationDensity())))/180,
-          			(heightPanel*((consumer[i].getPopulationDensity())))/120, this);
-            }
+			if (image!=null && consumer[i].getIsAlive()==true) {
+				if(consumer[i].getPopulationDensity()>10) {
+    			g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
+              			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*10)/180,
+              			(heightPanel*10)/120, this);
+				}
+    			else {
+    				g2d.drawImage(image,(consumer[i].getCordinates().getX()*widthPanel)/18, 
+    	          			(consumer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((consumer[i].getPopulationDensity())))/180,
+    	          			(heightPanel*((consumer[i].getPopulationDensity())))/120, this);
+    			}
+    		}
 		}
-    	}
+    }
 	private void DisplayPictureProducer(Image image, Graphics2D g2d, String name) {
 		Producer[] producer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		producer=(Producer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-    	if (image!=null && producer[i].getIsAlive()==true) {
-    		g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
-          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((producer[i].getPopulationDensity())))/180,
-          			(heightPanel*((producer[i].getPopulationDensity())))/120, this);
-            }
-		}
+			if (image!=null && producer[i].getIsAlive()==true) {
+    			if(producer[i].getPopulationDensity()>10) {
+    			g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
+              			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*10)/180,
+              			(heightPanel*10)/120, this);
+				}
+    			else {
+    				g2d.drawImage(image,(producer[i].getCordinates().getX()*widthPanel)/18, 
+    	          			(producer[i].getCordinates().getY()*heightPanel)/12, (widthPanel*((producer[i].getPopulationDensity())))/180,
+    	          			(heightPanel*((producer[i].getPopulationDensity())))/120, this);
+    			}
+			}
     	}
+	}
 }
-    

@@ -63,13 +63,17 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private int j=0;
 	private int a=0;
 	
-	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 4;
+	public static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 1;
 	private static final int NB_MAX_SPECIES=1000;
 	private CreateMovement cm = new CreateMovement();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
 	private MineralChange mineral = MineralChange.getInstance();
 	
 	
+	public SavannaEcosystem(String legacy) {
+		species = new Species[NB_MAX_SPECIES];
+		mineral.valuesInCase = new HashMap <Position,Integer>(BeingCreator.ALL_POINTS);
+	}
 	
 	public SavannaEcosystem() {
 		species = new Species[NB_MAX_SPECIES];
@@ -77,23 +81,17 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		buildEcosys();
 	}
 	
-	public void ConsumerTeamMovement(Consumer[] consumer, String name) {
-		consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
+	public void ConsumerTeamMovement(String name) {
+		Consumer[] consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 		consumer=(Consumer[]) animalsInSavana.getTable(name);
 		for(int i=0; i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
-			if(name!="abc") {
 				searchInArrayList(consumer[i]);
-			}
-			else{
-				(consumer[i]).setCordinates(cm.SavannaMouvement(consumer[i]));
-			}
 		}
 		animalsInSavana.register(name, consumer);
 	}
 	
 	public void ConsumerMovement() {
-		ConsumerTeamMovement(giraffeTable, "giraffe");
-		//ConsumerTeamMovement(lionTable, "lion");
+		ConsumerTeamMovement("giraffe");
 	}
 	
 	private void AllPointsMap() {
@@ -277,7 +275,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Warthog" :
 			warthogTable = new Warthog[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				warthogTable[j] = new Warthog ("warthog",50, 150, true, 10, 15, 4, 30, 6, false, pos.initPosition[i]);
+				warthogTable[j] = new Warthog ("warthog",50, 150, true, 10, 15, 40, 30, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -313,7 +311,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Zebra" :
 			zebraTable = new Zebra[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				zebraTable[j] = new Zebra("zebra",50, 150, true, 10, 15, 4, 30, 6, false, pos.initPosition[i]);
+				zebraTable[j] = new Zebra("zebra",50, 150, true, 10, 15, 40, 30, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -397,15 +395,17 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 */
 	private void searchInArrayList(Consumer predator){
 		boolean loin=true;
+		//the map get 18 points in X and 12 points in Y 
 		Position impossible = new Position(100,100);
 		ArrayList <String> dietList = predator.getDiet();
 		Iterator<String> iterator = dietList.iterator();
 		Position predatorPosition = predator.getCordinates();
-		String name;
+		String name="";
 		while (iterator.hasNext()&&(loin!=false)){
 			name = iterator.next();
 			//use searchInIHM for each prey of this predator
 			impossible = searchInIHM(name, predatorPosition,impossible);
+			
 		}
 		int x=impossible.getX()-predatorPosition.getX();
 		int y=impossible.getY()-predatorPosition.getY();
@@ -434,13 +434,13 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	}
 	
 	private Position searchInIHM(String name, Position predatorPosition, Position currentPrey) {
-		Consumer[] consumer = new Consumer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
-		consumer=(Consumer[]) animalsInSavana.getTable(name);
+		Producer[] consumer = new Producer[SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		consumer=(Producer[]) animalsInSavana.getTable(name);
 		Position newPrey;
 		for(int index=0; index<SavannaEcosystem.NUMBER_OF_ANIMALS_IN_A_SPECIES;index++) {
 			int x= Math.abs(consumer[index].getCordinates().getX()-predatorPosition.getX());
 			int y= Math.abs(consumer[index].getCordinates().getY()-predatorPosition.getY());
-			if((x+y)<10) {
+			if(((x+y)<10)&&consumer[index].getIsAlive()==true) {
 				newPrey= new Position(x,y);
 				if((x+y)<(Math.abs(currentPrey.getX()-predatorPosition.getX())+Math.abs(currentPrey.getY()-predatorPosition.getY()))) {
 					return newPrey;
@@ -450,7 +450,16 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		return currentPrey;
 	}
 	
-	public void reproduct(){
-		
-	}
+	public void reproduct(String name, int simulationDays){
+		Consumer[] consumer = new Consumer[NUMBER_OF_ANIMALS_IN_A_SPECIES];
+		consumer=(Consumer[]) animalsInSavana.getTable(name);
+		for(int i=0;i<NUMBER_OF_ANIMALS_IN_A_SPECIES;i++) {
+        if (Math.floorMod(simulationDays, consumer[i].getTimeBreeding()) == 0) {
+        	int currentpopulation=consumer[i].getPopulationDensity();
+        	currentpopulation+=currentpopulation/2;
+            consumer[i].setPopulationDensity(currentpopulation);
+        	}
+        }
+		animalsInSavana.register(name, consumer);
+    }
 }

@@ -2,7 +2,7 @@ package movementOfSpecies;
 
 import data.Consumer;
 
-/*public class MovementOnMap extends MovementPosition{
+public class MovementOnMap extends MovementPosition{
 
 	public int SavannaMoveLeft(Consumer consumer) {
 		int c;
@@ -46,5 +46,5 @@ import data.Consumer;
 			c=MoveBot(consumer);
 		}
 		return c;
-	}*/
+	}
 }

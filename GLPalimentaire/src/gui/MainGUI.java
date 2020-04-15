@@ -33,9 +33,10 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	
 	private OperationZone operationZone = new OperationZone();
-	private InformationZone informationZone = new InformationZone();
+	
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
+	private InformationZone informationZone = new InformationZone();
 	
 	private JPanel operationZonep = new JPanel();
 	private JPanel informationZonep = new JPanel();
@@ -139,6 +140,7 @@ public class MainGUI extends JFrame implements Runnable{
 
 	@Override
 	public void run() {
+		int iteration=0;
 		boolean finish = false;
 		while (finish==false) {
 			try {
@@ -147,22 +149,37 @@ public class MainGUI extends JFrame implements Runnable{
 			catch (InterruptedException e){
 				System.out.println(e.getMessage());
 			}
+			iteration++;
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
+				reproductOnSavanna(iteration);
+			}
+			else {
+				informationZone.currentPopulation();
 			}
 			
 		}
 	}
 	
-	public void MovementOnMap() {
-		//se.ConsumerMovement();
-		//se.FirstChain();
-		//se.SecondChain();
-		//se.ThirdChain();
-		//se.AllSpeciesHpManagement();
-		//dashboard.repaint();
+	private void MovementOnMap() {
+		se.ConsumerMovement();
+		se.FirstChain();
+		se.SecondChain();
+		se.ThirdChain();
+		se.AllSpeciesHpManagement();
+		dashboard.repaint();
 		}
 	
+	private void reproductOnSavanna(int simulationdays) {
+		se.reproduct("giraffe", simulationdays);
+		se.reproduct("lion", simulationdays);
+		se.reproduct("gazelle", simulationdays);
+		se.reproduct("zebra", simulationdays);
+		se.reproduct("warthog", simulationdays);
+		se.reproduct("cheetah", simulationdays);
+		se.reproduct("buffalo", simulationdays);
+		se.reproduct("hyena", simulationdays);
+	}
 
 	public static void main(String[] args) {
 		new MainGUI();

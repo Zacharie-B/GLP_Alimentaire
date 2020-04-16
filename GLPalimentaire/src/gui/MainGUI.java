@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.Border;
 
 import org.jfree.chart.ChartPanel;
@@ -42,11 +44,13 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private JPanel operationZonep = new JPanel();
 	private JPanel informationZonep = new JPanel();
+	private JPanel globalinfo = new JPanel();
 	private GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 	private GridBagConstraints gbConstraints = new GridBagConstraints();
 	private JPanel statsInformation = new JPanel();
 	
-	private ChartPanel populationBar1;
+	private ChartPanel populationPie1;
+	private JTable globalInformation = new JTable();
 	private int action=0;
 	
 	public MainGUI(){
@@ -92,12 +96,8 @@ public class MainGUI extends JFrame implements Runnable{
 				informationZonep.add(informationZone.getLabelInformation(), gbConstraints);
 					
 				statsInformation.setLayout(new GridLayout(2,1));
-				
-				populationBar1 = new ChartPanel(informationZone.getPopulationBar1());
-				//trophicLevel = new ChartPanel(informationZone.getTypeCountPie());
-						
-				statsInformation.add(populationBar1);
-				//statsInformation.add(trophicLevel);
+				statsInformation.add(InformationPie());
+				statsInformation.add(paintComponent());
 				
 				JScrollPane jscroll1= new JScrollPane(statsInformation);
 				gbConstraints.fill = GridBagConstraints.BOTH;
@@ -107,8 +107,7 @@ public class MainGUI extends JFrame implements Runnable{
 				informationZone.setBorder(lineborder);
 				informationZonep.add(jscroll1, gbConstraints);
 				
-				
-				JScrollPane jscroll2= new JScrollPane(informationZone.getjTable());
+				JScrollPane jscroll2= new JScrollPane(informationZone.getjTableFoodChains());
 				gbConstraints.fill = GridBagConstraints.BOTH;
 				gbConstraints.weighty = 0.16;
 				gbConstraints.gridx = 0;
@@ -139,6 +138,25 @@ public class MainGUI extends JFrame implements Runnable{
 				setResizable(false);
 	}
 
+	private Component InformationPie() {
+		if(OperationZone.stop!=false) {
+			populationPie1 = new ChartPanel(informationZone.getTypeCountPieSavanna());
+			return populationPie1;
+		}
+		else {
+			informationZone.refreshTypeCountPieSavanna();
+		}
+		return populationPie1;
+		// TODO Auto-generated method stub
+	}
+	
+	private Component paintComponent() {
+		globalInformation = informationZone.getjTableGlobalInformations();
+		globalInformation.setVisible(true);
+		return globalInformation;
+		
+	}
+
 	@Override
 	public void run() {
 		int iteration=0;
@@ -156,7 +174,7 @@ public class MainGUI extends JFrame implements Runnable{
 				reproduct.reproductOnSavanna(iteration);
 			}
 			else {
-				informationZone.currentPopulation();
+				informationZone.currentPopulationSavanna();
 			}
 			
 		}
@@ -168,7 +186,7 @@ public class MainGUI extends JFrame implements Runnable{
 		se.SecondChain();
 		se.ThirdChain();
 		se.AllSpeciesHpManagement();
-		
+		repaint();
 		dashboard.repaint();
 		}
 

@@ -151,7 +151,7 @@ public class Reproduct {
 		    		    	currentpopulation+=currentpopulation/2;
 		    		        consumer[ab].setPopulationDensity(currentpopulation);
 		    		        if(consumer[ab].getPopulationDensity()>=12) {
-			        			Grass[ab]= new Grass ("grass",true,10,10,5,20,25,0,4, pos.initPosition[SavannaEcosystem.a]);
+			        			Grass[ab]= new Grass ("grass",true,10,10,2,20,25,0,4, pos.initPosition[SavannaEcosystem.a]);
 			        			pos.initPosition[SavannaEcosystem.a].setX(consumer[ab].getCordinates().getX());
 			        			pos.initPosition[SavannaEcosystem.a].setY(consumer[ab].getCordinates().getY());
 			    				consumer[ab].setPopulationDensity(consumer[ab].getPopulationDensity()-10);

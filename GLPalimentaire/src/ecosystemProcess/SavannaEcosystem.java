@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
-
 import beingManagement.BeingCreator;
 import data.primaryConsumerdata.Giraffe;
 import data.Consumer;
@@ -30,7 +28,6 @@ import foodChains.IsDead;
 import movementOfSpecies.CreateMovement;
 import movementOfSpecies.InitialPosition;
 import naturalNeedsManagement.MineralChange;
-import tests.log4j.LoggerUtility;
 
 /**
  * 
@@ -258,7 +255,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				grassTable[j] = new Grass("grass",true,10,10,5,50,25,0,4,pos.initPosition[i]);
+				grassTable[j] = new Grass("grass",true,10,10,2,50,25,0,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}

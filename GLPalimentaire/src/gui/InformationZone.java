@@ -10,11 +10,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
 
 
 import beingManagement.BeingCreator;
@@ -40,13 +39,21 @@ public class InformationZone extends JPanel{
 	
 	//debut:test
 	private JLabel labelInformation = new JLabel("     Informations sur les espèces de la Savane");
+	private DefaultPieDataset dataset = new DefaultPieDataset();
 	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 15);
 	
-	private BeingCreator animals = BeingCreator.getInstance();
-	private JTable jTable = new JTable();
 	
-	public JTable getjTable() {
-		return jTable;
+	private BeingCreator animals = BeingCreator.getInstance();
+	private JTable jTableFoodChains = new JTable();
+	private JTable jTableGlobalInformations = new JTable();
+	
+	public JTable getjTableGlobalInformations() {
+		return jTableGlobalInformations;
+	}
+
+
+	public JTable getjTableFoodChains() {
+		return jTableFoodChains;
 	}
 
 
@@ -57,18 +64,11 @@ public class InformationZone extends JPanel{
 	public InformationZone(){
 		labelInformation.setFont(font);
 		FoodChainsTable();
-		File file1 = new File("src/data/populationdedebut.png");
-		try {
-			ChartUtilities.saveChartAsPNG(file1, getPopulationBar1(), 600, 350);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 	}
-	public void currentPopulation() {
+	public void currentPopulationSavanna() {
 		File file = new File("src/data/populationactuelle.png");
 	    try { 
-	      ChartUtilities.saveChartAsPNG(file, getPopulationBar1(), 600, 350); 
+	      ChartUtilities.saveChartAsPNG(file, getTypeCountPieSavanna(), 800, 450); 
 	    }
 	     catch (IOException e) { 
 	      e.printStackTrace(); 
@@ -78,35 +78,98 @@ public class InformationZone extends JPanel{
 	private int CounterInLife(String name) {
 		Species[] consumer = new Consumer[animals.getTable(name).length];
 		consumer=(Species[]) animals.getTable(name);
-		
 		int number = 0;
 			for(int index=0; index<animals.getTable(name).length;index++) {
 				number+=consumer[index].getPopulationDensity();
 			}
 		return number;
 	}
-
 	
-	
-	
-	public JFreeChart getPopulationBar1() {
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.setValue(CounterInLife("bush"), "producer", "bush");
-		dataset.setValue(CounterInLife("acacia"), "producer", "acacia");
-		dataset.setValue(CounterInLife("grass"), "producer", "grass");
-		dataset.setValue(CounterInLife("giraffe"), "primaryConsumer", "giraffe");
-		dataset.setValue(CounterInLife("zebra"), "primaryConsumer", "zebra");
-		dataset.setValue(CounterInLife("gazelle"), "primaryConsumer", "gazelle");
-		dataset.setValue(CounterInLife("warthog"), "primaryConsumer", "warthog");
-		dataset.setValue(CounterInLife("buffalo"), "primaryConsumer", "buffalo");
-		dataset.setValue(CounterInLife("cheetah"), "secondaryConsumer", "cheetah");
-		dataset.setValue(CounterInLife("hyena"), "secondaryConsumer", "hyena");
-		dataset.setValue(CounterInLife("lion"), "tertiaryConsumer", "lion");
-		
-		return ChartFactory.createBarChart("Evolution of animals in Life", "Producer and Animals", "Number alive", dataset, PlotOrientation.VERTICAL, true, true, false);
+	private int CounterGroup(String name) {
+		int length = animals.getTable(name).length;
+		return length;
 	}
-	   
-	   
+
+	public int getProducerNumberSavanna() {
+		int total=CounterInLife("bush");
+		total+=CounterInLife("acacia");
+		total+=CounterInLife("grass");
+		return total;
+	}
+	
+	public int getPrimaryConsumerNumberSavanna() {
+		int total=CounterInLife("giraffe");
+		total+=CounterInLife("warthog");
+		total+=CounterInLife("zebra");
+		total+=CounterInLife("gazelle");
+		total+=CounterInLife("buffalo");
+		return total;
+	}
+	
+	public int getSecondaryConsumerNumberSavanna() {
+		int total=CounterInLife("cheetah");
+		total+=CounterInLife("hyena");
+		return total;
+	}
+	
+	/**
+	 * Generates the node type pie chart.
+	 * 
+	 * @return the pie chart
+	 */
+	public JFreeChart getTypeCountPieSavanna() {
+		
+		dataset.setValue("Producteur", getProducerNumberSavanna());
+		dataset.setValue("Consommateur Primaire", getPrimaryConsumerNumberSavanna());
+		dataset.setValue("Consommateur Secondaire", getSecondaryConsumerNumberSavanna());
+		dataset.setValue("Consommateur Tertiaire", CounterInLife("lion"));
+		
+		return ChartFactory.createPieChart("Nombre d'individus en vie"
+				+ " triés par groupes de niveau trophique", dataset, true, true, false);
+	}
+	
+	public void refreshTypeCountPieSavanna() {
+		dataset.remove("Producteur");
+		dataset.remove("Consommateur Primaire");
+		dataset.remove("Consommateur Secondaire");
+		dataset.remove("Consommateur Tertiaire");
+	}
+	
+	
+	public void GlobalInformationsTable() {
+		String[] headers = new String[]{"Espèce", "Nombre de groupe (image(s))", "Population totale", "niveau trophique"};
+        Object rows[][] = {{"acacia",CounterGroup("acacia"),CounterInLife("acacia"),"producteur"},
+        		{"herbe",CounterGroup("grass"),CounterInLife("grass"),"producteur"},
+        		{"buisson",CounterGroup("bush"),CounterInLife("bush"),"producteur"},
+        		{"zèbre",CounterGroup("zebra"),CounterInLife("zebra"),"consommateur primaire"},
+        		{"giraffe",CounterGroup("giraffe"),CounterInLife("giraffe"),"consommateur primaire"},
+        		{"phacochère",CounterGroup("warthog"),CounterInLife("warthog"),"consommateur primaire"},
+        		{"buffle",CounterGroup("buffalo"),CounterInLife("buffalo"),"consommateur primaire"},
+        		{"gazelle",CounterGroup("gazelle"),CounterInLife("gazelle"),"consommateur primaire"},
+        		{"hyène",CounterGroup("hyena"),CounterInLife("hyena"),"consommateur secondaire"},
+        		{"guépard",CounterGroup("cheetah"),CounterInLife("cheetah"),"consommateur secondaire"},
+        		{"lion",CounterGroup("lion"),CounterInLife("lion"),"consommateur tertiaire"},
+        		};
+        		
+        DefaultTableModel tableModel = new DefaultTableModel(rows, headers);
+        jTableGlobalInformations.setModel(tableModel);
+        
+        //Bloquer le redimensionnement
+        jTableGlobalInformations.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        TableColumn col = jTableGlobalInformations.getColumnModel().getColumn(0);
+        col.setPreferredWidth(50);
+        col = jTableGlobalInformations.getColumnModel().getColumn(1);
+        col.setPreferredWidth(180);
+        col = jTableGlobalInformations.getColumnModel().getColumn(2);
+        col.setPreferredWidth(190);
+        col = jTableGlobalInformations.getColumnModel().getColumn(3);
+        col.setPreferredWidth(95);
+	}
+	
+	
+	/**
+	 * Display all FoodChains of SavannaEcosystem in a table
+	 */
 	  public void FoodChainsTable() {
 		  	InitialPosition pos = new InitialPosition();
 	        Grass grass = new Grass("grass",true,10,10,2,30,25,0,4,pos.initPosition[0]);
@@ -139,17 +202,17 @@ public class InformationZone extends JPanel{
 	            
 	        };
 	        DefaultTableModel tableModel = new DefaultTableModel(rows, headers);
-	        jTable.setModel(tableModel);
+	        jTableFoodChains.setModel(tableModel);
 	        
 	        //Bloquer le redimensionnement
-	        jTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	        TableColumn col = jTable.getColumnModel().getColumn(0);
+	        jTableFoodChains.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	        TableColumn col = jTableFoodChains.getColumnModel().getColumn(0);
 	        col.setPreferredWidth(50);
-	        col = jTable.getColumnModel().getColumn(1);
+	        col = jTableFoodChains.getColumnModel().getColumn(1);
 	        col.setPreferredWidth(180);
-	        col = jTable.getColumnModel().getColumn(2);
+	        col = jTableFoodChains.getColumnModel().getColumn(2);
 	        col.setPreferredWidth(190);
-	        col = jTable.getColumnModel().getColumn(3);
+	        col = jTableFoodChains.getColumnModel().getColumn(3);
 	        col.setPreferredWidth(95);
 	  }
 	

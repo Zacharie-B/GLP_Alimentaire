@@ -61,12 +61,12 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	private Position[] positionsMineral;
 	
 	
-	private static Logger logger = LoggerUtility.getLogger(SavannaEcosystem.class, "text");
+	
 	
 	public static final int NUMBER_MAX_OF_ANIMALS_IN_A_SPECIES = 50;
-	private static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 2;
+	private static final int NUMBER_OF_ANIMALS_IN_A_SPECIES = 3;
 	private int j=0;
-	private int a=0;
+	public static int a=0;
 	
 	private CreateMovement cm = new CreateMovement();
 	private BeingCreator animalsInSavana = BeingCreator.getInstance();
@@ -143,7 +143,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	public void ThirdChain() {
 		FirstFoodChain(acaciaTable, giraffeTable,"acacia","giraffe");
-		SecondFoodChain(giraffeTable, hyenaTable,"giraffe","hyena");
+		//SecondFoodChain(giraffeTable, hyenaTable,"giraffe","hyena");
 		ThirdFoodChain(hyenaTable, lionTable,"hyena","lion");
 	}
 	
@@ -258,7 +258,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Grass" :
 			grassTable = new Grass[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				grassTable[j] = new Grass("grass",true,10,10,2,50,25,0,4,pos.initPosition[i]);
+				grassTable[j] = new Grass("grass",true,10,10,5,50,25,0,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -267,7 +267,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Gazelle" :
 			gazelleTable = new Gazelle[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				gazelleTable[j] = new Gazelle("gazelle", 50, 100, true, 10, 1, 10, 100, 3, false, pos.initPosition[i]);
+				gazelleTable[j] = new Gazelle("gazelle", 50, 100, true, 10, 1, 40, 100, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -285,7 +285,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Cheetah" :
 			cheetahTable = new Cheetah[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				cheetahTable[j] = new Cheetah ("cheetah",50, 100, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
+				cheetahTable[j] = new Cheetah ("cheetah",50, 100, true, 10, 1, 10, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -303,7 +303,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Buffalo" :
 			buffaloTable = new Buffalo[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				buffaloTable[j] = new Buffalo("buffalo", 50, 10, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				buffaloTable[j] = new Buffalo("buffalo", 50, 10, true, 10, 100, 40, 10, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -321,7 +321,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Hyena" :
 			hyenaTable = new Hyena[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				hyenaTable[j] = new Hyena ("hyena",50, 300, true, 10, 1, 50, 150, 6, false, pos.initPosition[i]);
+				hyenaTable[j] = new Hyena ("hyena",50, 300, true, 10, 1, 10, 150, 6, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -330,7 +330,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Acacia" :
 			acaciaTable = new Acacia[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				acaciaTable[j] = new Acacia("acacia",true,10,10,2,50,5,1,4,pos.initPosition[i]);
+				acaciaTable[j] = new Acacia("acacia",true,10,10,5,50,5,1,4,pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -339,7 +339,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		case "Giraffe" :
 			giraffeTable = new Giraffe[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
-				giraffeTable[j] = new Giraffe("giraffe", 50, 100, true, 10, 100, 10, 10, 3, false, pos.initPosition[i]);
+				giraffeTable[j] = new Giraffe("giraffe", 50, 100, true, 10, 100, 40, 10, 3, false, pos.initPosition[i]);
 				j++;
 				a++;
 			}
@@ -451,117 +451,4 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		}
 		return currentPrey;
 	}
-	
-	public void reproduct(String name, int simulationDays){
-		int numberofspecies=animalsInSavana.getTable(name).length;
-		logger.info(numberofspecies);
-		Species[] consumer = new Species[numberofspecies];
-		consumer=(Species[]) animalsInSavana.getTable(name);
-		for(int index=0;index<animalsInSavana.getTable(name).length;index++) {
-		    if (Math.floorMod(simulationDays, consumer[index].getTimeBreeding()) == 0) {
-		    	int currentpopulation=consumer[index].getPopulationDensity();
-		    	currentpopulation+=currentpopulation/2;
-		        consumer[index].setPopulationDensity(currentpopulation);
-		        logger.info("La population de l'espèce "+consumer[index].getName()+ " est :"
-		        		+ consumer[index].getPopulationDensity()+" au coordonnées : "+consumer[index].getCordinates());
-		        if(consumer[index].getPopulationDensity()>10) {
-		        	numberofspecies+=1;
-		        	logger.info(numberofspecies);
-		        	switch (name) {
-		        	case "giraffe":
-		        		Giraffe[] giraffe = new Giraffe[numberofspecies];
-		        		giraffe[index]=	(Giraffe) consumer[index];
-		        		giraffe[numberofspecies-1]= new Giraffe ("giraffe", 50, 100, true,
-		        				consumer[index].getPopulationDensity()-10, 0,10, 10, 3, false, pos.initPosition[a]);
-		        				pos.initPosition[a]=consumer[index].getCordinates();
-		        				giraffe[numberofspecies-1].setCordinates(cm.SavannaMouvement(giraffe[numberofspecies-1]));
-		        				animalsInSavana.register(name, giraffe);
-		        		break;
-		        	case "gazelle":
-		        		Gazelle[] gazelle = new Gazelle[numberofspecies];
-		        		gazelle=(Gazelle[]) consumer;
-		        		gazelle[numberofspecies-1]= new Gazelle ("gazelle", 50, 100, true,
-		        				gazelle[index].getPopulationDensity()-10, 0,10, 10, 3, false, pos.initPosition[a]);
-		        				gazelle[numberofspecies-1].setCordinates(cm.SavannaMouvement(gazelle[numberofspecies-1]));
-		        				animalsInSavana.register(name, gazelle);
-		        		break;
-		        	case "grass":
-		        		Grass[] grass = new Grass[numberofspecies];
-		        		grass=(Grass[]) consumer;
-		        		grass[numberofspecies-1]= new Grass ("grass" ,true,
-		        				grass[index].getPopulationDensity()-10,10,2,50,25,0,4,  pos.initPosition[a]);
-		        				grass[numberofspecies-1].setCordinates(cm.SavannaMouvement(grass[numberofspecies-1]));
-		        				animalsInSavana.register(name, grass);
-		        		break;
-		        	case "bush":
-		        		Bush[] bush = new Bush[numberofspecies];
-		        		bush=(Bush[]) consumer;
-		        		bush[numberofspecies-1]= new Bush ("bush",true,
-		        				bush[index].getPopulationDensity()-10,10,2,50,25,0,4, pos.initPosition[a]);
-		        				bush[numberofspecies-1].setCordinates(cm.SavannaMouvement(bush[numberofspecies-1]));
-		        				animalsInSavana.register(name, bush);
-		        		break;
-		        	case "hyena":
-		        		Hyena[] hyena = new Hyena[numberofspecies];
-		        		hyena=(Hyena[]) consumer;
-		        		hyena[numberofspecies-1]= new Hyena ("hyena", 50, 100, true, 
-		        				hyena[index].getPopulationDensity()-10, 100, 4,10, 3, false, pos.initPosition[a]);
-		        				hyena[numberofspecies-1].setCordinates(cm.SavannaMouvement(hyena[numberofspecies-1]));
-		        				animalsInSavana.register(name, hyena);
-		        		break;
-		        	case "cheetah":
-		        		Cheetah[] cheetah = new Cheetah[numberofspecies];
-		        		cheetah=(Cheetah[]) consumer;
-		        		cheetah[numberofspecies-1]= new Cheetah ("cheetah",  50, 100, true, 
-		        				cheetah[index].getPopulationDensity()-10, 100, 4,10, 3, false, pos.initPosition[a]);
-		        		cheetah[numberofspecies-1].setCordinates(cm.SavannaMouvement(cheetah[numberofspecies-1]));
-		        				animalsInSavana.register(name, cheetah);
-		        		break;
-		        	case "lion":
-		        		Lion[] lion = new Lion[numberofspecies];
-		        		lion=(Lion[])consumer;
-		        		lion[numberofspecies-1]= new Lion ("lion", 50, 100, true, 
-		        				lion[index].getPopulationDensity()-10, 100, 20,10, 3, false, pos.initPosition[a]);
-		        		lion[numberofspecies-1].setCordinates(cm.SavannaMouvement(lion[numberofspecies-1]));
-		        				animalsInSavana.register(name, lion);
-		        		break;
-		        	case "zebra":
-		        		Zebra[] zebra= new Zebra[numberofspecies];
-		        		zebra=(Zebra[])consumer;
-		        		zebra[numberofspecies-1]= new Zebra ("zebra", 50, 100, true,
-		        				zebra[index].getPopulationDensity()-10, 0,10, 10, 3, false, pos.initPosition[a]);
-		        		zebra[numberofspecies-1].setCordinates(cm.SavannaMouvement(zebra[numberofspecies-1]));
-		        				animalsInSavana.register(name, zebra);
-		        		break;
-		        	case "warthog":
-		        		Warthog[] warthog= new Warthog[numberofspecies];
-		        		warthog=(Warthog[]) consumer;
-		        		warthog[numberofspecies-1]= new Warthog ("warthog", 50, 100, true,
-		        				warthog[index].getPopulationDensity()-10, 0,10, 10, 3, false, pos.initPosition[a]);
-		        		warthog[numberofspecies-1].setCordinates(cm.SavannaMouvement(warthog[numberofspecies-1]));
-		        				animalsInSavana.register(name, warthog);
-		        		break;
-		        	case "acacia":
-		        		Acacia[] acacia = new Acacia[numberofspecies];
-		        		acacia=(Acacia[])consumer;
-		        		acacia[numberofspecies-1]= new Acacia ("acacia",true,
-		        				acacia[index].getPopulationDensity()-10,10,2,50,25,0,4, pos.initPosition[a]);
-		        		acacia[numberofspecies-1].setCordinates(cm.SavannaMouvement(acacia[numberofspecies-1]));
-		        				animalsInSavana.register(name, acacia);
-		        		break;
-		        	case "buffalo":
-		        		Buffalo[] buffalo= new Buffalo[numberofspecies];
-		        		buffalo=(Buffalo[])consumer;
-		        		buffalo[numberofspecies-1]= new Buffalo ("buffalo", 50, 100, true,
-		        				buffalo[index].getPopulationDensity()-10, 0,10, 10, 3, false, pos.initPosition[a]);
-		        				buffalo[numberofspecies-1].setCordinates(cm.SavannaMouvement(buffalo[numberofspecies-1]));
-		        				animalsInSavana.register(name, buffalo);
-		        		break;
-		        	}
-		        	
-		        	a++;
-		        }
-		    }
-        }
-    }
 }

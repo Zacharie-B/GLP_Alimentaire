@@ -6,7 +6,7 @@ public class InitialPosition {
 	
 	
 	public Position[] initPosition;
-	private static final int NBMAXSPECIES=1000;
+	private static final int NBMAXSPECIES=1000000;
 	
 	
 	

@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 
 import org.jfree.chart.ChartPanel;
 
+import beingManagement.Reproduct;
 import ecosystemProcess.SavannaEcosystem;
 
 public class MainGUI extends JFrame implements Runnable{
@@ -36,6 +37,7 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
+	private Reproduct reproduct= new Reproduct();
 	private InformationZone informationZone = new InformationZone();
 	
 	private JPanel operationZonep = new JPanel();
@@ -151,7 +153,7 @@ public class MainGUI extends JFrame implements Runnable{
 			iteration++;
 			if(OperationZone.stop!=false) {
 				MovementOnMap();
-				reproductOnSavanna(iteration);
+				reproduct.reproductOnSavanna(iteration);
 			}
 			else {
 				informationZone.currentPopulation();
@@ -169,17 +171,6 @@ public class MainGUI extends JFrame implements Runnable{
 		
 		dashboard.repaint();
 		}
-	
-	private void reproductOnSavanna(int simulationdays) {
-		se.reproduct("giraffe", simulationdays);
-		/*se.reproduct("lion", simulationdays);
-		se.reproduct("gazelle", simulationdays);
-		se.reproduct("zebra", simulationdays);
-		se.reproduct("warthog", simulationdays);
-		se.reproduct("cheetah", simulationdays);
-		se.reproduct("buffalo", simulationdays);
-		se.reproduct("hyena", simulationdays);*/
-	}
 
 	public static void main(String[] args) {
 		new MainGUI();

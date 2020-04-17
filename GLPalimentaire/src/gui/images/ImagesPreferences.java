@@ -4,7 +4,7 @@ public class ImagesPreferences {
 	private ImagesPreferences() {}
 	
 	/**
-	 * Pictures for SavannaEcosystem 
+	 * path of the pictures for SavannaEcosystem 
 	 */
 	public static final String SAVANNA_IMG_BACKGROUND_PATH = "src/misc/savane.jpg";
 	public static final String ACACIA_IMG_BACKGROUND_PATH = "src/misc/acaciaPicture.jpg";
@@ -21,7 +21,7 @@ public class ImagesPreferences {
 	public static final String ZEBRA_IMG_BACKGROUND_PATH = "src/misc/zebraPicture.jpg";
 	
 	/**
-	 * Pictures for PlainEcosystem
+	 * path of the pictures for PlainEcosystem
 	 */
 	public static final String APHID_IMG_BACKGROUND_PATH = "src/misc/aphidPicture.jpg";
 	public static final String ASIANLADYBUG_IMG_BACKGROUND_PATH = "src/misc/asianladybugPicture.jpg";
@@ -31,5 +31,34 @@ public class ImagesPreferences {
 	public static final String SPIDER_IMG_BACKGROUND_PATH = "src/misc/spiderPicture.jpg";
 	public static final String TREELEAVES_IMG_BACKGROUND_PATH = "src/misc/treeleavesPicture.jpg";
 	public static final String WOODPECKER_IMG_BACKGROUND_PATH = "src/misc/woodpeckerPicture.jpg";
+	
+	/**
+	 * path of the pictures for SwampsEcosystem
+	 */
+	public static final String ANACONDA_IMG_BACKGROUND_PATH = "src/misc/maraicage/anacondaPicture.png";
+	public static final String BLACKCAIMAN_IMG_BACKGROUND_PATH = "src/misc/maraicage/blackcaimanPicture.png";
+	public static final String BUSHS_IMG_BACKGROUND_PATH = "src/misc/maraicage/bushPicture.png";
+	public static final String CHIMPANZEE_IMG_BACKGROUND_PATH = "src/misc/maraicage/chimpanzeePicture.png";
+	public static final String FRUITTREE_IMG_BACKGROUND_PATH = "src/misc/maraicage/fruittreePicture.png";
+	public static final String HIPPOPOTAMUS_IMG_BACKGROUND_PATH = "src/misc/maraicage/hippopotamus.png";
+	public static final String JAGUAR_IMG_BACKGROUND_PATH = "src/misc/maraicage/jaguarPicture.png";
+	public static final String MONKEY_IMG_BACKGROUND_PATH = "src/misc/maraicage/monkeyPicture.png";
+	public static final String PYTHON_IMG_BACKGROUND_PATH = "src/misc/maraicage/pythonPicture.png";
+	public static final String REEDS_IMG_BACKGROUND_PATH = "src/misc/maraicage/reedsPicture.png";
+	public static final String SALTCROCODILE_IMG_BACKGROUND_PATH = "src/misc/maraicage/saltcrocodilePicture.png";
+	public static final String TURTLE_IMG_BACKGROUND_PATH = "src/misc/maraicage/turtlePicture.png";
+	
+	
+	/**
+	 * path of the pictures for FrostyEcosystem
+	 */
+	public static final String ARCTICWOLF_IMG_BACKGROUND_PATH = "src/misc/glacial/arcticwolfPicture.png";
+	public static final String CLAM_IMG_BACKGROUND_PATH = "src/misc/glacial/clamPicture.png";
+	public static final String FOAM_IMG_BACKGROUND_PATH = "src/misc/glacial/foamPicture.png";
+	public static final String GRASSF_IMG_BACKGROUND_PATH = "src/misc/glacial/grassPicture.png";
+	public static final String INUIT_IMG_BACKGROUND_PATH = "src/misc/glacial/inuitPicture.png";
+	public static final String MUSKOX_IMG_BACKGROUND_PATH = "src/misc/glacial/muskoxPicture.png";
+	public static final String PHOQUE_IMG_BACKGROUND_PATH = "src/misc/glacial/phoquePicture.png";
+	public static final String POLARBEAR_IMG_BACKGROUND_PATH = "src/misc/glacial/polarbearPicture.png";
 	
 }

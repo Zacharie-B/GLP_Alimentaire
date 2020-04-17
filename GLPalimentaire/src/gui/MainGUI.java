@@ -21,7 +21,10 @@ import javax.swing.border.Border;
 import org.jfree.chart.ChartPanel;
 
 import beingManagement.Reproduct;
+import ecosystemProcess.FrostyEcosystem;
+import ecosystemProcess.PlainEcosystem;
 import ecosystemProcess.SavannaEcosystem;
+import ecosystemProcess.SwampsEcosystem;
 
 public class MainGUI extends JFrame implements Runnable{
 
@@ -38,6 +41,9 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private Dashboard dashboard = new Dashboard();
 	private SavannaEcosystem se= new SavannaEcosystem();
+	private PlainEcosystem pe= new PlainEcosystem();
+	private SwampsEcosystem swampse= new SwampsEcosystem();
+	private FrostyEcosystem fe= new FrostyEcosystem();
 	private Reproduct reproduct= new Reproduct();
 	private InformationZone informationZone = new InformationZone();
 	
@@ -71,7 +77,18 @@ public class MainGUI extends JFrame implements Runnable{
 	public void init() {
 				//d�but teste image de fond
 				try {
-					dashboard.setPicture();
+					if(OperationZone.ecosystem.equals("Savanna")) {
+		        		dashboard.setPictureSavanna();
+		        	}
+		        	else if(OperationZone.ecosystem.equals("Frosty")) {
+		        		dashboard.setPictureFrosty();
+		        	}
+		        	else if(OperationZone.ecosystem.equals("Swamps")) {
+		        		dashboard.setPictureSwamps();
+		        	}
+		        	else if(OperationZone.ecosystem.equals("Plain")) {
+		        		dashboard.setPicturePlain();
+		        	}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,7 +150,7 @@ public class MainGUI extends JFrame implements Runnable{
 				contentPane.setLayout(new BorderLayout());
 				
 				contentPane.add(BorderLayout.CENTER, dashboard);
-				contentPane.add(BorderLayout.EAST,informationZonep);
+				//contentPane.add(BorderLayout.EAST,informationZonep);
 				contentPane.add(BorderLayout.SOUTH,operationZonep);
 				//fin : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
 				
@@ -185,8 +202,17 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 
 	private void MovementOnMap() {
-		
+		dashboard.repaint();
 		switch (OperationZone.ecosystem) {
+		case "Plain" : 
+			pe.ConsumerMovementPlain();
+			pe.FirstChain();
+			pe.SecondChain();
+			pe.AllSpeciesHpManagement();
+			reproduct.reproductOnSavanna(iteration);
+			informationZone.refreshTableGlobalInformation();
+			break;
+		
 		case "Savanna":
 			se.ConsumerMovementSavanna();
 			se.FirstChain();
@@ -196,8 +222,26 @@ public class MainGUI extends JFrame implements Runnable{
 			reproduct.reproductOnSavanna(iteration);
 			informationZone.refreshTableGlobalInformation();
 			break;
+		
+		case "Swamps" : 
+			swampse.ConsumerMovementSwamps();
+			swampse.FirstChain();
+			swampse.SecondChain();
+			swampse.ThirdChain();
+			swampse.AllSpeciesHpManagement();
+			reproduct.reproductOnSavanna(iteration);
+			informationZone.refreshTableGlobalInformation();
+			break;
+		
+		case "Frosty" : 
+			fe.ConsumerMovementFrosty();
+			fe.FirstChain();
+			fe.SecondChain();
+			fe.AllSpeciesHpManagement();
+			reproduct.reproductOnSavanna(iteration);
+			informationZone.refreshTableGlobalInformation();
+			break;
 		}
-		dashboard.repaint();
 }
 
 	public static void main(String[] args) {

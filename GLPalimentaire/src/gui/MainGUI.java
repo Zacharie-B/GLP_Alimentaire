@@ -8,7 +8,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -44,14 +43,14 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	private JPanel operationZonep = new JPanel();
 	private JPanel informationZonep = new JPanel();
-	private JPanel globalinfo = new JPanel();
 	private GridBagConstraints asidePanelGridBagConstraints = new GridBagConstraints();
 	private GridBagConstraints gbConstraints = new GridBagConstraints();
-	private JPanel statsInformation = new JPanel();
 	
 	private ChartPanel populationPie1;
-	private JTable globalInformation = new JTable();
+	private JTable globalInformation;
 	private int action=0;
+	private int iteration=0;
+	
 	
 	public MainGUI(){
 		init();
@@ -89,29 +88,33 @@ public class MainGUI extends JFrame implements Runnable{
 				
 				gbConstraints.weightx = 1;
 				gbConstraints.fill = GridBagConstraints.BOTH;
-				gbConstraints.weighty = 0.06;
+				gbConstraints.weighty = 0.05;
 				gbConstraints.gridx = 0;
 				gbConstraints.gridy = 0;
 				informationZone.setBorder(lineborder);
 				informationZonep.add(informationZone.getLabelInformation(), gbConstraints);
-					
-				statsInformation.setLayout(new GridLayout(2,1));
-				statsInformation.add(InformationPie());
-				statsInformation.add(paintComponent());
 				
-				JScrollPane jscroll1= new JScrollPane(statsInformation);
+				
 				gbConstraints.fill = GridBagConstraints.BOTH;
-				gbConstraints.weighty = 0.80;
+				gbConstraints.weighty = 0.50;
 				gbConstraints.gridx = 0;
 				gbConstraints.gridy = 1;
+				informationZone.setBorder(lineborder);
+				informationZonep.add(InformationPie(), gbConstraints);
+				
+				JScrollPane jscroll1= new JScrollPane(paintComponent());
+				gbConstraints.fill = GridBagConstraints.BOTH;
+				gbConstraints.weighty = 0.30;
+				gbConstraints.gridx = 0;
+				gbConstraints.gridy = 2;
 				informationZone.setBorder(lineborder);
 				informationZonep.add(jscroll1, gbConstraints);
 				
 				JScrollPane jscroll2= new JScrollPane(informationZone.getjTableFoodChains());
 				gbConstraints.fill = GridBagConstraints.BOTH;
-				gbConstraints.weighty = 0.16;
+				gbConstraints.weighty = 0.15;
 				gbConstraints.gridx = 0;
-				gbConstraints.gridy = 2;
+				gbConstraints.gridy = 3;
 				informationZone.setBorder(lineborder);
 				informationZonep.add(jscroll2, gbConstraints);
 				
@@ -141,10 +144,9 @@ public class MainGUI extends JFrame implements Runnable{
 	private Component InformationPie() {
 		if(OperationZone.stop!=false) {
 			populationPie1 = new ChartPanel(informationZone.getTypeCountPieSavanna());
-			return populationPie1;
 		}
 		else {
-			informationZone.refreshTypeCountPieSavanna();
+			populationPie1 = new ChartPanel(informationZone.refreshTypeCountPieSavanna());
 		}
 		return populationPie1;
 		// TODO Auto-generated method stub
@@ -159,7 +161,6 @@ public class MainGUI extends JFrame implements Runnable{
 
 	@Override
 	public void run() {
-		int iteration=0;
 		boolean finish = false;
 		while (finish==false) {
 			try {
@@ -170,8 +171,7 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 			iteration++;
 			if(OperationZone.stop!=false) {
-				MovementOnMap();
-				reproduct.reproductOnSavanna(iteration);
+				MovementOnMap("Savanna");
 			}
 			else {
 				informationZone.currentPopulationSavanna();
@@ -179,16 +179,21 @@ public class MainGUI extends JFrame implements Runnable{
 			
 		}
 	}
-	
-	private void MovementOnMap() {
-		se.ConsumerMovement();
-		se.FirstChain();
-		se.SecondChain();
-		se.ThirdChain();
-		se.AllSpeciesHpManagement();
-		repaint();
-		dashboard.repaint();
+
+	private void MovementOnMap(String ecosystem) {
+		switch (ecosystem) {
+		case "Savanna":
+			se.ConsumerMovementSavanna();
+			se.FirstChain();
+			se.SecondChain();
+			se.ThirdChain();
+			se.AllSpeciesHpManagement();
+			reproduct.reproductOnSavanna(iteration);
+			informationZone.refreshTableGlobalInformation();
+			break;
 		}
+		dashboard.repaint();
+}
 
 	public static void main(String[] args) {
 		new MainGUI();

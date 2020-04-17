@@ -47,8 +47,14 @@ public class InformationZone extends JPanel{
 	private JTable jTableFoodChains = new JTable();
 	private JTable jTableGlobalInformations = new JTable();
 	
+	
 	public JTable getjTableGlobalInformations() {
 		return jTableGlobalInformations;
+	}
+	public JTable refreshTableGlobalInformation() {
+		GlobalInformationsTable();
+		jTableFoodChains.repaint();
+		return jTableFoodChains;
 	}
 
 
@@ -64,7 +70,7 @@ public class InformationZone extends JPanel{
 	public InformationZone(){
 		labelInformation.setFont(font);
 		FoodChainsTable();
-	}
+		GlobalInformationsTable();	}
 	public void currentPopulationSavanna() {
 		File file = new File("src/data/populationactuelle.png");
 	    try { 
@@ -74,7 +80,19 @@ public class InformationZone extends JPanel{
 	      e.printStackTrace(); 
 	    }
 	}
-
+	
+	private int CounterAnimalsGroupHungry(String name) {
+		Species[] consumer = new Consumer[animals.getTable(name).length];
+		consumer=(Species[]) animals.getTable(name);
+		int number = 0;
+		for(int index=0; index<animals.getTable(name).length;index++) {
+			if(consumer[index].gethp()<10) {
+				number++;
+			}
+		}
+	return number;
+	}
+	
 	private int CounterInLife(String name) {
 		Species[] consumer = new Consumer[animals.getTable(name).length];
 		consumer=(Species[]) animals.getTable(name);
@@ -128,42 +146,44 @@ public class InformationZone extends JPanel{
 				+ " triés par groupes de niveau trophique", dataset, true, true, false);
 	}
 	
-	public void refreshTypeCountPieSavanna() {
+	public JFreeChart refreshTypeCountPieSavanna() {
 		dataset.remove("Producteur");
 		dataset.remove("Consommateur Primaire");
 		dataset.remove("Consommateur Secondaire");
 		dataset.remove("Consommateur Tertiaire");
+		return getTypeCountPieSavanna();
 	}
 	
 	
 	public void GlobalInformationsTable() {
-		String[] headers = new String[]{"Espèce", "Nombre de groupe (image(s))", "Population totale", "niveau trophique"};
-        Object rows[][] = {{"acacia",CounterGroup("acacia"),CounterInLife("acacia"),"producteur"},
-        		{"herbe",CounterGroup("grass"),CounterInLife("grass"),"producteur"},
-        		{"buisson",CounterGroup("bush"),CounterInLife("bush"),"producteur"},
-        		{"zèbre",CounterGroup("zebra"),CounterInLife("zebra"),"consommateur primaire"},
-        		{"giraffe",CounterGroup("giraffe"),CounterInLife("giraffe"),"consommateur primaire"},
-        		{"phacochère",CounterGroup("warthog"),CounterInLife("warthog"),"consommateur primaire"},
-        		{"buffle",CounterGroup("buffalo"),CounterInLife("buffalo"),"consommateur primaire"},
-        		{"gazelle",CounterGroup("gazelle"),CounterInLife("gazelle"),"consommateur primaire"},
-        		{"hyène",CounterGroup("hyena"),CounterInLife("hyena"),"consommateur secondaire"},
-        		{"guépard",CounterGroup("cheetah"),CounterInLife("cheetah"),"consommateur secondaire"},
-        		{"lion",CounterGroup("lion"),CounterInLife("lion"),"consommateur tertiaire"},
+        Object rows[][] = {{"acacia",CounterGroup("acacia"),CounterInLife("acacia"),CounterAnimalsGroupHungry("acacia"),"producteur"},
+        		{"herbe",CounterGroup("grass"),CounterInLife("grass"),CounterAnimalsGroupHungry("grass"),"producteur"},
+        		{"buisson",CounterGroup("bush"),CounterInLife("bush"),CounterAnimalsGroupHungry("bush"),"producteur"},
+        		{"zèbre",CounterGroup("zebra"),CounterInLife("zebra"),CounterAnimalsGroupHungry("zebra"),"consommateur primaire"},
+        		{"giraffe",CounterGroup("giraffe"),CounterInLife("giraffe"),CounterAnimalsGroupHungry("giraffe"),"consommateur primaire"},
+        		{"phacochère",CounterGroup("warthog"),CounterInLife("warthog"),CounterAnimalsGroupHungry("warthog"),"consommateur primaire"},
+        		{"buffle",CounterGroup("buffalo"),CounterInLife("buffalo"),CounterAnimalsGroupHungry("buffalo"),"consommateur primaire"},
+        		{"gazelle",CounterGroup("gazelle"),CounterInLife("gazelle"),CounterAnimalsGroupHungry("gazelle"),"consommateur primaire"},
+        		{"hyène",CounterGroup("hyena"),CounterInLife("hyena"),CounterAnimalsGroupHungry("hyena"),"consommateur secondaire"},
+        		{"guépard",CounterGroup("cheetah"),CounterInLife("cheetah"),CounterAnimalsGroupHungry("cheetah"),"consommateur secondaire"},
+        		{"lion",CounterGroup("lion"),CounterInLife("lion"),CounterAnimalsGroupHungry("lion"),"consommateur tertiaire"},
         		};
-        		
-        DefaultTableModel tableModel = new DefaultTableModel(rows, headers);
+        Object[] title = new String[]{"Espèce", "Nombre de groupe (image(s))", "Population totale","nombre de groupe affamé","niveau trophique"};
+        DefaultTableModel tableModel = new DefaultTableModel(rows, title);
         jTableGlobalInformations.setModel(tableModel);
         
         //Bloquer le redimensionnement
         jTableGlobalInformations.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         TableColumn col = jTableGlobalInformations.getColumnModel().getColumn(0);
-        col.setPreferredWidth(50);
+        col.setPreferredWidth(70);
         col = jTableGlobalInformations.getColumnModel().getColumn(1);
         col.setPreferredWidth(180);
         col = jTableGlobalInformations.getColumnModel().getColumn(2);
-        col.setPreferredWidth(190);
+        col.setPreferredWidth(120);
         col = jTableGlobalInformations.getColumnModel().getColumn(3);
-        col.setPreferredWidth(95);
+        col.setPreferredWidth(160);
+        col = jTableGlobalInformations.getColumnModel().getColumn(4);
+        col.setPreferredWidth(150);
 	}
 	
 	
@@ -187,18 +207,18 @@ public class InformationZone extends JPanel{
 		  	String neverPrey="meure de viellesse";
 		  	
 	        //add data in JTable
-		  	String[] headers = new String[]{"Espèce", "Prédateur de l'espèce", "Proie de l'espèce", "niveau trophique"};
-	        Object rows[][] = {{"acacia",acacia.Prey(),neverPredator,"niveau 0"},
-	            {"grass",grass.Prey(),neverPredator,"niveau 0"},
-	            {"bush",bush.Prey(),neverPredator,"niveau 0"},
-	            {"gazelle",gazelle.Prey(), gazelle.Predator(),"niveau 1"},
-	            {"warthog",warthog.Prey(), warthog.Predator(),"niveau 1"},
-	            {"buffalo",buffalo.Prey(), buffalo.Predator(),"niveau 1"},
-	            {"giraffe",giraffe.Prey(), giraffe.Predator(),"niveau 1"},
-	            {"zebra",zebra.Prey(), zebra.Predator(),"niveau 1"},
-	            {"cheetah",cheetah.Prey(), cheetah.Predator(),"niveau 2"},
-	            {"hyena",hyena.Prey(), hyena.Predator(),"niveau 2"},
-	            {"lion",neverPrey,lion.Predator(),"niveau 3"},
+		  	Object[] headers = new String[]{"Espèce", "Prédateur de l'espèce", "Proie de l'espèce", "niveau trophique"};
+	        Object rows[][] = {{"acacia",acacia.Prey(),neverPredator,"producteur"},
+	            {"grass",grass.Prey(),neverPredator,"producteur"},
+	            {"bush",bush.Prey(),neverPredator,"producteur"},
+	            {"gazelle",gazelle.Prey(), gazelle.Predator(),"consommateur primaire"},
+	            {"warthog",warthog.Prey(), warthog.Predator(),"consommateur primaire"},
+	            {"buffalo",buffalo.Prey(), buffalo.Predator(),"consommateur primaire"},
+	            {"giraffe",giraffe.Prey(), giraffe.Predator(),"consommateur primaire"},
+	            {"zebra",zebra.Prey(), zebra.Predator(),"consommateur primaire"},
+	            {"cheetah",cheetah.Prey(), cheetah.Predator(),"consommateur secondaire"},
+	            {"hyena",hyena.Prey(), hyena.Predator(),"consommateur secondaire"},
+	            {"lion",neverPrey,lion.Predator(),"consommateur tertiaire"},
 	            
 	        };
 	        DefaultTableModel tableModel = new DefaultTableModel(rows, headers);
@@ -207,13 +227,13 @@ public class InformationZone extends JPanel{
 	        //Bloquer le redimensionnement
 	        jTableFoodChains.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	        TableColumn col = jTableFoodChains.getColumnModel().getColumn(0);
-	        col.setPreferredWidth(50);
+	        col.setPreferredWidth(70);
 	        col = jTableFoodChains.getColumnModel().getColumn(1);
-	        col.setPreferredWidth(180);
+	        col.setPreferredWidth(200);
 	        col = jTableFoodChains.getColumnModel().getColumn(2);
-	        col.setPreferredWidth(190);
+	        col.setPreferredWidth(200);
 	        col = jTableFoodChains.getColumnModel().getColumn(3);
-	        col.setPreferredWidth(95);
+	        col.setPreferredWidth(180);
 	  }
 	
 }

@@ -92,7 +92,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		animalsInSavana.register(name, consumer);
 	}
 	
-	public void ConsumerMovement() {
+	public void ConsumerMovementSavanna() {
 		ConsumerHunting("giraffe");
 		ConsumerHunting("gazelle");
 		ConsumerHunting("warthog");
@@ -103,7 +103,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 		ConsumerHunting("lion");
 	}
 	
-	private void AllPointsMap() {
+	public void AllPointsMap() {
 		for(int i=0; i<18;i++) {
 			for(int j=0; j<12;j++) {
 				int x=0;
@@ -140,7 +140,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	
 	public void ThirdChain() {
 		FirstFoodChain(acaciaTable, giraffeTable,"acacia","giraffe");
-		//SecondFoodChain(giraffeTable, hyenaTable,"giraffe","hyena");
+		SecondFoodChain(giraffeTable, hyenaTable,"giraffe","hyena");
 		ThirdFoodChain(hyenaTable, lionTable,"hyena","lion");
 	}
 	
@@ -391,7 +391,7 @@ public class SavannaEcosystem extends FoodChainsProcess{
 	 * @param predator
 	 * @return
 	 */
-	private void searchInArrayList(Consumer predator){
+	void searchInArrayList(Consumer predator){
 		boolean loin=true;
 		//the map get 18 points in X and 12 points in Y 
 		Position impossible = new Position(100,100);

@@ -44,6 +44,10 @@ public class Reproduct {
 		reproduct("bush",simulationdays);
 	}
 	
+	public void reproductOnPlain(int simultiondays) {
+		
+	}
+	
 	public void reproduct(String name, int simulationDays){
 		int numberofspecies=animalsInSavana.getTable(name).length;
 		int lastbox;

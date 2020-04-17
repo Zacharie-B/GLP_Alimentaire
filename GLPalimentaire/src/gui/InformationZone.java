@@ -70,11 +70,23 @@ public class InformationZone extends JPanel{
 	public InformationZone(){
 		labelInformation.setFont(font);
 		FoodChainsTable();
-		GlobalInformationsTable();	}
-	public void currentPopulationSavanna() {
-		File file = new File("src/data/populationactuelle.png");
+		GlobalInformationsTable();	
+		}
+	
+	public void startPopulationSavanna() {
+		File file = new File("src/data/fileOfEcosystemPopulation/populationdedebut.png");
 	    try { 
-	      ChartUtilities.saveChartAsPNG(file, getTypeCountPieSavanna(), 800, 450); 
+	      ChartUtilities.saveChartAsPNG(file, getTypeCountPieSavanna(), 700, 450); 
+	    }
+	     catch (IOException e) { 
+	      e.printStackTrace(); 
+	    }
+	}
+	
+	public void currentPopulationSavanna() {
+		File file = new File("src/data/fileOfEcosystemPopulation/populationactuelle.png");
+	    try { 
+	      ChartUtilities.saveChartAsPNG(file, getTypeCountPieSavanna(), 700, 450); 
 	    }
 	     catch (IOException e) { 
 	      e.printStackTrace(); 
@@ -86,7 +98,7 @@ public class InformationZone extends JPanel{
 		consumer=(Species[]) animals.getTable(name);
 		int number = 0;
 		for(int index=0; index<animals.getTable(name).length;index++) {
-			if(consumer[index].gethp()<10) {
+			if((consumer[index].gethp()<3)&&(consumer[index].getIsAlive()==true)) {
 				number++;
 			}
 		}
@@ -104,7 +116,14 @@ public class InformationZone extends JPanel{
 	}
 	
 	private int CounterGroup(String name) {
-		int length = animals.getTable(name).length;
+		int length =0;
+		Species[] consumer = new Consumer[animals.getTable(name).length];
+		consumer=(Species[]) animals.getTable(name);
+		for(int index=0; index<animals.getTable(name).length;index++) {
+			if(consumer[index].getIsAlive()==true) {
+				length++;
+			}
+		}
 		return length;
 	}
 
@@ -183,7 +202,7 @@ public class InformationZone extends JPanel{
         col = jTableGlobalInformations.getColumnModel().getColumn(3);
         col.setPreferredWidth(160);
         col = jTableGlobalInformations.getColumnModel().getColumn(4);
-        col.setPreferredWidth(150);
+        col.setPreferredWidth(180);
 	}
 	
 	
@@ -209,15 +228,15 @@ public class InformationZone extends JPanel{
 	        //add data in JTable
 		  	Object[] headers = new String[]{"Espèce", "Prédateur de l'espèce", "Proie de l'espèce", "niveau trophique"};
 	        Object rows[][] = {{"acacia",acacia.Prey(),neverPredator,"producteur"},
-	            {"grass",grass.Prey(),neverPredator,"producteur"},
-	            {"bush",bush.Prey(),neverPredator,"producteur"},
+	            {"herbe",grass.Prey(),neverPredator,"producteur"},
+	            {"buisson",bush.Prey(),neverPredator,"producteur"},
 	            {"gazelle",gazelle.Prey(), gazelle.Predator(),"consommateur primaire"},
-	            {"warthog",warthog.Prey(), warthog.Predator(),"consommateur primaire"},
-	            {"buffalo",buffalo.Prey(), buffalo.Predator(),"consommateur primaire"},
+	            {"phacochère",warthog.Prey(), warthog.Predator(),"consommateur primaire"},
+	            {"buffle",buffalo.Prey(), buffalo.Predator(),"consommateur primaire"},
 	            {"giraffe",giraffe.Prey(), giraffe.Predator(),"consommateur primaire"},
-	            {"zebra",zebra.Prey(), zebra.Predator(),"consommateur primaire"},
-	            {"cheetah",cheetah.Prey(), cheetah.Predator(),"consommateur secondaire"},
-	            {"hyena",hyena.Prey(), hyena.Predator(),"consommateur secondaire"},
+	            {"zèbre",zebra.Prey(), zebra.Predator(),"consommateur primaire"},
+	            {"guépard",cheetah.Prey(), cheetah.Predator(),"consommateur secondaire"},
+	            {"hyène",hyena.Prey(), hyena.Predator(),"consommateur secondaire"},
 	            {"lion",neverPrey,lion.Predator(),"consommateur tertiaire"},
 	            
 	        };

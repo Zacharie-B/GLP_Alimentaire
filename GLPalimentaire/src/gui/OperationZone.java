@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import naturalNeedsManagement.ActionUser;
+
 
 public class OperationZone extends JPanel implements Runnable{
 
@@ -15,17 +17,32 @@ public class OperationZone extends JPanel implements Runnable{
 	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 25);
 	
 	private OperationZone instance = this;
+	private ActionUser au = new ActionUser();
+	
 	public static boolean stop = true;
+	public static String ecosystem;
 	
-	private JButton buttonLeave = new JButton("Leave");
+	private JButton buttonBackMenu = new JButton("Back");
 	private JButton stopButton = new JButton("Stop");
-	private JButton buttonDisaster = new JButton("Disaster");
+	private JButton buttonFire = new JButton("forest in fire");	
+	private JButton fastReproductButton = new JButton("FastReproduct");
+	private JButton sicknessButton = new JButton("virulent diseases");
 	
+
+	public JButton getSicknessButton() {
+		return sicknessButton;
+	}
+
 	public OperationZone() {
 		stopButton.setFont(font);
 		stopButton.addActionListener(new StartStopAction());
-		buttonLeave.setFont(font);
-		buttonDisaster.setFont(font);
+		buttonBackMenu.setFont(font);
+		buttonFire.setFont(font);
+		buttonFire.addActionListener(new ActionForestFire());
+		sicknessButton.setFont(font);
+		sicknessButton.addActionListener(new ActionDiseases());
+		fastReproductButton.setFont(font);
+		
 	}
 	
 	private class StartStopAction implements ActionListener {
@@ -42,9 +59,21 @@ public class OperationZone extends JPanel implements Runnable{
 			}
 		}
 	}
+	
+	private class ActionForestFire implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			au.ForestFire();
+		}
+	}
+	
+	private class ActionDiseases implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			au.Sickness();
+		}
+	}
 
-	public JButton getButtonLeave() {
-		return buttonLeave;
+	public JButton getButtonBackMenu() {
+		return buttonBackMenu;
 	}
 
 	public JButton getStopButton() {
@@ -52,13 +81,15 @@ public class OperationZone extends JPanel implements Runnable{
 	}
 
 	public JButton getButtonDisaster() {
-		return buttonDisaster;
+		return buttonFire;
+	}
+
+	public JButton getFastReproductButton() {
+		return fastReproductButton;
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

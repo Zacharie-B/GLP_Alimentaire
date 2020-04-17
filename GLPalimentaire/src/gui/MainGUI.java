@@ -53,12 +53,14 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	
 	public MainGUI(){
+		OperationZone.ecosystem="Savanna";
 		init();
+		informationZone.startPopulationSavanna();
 		run();
 	}
 	
 	private void CreateButtonOnIHM (JButton button){
-		asidePanelGridBagConstraints.weighty = 0.10;
+		asidePanelGridBagConstraints.weighty = 0.20;
 		asidePanelGridBagConstraints.gridx = action;
 		asidePanelGridBagConstraints.gridy = 0;
 		operationZone.setBorder(lineborder);
@@ -81,8 +83,10 @@ public class MainGUI extends JFrame implements Runnable{
 				asidePanelGridBagConstraints.weightx = 1;
 				asidePanelGridBagConstraints.fill = GridBagConstraints.BOTH;
 				
-				CreateButtonOnIHM (operationZone.getButtonLeave());
+				CreateButtonOnIHM (operationZone.getButtonBackMenu());
 				CreateButtonOnIHM (operationZone.getButtonDisaster());
+				CreateButtonOnIHM (operationZone.getFastReproductButton());
+				CreateButtonOnIHM (operationZone.getSicknessButton());
 				CreateButtonOnIHM (operationZone.getStopButton());
 				
 				
@@ -171,7 +175,7 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 			iteration++;
 			if(OperationZone.stop!=false) {
-				MovementOnMap("Savanna");
+				MovementOnMap(OperationZone.ecosystem);
 			}
 			else {
 				informationZone.currentPopulationSavanna();
@@ -181,6 +185,7 @@ public class MainGUI extends JFrame implements Runnable{
 	}
 
 	private void MovementOnMap(String ecosystem) {
+		
 		switch (ecosystem) {
 		case "Savanna":
 			se.ConsumerMovementSavanna();

@@ -104,7 +104,7 @@ public class StartWindow extends JFrame{
 	}
 	private class FrostyAccess implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			OperationZone.ecosystem="Frsty";
+			OperationZone.ecosystem="Frosty";
 			setVisible(false);
 		}
 	}

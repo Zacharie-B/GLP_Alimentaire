@@ -54,7 +54,7 @@ public class ImagesPreferences {
 	 */
 	public static final String ARCTICWOLF_IMG_BACKGROUND_PATH = "src/misc/glacial/arcticwolfPicture.png";
 	public static final String CLAM_IMG_BACKGROUND_PATH = "src/misc/glacial/clamPicture.png";
-	public static final String FOAM_IMG_BACKGROUND_PATH = "src/misc/glacial/foamPicture.png";
+	public static final String FOAM_IMG_BACKGROUND_PATH = "src/misc/glacial/foamPicture.jpg";
 	public static final String GRASSF_IMG_BACKGROUND_PATH = "src/misc/glacial/grassPicture.png";
 	public static final String INUIT_IMG_BACKGROUND_PATH = "src/misc/glacial/inuitPicture.png";
 	public static final String MUSKOX_IMG_BACKGROUND_PATH = "src/misc/glacial/muskoxPicture.png";

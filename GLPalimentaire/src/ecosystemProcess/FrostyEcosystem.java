@@ -74,7 +74,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 		se.FirstFoodChain(FoamTable, ClamTable,"foam","clam");
 		se.SecondFoodChain(ClamTable,PhoqueTable,"clam","phoque");
 		se.ThirdFoodChain(PhoqueTable, PolarBearTable,"phoque","polarbear");
-		se.ThirdFoodChain(PhoqueTable, InuitTable,"phoque","inuitbear");
+		se.ThirdFoodChain(PhoqueTable, InuitTable,"phoque","inuit");
 	}
 	
 	public void AllSpeciesHpManagement() {
@@ -110,7 +110,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("grassFrosty", grassFrostyTable);
 			break;
-		case "MuskOx" :
+		case "muskox" :
 			MuskOxTable = new MuskOx[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				MuskOxTable[j] = new MuskOx("muskox", 50, 100, true, 10, 1, 20, 100, 3, false, pos.initPosition[i]);
@@ -119,7 +119,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("muskox", MuskOxTable);
 			break;
-		case "ArcticWolf" :
+		case "arcticwolf" :
 			ArcticWolfTable = new ArcticWolf[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				ArcticWolfTable[j] = new ArcticWolf ("arcticwolf",50, 150, true, 10, 15, 10, 30, 6, false, pos.initPosition[i]);
@@ -128,7 +128,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("arcticwolf", ArcticWolfTable);
 			break;
-		case "Inuit" :
+		case "inuit" :
 			InuitTable = new Inuit[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				InuitTable[j] = new Inuit ("inuit",50, 100, true, 10, 100, 40, 50, 6, false, pos.initPosition[i]);
@@ -137,7 +137,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("inuit", InuitTable);
 			break;
-		case "Foam" :
+		case "foam" :
 			FoamTable = new Foam[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				FoamTable[j] = new Foam("foam",true,10,10,4,50,5,1,4,pos.initPosition[i]);
@@ -146,7 +146,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("foam", FoamTable);
 			break;
-		case "Clam" :
+		case "clam" :
 			ClamTable = new Clam[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				ClamTable[j] = new Clam("clam", 50, 10, true, 10, 100, 20, 30, 3, false, pos.initPosition[i]);
@@ -155,7 +155,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("clam", ClamTable);
 			break;
-		case "Phoque" :
+		case "phoque" :
 			PhoqueTable = new Phoque[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				PhoqueTable[j] = new Phoque("phoque",50, 150, true, 10, 100, 10, 30, 6, false, pos.initPosition[i]);
@@ -164,7 +164,7 @@ public class FrostyEcosystem extends FoodChainsProcess{
 			}
 			animalsInSavana.register("phoque", PhoqueTable);
 			break;
-		case "PolarBear" :
+		case "polarbear" :
 			PolarBearTable = new PolarBear[NUMBER_OF_ANIMALS_IN_A_SPECIES];
 			for(i=a ; i<NUMBER_OF_ANIMALS_IN_A_SPECIES+x; i++) {
 				PolarBearTable[j] = new PolarBear ("polarbear",50, 300, true, 10, 100, 40, 50, 6, false, pos.initPosition[i]);

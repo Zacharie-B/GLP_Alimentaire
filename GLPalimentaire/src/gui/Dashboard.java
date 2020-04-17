@@ -127,7 +127,7 @@ public class Dashboard extends JPanel{
 	            DisplayPictureConsumer(zebrap, g2d,"zebra");
             }
             
-            else if (OperationZone.ecosystem.equals("Swamps")) {
+            if (OperationZone.ecosystem.equals("Swamps")) {
             	g2d.setColor(Color.GREEN);
 	            g2d.fillRect(0,0, widthPanel, heightPanel);
 	            DisplayPictureProducer(bushs, g2d,"bushswamps");
@@ -142,6 +142,19 @@ public class Dashboard extends JPanel{
 	            DisplayPictureConsumer(python, g2d,"python");
 	            DisplayPictureConsumer(saltcrocodile, g2d,"saltcrocodile");
 	            DisplayPictureConsumer(turtle, g2d,"turtle");
+            }
+            
+            if (OperationZone.ecosystem.equals("Frosty")) {
+            	g2d.setColor(Color.BLUE);
+ 	            g2d.fillRect(0,0, widthPanel, heightPanel);       	
+ 	            DisplayPictureProducer(grassf, g2d,"grass");
+ 	            DisplayPictureProducer(foam, g2d,"foam");
+ 	      		DisplayPictureConsumer(arcticwolf, g2d,"arcticwolf");
+ 	            DisplayPictureConsumer(clam, g2d,"clam");
+ 	            DisplayPictureConsumer(inuit, g2d,"inuit");
+ 	            DisplayPictureConsumer(muskox, g2d,"muskox");
+ 	            DisplayPictureConsumer(phoque, g2d,"phoque");
+ 	            DisplayPictureConsumer(polarbear, g2d,"polarbear");
             }
             g.setColor(Color.BLACK);
             g.drawLine(widthPanel/2, 0, widthPanel/2, heightPanel);

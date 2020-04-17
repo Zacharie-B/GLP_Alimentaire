@@ -44,7 +44,7 @@ public class ArcticWolf extends SecondaryConsumer{
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> diet = new ArrayList <String> ();
-		diet.add("muskOx");
+		diet.add("muskox");
 		setDiet(diet);
 	}
 }

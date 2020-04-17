@@ -20,7 +20,7 @@ public class OperationZone extends JPanel implements Runnable{
 	private ActionUser au = new ActionUser();
 	
 	public static boolean stop = true;
-	public static String ecosystem="Savanna";
+	public static String ecosystem="";
 	
 	private JButton buttonBackMenu = new JButton("Back");
 	private JButton stopButton = new JButton("Stop");

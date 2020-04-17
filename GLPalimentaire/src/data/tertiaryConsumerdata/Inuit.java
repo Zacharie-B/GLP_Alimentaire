@@ -38,7 +38,7 @@ public class Inuit extends TertiaryConsumer{
 	@Override
 	public void initializeDiet() {
 		ArrayList <String> al = new ArrayList <String> ();
-		al.add("arcticWolf");
+		al.add("arcticwolf");
 		al.add("phoque");
 		setDiet(al);
 	}

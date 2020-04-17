@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartPanel;
 
 import beingManagement.Reproduct;
@@ -25,6 +26,7 @@ import ecosystemProcess.FrostyEcosystem;
 import ecosystemProcess.PlainEcosystem;
 import ecosystemProcess.SavannaEcosystem;
 import ecosystemProcess.SwampsEcosystem;
+import tests.log4j.LoggerUtility;
 
 public class MainGUI extends JFrame implements Runnable{
 
@@ -40,6 +42,7 @@ public class MainGUI extends JFrame implements Runnable{
 	private OperationZone operationZone = new OperationZone();
 	
 	private Dashboard dashboard = new Dashboard();
+	private static Logger logger = LoggerUtility.getLogger(SavannaEcosystem.class, "text");
 	private SavannaEcosystem se= new SavannaEcosystem();
 	private PlainEcosystem pe= new PlainEcosystem();
 	private SwampsEcosystem swampse= new SwampsEcosystem();
@@ -73,22 +76,28 @@ public class MainGUI extends JFrame implements Runnable{
 		operationZonep.add(button, asidePanelGridBagConstraints);
 		action++;
 	}
-	
+	private void MemoryPicture() throws IOException{
+		try {
+			if(OperationZone.ecosystem.equals("Frosty")) {
+				dashboard.setPictureFrosty();
+			}
+			else if (OperationZone.ecosystem.equals("Swamps")) {
+				dashboard.setPictureSwamps();
+			}
+			else if (OperationZone.ecosystem.equals("Plain")) {
+				dashboard.setPicturePlain();
+			}
+			else if(OperationZone.ecosystem.equals("Savanna")) {
+				dashboard.setPictureSavanna();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public void init() {
 				//d�but teste image de fond
 				try {
-					if(OperationZone.ecosystem.equals("Savanna")) {
-		        		dashboard.setPictureSavanna();
-		        	}
-		        	else if(OperationZone.ecosystem.equals("Frosty")) {
-		        		dashboard.setPictureFrosty();
-		        	}
-		        	else if(OperationZone.ecosystem.equals("Swamps")) {
-		        		dashboard.setPictureSwamps();
-		        	}
-		        	else if(OperationZone.ecosystem.equals("Plain")) {
-		        		dashboard.setPicturePlain();
-		        	}
+					MemoryPicture();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -102,7 +111,7 @@ public class MainGUI extends JFrame implements Runnable{
 				
 				CreateButtonOnIHM (operationZone.getButtonBackMenu());
 				CreateButtonOnIHM (operationZone.getButtonDisaster());
-				CreateButtonOnIHM (operationZone.getFastReproductButton());
+				//CreateButtonOnIHM (operationZone.getFastReproductButton());
 				CreateButtonOnIHM (operationZone.getSicknessButton());
 				CreateButtonOnIHM (operationZone.getStopButton());
 				
@@ -150,7 +159,7 @@ public class MainGUI extends JFrame implements Runnable{
 				contentPane.setLayout(new BorderLayout());
 				
 				contentPane.add(BorderLayout.CENTER, dashboard);
-				//contentPane.add(BorderLayout.EAST,informationZonep);
+				contentPane.add(BorderLayout.EAST,informationZonep);
 				contentPane.add(BorderLayout.SOUTH,operationZonep);
 				//fin : positionnement de dashboard et operationZoneANDinformationZone dans le JPanel fenetre 
 				
@@ -192,7 +201,12 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 			iteration++;
 			if(OperationZone.stop!=false) {
-				MovementOnMap();
+				try {
+					MovementOnMap();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			else {
 				informationZone.currentPopulationSavanna();
@@ -201,8 +215,9 @@ public class MainGUI extends JFrame implements Runnable{
 		}
 	}
 
-	private void MovementOnMap() {
+	private void MovementOnMap() throws IOException {
 		dashboard.repaint();
+		logger.info("en cours d'utilisation");
 		switch (OperationZone.ecosystem) {
 		case "Plain" : 
 			pe.ConsumerMovementPlain();

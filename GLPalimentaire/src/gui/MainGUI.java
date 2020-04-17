@@ -53,9 +53,9 @@ public class MainGUI extends JFrame implements Runnable{
 	
 	
 	public MainGUI(){
-		OperationZone.ecosystem="Savanna";
 		init();
 		informationZone.startPopulationSavanna();
+		new StartWindow();
 		run();
 	}
 	
@@ -68,7 +68,7 @@ public class MainGUI extends JFrame implements Runnable{
 		action++;
 	}
 	
-	private void init() {
+	public void init() {
 				//d�but teste image de fond
 				try {
 					dashboard.setPicture();
@@ -175,7 +175,7 @@ public class MainGUI extends JFrame implements Runnable{
 			}
 			iteration++;
 			if(OperationZone.stop!=false) {
-				MovementOnMap(OperationZone.ecosystem);
+				MovementOnMap();
 			}
 			else {
 				informationZone.currentPopulationSavanna();
@@ -184,9 +184,9 @@ public class MainGUI extends JFrame implements Runnable{
 		}
 	}
 
-	private void MovementOnMap(String ecosystem) {
+	private void MovementOnMap() {
 		
-		switch (ecosystem) {
+		switch (OperationZone.ecosystem) {
 		case "Savanna":
 			se.ConsumerMovementSavanna();
 			se.FirstChain();

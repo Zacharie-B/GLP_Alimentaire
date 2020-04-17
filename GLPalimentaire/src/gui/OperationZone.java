@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,13 +15,12 @@ public class OperationZone extends JPanel implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
-	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 25);
-	
+	private static Font font = new Font(Font.MONOSPACED, Font.BOLD, 20);
 	private OperationZone instance = this;
 	private ActionUser au = new ActionUser();
 	
 	public static boolean stop = true;
-	public static String ecosystem;
+	public static String ecosystem="Savanna";
 	
 	private JButton buttonBackMenu = new JButton("Back");
 	private JButton stopButton = new JButton("Stop");
@@ -35,13 +35,24 @@ public class OperationZone extends JPanel implements Runnable{
 
 	public OperationZone() {
 		stopButton.setFont(font);
+		stopButton.setBackground(Color.black);
+		stopButton.setForeground(Color.white);
 		stopButton.addActionListener(new StartStopAction());
 		buttonBackMenu.setFont(font);
+		buttonBackMenu.setBackground(Color.black);
+		buttonBackMenu.setForeground(Color.white);
+		buttonBackMenu.addActionListener(new StartMenu());
 		buttonFire.setFont(font);
+		buttonFire.setBackground(Color.black);
+		buttonFire.setForeground(Color.white);
 		buttonFire.addActionListener(new ActionForestFire());
 		sicknessButton.setFont(font);
+		sicknessButton.setBackground(Color.black);
+		sicknessButton.setForeground(Color.white);
 		sicknessButton.addActionListener(new ActionDiseases());
 		fastReproductButton.setFont(font);
+		fastReproductButton.setBackground(Color.black);
+		fastReproductButton.setForeground(Color.white);
 		
 	}
 	
@@ -69,6 +80,14 @@ public class OperationZone extends JPanel implements Runnable{
 	private class ActionDiseases implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			au.Sickness();
+		}
+	}
+	
+	private class StartMenu implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			new StartWindow();
+			StartStopAction startstop = new StartStopAction();
+			startstop.actionPerformed(e);
 		}
 	}
 

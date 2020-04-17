@@ -8,10 +8,15 @@ import data.PrimaryConsumer;
 import data.Producer;
 import data.SecondaryConsumer;
 import data.TertiaryConsumer;
+import data.decomposersdata.Bacterium;
 import naturalNeedsManagement.HungryProcess;
 import naturalNeedsManagement.MineralChange;
 
 public class FoodChainsProcess{
+	
+	private  MineralChange mineralChange = MineralChange.getInstance();
+	private  HungryProcess hp = new HungryProcess();
+	private  Bacterium bacterium = new Bacterium("bacterium",100);
 	
 	/**
 	 * 
@@ -20,9 +25,6 @@ public class FoodChainsProcess{
 	 * @param proeatenby
 	 * treats the first trophic level of the food chain
 	 */
-	
-	private  MineralChange mineralChange = MineralChange.getInstance();
-	private  HungryProcess hp = new HungryProcess();
 	
 	public void FirstTrophicLevel(Producer producer, PrimaryConsumer primaryConsumer, 
 		ArrayList<String> proeatenby) {
@@ -131,13 +133,27 @@ public class FoodChainsProcess{
 		  ((Position)obj).getX()==pos.getX() && 
 		  ((Position)obj).getY()==pos.getY();
 	    }
-
+	
+	/**
+	 * Decomposer transform the organic mass to mineral mass
+	 * @param cordinates
+	 * @param rateMineral
+	 */
 	public void addMineralRessources(Position cordinates, int rateMineral) {					 
 				int organicmass =mineralChange.getValue(cordinates);
-				rateMineral += organicmass;
+				if(bacterium.getPopulationDensity()>organicmass) {
+					rateMineral += organicmass;
+				}
+				else {
+					rateMineral +=bacterium.getPopulationDensity();
+				}
 				mineralChange.addMineral(cordinates, rateMineral);
 	}
 	
+	/**
+	 * The producer eat itself with the mineral on the floor
+	 * @param producer
+	 */
 	public void AbsorptionMineral(Producer producer) {
 			int mineralMass = mineralChange.getValue(producer.getCordinates());
 			if(mineralMass>producer.getRateMineral()&&producer.getIsAlive()==true) {

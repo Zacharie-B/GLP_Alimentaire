@@ -55,8 +55,8 @@ public class StartWindow extends JFrame{
 		
 		panel.setLayout(new GridLayout(2,2));
 		panel.add(buttonSavanna);
-		panel.add(buttonPlain);
-		panel.add(buttonSwamps);
+		//panel.add(buttonPlain);
+		//panel.add(buttonSwamps);
 		panel.add(buttonFrosty);
 		
 		Container contentPane = getContentPane();
